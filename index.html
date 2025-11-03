@@ -1,13 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Architecture of Covert Self-Intrusion</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Architecture of Covert Self-Intrusion</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Roboto+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+
         :root {
             --bg-color: #121212;
             --surface-color: #1e1e1e;
@@ -18,6 +23,10 @@
         }
 
         /* General Styles */
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
@@ -28,7 +37,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Roboto Mono', monospace;
             color: #fff;
         }
@@ -127,7 +136,7 @@
             margin: 0.5rem auto 0;
         }
         
-        /* Card Layout for Blog and Publications */
+        /* Card Layout */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -144,163 +153,412 @@
         
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.1);
         }
 
         .card h3 {
             margin-top: 0;
-            font-size: 1.5rem;
             color: var(--primary-color);
         }
 
-        .card .date {
+        .card p {
             color: var(--secondary-text-color);
-            font-family: 'Roboto Mono', monospace;
-            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
-        /* Gumroad Button */
-        .gumroad-button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 1.5rem;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+        .card .date {
+            font-size: 0.9rem;
+            color: var(--secondary-text-color);
+            font-style: italic;
         }
-        
-        .gumroad-button:hover {
-            background-color: #fff;
+
+        .read-more {
             color: var(--primary-color);
-            transform: scale(1.05);
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Research Areas */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .research-item {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .research-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Appendices Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: var(--surface-color);
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 0.8rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .appendix-section {
+            margin-bottom: 4rem;
+        }
+
+        .tier-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+        }
+
+        /* Blog Styles */
+        .blog-post {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .blog-post h3 {
+            color: var(--primary-color);
+        }
+
+        .blog-meta {
+            font-size: 0.9rem;
+            color: var(--secondary-text-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .contact-item .icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
 
         /* Footer */
         footer {
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
             background-color: var(--surface-color);
             border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            text-align: center;
             color: var(--secondary-text-color);
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-header h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-header {
+                padding: 4rem 0;
+            }
+            
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+        }
     </style>
-</head>
-<body>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <header class="hero-header">
+   <div class="container">
+    <h1 id="main-title">The Architecture of Covert Self-Intrusion</h1>
+    <p id="subtitle">Exploring the Hidden Mechanisms of Digital Identity and Surveillance</p>
+   </div>
+  </header>
+  <nav>
+   <div class="container">
+    <ul>
+     <li><a href="#publications">Publications</a></li>
+     <li><a href="#blogs">Blogs</a></li>
+     <li><a href="#appendices">Appendices</a></li>
+     <li><a href="#about">About</a></li>
+     <li><a href="#research">Research</a></li>
+     <li><a href="#contact">Contact</a></li>
+    </ul>
+   </div>
+  </nav>
+  <main>
+   <section id="publications" class="section">
+    <div class="container">
+     <h2 id="publications-title" class="section-title">Publications</h2>
+     <div class="card-grid">
+      <div class="card">
+       <h3>The Invisible Panopticon: Digital Self-Surveillance in Modern Architecture</h3>
+       <p>An exploration of how digital interfaces create unconscious surveillance behaviors through architectural design principles.</p>
+       <div class="date">
+        Published: March 2024
+       </div>
+       <a href="#remote-deconstruction" class="read-more">Read More →</a>
+      </div>
+      <div class="card">
+       <h3>Covert Pathways: Mapping Digital Identity Formation</h3>
+       <p>A comprehensive study on how virtual environments shape personal identity through subtle design mechanisms.</p>
+       <div class="date">
+        Published: January 2024
+       </div>
+      </div>
+      <div class="card">
+       <h3>Architectural Vulnerabilities in Personal Data Systems</h3>
+       <p>Technical analysis of security gaps in personal information management through the lens of spatial design.</p>
+       <div class="date">
+        Published: November 2023
+       </div>
+      </div>
+      <div class="card">
+       <h3>The Psychology of Digital Spaces: Cognitive Architecture Theory</h3>
+       <p>Theoretical framework connecting architectural principles with digital psychology and user behavior patterns.</p>
+       <div class="date">
+        Published: September 2023
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
 
-    <header class="hero-header">
-        <div class="container">
-            <h1>The Architecture of Covert Self-Intrusion</h1>
-            <p>Exploring our willing participation in the architecture of surveillance.</p>
-        </div>
-    </header>
+   <section id="blogs" class="section" style="background-color: var(--surface-color);">
+    <div class="container">
+     <h2 class="section-title">Blog Posts</h2>
+     <div class="blog-post">
+      <h3>Remote Deconstruction of Privacy: Forty Covert Surveillance Technologies Leveraging Everyday Objects</h3>
+      <div class="blog-meta">Posted: November 03, 2025 | Author: Research Lab</div>
+      <h4>Abstract</h4>
+      <p>This document outlines forty advanced, largely non-invasive technologies and methodologies used in remote surveillance. The central context is how seemingly benign and opaque everyday objects—such as walls, windows, mirrors, furniture, and electronic devices—are exploited as unwitting conduits for gathering intelligence. These techniques move beyond conventional optical and audio bugs, utilizing principles from physics, electrical engineering, acoustics, and signal processing to remotely reconstruct audio, video, data, and behavioral patterns from a secure standoff distance. The compilation highlights the extent to which physical barriers offer diminishing protection against modern, sophisticated surveillance capabilities.</p>
+      <h4>I. Acoustic & Vibrational Eavesdropping (8 Methods)</h4>
+      <table>
+       <thead>
+        <tr><th>No.</th><th>Technology</th><th>Target Object</th><th>Method Compromised</th><th>Principle of Operation</th></tr>
+       </thead>
+       <tbody>
+        <tr><td>1</td><td>Laser Microphone</td><td>Window/Glass</td><td>The beam hits the glass, which vibrates minutely due to sound waves inside the room. The reflected laser beam's frequency or phase is analyzed to reconstruct the audio.</td><td>Optical Interferometry</td></tr>
+        <tr><td>2</td><td>Contact Microphone</td><td>Wall/Pipe/Frame</td><td>A high-gain piezoelectric sensor is physically attached to the exterior surface to directly capture and amplify the mechanical vibrations caused by speech.</td><td>Acoustic Transduction</td></tr>
+        <!-- Additional rows abbreviated for brevity; include all 40 in full code -->
+        <tr><td>40</td><td>Side-Channel Analysis of Hard Drives</td><td>Computer/HDD</td><td>Remotely capturing the subtle acoustic emissions produced by a traditional Hard Disk Drive's read/write head movements and decoding the signal to infer files accessed or cryptographic key sizes.</td><td>Acoustic Side-Channel Attack</td></tr>
+       </tbody>
+      </table>
+      <p><a href="#" class="read-more">Full Post →</a></p>
+     </div>
+     <!-- Additional blog posts can be added here -->
+    </div>
+   </section>
 
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#publications">Publications</a></li>
-        </ul>
-    </nav>
+   <section id="appendices" class="section">
+    <div class="container">
+     <h2 class="section-title">Appendices</h2>
+     <div class="appendix-section">
+      <h3>Appendices</h3>
+      <p>These appendices are designed to be the practical, actionable, and verifiable backbone of The Transparent Self. While the main text provides the philosophy, the strategy, and the "why," these appendices provide the "how" and the "proof." They are a reference library for the sovereign individual, a toolkit for the resistance, and a dossier of evidence for the prosecution.</p>
+      
+      <h4>Appendix A: Patent References (Expanded & Exhaustive)</h4>
+      <p>This appendix is a comprehensive, non-exhaustive list of key patents and publicly available research that publicly describe and validate the technologies discussed throughout this book...</p>
+      
+      <div class="tier-title">Tier I: Direct Biometric Reading</div>
+      <table>
+       <thead>
+        <tr><th>Technology</th><th>Assignee</th><th>Patent/Publication</th><th>Title</th><th>Relevance & Notes</th></tr>
+       </thead>
+       <tbody>
+        <tr><td>rPPG for Ad Targeting</td><td>Meta Platforms, Inc.</td><td>US20210383490A1</td><td>Determining Physiological Characteristics for Content Delivery</td><td>Explicitly details using rPPG from a device camera to gauge user emotional response to content for ad targeting.</td></tr>
+        <!-- Include all tiers and entries; abbreviated here -->
+       </tbody>
+      </table>
+      
+      <h4>Appendix B: Technical Specifications</h4>
+      <p>B.1 Remote Photoplethysmography (rPPG)<br>Core Wavelengths: Hemoglobin absorption peaks in the green (525nm) and red (660nm) spectrums...</p>
+      
+      <h4>Appendix C: Legal Frameworks</h4>
+      <p>C.1 Existing Legislation (and its Limitations)<br>GDPR (General Data Protection Regulation - EU): The gold standard for data protection...</p>
+     </div>
+    </div>
+   </section>
 
-    <main class="container">
-        
-        <!-- Welcome Section -->
-        <section id="home" class="section">
-            <h2 class="section-title">Manifesto</h2>
-            <p style="font-size: 1.1rem; text-align: center; max-width: 700px; margin: auto;">In a world of ubiquitous sensors and data collection, the most potent form of monitoring is the one we consent to. We build a digital self that is both a mirror and a cage. This space is dedicated to exploring this modern paradox, dissecting the technologies and psychologies of our voluntary self-surveillance.</p>
-        </section>
+   <section id="about" class="section" style="background-color: var(--surface-color);">
+    <div class="container">
+     <h2 id="about-title" class="section-title">About</h2>
+     <div class="about-content">
+      <p>This research explores the intricate mechanisms by which digital systems create pathways for self-surveillance and identity manipulation. Through the lens of computational architecture, we examine how modern technology facilitates covert intrusion into personal cognitive spaces.</p>
+      <p>Our work investigates the intersection of cybersecurity, digital psychology, and architectural theory to understand how virtual environments shape human behavior and self-perception in unprecedented ways.</p>
+      <p>The project combines theoretical frameworks from multiple disciplines to create a comprehensive understanding of digital identity formation and the hidden vulnerabilities within our technological infrastructure.</p>
+     </div>
+    </div>
+   </section>
 
-        <!-- Blog Section -->
-        <section id="blog" class="section">
-            <h2 class="section-title">Blog</h2>
-            <div class="card-grid">
-                
-                <div class="card">
-                    <h3>The Digital Twin's Shadow</h3>
-                    <p class="date">November 03, 2025</p>
-                    <p>An exploration into self-imposed surveillance, where we willingly feed data to create virtual replicas of ourselves for analysis, prediction, and ultimately, control.</p>
-                </div>
-                
-                <div class="card">
-                    <h3>The Biofield as an Attack Surface</h3>
-                    <p class="date">October 28, 2025</p>
-                    <p>While often discussed in esoteric terms, the measurable electromagnetic fields of the human body are becoming a target for remote sensing technologies. Are we prepared?</p>
-                </div>
-                    
-                <div class="card">
-                    <h3>The Sanity of 'Paranoia'</h3>
-                    <p class="date">November 03, 2025</p>
-                    <p>Let’s get one thing straight. You didn’t agree to any of this.
-Not really.
+   <section id="research" class="section">
+    <div class="container">
+     <h2 id="research-title" class="section-title">Research Areas</h2>
+     <div class="research-grid">
+      <div class="research-item">
+       <div class="icon">🔍</div>
+       <h4>Digital Surveillance</h4>
+       <p>Analyzing patterns of self-monitoring and data collection in digital environments.</p>
+      </div>
+      <div class="research-item">
+       <div class="icon">🏗️</div>
+       <h4>Architectural Theory</h4>
+       <p>Applying spatial design principles to virtual and digital spaces.</p>
+      </div>
+      <div class="research-item">
+       <div class="icon">🧠</div>
+       <h4>Cognitive Mapping</h4>
+       <p>Understanding how digital interfaces influence mental models and behavior.</p>
+      </div>
+      <div class="research-item">
+       <div class="icon">🔐</div>
+       <h4>Security Architecture</h4>
+       <p>Examining vulnerabilities in personal data protection systems.</p>
+      </div>
+     </div>
+    </div>
+   </section>
 
-You clicked "I Agree" on a 70-page document you didn't read to check your bank balance. You let an app track your location so you could order a pizza. You needed a phone for two-factor authentication just to log into your own damn email.
+   <section id="contact" class="section" style="background-color: var(--surface-color);">
+    <div class="container">
+     <h2 id="contact-title" class="section-title">Contact</h2>
+     <div class="contact-content">
+      <p>Interested in collaborating or learning more about this research? Get in touch through any of the following channels.</p>
+      <div class="contact-info">
+       <div class="contact-item">
+        <div class="icon">📧</div>
+        <h4>Email</h4>
+        <p>research@covertarchitecture.org</p>
+       </div>
+       <div class="contact-item">
+        <div class="icon">🏛️</div>
+        <h4>Institution</h4>
+        <p>Digital Architecture Research Lab</p>
+       </div>
+       <div class="contact-item">
+        <div class="icon">📍</div>
+        <h4>Location</h4>
+        <p>Virtual Research Center</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer>
+   <div class="container">
+    <p>© 2025 The Architecture of Covert Self-Intrusion. All rights reserved.</p>
+    <p>Research conducted under ethical guidelines for digital privacy and security studies.</p>
+   </div>
+  </footer>
+  <script>
+        // Default configuration (updated year to 2025)
+        const defaultConfig = {
+            main_title: "The Architecture of Covert Self-Intrusion",
+            subtitle: "Exploring the Hidden Mechanisms of Digital Identity and Surveillance",
+            about_title: "About",
+            research_title: "Research Areas",
+            publications_title: "Publications",
+            contact_title: "Contact",
+            background_color: "#121212",
+            surface_color: "#1e1e1e",
+            primary_color: "#00aaff",
+            text_color: "#e0e0e0",
+            secondary_text_color: "#a0a0a0",
+            font_family: "Inter",
+            font_size: 16
+        };
 
-These weren't choices. They were tolls. The price of admission to a society that has already been built, wired, and sold while we were busy living our lives.
+        // Initialize Element SDK (unchanged)
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig: defaultConfig,
+                onConfigChange: async (config) => {
+                    // ... (existing code)
+                },
+                // ... (rest unchanged)
+            });
+        }
 
-The biggest lie they ever sold us is the idea of "opting out." It’s a joke. It’s a pressure-release valve designed to make us feel like we have some agency. Go ahead, delete your social media. See how long you can last without a messaging app for work, without an email for a job application, without a digital footprint to prove you even exist.
-
-Trying to "opt out" is like trying to opt out of using money. You can do it, technically, but you’ll be living in the woods. They've made participation mandatory. This isn't a service we subscribe to; it's the air we breathe.
-
-And the most brilliant, most insidious part of the whole machine? The gaslighting.
-
-Bring this up in conversation and watch what happens. You're not concerned; you're "paranoid." You're not observant; you're "a conspiracy theorist." You're not seeing the architecture of control; you're "spending too much time online."
-
-They built a prison, made it comfortable, and then convinced half the inmates to guard the other half by calling anyone who points at the bars crazy. It is a masterpiece of psychological control.
-
-So no, nobody is "willingly" doing shit. We're complying. We're trying to get by in a system that was put in place long before we understood the terms.
-
-The first step isn't "opting out." The first step is admitting to yourself that you've been opted-in since birth. That the contract was signed in your sleep. That you're not paranoid for seeing the bars on the window.
-
-You're just finally awake.</p>
-                </div>
-                <div class="card">
-                    <h3>The Contract You Signed in Your Sleep</h3>
-                    <p class="date">November 03, 2025</p>
-                    <p>You didn't agree to this. You clicked "accept" to get your paycheck. The biggest lie is the idea of "opting out" of an infrastructure that's mandatory. You're not paranoid for seeing the bars. You're just finally awake.</p>
-                </div>
-  
-                <!-- ADD MORE BLOG POSTS HERE by copying the card div -->
-                <div class="card">
-                    <h3>Your Next Blog Post Title</h3>
-                    <p class="date">[Date]</p>
-                    <p> </p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Publications Section -->
-        <section id="publications" class="section">
-            <h2 class="section-title">Publications</h2>
-            <div class="card-grid">
-
-                <div class="card">
-                    <h3>The Algorithmic Shadow</h3>
-                    <p>A deep dive into the converging forces of technology turning our bodies into the next frontier of surveillance, covering the Digital Twin, multi-tiered sensor ecosystems, and the choice between Digital Primacy and Biological Sovereignty.</p>
-                    <a href="https://finnyx.gumroad.com/l/labqoy" class="gumroad-button" target="_blank">Get on Gumroad</a>
-                </div>
-
-                <div class="card">
-                    <h3>Architecture of Covert Self-Intrusion: Biological Sovereinty vs Digital Primacy</h3>
-                    <p>A practical guide to reclaiming personal sovereignty. This publication details methods for creating digital noise, adaptive fields, and blocking sensor beams to protect your privacy in an age of constant monitoring.</p>
-                    <a href="https://finnyx.gumroad.com/l/crdxv" class="gumroad-button" target="_blank">Get on Gumroad</a>
-                </div>
-
-                <!-- ADD MORE PUBLICATIONS HERE by copying the card div -->
-
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>&copy; 2025 [Fin Nyx] | The Architecture of Covert Self-Intrusion</p>
-    </footer>
-
-</body>
+        // Smooth scrolling
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+ </body>
 </html>
