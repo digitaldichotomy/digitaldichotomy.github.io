@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Covert Self-Intrusion</title>
+    <style>
+        /* Basic Styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: auto;
+            overflow: auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            color: #ccc;
+            margin-top: 0.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: #444;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        /* Sections */
+        .section {
+            background: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border-left: 5px solid #333;
+        }
+        
+        .section h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        /* Blog Post & Publication Items */
+        .blog-post, .publication-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .blog-post:last-child, .publication-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .blog-post h3, .publication-item h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-post .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Gumroad Button */
+        .gumroad-button {
+            display: inline-block;
+            background: #ff90e8; /* Gumroad's pink color */
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .gumroad-button:hover {
+            background: #e681d0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>The Architecture of Covert Self-Intrusion</h1>
+            <p>Exploring the technologies and psychologies of our participation in surveillance.</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#publications">Publications</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Home/Intro Section -->
+        <section id="home" class="section">
+            <h2>Welcome</h2>
+            <p>This is a space to explore the intricate ways we participate in our own surveillance. In a world of ubiquitous sensors and data collection, the most potent form of monitoring is often the one we consent to, constructing a digital self that is both a mirror and a cage. Here you will find blog posts and publications delving into this modern paradox.</p>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section">
+            <h2>Blog</h2>
+            
+            <article class="blog-post">
+                <h3>Blog Post Title One</h3>
+                <p class="date">November 03, 2025</p>
+                <p>This is a summary of the first blog post. It discusses the concept of the 'digital twin' as a form of self-imposed surveillance, where we willingly feed data to create a virtual replica of ourselves for analysis and prediction...</p>
+                <!-- For a full blog post, you might link to another page or simply write the full text here -->
+            </article>
+            
+            <article class="blog-post">
+                <h3>Blog Post Title Two</h3>
+                <p class="date">October 28, 2025</p>
+                <p>This post explores the biofield as a new frontier. While often discussed in esoteric terms, the measurable electromagnetic fields of the human body are becoming a target for remote sensing technologies...</p>
+            </article>
+            
+            <!-- Add more <article> sections for new blog posts -->
+
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="section">
+            <h2>Publications</h2>
+            
+            <div class="publication-item">
+                <h3>The Algorithmic Shadow (Full Text)</h3>
+                <p>A deep dive into the converging forces of technology turning our bodies into the next frontier of surveillance. This publication covers the Digital Twin, multi-tiered sensor ecosystems, and the choice between Digital Primacy and Biological Sovereignty.</p>
+                <a href="YOUR_GUMROAD_LINK_HERE" class="gumroad-button" target="_blank">Get it on Gumroad</a>
+            </div>
+
+            <div class="publication-item">
+                <h3>Counter-Surveillance Playbook</h3>
+                <p>A practical guide to reclaiming personal sovereignty. This publication details methods for creating digital noise, adaptive fields, and blocking sensor beams to protect your privacy in an age of constant monitoring.</p>
+                <a href="YOUR_OTHER_GUMROAD_LINK" class="gumroad-button" target="_blank">Get it on Gumroad</a>
+            </div>
+            
+            <!-- Add more <div class="publication-item"> sections for new publications -->
+            
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 [Your Name]</p>
+    </footer>
+
+</body>
+</html>
