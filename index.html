@@ -4,50 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Architecture of Covert Self-Intrusion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Basic Styles */
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1e1e1e;
+            --primary-color: #00aaff;
+            --text-color: #e0e0e0;
+            --secondary-text-color: #a0a0a0;
+            --border-color: #333;
+        }
+
+        /* General Styles */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
         }
 
-        /* Container */
-        .container {
-            max-width: 800px;
-            margin: auto;
-            overflow: auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: #333;
+        h1, h2, h3 {
+            font-family: 'Roboto Mono', monospace;
             color: #fff;
-            padding: 2rem 0;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #fff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Section */
+        .hero-header {
+            background: linear-gradient(-45deg, #000000, #1a1a1a, #001f3f, #000000);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            padding: 6rem 0;
             text-align: center;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        header h1 {
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-header h1 {
+            font-size: 3rem;
             margin: 0;
-            font-size: 2.5rem;
+            color: #fff;
+            letter-spacing: 2px;
         }
 
-        header p {
-            color: #ccc;
-            margin-top: 0.5rem;
+        .hero-header p {
+            font-size: 1.2rem;
+            color: var(--secondary-text-color);
+            margin-top: 1rem;
         }
 
-        /* Navigation */
+        /* Navigation Bar */
         nav {
-            background: #444;
+            background-color: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(10px);
             padding: 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
         }
         
         nav ul {
@@ -59,47 +98,64 @@
 
         nav ul li {
             display: inline;
-            margin-right: 20px;
+            margin: 0 20px;
         }
 
         nav a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
+            font-weight: bold;
+            font-size: 1rem;
         }
 
-        /* Sections */
+        /* Content Sections */
         .section {
-            background: #fff;
-            margin: 20px 0;
-            padding: 20px;
-            border-left: 5px solid #333;
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 0.5rem auto 0;
         }
         
-        .section h2 {
+        /* Card Layout for Blog and Publications */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
             margin-top: 0;
-            color: #333;
+            font-size: 1.5rem;
+            color: var(--primary-color);
         }
 
-        /* Blog Post & Publication Items */
-        .blog-post, .publication-item {
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .blog-post:last-child, .publication-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .blog-post h3, .publication-item h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-post .date {
-            color: #888;
+        .card .date {
+            color: var(--secondary-text-color);
+            font-family: 'Roboto Mono', monospace;
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
@@ -107,35 +163,39 @@
         /* Gumroad Button */
         .gumroad-button {
             display: inline-block;
-            background: #ff90e8; /* Gumroad's pink color */
+            background-color: var(--primary-color);
             color: #fff;
             padding: 12px 25px;
-            text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
+            text-align: center;
+            margin-top: 1.5rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         
         .gumroad-button:hover {
-            background: #e681d0;
+            background-color: #fff;
+            color: var(--primary-color);
+            transform: scale(1.05);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
-            background: #333;
-            color: #fff;
+            padding: 2rem;
+            margin-top: 4rem;
+            background-color: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            color: var(--secondary-text-color);
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <header class="hero-header">
         <div class="container">
             <h1>The Architecture of Covert Self-Intrusion</h1>
-            <p>Exploring the technologies and psychologies of our participation in surveillance.</p>
+            <p>Exploring our willing participation in the architecture of surveillance.</p>
         </div>
     </header>
 
@@ -147,59 +207,67 @@
         </ul>
     </nav>
 
-    <div class="container">
+    <main class="container">
         
-        <!-- Home/Intro Section -->
+        <!-- Welcome Section -->
         <section id="home" class="section">
-            <h2>Welcome</h2>
-            <p>This is a space to explore the intricate ways we participate in our own surveillance. In a world of ubiquitous sensors and data collection, the most potent form of monitoring is often the one we consent to, constructing a digital self that is both a mirror and a cage. Here you will find blog posts and publications delving into this modern paradox.</p>
+            <h2 class="section-title">Manifesto</h2>
+            <p style="font-size: 1.1rem; text-align: center; max-width: 700px; margin: auto;">In a world of ubiquitous sensors and data collection, the most potent form of monitoring is the one we consent to. We build a digital self that is both a mirror and a cage. This space is dedicated to exploring this modern paradox, dissecting the technologies and psychologies of our voluntary self-surveillance.</p>
         </section>
 
         <!-- Blog Section -->
         <section id="blog" class="section">
-            <h2>Blog</h2>
-            
-            <article class="blog-post">
-                <h3>Blog Post Title One</h3>
-                <p class="date">November 03, 2025</p>
-                <p>This is a summary of the first blog post. It discusses the concept of the 'digital twin' as a form of self-imposed surveillance, where we willingly feed data to create a virtual replica of ourselves for analysis and prediction...</p>
-                <!-- For a full blog post, you might link to another page or simply write the full text here -->
-            </article>
-            
-            <article class="blog-post">
-                <h3>Blog Post Title Two</h3>
-                <p class="date">October 28, 2025</p>
-                <p>This post explores the biofield as a new frontier. While often discussed in esoteric terms, the measurable electromagnetic fields of the human body are becoming a target for remote sensing technologies...</p>
-            </article>
-            
-            <!-- Add more <article> sections for new blog posts -->
+            <h2 class="section-title">Blog</h2>
+            <div class="card-grid">
+                
+                <div class="card">
+                    <h3>The Digital Twin's Shadow</h3>
+                    <p class="date">November 03, 2025</p>
+                    <p>An exploration into self-imposed surveillance, where we willingly feed data to create virtual replicas of ourselves for analysis, prediction, and ultimately, control.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>The Biofield as an Attack Surface</h3>
+                    <p class="date">October 28, 2025</p>
+                    <p>While often discussed in esoteric terms, the measurable electromagnetic fields of the human body are becoming a target for remote sensing technologies. Are we prepared?</p>
+                </div>
+                
+                <!-- ADD MORE BLOG POSTS HERE by copying the card div -->
+                <div class="card">
+                    <h3>Your Next Blog Post Title</h3>
+                    <p class="date">[Date]</p>
+                    <p>A brief summary of your next amazing blog post will go here. Keep it concise and intriguing to encourage clicks.</p>
+                </div>
 
+            </div>
         </section>
 
         <!-- Publications Section -->
         <section id="publications" class="section">
-            <h2>Publications</h2>
-            
-            <div class="publication-item">
-                <h3>The Algorithmic Shadow (Full Text)</h3>
-                <p>A deep dive into the converging forces of technology turning our bodies into the next frontier of surveillance. This publication covers the Digital Twin, multi-tiered sensor ecosystems, and the choice between Digital Primacy and Biological Sovereignty.</p>
-                <a href="YOUR_GUMROAD_LINK_HERE" class="gumroad-button" target="_blank">Get it on Gumroad</a>
-            </div>
+            <h2 class="section-title">Publications</h2>
+            <div class="card-grid">
 
-            <div class="publication-item">
-                <h3>Counter-Surveillance Playbook</h3>
-                <p>A practical guide to reclaiming personal sovereignty. This publication details methods for creating digital noise, adaptive fields, and blocking sensor beams to protect your privacy in an age of constant monitoring.</p>
-                <a href="YOUR_OTHER_GUMROAD_LINK" class="gumroad-button" target="_blank">Get it on Gumroad</a>
+                <div class="card">
+                    <h3>The Algorithmic Shadow</h3>
+                    <p>A deep dive into the converging forces of technology turning our bodies into the next frontier of surveillance, covering the Digital Twin, multi-tiered sensor ecosystems, and the choice between Digital Primacy and Biological Sovereignty.</p>
+                    <a href="https://finnyx.gumroad.com/l/labqoy" class="gumroad-button" target="_blank">Get on Gumroad</a>
+                </div>
+
+                <div class="card">
+                    <h3>Architecture of Covert Self-Intrusion</h3>
+                    <p>A practical guide to reclaiming personal sovereignty. This publication details methods for creating digital noise, adaptive fields, and blocking sensor beams to protect your privacy in an age of constant monitoring.</p>
+                    <a href="https://finnyx.gumroad.com/l/crdxv" class="gumroad-button" target="_blank">Get on Gumroad</a>
+                </div>
+
+                <!-- ADD MORE PUBLICATIONS HERE by copying the card div -->
+
             </div>
-            
-            <!-- Add more <div class="publication-item"> sections for new publications -->
-            
         </section>
 
-    </div>
+    </main>
 
     <footer>
-        <p>&copy; 2025 [Your Name]</p>
+        <p>&copy; 2025 [Fin Nyx] | The Architecture of Covert Self-Intrusion</p>
     </footer>
 
 </body>
