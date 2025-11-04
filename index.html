@@ -1,564 +1,221 @@
 <!doctype html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Architecture of Covert Self-Intrusion</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Transparent Self — Project Site</title>
   <script src="/_sdk/element_sdk.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Roboto+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-  <style>
-        body {
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-color: #121212;
-            --surface-color: #1e1e1e;
-            --primary-color: #00aaff;
-            --text-color: #e0e0e0;
-            --secondary-text-color: #a0a0a0;
-            --border-color: #333;
-        }
-
-        /* General Styles */
-        html, body {
-            height: 100%;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Roboto Mono', monospace;
-            color: #fff;
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #fff;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 0 2rem;
-        }
-
-        /* Header Section */
-        .hero-header {
-            background: linear-gradient(-45deg, #000000, #1a1a1a, #001f3f, #000000);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            padding: 6rem 0;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .hero-header h1 {
-            font-size: 3rem;
-            margin: 0;
-            color: #fff;
-            letter-spacing: 2px;
-        }
-
-        .hero-header p {
-            font-size: 1.2rem;
-            color: var(--secondary-text-color);
-            margin-top: 1rem;
-        }
-
-        /* Navigation Bar */
-        nav {
-            background-color: rgba(30, 30, 30, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        nav ul {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            text-align: center;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 20px;
-        }
-
-        nav a {
-            font-weight: bold;
-            font-size: 1rem;
-        }
-
-        /* Content Sections */
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary-color);
-            margin: 0.5rem auto 0;
-        }
-        
-        /* Card Layout */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 170, 255, 0.1);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-        }
-
-        .card p {
-            color: var(--secondary-text-color);
-            margin-bottom: 1rem;
-        }
-
-        .card .date {
-            font-size: 0.9rem;
-            color: var(--secondary-text-color);
-            font-style: italic;
-        }
-
-        .read-more {
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Research Areas */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .research-item {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .research-item .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .research-item h4 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        /* Appendices Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-            background-color: var(--surface-color);
-        }
-
-        th, td {
-            border: 1px solid var(--border-color);
-            padding: 0.8rem;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        th {
-            background-color: var(--primary-color);
-            color: #000;
-        }
-
-        tr:nth-child(even) {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .appendix-section {
-            margin-bottom: 4rem;
-        }
-
-        .tier-title {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin: 2rem 0 1rem;
-        }
-
-        /* Blog Styles */
-        .blog-post {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .blog-post h3 {
-            color: var(--primary-color);
-        }
-
-        .blog-meta {
-            font-size: 0.9rem;
-            color: var(--secondary-text-color);
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-item {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .contact-item .icon {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--surface-color);
-            border-top: 1px solid var(--border-color);
-            padding: 3rem 0;
-            text-align: center;
-            color: var(--secondary-text-color);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-header h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-header {
-                padding: 4rem 0;
-            }
-            
-            nav ul li {
-                display: block;
-                margin: 10px 0;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-
-            table {
-                font-size: 0.9rem;
-            }
-        }
-    </style>
-  <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
- </head>
- <body>
-  <header class="hero-header">
-   <div class="container">
-    <h1 id="main-title">The Architecture of Covert Self-Intrusion</h1>
-    <p id="subtitle">Exploring the Hidden Mechanisms of Digital Identity and Surveillance</p>
-   </div>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    @view-transition { navigation: auto; }
+    :root{
+      --bg:#0f1013; --surface:#17181d; --brand:#2b6cb0; --text:#e6e7eb; --muted:#aab0bd; --border:#2a2d36;
+      --accent:#5aa2e6;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.7; overflow-x:hidden;
+    }
+    h1,h2,h3,h4{font-family:"Roboto Mono",monospace; color:#fff; letter-spacing:.3px}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{color:#fff}
+    .container{max-width:1000px; margin:auto; padding:0 1.25rem}
+    nav{
+      position:sticky; top:0; z-index:10; backdrop-filter:blur(8px);
+      background:rgba(23,24,29,.75); border-bottom:1px solid var(--border)
+    }
+    nav ul{display:flex; gap:1.25rem; list-style:none; padding:.85rem 0; margin:0; justify-content:center; flex-wrap:wrap}
+    nav a{font-weight:700; font-size:.95rem}
+    .hero{
+      border-bottom:1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(15,16,19,.0), rgba(15,16,19,1) 70%),
+        radial-gradient(1200px 400px at 50% -50%, rgba(90,162,230,.25), transparent 60%),
+        linear-gradient(130deg, #0b0c10, #11131a 45%, #0d1420);
+      padding:5.5rem 0 3.5rem; text-align:center;
+    }
+    .hero h1{font-size:2.6rem; margin:.25rem 0 0}
+    .hero p{margin:.75rem 0 0; color:var(--muted); font-size:1.1rem}
+    .cover {
+      width:100%; max-width:720px; margin:1.25rem auto 0; border-radius:10px; overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,.35); border:1px solid var(--border);
+    }
+    .cover img{display:block; width:100%; height:auto}
+    .section{padding:3rem 0}
+    .section-title{font-size:1.9rem; text-align:center; margin:0 0 1.75rem; position:relative}
+    .section-title::after{
+      content:""; display:block; width:60px; height:3px; background:var(--accent);
+      margin:.6rem auto 0; border-radius:2px
+    }
+    .grid{display:grid; gap:1.25rem}
+    @media(min-width:820px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)}}
+    .card{
+      background:var(--surface); border:1px solid var(--border); border-radius:10px;
+      padding:1.25rem; transition:transform .2s ease, box-shadow .2s ease
+    }
+    .card:hover{transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    .meta{color:var(--muted); font-size:.9rem}
+    .kbd{font-family:"Roboto Mono",monospace; background:#0c0d11; border:1px solid var(--border); padding:.15rem .45rem; border-radius:6px}
+    .dl a{display:inline-block; margin:.35rem .5rem .35rem 0; padding:.5rem .75rem; border:1px solid var(--border); border-radius:8px}
+    .muted{color:var(--muted)}
+    footer{border-top:1px solid var(--border); padding:2.5rem 0; text-align:center; color:var(--muted); background:var(--surface)}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="meta">Project</p>
+      <h1 id="site-title">The Transparent Self</h1>
+      <p id="tagline">Evidence-based investigations into digital self-surveillance, identity shaping, and covert intrusion.</p>
+      <div class="cover">
+        <img src="assets/cover.jpg" alt="Book cover" onerror="this.parentElement.style.display='none'"/>
+      </div>
+    </div>
   </header>
+
   <nav>
-   <div class="container">
-    <ul>
-     <li><a href="#publications">Publications</a></li>
-     <li><a href="#blogs">Blogs</a></li>
-     <li><a href="#appendices">Appendices</a></li>
-     <li><a href="#about">About</a></li>
-     <li><a href="#research">Research</a></li>
-     <li><a href="#contact">Contact</a></li>
-    </ul>
-   </div>
+    <div class="container">
+      <ul>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#appendices">Appendices</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
+
   <main>
-   <section id="publications" class="section">
-    <div class="container">
-     <h2 id="publications-title" class="section-title">Publications</h2>
-     <div class="card-grid">
-      <div class="card">
-       <h3>The Invisible Panopticon: Digital Self-Surveillance in Modern Architecture</h3>
-       <p>An exploration of how digital interfaces create unconscious surveillance behaviors through architectural design principles.</p>
-       <div class="date">
-        Published: March 2024
-       </div>
-       <a href="#remote-deconstruction" class="read-more">Read More →</a>
-      </div>
-      <div class="card">
-       <h3>Covert Pathways: Mapping Digital Identity Formation</h3>
-       <p>A comprehensive study on how virtual environments shape personal identity through subtle design mechanisms.</p>
-       <div class="date">
-        Published: January 2024
-       </div>
-      </div>
-      <div class="card">
-       <h3>Architectural Vulnerabilities in Personal Data Systems</h3>
-       <p>Technical analysis of security gaps in personal information management through the lens of spatial design.</p>
-       <div class="date">
-        Published: November 2023
-       </div>
-      </div>
-      <div class="card">
-       <h3>The Psychology of Digital Spaces: Cognitive Architecture Theory</h3>
-       <p>Theoretical framework connecting architectural principles with digital psychology and user behavior patterns.</p>
-       <div class="date">
-        Published: September 2023
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
+    <section id="books" class="section">
+      <div class="container">
+        <h2 class="section-title">Books</h2>
+        <div class="grid grid-2">
+          <article class="card">
+            <h3>The Transparent Self</h3>
+            <p>A field guide and dossier: philosophy, strategy, and proof. Grounded in verifiable references, callouts, and appendices that operationalize privacy and demonstrate evidence.</p>
+            <p class="meta">Formats: PDF, EPUB, DOCX, HTML</p>
+            <p class="dl">
+              <a href="output/book.pdf">PDF</a>
+              <a href="output/book.epub">EPUB</a>
+              <a href="output/book.docx">DOCX</a>
+              <a href="output/book.html">HTML</a>
+            </p>
+          </article>
 
-   <section id="blogs" class="section" style="background-color: var(--surface-color);">
-    <div class="container">
-     <h2 class="section-title">Blog Posts</h2>
-     <div class="blog-post">
-      <h3>Remote Deconstruction of Privacy: Forty Covert Surveillance Technologies Leveraging Everyday Objects</h3>
-      <div class="blog-meta">Posted: November 03, 2025 | Author: Research Lab</div>
-      <h4>Abstract</h4>
-      <p>This document outlines forty advanced, largely non-invasive technologies and methodologies used in remote surveillance. The central context is how seemingly benign and opaque everyday objects—such as walls, windows, mirrors, furniture, and electronic devices—are exploited as unwitting conduits for gathering intelligence. These techniques move beyond conventional optical and audio bugs, utilizing principles from physics, electrical engineering, acoustics, and signal processing to remotely reconstruct audio, video, data, and behavioral patterns from a secure standoff distance. The compilation highlights the extent to which physical barriers offer diminishing protection against modern, sophisticated surveillance capabilities.</p>
-      <h4>I. Acoustic & Vibrational Eavesdropping (8 Methods)</h4>
-      <table>
-       <thead>
-        <tr><th>No.</th><th>Technology</th><th>Target Object</th><th>Method Compromised</th><th>Principle of Operation</th></tr>
-       </thead>
-       <tbody>
-        <tr><td>1</td><td>Laser Microphone</td><td>Window/Glass</td><td>The beam hits the glass, which vibrates minutely due to sound waves inside the room. The reflected laser beam's frequency or phase is analyzed to reconstruct the audio.</td><td>Optical Interferometry</td></tr>
-        <tr><td>2</td><td>Contact Microphone</td><td>Wall/Pipe/Frame</td><td>A high-gain piezoelectric sensor is physically attached to the exterior surface to directly capture and amplify the mechanical vibrations caused by speech.</td><td>Acoustic Transduction</td></tr>
-        <!-- Additional rows abbreviated for brevity; include all 40 in full code -->
-        <tr><td>40</td><td>Side-Channel Analysis of Hard Drives</td><td>Computer/HDD</td><td>Remotely capturing the subtle acoustic emissions produced by a traditional Hard Disk Drive's read/write head movements and decoding the signal to infer files accessed or cryptographic key sizes.</td><td>Acoustic Side-Channel Attack</td></tr>
-       </tbody>
-      </table>
-      <p><a href="#" class="read-more">Full Post →</a></p>
-     </div>
-     <!-- Additional blog posts can be added here -->
-    </div>
-   </section>
+          <article class="card">
+            <h3>The Architecture of Covert Self‑Intrusion</h3>
+            <p>How interfaces and infrastructures induce self‑surveillance and identity manipulation. A design‑forensics perspective linking spatial theory, cognition, and security architecture.</p>
+            <p class="meta">Selected chapters and research notes</p>
+            <p><a href="#appendices">See Appendices & Evidence →</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-   <section id="appendices" class="section">
-    <div class="container">
-     <h2 class="section-title">Appendices</h2>
-     <div class="appendix-section">
-      <h3>Appendices</h3>
-      <p>These appendices are designed to be the practical, actionable, and verifiable backbone of The Transparent Self. While the main text provides the philosophy, the strategy, and the "why," these appendices provide the "how" and the "proof." They are a reference library for the sovereign individual, a toolkit for the resistance, and a dossier of evidence for the prosecution.</p>
-      
-      <h4>Appendix A: Patent References (Expanded & Exhaustive)</h4>
-      <p>This appendix is a comprehensive, non-exhaustive list of key patents and publicly available research that publicly describe and validate the technologies discussed throughout this book...</p>
-      
-      <div class="tier-title">Tier I: Direct Biometric Reading</div>
-      <table>
-       <thead>
-        <tr><th>Technology</th><th>Assignee</th><th>Patent/Publication</th><th>Title</th><th>Relevance & Notes</th></tr>
-       </thead>
-       <tbody>
-        <tr><td>rPPG for Ad Targeting</td><td>Meta Platforms, Inc.</td><td>US20210383490A1</td><td>Determining Physiological Characteristics for Content Delivery</td><td>Explicitly details using rPPG from a device camera to gauge user emotional response to content for ad targeting.</td></tr>
-        <!-- Include all tiers and entries; abbreviated here -->
-       </tbody>
-      </table>
-      
-      <h4>Appendix B: Technical Specifications</h4>
-      <p>B.1 Remote Photoplethysmography (rPPG)<br>Core Wavelengths: Hemoglobin absorption peaks in the green (525nm) and red (660nm) spectrums...</p>
-      
-      <h4>Appendix C: Legal Frameworks</h4>
-      <p>C.1 Existing Legislation (and its Limitations)<br>GDPR (General Data Protection Regulation - EU): The gold standard for data protection...</p>
-     </div>
-    </div>
-   </section>
+    <section id="appendices" class="section">
+      <div class="container">
+        <h2 class="section-title">Appendices (Evidence)</h2>
 
-   <section id="about" class="section" style="background-color: var(--surface-color);">
-    <div class="container">
-     <h2 id="about-title" class="section-title">About</h2>
-     <div class="about-content">
-      <p>This research explores the intricate mechanisms by which digital systems create pathways for self-surveillance and identity manipulation. Through the lens of computational architecture, we examine how modern technology facilitates covert intrusion into personal cognitive spaces.</p>
-      <p>Our work investigates the intersection of cybersecurity, digital psychology, and architectural theory to understand how virtual environments shape human behavior and self-perception in unprecedented ways.</p>
-      <p>The project combines theoretical frameworks from multiple disciplines to create a comprehensive understanding of digital identity formation and the hidden vulnerabilities within our technological infrastructure.</p>
-     </div>
-    </div>
-   </section>
+        <div class="card">
+          <h3>Appendix A: Patent References</h3>
+          <p>Public, citable materials validating techniques discussed in the books.</p>
+          <div class="grid grid-2">
+            <div>
+              <p><span class="kbd">rPPG</span> for Ad Targeting — Meta Platforms, Inc. — US20210383490A1</p>
+              <p class="muted">Determining physiological characteristics for content delivery.</p>
+            </div>
+            <div>
+              <p><span class="kbd">Laser Vibrometry</span> — acoustic recovery via window vibrations</p>
+              <p class="muted">Optical interferometry‑based audio reconstruction.</p>
+            </div>
+          </div>
+          <p class="muted">See full list in the manuscript callouts and appendix tables.</p>
+        </div>
 
-   <section id="research" class="section">
-    <div class="container">
-     <h2 id="research-title" class="section-title">Research Areas</h2>
-     <div class="research-grid">
-      <div class="research-item">
-       <div class="icon">🔍</div>
-       <h4>Digital Surveillance</h4>
-       <p>Analyzing patterns of self-monitoring and data collection in digital environments.</p>
+        <div class="grid grid-2" style="margin-top:1.25rem">
+          <div class="card">
+            <h3>Appendix B: Technical Specifications</h3>
+            <p>rPPG wavelengths, sensors, SNR; side‑channels; geometry and resource paths for reproducibility.</p>
+          </div>
+          <div class="card">
+            <h3>Appendix C: Legal Frameworks</h3>
+            <p>GDPR scope and gaps; comparative regimes; practical limits against modern telemetry and side‑channels.</p>
+          </div>
+        </div>
       </div>
-      <div class="research-item">
-       <div class="icon">🏗️</div>
-       <h4>Architectural Theory</h4>
-       <p>Applying spatial design principles to virtual and digital spaces.</p>
-      </div>
-      <div class="research-item">
-       <div class="icon">🧠</div>
-       <h4>Cognitive Mapping</h4>
-       <p>Understanding how digital interfaces influence mental models and behavior.</p>
-      </div>
-      <div class="research-item">
-       <div class="icon">🔐</div>
-       <h4>Security Architecture</h4>
-       <p>Examining vulnerabilities in personal data protection systems.</p>
-      </div>
-     </div>
-    </div>
-   </section>
+    </section>
 
-   <section id="contact" class="section" style="background-color: var(--surface-color);">
-    <div class="container">
-     <h2 id="contact-title" class="section-title">Contact</h2>
-     <div class="contact-content">
-      <p>Interested in collaborating or learning more about this research? Get in touch through any of the following channels.</p>
-      <div class="contact-info">
-       <div class="contact-item">
-        <div class="icon">📧</div>
-        <h4>Email</h4>
-        <p>research@covertarchitecture.org</p>
-       </div>
-       <div class="contact-item">
-        <div class="icon">🏛️</div>
-        <h4>Institution</h4>
-        <p>Digital Architecture Research Lab</p>
-       </div>
-       <div class="contact-item">
-        <div class="icon">📍</div>
-        <h4>Location</h4>
-        <p>Virtual Research Center</p>
-       </div>
+    <section id="downloads" class="section">
+      <div class="container">
+        <h2 class="section-title">Downloads</h2>
+        <div class="card">
+          <p>Built with Pandoc and XeLaTeX. Outputs are reproducible from the manuscript and metadata.</p>
+          <div class="dl">
+            <a href="output/book.pdf">book.pdf</a>
+            <a href="output/book.epub">book.epub</a>
+            <a href="output/book.docx">book.docx</a>
+            <a href="output/book.html">book.html</a>
+          </div>
+          <p class="meta">Source: <code class="kbd">docs/manuscript.md</code> • <code class="kbd">book.yaml</code> • <code class="kbd">styles/header.tex</code></p>
+        </div>
       </div>
-     </div>
-    </div>
-   </section>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <div class="grid">
+          <div class="card">
+            <p>These works unite security engineering, cognitive science, and architectural theory to expose how modern systems shape behavior and extract identity. Evidence is prioritized via structured callouts and appendices.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <h4>Email</h4>
+            <p>research@covertarchitecture.org</p>
+          </div>
+          <div class="card">
+            <h4>Institution</h4>
+            <p>Digital Architecture Research Lab</p>
+          </div>
+          <div class="card">
+            <h4>Location</h4>
+            <p>Virtual Research Center</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
   <footer>
-   <div class="container">
-    <p>© 2025 The Architecture of Covert Self-Intrusion. All rights reserved.</p>
-    <p>Research conducted under ethical guidelines for digital privacy and security studies.</p>
-   </div>
+    <div class="container">
+      <p>© 2025 The Transparent Self. All rights reserved.</p>
+      <p class="muted">Built with Pandoc; evidence organized via appendices and callouts.</p>
+    </div>
   </footer>
+
   <script>
-        // Default configuration (updated year to 2025)
-        const defaultConfig = {
-            main_title: "The Architecture of Covert Self-Intrusion",
-            subtitle: "Exploring the Hidden Mechanisms of Digital Identity and Surveillance",
-            about_title: "About",
-            research_title: "Research Areas",
-            publications_title: "Publications",
-            contact_title: "Contact",
-            background_color: "#121212",
-            surface_color: "#1e1e1e",
-            primary_color: "#00aaff",
-            text_color: "#e0e0e0",
-            secondary_text_color: "#a0a0a0",
-            font_family: "Inter",
-            font_size: 16
-        };
-
-        // Initialize Element SDK (unchanged)
-        if (window.elementSdk) {
-            window.elementSdk.init({
-                defaultConfig: defaultConfig,
-                onConfigChange: async (config) => {
-                    // ... (existing code)
-                },
-                // ... (rest unchanged)
-            });
-        }
-
-        // Smooth scrolling
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
- </body>
+    // Smooth in-page navigation
+    document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const t=document.querySelector(a.getAttribute('href'));
+        if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+  </script>
+</body>
 </html>
