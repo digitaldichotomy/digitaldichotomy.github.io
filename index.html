@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ink & Insight Haven | Thought-Provoking Publications</title>
+    <title>Reclaim Your Self | Digital Sovereignty Now</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            500: '#dc2626',
+                            600: '#b91c1c',
+                        },
+                        secondary: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="components/navbar.js"></script>
@@ -15,81 +34,366 @@
 <body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
     <custom-navbar></custom-navbar>
 
-    <main class="container mx-auto px-4 py-12">
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <!-- Alert Banner -->
+        <div class="mb-8 bg-red-900/30 border-l-4 border-red-500 p-4 rounded-r-lg">
+            <div class="flex items-start">
+                <i data-feather="alert-triangle" class="w-5 h-5 text-red-500 mr-3 mt-0.5 flex-shrink-0"></i>
+                <div class="text-sm text-red-200">
+                    <strong class="font-semibold">They Are Already Inside</strong> — Your devices are surveillance apparatus. Your biometrics are being harvested. Your autonomy is under algorithmic siege.
+                </div>
+            </div>
+        </div>
+
         <!-- Hero Section -->
-        <section class="text-center mb-16">
-            <h1 class="text-5xl font-bold mb-6 text-gray-900 dark:text-white">Ink & Insight Haven</h1>
-            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Exploring the intersection of technology, consciousness, and digital sovereignty through thought-provoking publications.
-            </p>
+        <section class="text-center mb-12 md:mb-16 relative overflow-hidden rounded-xl bg-gradient-to-br from-red-900 via-gray-900 to-black p-8 md:p-16 text-white border border-red-800/50">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute inset-0" style="background-image: radial-gradient(circle, #dc2626 1px, transparent 1px); background-size: 30px 30px;"></div>
+            </div>
+            <div class="relative z-10">
+                <div class="inline-block px-4 py-2 bg-red-500/20 border border-red-500 rounded-full mb-6 text-sm font-mono uppercase tracking-wider">
+                    Active Invasion in Progress
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 md:mb-8 leading-tight">
+                    Your Self Is Under<br/>
+                    <span class="text-red-500">Covert Invasion</span>
+                </h1>
+                <p class="text-lg md:text-2xl max-w-3xl mx-auto opacity-90 mb-8 leading-relaxed">
+                    Every device you own is a trojan horse. Every app is a spy. Every algorithm is designed to know you better than you know yourself—then use that knowledge <strong>against</strong> you.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#evidence" class="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all transform hover:scale-105 shadow-lg">
+                        See The Proof
+                    </a>
+                    <a href="#resistance" class="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
+                        Join The Resistance
+                    </a>
+                </div>
+            </div>
         </section>
-        <!-- Featured Publications -->
-        <section class="mb-16 px-4">
-            <h2 class="text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-gray-800 dark:text-white border-b pb-2">Featured Works</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-<custom-publication-card 
-                    title="The Transparent Self" 
-                    price="$39.99" 
-                    link="https://finnyx.gumroad.com/l/okrlpi"
-                    image="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/BY%20FIN%20NYX.png">
-                </custom-publication-card>
-                
-                <custom-publication-card 
-                    title="Architecture Of Covert Self-Invasion" 
-                    subtitle="Biological Sovereignty vs Digital Primacy"
-                    price="$35" 
-                    link="https://finnyx.gumroad.com/l/crdxv"
-                    image="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/Architecture%20of%20Covert%20Self-Invasion.png">
-                </custom-publication-card>
-                
-                <custom-publication-card 
-                    title="The Algorithmic Shadow" 
-                    price="$14.99" 
-                    link="https://finnyx.gumroad.com/l/labqoy"
-                    image="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/d73nemainhie3jq88ytb8r0t6kra.png">
-                </custom-publication-card>
-</div>
-        </section>
-        <!-- Blog Preview -->
-        <section class="mb-16 px-4">
-            <h2 class="text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-gray-800 dark:text-white border-b pb-2">Latest Insights</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-[1.02]">
-                    <img src="https://public-files.gumroad.com/variants/7v9d5lz7j4xw4x5g1h0p7j6j3l6u/8a88b0a05f2d4c67c5b8b4f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f" alt="Blog post image" class="w-full h-48 object-cover">
-<div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Digital Consciousness in the Age of AI</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Exploring how artificial intelligence is reshaping our understanding of self and consciousness.</p>
-                        <a href="#" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Read More →</a>
+
+        <!-- The Invasion Explained -->
+        <section id="invasion" class="mb-12 md:mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center">
+                This Is Not Science Fiction
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-800 border border-red-500/30 rounded-xl p-6 hover:border-red-500 transition-all">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="eye" class="w-6 h-6 text-red-500"></i>
                     </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Biometric Extraction</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Your camera reads your heartrate through facial blood flow (rPPG). Your screen tracks pupil dilation. Your phone measures stress through microgestures. <strong>They know your body better than you do.</strong>
+                    </p>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-[1.02]">
-                    <img src="https://public-files.gumroad.com/variants/1v9d5lz7j4xw4x5g1h0p7j6j3l6u/ba8515e6e1b5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f5a5d" alt="Blog post image" class="w-full h-48 object-cover">
-<div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">The Ethics of Algorithmic Influence</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">Examining the moral implications of persuasive technologies in our daily lives.</p>
-                        <a href="#" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Read More →</a>
+                <div class="bg-gray-800 border border-red-500/30 rounded-xl p-6 hover:border-red-500 transition-all">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="zap" class="w-6 h-6 text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Predictive Control</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        AI models build digital twins of your psychology. They predict what you'll do before you do it. Then they nudge, manipulate, and architect your choices. <strong>Your "free will" is curated.</strong>
+                    </p>
+                </div>
+                
+                <div class="bg-gray-800 border border-red-500/30 rounded-xl p-6 hover:border-red-500 transition-all">
+                    <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="radio" class="w-6 h-6 text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Directed Influence</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Patented technologies use RF pulses, ultrasonic frequencies, and light patterns to influence neural activity. These aren't conspiracy theories. <strong>These are documented patents.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evidence Section -->
+        <section id="evidence" class="mb-12 md:mb-16">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                <div class="bg-gradient-to-r from-red-600 to-red-800 p-6 md:p-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-white flex items-center">
+                        <i data-feather="file-text" class="w-8 h-8 mr-3"></i>
+                        The Patent Archive: Undeniable Proof
+                    </h2>
+                    <p class="text-red-100 mt-3">
+                        These technologies exist. They are patented. They are deployed. This is the blueprint of your invasion.
+                    </p>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-red-500 pl-4">
+                            <h3 class="font-bold text-lg text-gray-800 dark:text-white mb-2">Tier I: Direct Biometric Reading</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                                <strong>Assigned to:</strong> Meta, Apple, Microsoft, Google, Intel, Philips, Raytheon
+                            </p>
+                            <p class="text-gray-700 dark:text-gray-200 text-sm">
+                                Remote photoplethysmography (rPPG) extracts heartrate from video. Gaze tracking monitors attention. Thermal imaging reads stress. Hyperspectral cameras detect emotional states through skin conductance.
+                            </p>
+                        </div>
+
+                        <div class="border-l-4 border-orange-500 pl-4">
+                            <h3 class="font-bold text-lg text-gray-800 dark:text-white mb-2">Tier VIII: Control Layer</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                                <strong>Assigned to:</strong> GE, Amazon, IBM, Siemens
+                            </p>
+                            <p class="text-gray-700 dark:text-gray-200 text-sm">
+                                Digital twin models create virtual replicas of human behavior. Predictive analytics forecast decisions. Closed-loop modulation systems automatically adjust environmental inputs to influence outcomes.
+                            </p>
+                        </div>
+
+                        <div class="border-l-4 border-yellow-500 pl-4">
+                            <h3 class="font-bold text-lg text-gray-800 dark:text-white mb-2">Tier XII: Directed Energy Influence</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
+                                <strong>Assigned to:</strong> US Air Force, US Navy, Boeing, Raytheon
+                            </p>
+                            <p class="text-gray-700 dark:text-gray-200 text-sm">
+                                RF hearing effect (US6397088B1), pulsed electromagnetic fields for neural modulation (US6470214B1), transcranial magnetic stimulation via engineered signals.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 p-6 bg-gray-100 dark:bg-gray-900 rounded-lg">
+                        <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+                            <i data-feather="shield" class="w-4 h-4 inline mr-2 text-red-500"></i>
+                            <strong>This is not speculation.</strong> Every claim is backed by patent documentation, peer-reviewed research, and corporate disclosures.
+                        </p>
+                        <a href="https://github.com/digitaldichotomy/digitaldichotomy.github.io/blob/main/pages/pat.html" 
+                           target="_blank"
+                           class="inline-flex items-center text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 font-bold">
+                            View Complete Patent Archive <i data-feather="external-link" class="w-4 h-4 ml-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-8">
-                <a href="#" class="inline-block px-6 py-3 bg-gray-800 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors">
-                    View All Articles
+        </section>
+
+        <!-- Call to Action - Publications -->
+        <section id="resistance" class="mb-12 md:mb-16">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                    Arm Yourself With Knowledge
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    These works expose the mechanisms of invasion and provide frameworks for resistance. Understanding the enemy is the first step to reclaiming your sovereignty.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- The Transparent Self -->
+                <a href="https://finnyx.gumroad.com/l/okrlpi" target="_blank" class="group bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-2xl hover:scale-105 border border-gray-200 dark:border-gray-700">
+                    <div class="relative h-64 md:h-80 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                        <img src="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/BY%20FIN%20NYX.png" 
+                             alt="The Transparent Self" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">The Transparent Self</h3>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600 dark:text-red-400">$39.99</span>
+                            <span class="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold group-hover:bg-red-700 transition-colors">Buy Now</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Architecture Of Covert Self-Invasion -->
+                <a href="https://finnyx.gumroad.com/l/crdxv" target="_blank" class="group bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-2xl hover:scale-105 border border-gray-200 dark:border-gray-700">
+                    <div class="relative h-64 md:h-80 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                        <img src="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/Architecture%20of%20Covert%20Self-Invasion.png" 
+                             alt="Architecture Of Covert Self-Invasion" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-1">Architecture Of Covert Self-Invasion</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Biological Sovereignty vs Digital Primacy</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600 dark:text-red-400">$35</span>
+                            <span class="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold group-hover:bg-red-700 transition-colors">Buy Now</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- The Algorithmic Shadow -->
+                <a href="https://finnyx.gumroad.com/l/labqoy" target="_blank" class="group bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-2xl hover:scale-105 border border-gray-200 dark:border-gray-700">
+                    <div class="relative h-64 md:h-80 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                        <img src="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/THE%20ALGORITHMIC%20SHADOW%20SURVEILLANCE%2C%20SOVEREINITY%2C%20AND%20THE%20CHOICE%20BEFORE%20US.png" 
+                             alt="The Algorithmic Shadow" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">The Algorithmic Shadow</h3>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-red-600 dark:text-red-400">$14.99</span>
+                            <span class="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold group-hover:bg-red-700 transition-colors">Buy Now</span>
+                        </div>
+                    </div>
                 </a>
             </div>
         </section>
-        <!-- About Section -->
-        <section class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 md:p-8 mb-16 mx-4">
-<h2 class="text-3xl font-semibold mb-6 text-gray-800 dark:text-white">About the Author</h2>
-            <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
-                <img src="https://public-files.gumroad.com/variants/5v9d5lz7j4xw4x5g1h0p7j6j3l6u/8a88b0a05f2d4c67c5b8b4f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f" alt="Author portrait" class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-600">
-<div class="flex-1">
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
-                        Finnyx is a researcher and writer exploring the frontiers of digital consciousness, algorithmic influence, and the evolving relationship between humans and technology.
+
+        <!-- The Rights We're Fighting For -->
+        <section class="mb-12 md:mb-16">
+            <div class="bg-gradient-to-br from-gray-900 to-black rounded-xl p-8 md:p-12 text-white border border-gray-700">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">The Rights They're Taking</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i data-feather="x" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">The Right to Biological Privacy</h3>
+                            <p class="text-gray-300 text-sm">Your heartrate, stress levels, and emotional states are extracted without consent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i data-feather="x" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">The Right to Cognitive Liberty</h3>
+                            <p class="text-gray-300 text-sm">AI systems predict and manipulate your decisions before you make them.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i data-feather="x" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">The Right to Attention Sovereignty</h3>
+                            <p class="text-gray-300 text-sm">Persuasive technologies hijack your focus, time, and mental energy.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <i data-feather="x" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">The Right to Self-Determination</h3>
+                            <p class="text-gray-300 text-sm">Your behavioral patterns are commodified and sold to the highest bidder.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-10 text-center">
+                    <p class="text-xl mb-6 font-semibold text-red-400">
+                        These are not abstract philosophical questions. This is happening now.
                     </p>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Through these publications, Fin Nyx aims to provoke thought and discussion about our increasingly digital existence.
+                    <a href="#resistance" class="inline-block px-8 py-4 bg-white text-gray-900 font-bold rounded-lg hover:bg-gray-100 transition-all transform hover:scale-105">
+                        Learn How to Fight Back
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resistance Tactics -->
+        <section class="mb-12 md:mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-8 text-center">
+                Practical Resistance
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border-2 border-transparent hover:border-red-500 transition-all">
+                    <div class="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="shield-off" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 dark:text-white mb-2">Audit Your Devices</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Review app permissions. Disable sensors you don't need. Cover cameras. Question every "convenience."</p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border-2 border-transparent hover:border-red-500 transition-all">
+                    <div class="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="book-open" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 dark:text-white mb-2">Educate Others</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Share these resources. Most people don't know the scale of the invasion. Awareness is the first weapon.</p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border-2 border-transparent hover:border-red-500 transition-all">
+                    <div class="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="code" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 dark:text-white mb-2">Build Alternatives</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Support open-source, privacy-respecting tools. Create technologies that serve users, not surveillance capital.</p>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border-2 border-transparent hover:border-red-500 transition-all">
+                    <div class="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-4">
+                        <i data-feather="users" class="w-5 h-5 text-red-600 dark:text-red-400"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 dark:text-white mb-2">Organize Locally</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Digital rights require collective action. Join communities fighting for cognitive liberty and data sovereignty.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Mission Statement -->
+        <section class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden mb-12 md:mb-16 border border-gray-200 dark:border-gray-700">
+            <div class="p-6 md:p-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mr-4">
+                        <i data-feather="alert-octagon" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-white">Our Mission</h2>
+                </div>
+                
+                <div class="space-y-4 text-gray-700 dark:text-gray-300">
+                    <p class="text-lg leading-relaxed">
+                        We exist to expose the architecture of covert self-invasion and defend the right to cognitive sovereignty. Every publication, every patent reference, every analysis is a weapon in the fight to reclaim what's being stolen: <strong>the right to your own mind, body, and self.</strong>
                     </p>
+                    <p class="leading-relaxed">
+                        This is not alarmism. This is documentation. The technologies described here are real, patented, and deployed. The invasion is not coming—<strong>it's already here</strong>.
+                    </p>
+                    <p class="leading-relaxed">
+                        We are Finnyx, and we refuse to be transparent against our will. We refuse algorithmic colonization. We refuse to be optimized, predicted, and controlled.
+                    </p>
+                    <p class="text-lg font-bold text-red-600 dark:text-red-400">
+                        The self is not data. The self is sovereign.
+                    </p>
+                </div>
+                
+                <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://github.com/digitaldichotomy/digitaldichotomy.github.io/blob/main/pages/pat.html" 
+                           target="_blank"
+                           class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center font-semibold">
+                            <i data-feather="file-text" class="w-4 h-4 mr-2"></i> Patent Archive
+                        </a>
+                        <a href="#publications" class="px-6 py-3 bg-gray-800 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 text-white rounded-lg transition-colors flex items-center font-semibold">
+                            <i data-feather="book" class="w-4 h-4 mr-2"></i> Read Our Work
+                        </a>
+                        <a href="#" class="px-6 py-3 border-2 border-gray-800 dark:border-gray-300 text-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors flex items-center font-semibold">
+                            <i data-feather="share-2" class="w-4 h-4 mr-2"></i> Spread Awareness
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="bg-gradient-to-br from-red-900 via-red-800 to-black rounded-xl p-8 md:p-12 text-white mb-12 md:mb-16 border border-red-700">
+            <div class="max-w-3xl mx-auto text-center">
+                <i data-feather="alert-triangle" class="w-16 h-16 mx-auto mb-6 text-red-400"></i>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Your Self Belongs to You</h2>
+                <p class="text-lg md:text-xl text-red-100 mb-8 leading-relaxed">
+                    Not to Meta. Not to Google. Not to any algorithm, platform, or surveillance apparatus. <strong>You have the right to exist without being harvested, predicted, or controlled.</strong>
+                </p>
+                <p class="text-xl font-semibold mb-8 text-yellow-400">
+                    The invasion is real. The resistance starts now.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#evidence" class="px-8 py-4 bg-white text-red-900 font-bold rounded-lg hover:bg-gray-100 transition-all transform hover:scale-105">
+                        Review The Evidence
+                    </a>
+                    <a href="#resistance" class="px-8 py-4 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all">
+                        Take Action Now
+                    </a>
                 </div>
             </div>
         </section>
@@ -98,6 +402,5 @@
     <custom-footer></custom-footer>
     <script>feather.replace();</script>
     <script src="script.js"></script>
-<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
 </body>
 </html>
