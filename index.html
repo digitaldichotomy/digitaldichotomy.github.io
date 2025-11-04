@@ -55,7 +55,7 @@
       margin:.6rem auto 0; border-radius:2px
     }
     .grid{display:grid; gap:1.25rem}
-    @media(min-width:820px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)}}
+    @media(min-width:900px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)}}
     .card{
       background:var(--surface); border:1px solid var(--border); border-radius:10px;
       padding:1.25rem; transition:transform .2s ease, box-shadow .2s ease
@@ -96,10 +96,10 @@
     <section id="books" class="section">
       <div class="container">
         <h2 class="section-title">Books</h2>
-        <div class="grid grid-2">
+        <div class="grid grid-3">
           <article class="card">
             <h3>The Transparent Self</h3>
-            <p>A field guide and dossier: philosophy, strategy, and proof. Grounded in verifiable references, callouts, and appendices that operationalize privacy and demonstrate evidence.</p>
+            <p>A field guide and dossier: philosophy, strategy, and proof. Grounded in verifiable references, callouts, and appendices.</p>
             <p class="meta">Formats: PDF, EPUB, DOCX, HTML</p>
             <p class="dl">
               <a href="output/book.pdf">PDF</a>
@@ -107,13 +107,19 @@
               <a href="output/book.docx">DOCX</a>
               <a href="output/book.html">HTML</a>
             </p>
+            <p><a href="https://finnyx.gumroad.com/l/okrlpi" target="_blank" rel="noopener noreferrer">Buy on Gumroad →</a></p>
           </article>
 
           <article class="card">
-            <h3>The Architecture of Covert Self‑Intrusion</h3>
-            <p>How interfaces and infrastructures induce self‑surveillance and identity manipulation. A design‑forensics perspective linking spatial theory, cognition, and security architecture.</p>
-            <p class="meta">Selected chapters and research notes</p>
-            <p><a href="#appendices">See Appendices & Evidence →</a></p>
+            <h3>Architecture Of Covert Self‑Invasion: Biological Sovereignty vs Digital Primacy</h3>
+            <p>How interfaces and infrastructures induce self‑surveillance and identity manipulation. Design‑forensics linking spatial theory, cognition, and security architecture.</p>
+            <p><a href="https://finnyx.gumroad.com/l/crdxv" target="_blank" rel="noopener noreferrer">Buy on Gumroad →</a></p>
+          </article>
+
+          <article class="card">
+            <h3>The Algorithmic Shadow</h3>
+            <p>Surveillance, sovereignty, and the choice before us—digital primacy vs biological sovereignty. A manifesto for resistance.</p>
+            <p><a href="https://finnyx.gumroad.com/l/labqoy" target="_blank" rel="noopener noreferrer">Buy on Gumroad →</a></p>
           </article>
         </div>
       </div>
@@ -208,7 +214,6 @@
   </footer>
 
   <script>
-    // Smooth in-page navigation
     document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         e.preventDefault();
