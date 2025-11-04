@@ -1,226 +1,103 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Transparent Self — Project Site</title>
-  <script src="/_sdk/element_sdk.js"></script>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <style>
-    @view-transition { navigation: auto; }
-    :root{
-      --bg:#0f1013; --surface:#17181d; --brand:#2b6cb0; --text:#e6e7eb; --muted:#aab0bd; --border:#2a2d36;
-      --accent:#5aa2e6;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; background:var(--bg); color:var(--text);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      line-height:1.7; overflow-x:hidden;
-    }
-    h1,h2,h3,h4{font-family:"Roboto Mono",monospace; color:#fff; letter-spacing:.3px}
-    a{color:var(--brand); text-decoration:none}
-    a:hover{color:#fff}
-    .container{max-width:1000px; margin:auto; padding:0 1.25rem}
-    nav{
-      position:sticky; top:0; z-index:10; backdrop-filter:blur(8px);
-      background:rgba(23,24,29,.75); border-bottom:1px solid var(--border)
-    }
-    nav ul{display:flex; gap:1.25rem; list-style:none; padding:.85rem 0; margin:0; justify-content:center; flex-wrap:wrap}
-    nav a{font-weight:700; font-size:.95rem}
-    .hero{
-      border-bottom:1px solid var(--border);
-      background:
-        linear-gradient(180deg, rgba(15,16,19,.0), rgba(15,16,19,1) 70%),
-        radial-gradient(1200px 400px at 50% -50%, rgba(90,162,230,.25), transparent 60%),
-        linear-gradient(130deg, #0b0c10, #11131a 45%, #0d1420);
-      padding:5.5rem 0 3.5rem; text-align:center;
-    }
-    .hero h1{font-size:2.6rem; margin:.25rem 0 0}
-    .hero p{margin:.75rem 0 0; color:var(--muted); font-size:1.1rem}
-    .cover {
-      width:100%; max-width:720px; margin:1.25rem auto 0; border-radius:10px; overflow:hidden;
-      box-shadow:0 12px 30px rgba(0,0,0,.35); border:1px solid var(--border);
-    }
-    .cover img{display:block; width:100%; height:auto}
-    .section{padding:3rem 0}
-    .section-title{font-size:1.9rem; text-align:center; margin:0 0 1.75rem; position:relative}
-    .section-title::after{
-      content:""; display:block; width:60px; height:3px; background:var(--accent);
-      margin:.6rem auto 0; border-radius:2px
-    }
-    .grid{display:grid; gap:1.25rem}
-    @media(min-width:900px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)}}
-    .card{
-      background:var(--surface); border:1px solid var(--border); border-radius:10px;
-      padding:1.25rem; transition:transform .2s ease, box-shadow .2s ease
-    }
-    .card:hover{transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,.25)}
-    .meta{color:var(--muted); font-size:.9rem}
-    .kbd{font-family:"Roboto Mono",monospace; background:#0c0d11; border:1px solid var(--border); padding:.15rem .45rem; border-radius:6px}
-    .dl a{display:inline-block; margin:.35rem .5rem .35rem 0; padding:.5rem .75rem; border:1px solid var(--border); border-radius:8px}
-    .muted{color:var(--muted)}
-    footer{border-top:1px solid var(--border); padding:2.5rem 0; text-align:center; color:var(--muted); background:var(--surface)}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ink & Insight Haven | Thought-Provoking Publications</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/publication-card.js"></script>
 </head>
-<body>
-  <header class="hero">
-    <div class="container">
-      <p class="meta">Project</p>
-      <h1 id="site-title">The Transparent Self</h1>
-      <p id="tagline">Evidence-based investigations into digital self-surveillance, identity shaping, and covert intrusion.</p>
-      <div class="cover">
-        <img src="assets/cover.jpg" alt="Book cover" onerror="this.parentElement.style.display='none'"/>
-      </div>
-    </div>
-  </header>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <custom-navbar></custom-navbar>
 
-  <nav>
-    <div class="container">
-      <ul>
-        <li><a href="#books">Books</a></li>
-        <li><a href="#appendices">Appendices</a></li>
-        <li><a href="#downloads">Downloads</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <main>
-    <section id="books" class="section">
-      <div class="container">
-        <h2 class="section-title">Books</h2>
-        <div class="grid grid-3">
-          <article class="card">
-            <h3>The Transparent Self</h3>
-            <p>A field guide and dossier: philosophy, strategy, and proof. Grounded in verifiable references, callouts, and appendices.</p>
-            <p class="meta">Formats: PDF, EPUB, DOCX, HTML</p>
-            <p class="dl">
-              <a href="output/book.pdf">PDF</a>
-              <a href="output/book.epub">EPUB</a>
-              <a href="output/book.docx">DOCX</a>
-              <a href="output/book.html">HTML</a>
+    <main class="container mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <section class="text-center mb-16">
+            <h1 class="text-5xl font-bold mb-6 text-gray-900 dark:text-white">Ink & Insight Haven</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Exploring the intersection of technology, consciousness, and digital sovereignty through thought-provoking publications.
             </p>
-            <p><a href="https://finnyx.gumroad.com/l/okrlpi" target="_blank" rel="noopener noreferrer">Buy on Gumroad →</a></p>
-          </article>
-
-          <article class="card">
-            <h3>Architecture Of Covert Self‑Invasion: Biological Sovereignty vs Digital Primacy</h3>
-            <p>How interfaces and infrastructures induce self‑surveillance and identity manipulation. Design‑forensics linking spatial theory, cognition, and security architecture.</p>
-            <p><a href="https://finnyx.gumroad.com/l/crdxv" target="_blank" rel="noopener noreferrer">Buy on Gumroad →</a></p>
-          </article>
-
-          <article class="card">
-            <h3>The Algorithmic Shadow</h3>
-            <p>Surveillance, sovereignty, and the choice before us—digital primacy vs biological sovereignty. A manifesto for resistance.</p>
-            <p><a href="https://finnyx.gumroad.com/l/labqoy" target="_blank" rel="noopener noreferrer">Buy on Gumroad →</a></p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="appendices" class="section">
-      <div class="container">
-        <h2 class="section-title">Appendices (Evidence)</h2>
-
-        <div class="card">
-          <h3>Appendix A: Patent References</h3>
-          <p>Public, citable materials validating techniques discussed in the books.</p>
-          <div class="grid grid-2">
-            <div>
-              <p><span class="kbd">rPPG</span> for Ad Targeting — Meta Platforms, Inc. — US20210383490A1</p>
-              <p class="muted">Determining physiological characteristics for content delivery.</p>
+        </section>
+        <!-- Featured Publications -->
+        <section class="mb-16 px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-gray-800 dark:text-white border-b pb-2">Featured Works</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+<custom-publication-card 
+                    title="The Transparent Self" 
+                    price="$39.99" 
+                    link="https://finnyx.gumroad.com/l/okrlpi"
+                    image="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/BY%20FIN%20NYX.png">
+                </custom-publication-card>
+                
+                <custom-publication-card 
+                    title="Architecture Of Covert Self-Invasion" 
+                    subtitle="Biological Sovereignty vs Digital Primacy"
+                    price="$35" 
+                    link="https://finnyx.gumroad.com/l/crdxv"
+                    image="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/Architecture%20of%20Covert%20Self-Invasion.png">
+                </custom-publication-card>
+                
+                <custom-publication-card 
+                    title="The Algorithmic Shadow" 
+                    price="$14.99" 
+                    link="https://finnyx.gumroad.com/l/labqoy"
+                    image="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/d73nemainhie3jq88ytb8r0t6kra.png">
+                </custom-publication-card>
+</div>
+        </section>
+        <!-- Blog Preview -->
+        <section class="mb-16 px-4">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 md:mb-8 text-gray-800 dark:text-white border-b pb-2">Latest Insights</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-[1.02]">
+                    <img src="https://public-files.gumroad.com/variants/7v9d5lz7j4xw4x5g1h0p7j6j3l6u/8a88b0a05f2d4c67c5b8b4f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f" alt="Blog post image" class="w-full h-48 object-cover">
+<div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">Digital Consciousness in the Age of AI</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Exploring how artificial intelligence is reshaping our understanding of self and consciousness.</p>
+                        <a href="#" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Read More →</a>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-[1.02]">
+                    <img src="https://public-files.gumroad.com/variants/1v9d5lz7j4xw4x5g1h0p7j6j3l6u/ba8515e6e1b5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f5a5d" alt="Blog post image" class="w-full h-48 object-cover">
+<div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800 dark:text-white">The Ethics of Algorithmic Influence</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Examining the moral implications of persuasive technologies in our daily lives.</p>
+                        <a href="#" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Read More →</a>
+                    </div>
+                </div>
             </div>
-            <div>
-              <p><span class="kbd">Laser Vibrometry</span> — acoustic recovery via window vibrations</p>
-              <p class="muted">Optical interferometry‑based audio reconstruction.</p>
+            <div class="text-center mt-8">
+                <a href="#" class="inline-block px-6 py-3 bg-gray-800 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors">
+                    View All Articles
+                </a>
             </div>
-          </div>
-          <p class="muted">See full list in the manuscript callouts and appendix tables.</p>
-        </div>
+        </section>
+        <!-- About Section -->
+        <section class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 md:p-8 mb-16 mx-4">
+<h2 class="text-3xl font-semibold mb-6 text-gray-800 dark:text-white">About the Author</h2>
+            <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+                <img src="https://public-files.gumroad.com/variants/5v9d5lz7j4xw4x5g1h0p7j6j3l6u/8a88b0a05f2d4c67c5b8b4f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f5a5d5e5f" alt="Author portrait" class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-gray-200 dark:border-gray-600">
+<div class="flex-1">
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Finnyx is a researcher and writer exploring the frontiers of digital consciousness, algorithmic influence, and the evolving relationship between humans and technology.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Through these publications, Fin Nyx aims to provoke thought and discussion about our increasingly digital existence.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        <div class="grid grid-2" style="margin-top:1.25rem">
-          <div class="card">
-            <h3>Appendix B: Technical Specifications</h3>
-            <p>rPPG wavelengths, sensors, SNR; side‑channels; geometry and resource paths for reproducibility.</p>
-          </div>
-          <div class="card">
-            <h3>Appendix C: Legal Frameworks</h3>
-            <p>GDPR scope and gaps; comparative regimes; practical limits against modern telemetry and side‑channels.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="downloads" class="section">
-      <div class="container">
-        <h2 class="section-title">Downloads</h2>
-        <div class="card">
-          <p>Built with Pandoc and XeLaTeX. Outputs are reproducible from the manuscript and metadata.</p>
-          <div class="dl">
-            <a href="output/book.pdf">book.pdf</a>
-            <a href="output/book.epub">book.epub</a>
-            <a href="output/book.docx">book.docx</a>
-            <a href="output/book.html">book.html</a>
-          </div>
-          <p class="meta">Source: <code class="kbd">docs/manuscript.md</code> • <code class="kbd">book.yaml</code> • <code class="kbd">styles/header.tex</code></p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container">
-        <h2 class="section-title">About</h2>
-        <div class="grid">
-          <div class="card">
-            <p>These works unite security engineering, cognitive science, and architectural theory to expose how modern systems shape behavior and extract identity. Evidence is prioritized via structured callouts and appendices.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="grid grid-3">
-          <div class="card">
-            <h4>Email</h4>
-            <p>research@covertarchitecture.org</p>
-          </div>
-          <div class="card">
-            <h4>Institution</h4>
-            <p>Digital Architecture Research Lab</p>
-          </div>
-          <div class="card">
-            <h4>Location</h4>
-            <p>Virtual Research Center</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p>© 2025 The Transparent Self. All rights reserved.</p>
-      <p class="muted">Built with Pandoc; evidence organized via appendices and callouts.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        e.preventDefault();
-        const t=document.querySelector(a.getAttribute('href'));
-        if(t) t.scrollIntoView({behavior:'smooth', block:'start'});
-      });
-    });
-  </script>
+    <custom-footer></custom-footer>
+    <script>feather.replace();</script>
+    <script src="script.js"></script>
+<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
 </body>
 </html>
