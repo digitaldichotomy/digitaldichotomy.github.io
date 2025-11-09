@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Invasion: A Forensic Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #E8F2FC;
+            color: #1e293b;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+                max-height: 350px;
+            }
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            height: 100%;
+        }
+        .flow-arrow {
+            font-size: 2.5rem;
+            color: #418FDE;
+            line-height: 1;
+        }
+        .flow-box {
+            border-left-width: 4px;
+            border-color: #418FDE;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-[#0B409C] text-white p-8 text-center shadow-lg">
+        <h1 class="text-3xl md:text-5xl font-bold mb-2">The Architecture of Invasion</h1>
+        <p class="text-lg md:text-xl text-[#91BEEB]">A Forensic Analysis of the Sensor-Model-Actuator Loop</p>
+    </header>
+
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto max-w-7xl px-4">
+            <div class="flex justify-center items-center space-x-4 md:space-x-8 h-16 overflow-x-auto">
+                <a href="#section-thesis" class="text-[#06204E] font-semibold hover:text-[#418FDE] transition-colors whitespace-nowrap px-2">The Thesis</a>
+                <a href="#section-architecture" class="text-[#06204E] font-semibold hover:text-[#418FDE] transition-colors whitespace-nowrap px-2">The 3-Phase Loop</a>
+                <a href="#section-sensor" class="text-[#06204E] font-semibold hover:text-[#418FDE] transition-colors whitespace-nowrap px-2">Sensor Layer</a>
+                <a href="#section-model" class="text-[#06204E] font-semibold hover:text-[#418FDE] transition-colors whitespace-nowrap px-2">Model Layer</a>
+                <a href="#section-actuator" class="text-[#06204E] font-semibold hover:text-[#418FDE] transition-colors whitespace-nowrap px-2">Actuator Layer</a>
+                <a href="#section-defense" class="text-[#06204E] font-semibold hover:text-[#418FDE] transition-colors whitespace-nowrap px-2">The Defense</a>
+                <a href="#section-stakes" class="text-[#06204E] font-semibold hover:text-[#418FDE] transition-colors whitespace-nowrap px-2">The Stakes</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto max-w-7xl p-4 md:p-8">
+
+        <section id="section-thesis" class="mb-12">
+            <h2 class="text-3xl font-bold text-[#06204E] mb-4 text-center">The New Attack Surface</h2>
+            <p class="text-lg text-slate-700 max-w-4xl mx-auto mb-8 text-center">
+                The public debate on privacy has been a distraction. The true target of the new surveillance architecture is not just "digital data" from clicks and searches. The primary resource being harvested is the **human biofield**: the measurable, involuntary signals your living body generates, such as the sub-visual pulse in your skin, the cognitive load revealed by your pupils, and the chemical signature of your breath.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card">
+                    <h3 class="text-xl font-bold text-[#0B409C] mb-3">The Target: The Human Biofield</h3>
+                    <p class="text-slate-700 mb-4">An un-redacted, unfilterable feed of your ground-truth internal state. It is the new, secret commodity, harvested covertly from common sensors.</p>
+                    <ul class="list-disc list-inside space-y-1 text-slate-600">
+                        <li>&#128065; Gaze & Pupillometry</li>
+                        <li>&#128147; rPPG (Heart Rate)</li>
+                        <li>&#128168; Keystroke Cadence</li>
+                        <li>&#128226; Wi-Fi CSI (Breathing)</li>
+                        <li>&#128169; VOCs (Breath)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-[#0B409C] mb-3">The Objective: The Digital Twin</h3>
+                    <p class="text-slate-700 mb-4">This harvested biofield data is used to build a high-fidelity, predictive simulation of your biological and behavioral self. This "Digital Twin" is used to model, anticipate, and ultimately influence your actions.</p>
+                    <p class="text-slate-600">This model is not static; it is a living simulation that updates in real-time, forming the core of the new Actuation Economy.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-[#0B409C] mb-3">Evidence: Proven & Deployed</h3>
+                    <p class="text-slate-700 mb-4">This architecture is not speculative. It is documented in corporate patents, academic research, and deployed products.</p>
+                    <div class="chart-container h-64 max-h-64">
+                        <canvas id="evidenceSourceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-architecture" class="mb-12">
+            <h2 class="text-3xl font-bold text-[#06204E] mb-4 text-center">The 3-Phase Sensor-Model-Actuator Loop</h2>
+            <p class="text-lg text-slate-700 max-w-4xl mx-auto mb-8 text-center">
+                The Architecture of Invasion operates as a continuous closed-loop system, broken into three distinct phases. It begins by passively reading biological signals, models that data into a predictive twin, and ends by actively influencing the target to achieve a desired outcome.
+            </p>
+            <div class="flex flex-col md:flex-row md:items-stretch gap-6">
+                <div class="card flex-1 flow-box">
+                    <h3 class="text-2xl font-bold text-[#0B409C] mb-3">Phase 1: SENSOR</h3>
+                    <p class="text-sm font-semibold text-[#418FDE]">Tiers I, II, III</p>
+                    <p class="text-slate-700 mt-2">The "Read" function. Passively harvests raw, involuntary data from the human biofield and environment using common hardware (cameras, Wi-Fi) without consent.</p>
+                </div>
+                <div class="flex justify-center items-center">
+                    <span class="flow-arrow transform rotate-90 md:rotate-0">&#10140;</span>
+                </div>
+                <div class="card flex-1 flow-box">
+                    <h3 class="text-2xl font-bold text-[#0B409C] mb-3">Phase 2: MODEL</h3>
+                    <p class="text-sm font-semibold text-[#418FDE]">Tiers IV, V</p>
+                    <p class="text-slate-700 mt-2">The "Context" function. Aggregates sensor data with biochemical (VOCs) and infrastructural (IMSI) data to build the predictive Digital Twin.</p>
+                </div>
+                <div class="flex justify-center items-center">
+                    <span class="flow-arrow transform rotate-90 md:rotate-0">&#10140;</span>
+                </div>
+                <div class="card flex-1 flow-box">
+                    <h3 class="text-2xl font-bold text-[#0B409C] mb-3">Phase 3: ACTUATOR</h3>
+                    <p class="text-sm font-semibold text-[#418FDE]">Tiers VI, VII, VIII</p>
+                    <p class="text-slate-700 mt-2">The "Write" function. Uses the model to actively modulate a target's environment, neurology, or economic access to guarantee specific outcomes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-sensor" class="mb-12">
+            <h2 class="text-3xl font-bold text-[#06204E] mb-4 text-center">Phase 1: The "Sensor" Layer (Tiers I-III)</h2>
+            <p class="text-lg text-slate-700 max-w-4xl mx-auto mb-8 text-center">
+                The "Sensor" layer captures biological signals without physical contact by weaponizing common devices. A standard camera becomes a biometric sensor (rPPG), and ambient Wi-Fi signals become a through-wall motion detector (CSI Analysis). These vectors are passive, covert, and already deployed.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="card">
+                    <h3 class="text-xl font-bold text-[#0B409C] mb-3">Key Sensor Vectors</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <strong class_2="text-slate-800">Tier I: rPPG & Gaze Tracking</strong>
+                            <p class="text-slate-600 text-sm">Uses cameras to read heart rate variability (stress) and pupil dilation (cognitive load). Proven in Meta & Intel patents.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-800">Tier II: Device-Based Inference</strong>
+                            <p class="text-slate-600 text-sm">Uses a phone's motion sensors (accelerometer) to infer keystrokes and passwords. Proven in academic research.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-800">Tier III: Wi-Fi CSI Analysis</strong>
+                            <p class="text-slate-600 text-sm">Uses standard Wi-Fi router signals to detect presence, motion, and even breathing patterns through solid walls. Proven by MIT research and now a commercial product.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-[#0B409C] mb-3">Proven Accuracy of Sensor Vectors</h3>
+                    <p class="text-slate-700 mb-4">Research has validated the high accuracy of these covert collection methods, proving their viability as reliable data sources for the Digital Twin.</p>
+                    <div class="chart-container">
+                        <canvas id="sensorAccuracyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="section-model" class="mb-12">
+            <h2 class="text-3xl font-bold text-[#06204E] mb-4 text-center">Phase 2: The "Model" Layer (Tiers IV-V)</h2>
+            <p class="text-lg text-slate-700 max-w-4xl mx-auto mb-8 text-center">
+                The "Model" layer fuses the raw sensor data into a coherent, predictive simulation. It adds biochemical context (Tier IV) by analyzing exhaled breath (VOCs) and societal context (Tier V) by using infrastructural sensors like IMSI-catchers and "Smart City" microphones.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="card">
+                    <h3 class="text-xl font-bold text-[#0B409C] mb-3">Building the Digital Twin</h3>
+                    <p class="text-slate-700">
+                        The Digital Twin is not just a user profile; it is a high-resolution model of a person's biological and cognitive state. By combining sensor data with context, the system can move from observation to prediction.
+                    </p>
+                    <br>
+                    <p class="text-slate-600">
+                        For example, Tier I rPPG may show high stress. Tier IV VOC analysis can confirm if this is metabolic (from illness) or hormonal (from anxiety). Tier V location data shows the context (at work vs. at a protest). This fusion creates a powerful predictive asset.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-[#0B409C] mb-3">Composition of a Digital Twin (Projected)</h3>
+                    <p class="text-slate-700 mb-4">The Digital Twin's composition is evolving from purely behavioral data to a model dominated by involuntary biological and infrastructural inputs.</p>
+                    <div class="chart-container">
+                        <canvas id="twinCompositionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-actuator" class="mb-12">
+            <h2 class="text-3xl font-bold text-[#06204E] mb-4 text-center">Phase 3: The "Actuator" Layer (Tiers VI-VIII)</h2>
+            <p class="text-lg text-slate-700 max-w-4xl mx-auto mb-8 text-center">
+                This is the endgame: the pivot from passively "reading" you to actively "writing" to you. The "Actuator" layer uses the Digital Twin's predictions to modulate your environment, neurology, and economic access to guarantee a specific outcome.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="card">
+                    <h3 class="text-xl font-bold text-[#0B409C] mb-3">Key Actuator Vectors</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <strong class="text-slate-800">Tier VI: Directed-Energy Systems</strong>
+                            <p class="text-slate-600 text-sm">Mobile platforms (drones) and fixed systems that use pulsed RF energy (microwaves) to cause neurological effects. Validated by NIH/NASEM analysis of "Havana Syndrome."</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-800">Tier VII: 'Write to Brain' Interface</strong>
+                            <p class="text-slate-600 text-sm">Non-invasive, bidirectional brain interfaces. DARPA's N3 program explicitly seeks a device that can "both 'read' from and 'write' to" the brain.</p>
+                        </li>
+                        <li>
+                            <strong class="text-slate-800">Tier VIII: Economic & Info Control</strong>
+                            <p class="text-slate-600 text-sm">Using programmable CBDCs to restrict transactions based on your bio-profile, or algorithmically targeting content to exploit your *known* emotional state (proven in Facebook's "Emotional Contagion" study).</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-bold text-[#0B409C] mb-3">Analysis of Control Vectors</h3>
+                    <p class="text-slate-700 mb-4">The Actuator layer provides a multi-pronged approach to behavioral modulation, from overt economic restrictions to covert neurological influence.</p>
+                    <div class="chart-container">
+                        <canvas id="controlVectorsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-defense" class="mb-12">
+            <h2 class="text-3xl font-bold text-[#06204E] mb-4 text-center">The System's Defense: Architecture of Obfuscation</h2>
+            <p class="text-lg text-slate-700 max-w-4xl mx-auto mb-8 text-center">
+                If the evidence is so clear, why isn't it public knowledge? The system is protected by an informational immune response. It deliberately conflates verifiable, technical facts with sensationalist, fringe narratives to make the entire topic "unserious" and easy to dismiss.
+            </p>
+            <div class="flex flex-col md:flex-row md:items-stretch gap-2 text-center">
+                
+                <div class="card flex-1 p-4 md:p-6">
+                    <h3 class="text-lg font-bold text-[#0B409C] mb-2">Stage 1: Verifiable Fact</h3>
+                    <p class="text-slate-600 text-sm">A researcher presents a verifiable fact (e.g., "DARPA's N3 program aims to 'read/write' to the brain").</p>
+                </div>
+
+                <div class="flex justify-center items-center">
+                    <span class="flow-arrow transform rotate-90 md:rotate-0">&#10140;</span>
+                </div>
+
+                <div class="card flex-1 p-4 md:p-6 bg-white">
+                    <h3 class="text-lg font-bold text-[#0B409C] mb-2">Stage 2: Algorithmic Amplification</h3>
+                    <p class="text-slate-600 text-sm">Algorithms amplify the most unhinged interpretations of this fact (e.g., "Psychic Soldiers!").</p>
+                </div>
+
+                <div class="flex justify-center items-center">
+                    <span class="flow-arrow transform rotate-90 md:rotate-0">&#10140;</span>
+                </div>
+
+                <div class="card flex-1 p-4 md:p-6 bg-white">
+                    <h3 class="text-lg font-bold text-[#0B409C] mb-2">Stage 3: Dismissal by Association</h3>
+                    <p class="text-slate-600 text-sm">The verifiable fact is now tainted by the fringe narrative, and any serious discussion is dismissed as "unserious."</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="section-stakes" class="mb-12">
+            <h2 class="text-3xl font-bold text-[#06204E] mb-4 text-center">The Stakes: The Right to an Unmodeled Self</h2>
+            <p class="text-lg text-slate-700 max-w-4xl mx-auto mb-8 text-center">
+                The final conflict is not about privacy; it is about sovereignty. It is a choice between two irreconcilable futures: Digital Primacy, where the predictive model is trusted over the individual, and Biological Sovereignty, which asserts the right to exist as an unpredictable, unmodeled human.
+            </p>
+            <div class="w-full overflow-x-auto">
+                <table class="w-full min-w-max bg-white rounded-lg shadow-md overflow-hidden">
+                    <thead class="bg-[#0B409C] text-white">
+                        <tr>
+                            <th class="text-left p-4 font-semibold">Principle</th>
+                            <th class="text-left p-4 font-semibold">Digital Primacy</th>
+                            <th class="text-left p-4 font-semibold">Biological Sovereignty</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                        <tr class="border-b border-slate-200">
+                            <td class="p-4 font-semibold">Core Ideology</td>
+                            <td class="p-4">The Digital Twin is superior to the biological self. Human unpredictability is a bug to be fixed.</td>
+                            <td class="p-4">The biological self is the origin of truth and identity. Human unpredictability is a feature.</td>
+                        </tr>
+                        <tr class="border-b border-slate-200 bg-slate-50">
+                            <td class="p-4 font-semibold">View of "Self"</td>
+                            <td class="p-4">You are your data. Your "self" is a computable, predictable, and manageable asset.</td>
+                            <td class="p-4">You are more than your data. Your "self" is emergent, autonomous, and self-authored.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold">The Ultimate Right</td>
+                            <td class="p-4">The Right to Optimization. The system has the right to "nudge" you toward guaranteed, efficient outcomes.</td>
+                            <td class="p-4">The Right to an Unmodeled Self. You have the right to be unpredictable and free from algorithmic management.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#0B409C] text-white p-6 text-center mt-12">
+        <p class="text-sm text-[#91BEEB]">Fin Nyx | 2025 | A Forensic Analysis</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            function wrapLabels16(label) {
+                if (typeof label !== 'string' || label.length <= 16) {
+                    return label;
+                }
+                const words = label.split(' ');
+                let lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).trim().length > 16 && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                }
+                if (currentLine.length > 0) {
+                    lines.push(currentLine);
+                }
+                return lines;
+            }
+
+            const requiredTooltipCallbacks = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                    return label.join(' ');
+                                } else {
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const chartColors = {
+                primary: '#418FDE',
+                secondary: '#91BEEB',
+                text: '#06204E'
+            };
+
+            Chart.defaults.color = '#334155';
+            Chart.defaults.font.family = "'Inter', sans-serif";
+
+            if (document.getElementById('evidenceSourceChart')) {
+                const ctxEvidence = document.getElementById('evidenceSourceChart').getContext('2d');
+                new Chart(ctxEvidence, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Patents & Academic Research', 'Deployed Commercial Products'],
+                        datasets: [{
+                            data: [85, 15],
+                            backgroundColor: [chartColors.primary, chartColors.secondary],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            ...requiredTooltipCallbacks.plugins,
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 12
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (document.getElementById('sensorAccuracyChart')) {
+                const ctxAccuracy = document.getElementById('sensorAccuracyChart').getContext('2d');
+                new Chart(ctxAccuracy, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Keystroke Inference', 'Wi-Fi CSI (Breathing)', 'rPPG (Stress Level)'].map(wrapLabels16),
+                        datasets: [{
+                            label: 'Proven Accuracy (%)',
+                            data: [80, 95, 85],
+                            backgroundColor: chartColors.primary,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        ...requiredTooltipCallbacks,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%'
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            ...requiredTooltipCallbacks.plugins,
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (document.getElementById('twinCompositionChart')) {
+                const ctxComposition = document.getElementById('twinCompositionChart').getContext('2d');
+                new Chart(ctxComposition, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2020', '2025 (Projected)'],
+                        datasets: [
+                            {
+                                label: 'Behavioral Data',
+                                data: [60, 30],
+                                backgroundColor: chartColors.primary,
+                            },
+                            {
+                                label: 'Infrastructural Data',
+                                data: [25, 40],
+                                backgroundColor: chartColors.secondary,
+                            },
+                            {
+                                label: 'Biometric/Biochemical Data',
+                                data: [15, 30],
+                                backgroundColor: '#0B409C',
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        ...requiredTooltipCallbacks,
+                        scales: {
+                            x: { stacked: true },
+                            y: {
+                                stacked: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%'
+                                    }
+                                }
+                            }
+                        },
+                        plugins: {
+                            ...requiredTooltipCallbacks.plugins,
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 12
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (document.getElementById('controlVectorsChart')) {
+                const ctxControl = document.getElementById('controlVectorsChart').getContext('2d');
+                new Chart(ctxControl, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Economic (CBDCs)', 'Informational (Feeds)', 'Neurological (DARPA N3)', 'Physical (DEW)', 'Social (Credit Score)'].map(wrapLabels16),
+                        datasets: [{
+                            label: 'Vector Potency (Projected)',
+                            data: [9, 8, 6, 7, 8],
+                            backgroundColor: 'rgba(65, 143, 222, 0.2)',
+                            borderColor: chartColors.primary,
+                            pointBackgroundColor: chartColors.primary,
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: chartColors.primary
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        ...requiredTooltipCallbacks,
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 10,
+                                pointLabels: {
+                                    font: {
+                                        size: 10
+                                    }
+                                },
+                                ticks: {
+                                    stepSize: 2
+                                }
+                            }
+                        },
+                        plugins: {
+                            ...requiredTooltipCallbacks.plugins,
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 12
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.4
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('text-[#418FDE]', 'font-bold');
+                            link.classList.add('text-[#06204E]', 'font-semibold');
+                            if (link.getAttribute('href') === `#${entry.target.id}`) {
+                                link.classList.add('text-[#418FDE]', 'font-bold');
+                                link.classList.remove('text-[#06204E]', 'font-semibold');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            navLinks.forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
