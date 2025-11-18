@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Covert Self-Invasion - PDF Viewer | Fin Nyx</title>
+    
+    <meta name="description" content="Interactive PDF viewer for The Architecture of Covert Self-Invasion document with forensic analysis of biofield surveillance.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#dc2626', 600: '#b91c1c' },
+                        secondary: { 500: '#f59e0b', 600: '#d97706' }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf_viewer.min.css">
+    
+    <style>
+        body { font-family: sans-serif; }
+        .pdf-container {
+            height: calc(100vh - 200px);
+            min-height: 600px;
+        }
+        .pdfViewer {
+            border: 1px solid #374151;
+            border-radius: 8px;
+        }
+        .toolbar {
+            background: #1f2937;
+            border-bottom: 1px solid #374151;
+            border-radius: 8px 8px 0 0;
+        }
+        .page {
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Dark mode overrides */
+        .dark .page {
+            background: #1f2937;
+            border: 1px solid #374151;
+        }
+        .dark .toolbar {
+            background: #111827;
+            border-bottom: 1px solid #1f2937;
+        }
+        .dark .pdfViewer {
+            border: 1px solid #1f2937;
+        }
+        /* Loading animation */
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #dc2626;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="/index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
+                    <i data-feather="shield-off" class="text-red-500"></i>
+                    <span>DIGITAL DICHOTOMY</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="/pages/blog.html" class="text-gray-300 hover:text-white transition-colors">BLOG / FIELD NOTES</a>
+                    <a href="#architecture" class="text-gray-300 hover:text-white transition-colors">The Architecture</a>
+                    <a href="#lexicon" class="text-gray-300 hover:text-white transition-colors">Lexicon</a>
+                    <a href="#digital-twin" class="text-gray-300 hover:text-white transition-colors">Digital Twin</a>
+                    <a href="#defense" class="text-gray-300 hover:text-white transition-colors">Defense</a>
+                    <a href="#library" class="text-gray-300 hover:text-white transition-colors">Library</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold dark:text-white mb-4">The Architecture of Covert Self-Invasion</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Interactive PDF viewer for the complete technical analysis document.</p>
+        </header>
+
+        <!-- PDF Controls -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 mb-6 border border-gray-200 dark:border-gray-700">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <button id="prevPage" class="flex items-center px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                        <i data-feather="chevron-left" class="w-4 h-4 mr-2"></i>
+                        Previous
+                    </button>
+                    <button id="nextPage" class="flex items-center px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                        Next
+                        <i data-feather="chevron-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="zoomOut" class="p-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                        <i data-feather="zoom-out" class="w-4 h-4"></i>
+                    </button>
+                    <span id="pageInfo" class="text-sm text-gray-600 dark:text-gray-300 px-3">Page 1 of 1</span>
+                    <button id="zoomIn" class="p-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                        <i data-feather="zoom-in" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="downloadPdf" class="flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
+                        <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                        Download PDF
+                    </button>
+                    <button id="fullscreen" class="p-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                        <i data-feather="maximize" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PDF Viewer Container -->
+        <div class="pdf-container bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+            <div id="loading" class="flex items-center justify-center h-full">
+                <div class="text-center">
+                    <div class="loading-spinner mx-auto mb-4"></div>
+                    <p class="text-gray-600 dark:text-gray-300">Loading PDF...</p>
+                </div>
+            </div>
+            <div id="pdfViewer" class="pdfViewer" style="display: none;">
+                <div id="viewerContainer" class="h-full"></div>
+            </div>
+        </div>
+
+        <!-- Document Info -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <div class="flex items-center mb-3">
+                    <i data-feather="file-text" class="w-5 h-5 text-red-500 mr-3"></i>
+                    <h3 class="font-bold text-gray-800 dark:text-white">Document Info</h3>
+                </div>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                    <li><strong>Title:</strong> The Architecture of Covert Self-Invasion</li>
+                    <li><strong>Pages:</strong> <span id="totalPages">Loading...</span></li>
+                    <li><strong>Format:</strong> PDF</li>
+                    <li><strong>Size:</strong> ~2.5 MB</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <div class="flex items-center mb-3">
+                    <i data-feather="eye" class="w-5 h-5 text-red-500 mr-3"></i>
+                    <h3 class="font-bold text-gray-800 dark:text-white">Quick Navigation</h3>
+                </div>
+                <div class="space-y-3">
+                    <button onclick="goToPage(1)" class="w-full text-left px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors text-sm">
+                        <i data-feather="chevron-right" class="w-3 h-3 inline mr-2"></i>
+                        Title Page
+                    </button>
+                    <button onclick="goToPage(2)" class="w-full text-left px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors text-sm">
+                        <i data-feather="chevron-right" class="w-3 h-3 inline mr-2"></i>
+                        Main Content
+                    </button>
+                </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <div class="flex items-center mb-3">
+                    <i data-feather="share-2" class="w-5 h-5 text-red-500 mr-3"></i>
+                    <h3 class="font-bold text-gray-800 dark:text-white">Share</h3>
+                </div>
+                <div class="space-y-3">
+                    <button onclick="shareDocument()" class="w-full text-left px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors text-sm">
+                        <i data-feather="link" class="w-3 h-3 inline mr-2"></i>
+                        Copy Link
+                    </button>
+                    <button onclick="window.print()" class="w-full text-left px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors text-sm">
+                        <i data-feather="printer" class="w-3 h-3 inline mr-2"></i>
+                        Print Page
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black text-gray-400 py-8 mt-16">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 Fin Nyx. All rights reserved.</p>
+            <p class="mt-2 text-gray-500">ISBN: 978-82-7346-414-8 (The Right to an Un-Modeled Self)</p>
+        </div>
+    </footer>
+    
+    <script>
+        let pdfDoc = null;
+        let pageNum = 1;
+        let pageRendering = false;
+        let pageNumPending = null;
+        let scale = 1.5;
+
+        // PDF URL - Update this to your actual PDF path
+        const PDF_URL = '/The Architecture of Covert Self-Invasion-1.pdf';
+
+        // Initialize PDF viewer
+        function initPDFViewer() {
+            const loading = document.getElementById('loading');
+            const viewer = document.getElementById('pdfViewer');
+            
+            // Load PDF
+            pdfjsLib.getDocument(PDF_URL).promise.then(function(pdf) {
+                pdfDoc = pdf;
+                document.getElementById('totalPages').textContent = pdf.numPages;
+                renderPage(pageNum);
+                loading.style.display = 'none';
+                viewer.style.display = 'block';
+            }).catch(function(error) {
+                console.error('Error loading PDF:', error);
+                loading.innerHTML = `
+                    <div class="text-center">
+                        <i data-feather="alert-circle" class="w-12 h-12 text-red-500 mx-auto mb-4"></i>
+                        <p class="text-gray-600 dark:text-gray-300">Failed to load PDF</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Please check if the file exists at the correct path</p>
+                        <a href="${PDF_URL}" class="inline-flex items-center mt-4 px-4 py-2 bg-red-600 text-white rounded-lg">
+                            <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                            Download PDF Directly
+                        </a>
+                    </div>
+                `;
+                feather.replace();
+            });
+        }
+
+        // Render page
+        function renderPage(num) {
+            pageRendering = true;
+            pdfDoc.getPage(num).then(function(page) {
+                const viewport = page.getViewport({scale: scale});
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+
+                page.render(renderContext).promise.then(function() {
+                    pageRendering = false;
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending);
+                        pageNumPending = null;
+                    }
+                });
+
+                // Update canvas
+                const container = document.getElementById('viewerContainer');
+                container.innerHTML = '';
+                canvas.className = 'page mx-auto';
+                container.appendChild(canvas);
+                
+                // Update page info
+                document.getElementById('pageInfo').textContent = `Page ${num} of ${pdfDoc.numPages}`;
+            });
+        }
+
+        // Queue render page
+        function queueRenderPage(num) {
+            if (pageRendering) {
+                pageNumPending = num;
+            } else {
+                renderPage(num);
+            }
+        }
+
+        // Navigation functions
+        function onPrevPage() {
+            if (pageNum <= 1) return;
+            pageNum--;
+            queueRenderPage(pageNum);
+        }
+
+        function onNextPage() {
+            if (pageNum >= pdfDoc.numPages) return;
+            pageNum++;
+            queueRenderPage(pageNum);
+        }
+
+        function goToPage(num) {
+            if (num < 1 || num > pdfDoc.numPages) return;
+            pageNum = num;
+            queueRenderPage(pageNum);
+        }
+
+        // Zoom functions
+        function onZoomIn() {
+            scale = Math.min(scale * 1.2, 3);
+            queueRenderPage(pageNum);
+        }
+
+        function onZoomOut() {
+            scale = Math.max(scale / 1.2, 0.5);
+            queueRenderPage(pageNum);
+        }
+
+        // Download function
+        function onDownload() {
+            const link = document.createElement('a');
+            link.href = PDF_URL;
+            link.download = 'The-Architecture-of-Covert-Self-Invasion.pdf';
+            link.click();
+        }
+
+        // Fullscreen function
+        function onFullscreen() {
+            const viewer = document.getElementById('pdfViewer');
+            if (!document.fullscreenElement) {
+                viewer.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Share function
+        function shareDocument() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert('Link copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        // Event listeners
+        document.getElementById('prevPage').addEventListener('click', onPrevPage);
+        document.getElementById('nextPage').addEventListener('click', onNextPage);
+        document.getElementById('zoomIn').addEventListener('click', onZoomIn);
+        document.getElementById('zoomOut').addEventListener('click', onZoomOut);
+        document.getElementById('downloadPdf').addEventListener('click', onDownload);
+        document.getElementById('fullscreen').addEventListener('click', onFullscreen);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') onPrevPage();
+            if (e.key === 'ArrowRight') onNextPage();
+            if (e.key === '+' || e.key === '=') onZoomIn();
+            if (e.key === '-' || e.key === '_') onZoomOut();
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+            initPDFViewer();
+        });
+    </script>
+</body>
+</html>
