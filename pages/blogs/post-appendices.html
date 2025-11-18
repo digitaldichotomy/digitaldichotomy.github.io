@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appendices | Fin Nyx</title>
+    
+    <meta name="description" content="Technical specifications, implementation guides, legal frameworks, and glossary for the Architecture of Covert Self-Invasion.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#dc2626', 600: '#b91c1c' },
+                        secondary: { 500: '#f59e0b', 600: '#d97706' }
+                    },
+                    typography: (theme) => ({
+                        invert: {
+                            css: {
+                                '--tw-prose-body': theme('colors.gray[300]'),
+                                '--tw-prose-headings': theme('colors.white'),
+                                '--tw-prose-lead': theme('colors.gray[400]'),
+                                '--tw-prose-links': theme('colors.red[400]'),
+                                '--tw-prose-bold': theme('colors.white'),
+                                '--tw-prose-counters': theme('colors.gray[400]'),
+                                '--tw-prose-bullets': theme('colors.red[400]'),
+                                '--tw-prose-hr': theme('colors.gray[700]'),
+                                '--tw-prose-quotes': theme('colors.gray[100]'),
+                                '--tw-prose-quote-borders': theme('colors.red[600]'),
+                                '--tw-prose-captions': theme('colors.gray[400]'),
+                                '--tw-prose-code': theme('colors.white'),
+                                '--tw-prose-pre-code': theme('colors.gray[300]'),
+                                '--tw-prose-pre-bg': theme('colors.gray[800]'),
+                                '--tw-prose-th-borders': theme('colors.gray[600]'),
+                                '--tw-prose-td-borders': theme('colors.gray[700]'),
+                            },
+                        },
+                    }),
+                }
+            },
+            plugins: [
+                require('@tailwindcss/typography'),
+            ],
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <style>
+        body { font-family: sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="/index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
+                    <i data-feather="shield-off" class="text-red-500"></i>
+                    <span>DIGITAL DICHOTOMY</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="/pages/blog.html" class="text-gray-300 hover:text-white transition-colors">BLOG / FIELD NOTES</a>
+                    <a href="/index.html#architecture" class="text-gray-300 hover:text-white transition-colors">The Architecture</a>
+                    <a href="/index.html#lexicon" class="text-gray-300 hover:text-white transition-colors">Lexicon</a>
+                    <a href="/index.html#digital-twin" class="text-gray-300 hover:text-white transition-colors">Digital Twin</a>
+                    <a href="/index.html#field-notes" class="text-gray-300 hover:text-white transition-colors">Field Notes</a>
+                    <a href="/index.html#defense" class="text-gray-300 hover:text-white transition-colors">Defense</a>
+                    <a href="/index.html#library" class="text-gray-300 hover:text-white transition-colors">Library</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold dark:text-white mb-4">Appendices</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Technical specifications, implementation guides, legal frameworks, and reference materials for the Architecture of Covert Self-Invasion.</p>
+        </header>
+
+        <article class="prose prose-lg dark:prose-invert max-w-none">
+            
+            <h2 id="appendix-a-technical-specifications">APPENDIX A: TECHNICAL SPECIFICATIONS</h2>
+
+            <h3 id="quantum-sensing-matrix">Quantum Sensing Matrix</h3>
+            <h4 id="squid-array-specifications">SQUID Array Specifications</h4>
+            <ul>
+            <li><strong>Sensitivity</strong>: 5 fT/√Hz (femtotesla per square root Hertz)</li>
+            <li><strong>Frequency Range</strong>: 0.1 Hz - 5 kHz</li>
+            <li><strong>Operating Temperature</strong>: 4.2K (liquid helium)</li>
+            <li><strong>Channel Count</strong>: Up to 1,024 channels per array</li>
+            <li><strong>Spatial Resolution</strong>: 2-3 mm cortical mapping</li>
+            <li><strong>Power Consumption</strong>: 15-20 kW per system</li>
+            <li><strong>Deployment Range</strong>: Up to 100m through building materials</li>
+            </ul>
+
+            <h4 id="optically-pumped-magnetometer-specifications">Optically Pumped Magnetometer Specifications</h4>
+            <ul>
+            <li><strong>Sensitivity</strong>: 10 fT/√Hz</li>
+            <li><strong>Frequency Range</strong>: 0.1 Hz - 1 kHz</li>
+            <li><strong>Operating Temperature</strong>: Room temperature (20-25°C)</li>
+            <li><strong>Sensor Type</strong>: SERF (Spin-Exchange Relaxation-Free)</li>
+            <li><strong>Atomic Medium</strong>: Rubidium-87 or Cesium-133</li>
+            <li><strong>Laser Wavelength</strong>: 795nm (Rb) or 894nm (Cs)</li>
+            <li><strong>Power Consumption</strong>: 50-100W per sensor</li>
+            <li><strong>Deployment Range</strong>: Up to 50m</li>
+            </ul>
+
+            <h4 id="nv-center-diamond-sensor-specifications">NV-Center Diamond Sensor Specifications</h4>
+            <ul>
+            <li><strong>Sensitivity</strong>: 50 nT/√Hz</li>
+            <li><strong>Frequency Range</strong>: DC - 1 MHz</li>
+            <li><strong>Spatial Resolution</strong>: 10-50 nm</li>
+            <li><strong>Operating Temperature</strong>: Room temperature to 600°C</li>
+            <li><strong>Diamond Type</strong>: Type IIa, 99.99% purity</li>
+            <li><strong>NV Density</strong>: 10^17 - 10^18 cm^-3</li>
+            <li><strong>Laser Excitation</strong>: 532nm (green)</li>
+            <li><strong>Fluorescence Detection</strong>: 637-800nm</li>
+            </ul>
+
+            <h3 id="environmental-penetration-systems">Environmental Penetration Systems</h3>
+            <h4 id="wi-fi-csi-analysis">Wi-Fi CSI Analysis</h4>
+            <ul>
+            <li><strong>Frequency Bands</strong>: 2.4 GHz, 5 GHz, 6 GHz</li>
+            <li><strong>Bandwidth</strong>: Up to 160 MHz per channel</li>
+            <li><strong>Antenna Configuration</strong>: 8x8 MIMO minimum</li>
+            <li><strong>Spatial Resolution</strong>: 1-2 cm</li>
+            <li><strong>Update Rate</strong>: 100-1000 Hz</li>
+            <li><strong>Detection Range</strong>: Up to 30m indoor</li>
+            <li><strong>Wall Penetration</strong>: Up to 3 concrete walls</li>
+            </ul>
+
+            <h4 id="thz-imaging-systems">THz Imaging Systems</h4>
+            <ul>
+            <li><strong>Frequency Range</strong>: 0.1 - 10 THz</li>
+            <li><strong>Power Output</strong>: 1-100 mW</li>
+            <li><strong>Resolution</strong>: 640x480 pixels minimum</li>
+            <li><strong>Frame Rate</strong>: 30 fps real-time</li>
+            <li><strong>Penetration Depth</strong>: 0.1-10mm (material dependent)</li>
+            <li><strong>Detection Accuracy</strong>: 95%+ for concealed objects</li>
+            <li><strong>Range</strong>: Up to 20m</li>
+            </ul>
+
+            <h4 id="lidar-vibrometry">LIDAR Vibrometry</h4>
+            <ul>
+            <li><strong>Laser Wavelength</strong>: 1550nm (eye-safe)</li>
+            <li><strong>Power Output</strong>: 10-100 mW</li>
+            <li><strong>Frequency Response</strong>: 0.1 Hz - 20 kHz</li>
+            <li><strong>Displacement Resolution</strong>: 10 nm</li>
+            <li><strong>Range</strong>: Up to 500m</li>
+            <li><strong>Target Size</strong>: Minimum 1cm²</li>
+            <li><strong>Speech Detection</strong>: 85% accuracy at 100m</li>
+            </ul>
+
+            <h3 id="biochemical-surveillance">Biochemical Surveillance</h3>
+            <h4 id="voc-analysis-systems">VOC Analysis Systems</h4>
+            <ul>
+            <li><strong>Sensor Array</strong>: 32-128 elements</li>
+            <li><strong>Detection Limit</strong>: 1 ppb (parts per billion)</li>
+            <li><strong>Response Time</strong>: &lt;1 second</li>
+            <li><strong>Target Compounds</strong>: 1000+ biomarkers</li>
+            <li><strong>Sample Rate</strong>: 10-100 Hz</li>
+            <li><strong>Operating Temperature</strong>: -20°C to +50°C</li>
+            <li><strong>Humidity Range</strong>: 10-90% RH</li>
+            </ul>
+
+            <h4 id="rppg-systems">rPPG Systems</h4>
+            <ul>
+            <li><strong>Camera Resolution</strong>: 1080p minimum</li>
+            <li><strong>Frame Rate</strong>: 30-120 fps</li>
+            <li><strong>Wavelength Sensitivity</strong>: 400-1000nm</li>
+            <li><strong>Heart Rate Accuracy</strong>: ±2 BPM</li>
+            <li><strong>Heart Rate Variability</strong>: 5% error</li>
+            <li><strong>Range</strong>: Up to 50m</li>
+            <li><strong>Low Light Performance</strong>: 0.1 lux minimum</li>
+            </ul>
+
+            <h4 id="thermal-imaging">Thermal Imaging</h4>
+            <ul>
+            <li><strong>Resolution</strong>: 640x480 pixels minimum</li>
+            <li><strong>Thermal Sensitivity</strong>: 30 mK</li>
+            <li><strong>Spectral Range</strong>: 7.5-13.5 μm (LWIR)</li>
+            <li><strong>Frame Rate</strong>: 9-60 Hz</li>
+            <li><strong>Temperature Range</strong>: -40°C to +2000°C</li>
+            <li><strong>Accuracy</strong>: ±2°C or ±2%</li>
+            <li><strong>Range</strong>: Up to 2km</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="appendix-b-implementation-guide">APPENDIX B: IMPLEMENTATION GUIDE</h2>
+
+            <h3 id="phase-1-infrastructure-preparation-months-1-6">Phase 1: Infrastructure Preparation (Months 1-6)</h3>
+            <ol>
+            <li><strong>Site Survey and Assessment</strong>
+               <ul>
+               <li>Electromagnetic environment mapping</li>
+               <li>Structural analysis for sensor placement</li>
+               <li>Power and cooling requirements assessment</li>
+               <li>Network infrastructure evaluation</li>
+               </ul>
+            </li>
+            <li><strong>Environmental Modification</strong>
+               <ul>
+               <li>Installation of mirror arrays and reflective surfaces</li>
+               <li>LED lighting system conversion</li>
+               <li>Removal of electromagnetic shielding materials</li>
+               <li>Installation of antenna systems and repeaters</li>
+               </ul>
+            </li>
+            <li><strong>Network Deployment</strong>
+               <ul>
+               <li>5G infrastructure installation</li>
+               <li>Wi-Fi mesh network setup</li>
+               <li>Fiber optic cable deployment</li>
+               <li>Satellite communication links</li>
+               </ul>
+            </li>
+            </ol>
+
+            <h3 id="phase-2-sensor-installation-months-7-12">Phase 2: Sensor Installation (Months 7-12)</h3>
+            <ol>
+            <li><strong>Quantum Sensor Array Installation</strong>
+               <ul>
+               <li>SQUID array placement and cooling system setup</li>
+               <li>Optically pumped magnetometer deployment</li>
+               <li>NV-center diamond sensor integration</li>
+               <li>Calibration and testing procedures</li>
+               </ul>
+            </li>
+            <li><strong>Environmental Penetration Systems</strong>
+               <ul>
+               <li>Wi-Fi CSI analysis system deployment</li>
+               <li>THz imaging installation</li>
+               <li>LIDAR vibrometry setup</li>
+               <li>System integration and testing</li>
+               </ul>
+            </li>
+            <li><strong>Biochemical Surveillance Deployment</strong>
+               <ul>
+               <li>VOC analysis system installation</li>
+               <li>rPPG camera network setup</li>
+               <li>Thermal imaging array deployment</li>
+               <li>Environmental monitoring integration</li>
+               </ul>
+            </li>
+            </ol>
+
+            <h3 id="phase-3-data-integration-months-13-18">Phase 3: Data Integration (Months 13-18)</h3>
+            <ol>
+            <li><strong>Data Fusion Center Setup</strong>
+               <ul>
+               <li>Server infrastructure deployment</li>
+               <li>AI system installation and training</li>
+               <li>Database setup and configuration</li>
+               <li>Network security implementation</li>
+               </ul>
+            </li>
+            <li><strong>Real-Time Rendering Engine</strong>
+               <ul>
+               <li>Content generation system deployment</li>
+               <li>Personalization algorithm training</li>
+               <li>Media distribution network setup</li>
+               <li>Quality control and testing</li>
+               </ul>
+            </li>
+            <li><strong>Predictive Analytics Integration</strong>
+               <ul>
+               <li>Machine learning model deployment</li>
+               <li>Historical data integration</li>
+               <li>Real-time processing setup</li>
+               <li>Validation and testing procedures</li>
+               </ul>
+            </li>
+            </ol>
+
+            <h3 id="phase-4-actuation-systems-months-19-24">Phase 4: Actuation Systems (Months 19-24)</h3>
+            <ol>
+            <li><strong>Directed Energy Weapon Deployment</strong>
+               <ul>
+               <li>Phased array antenna installation</li>
+               <li>Power system setup and testing</li>
+               <li>Targeting system calibration</li>
+               <li>Safety protocol implementation</li>
+               </ul>
+            </li>
+            <li><strong>V2K System Installation</strong>
+               <ul>
+               <li>Microwave transmitter deployment</li>
+               <li>Audio processing system setup</li>
+               <li>Targeting and tracking integration</li>
+               <li>Testing and validation</li>
+               </ul>
+            </li>
+            <li><strong>Holographic Projection Setup</strong>
+               <ul>
+               <li>Projection system installation</li>
+               <li>3D content creation pipeline</li>
+               <li>Spatial mapping and calibration</li>
+               <li>User interface development</li>
+               </ul>
+            </li>
+            </ol>
+
+            <h3 id="phase-5-economic-control-months-25-30">Phase 5: Economic Control (Months 25-30)</h3>
+            <ol>
+            <li><strong>CBDC Infrastructure</strong>
+               <ul>
+               <li>Digital currency system deployment</li>
+               <li>Smart contract implementation</li>
+               <li>Transaction monitoring setup</li>
+               <li>Integration with existing banking</li>
+               </ul>
+            </li>
+            <li><strong>Social Credit System</strong>
+               <ul>
+               <li>Scoring algorithm deployment</li>
+               <li>Data collection system setup</li>
+               <li>Reward/punishment mechanism implementation</li>
+               <li>User interface development</li>
+               </ul>
+            </li>
+            <li><strong>Resource Allocation</strong>
+               <ul>
+               <li>AI system deployment</li>
+               <li>Distribution network setup</li>
+               <li>Monitoring and control implementation</li>
+               <li>Emergency override systems</li>
+               </ul>
+            </li>
+            </ol>
+
+            <h3 id="phase-6-cognitive-mining-months-31-36">Phase 6: Cognitive Mining (Months 31-36)</h3>
+            <ol>
+            <li><strong>Biological Proof-of-Work System</strong>
+               <ul>
+               <li>Neural interface deployment</li>
+               <li>Computational harvesting setup</li>
+               <li>AI training integration</li>
+               <li>Performance optimization</li>
+               </ul>
+            </li>
+            <li><strong>Emotional Energy Extraction</strong>
+               <ul>
+               <li>Biofeedback system installation</li>
+               <li>Energy harvesting setup</li>
+               <li>Storage and processing deployment</li>
+               <li>Efficiency optimization</li>
+               </ul>
+            </li>
+            <li><strong>Reality Rendering</strong>
+               <ul>
+               <li>Asset collection system setup</li>
+               <li>Simulation environment deployment</li>
+               <li>Personalization engine implementation</li>
+               <li>Quality control and testing</li>
+               </ul>
+            </li>
+            </ol>
+
+            <hr>
+
+            <h2 id="appendix-c-legal-framework">APPENDIX C: LEGAL FRAMEWORK</h2>
+
+            <h3 id="international-regulations">International Regulations</h3>
+            <ul>
+            <li><strong>Geneva Conventions</strong>: Protocols on psychological warfare and torture</li>
+            <li><strong>UN Human Rights</strong>: Articles on mental privacy and freedom of thought</li>
+            <li><strong>International Telecommunications</strong>: Regulations on electromagnetic spectrum use</li>
+            <li><strong>Space Law</strong>: Treaties on satellite deployment and space-based surveillance</li>
+            </ul>
+
+            <h3 id="national-legislation">National Legislation</h3>
+            <ul>
+            <li><strong>United States</strong>: 
+              <ul>
+              <li>Constitution: Fourth Amendment protections</li>
+              <li>Privacy Act of 1974</li>
+              <li>Electronic Communications Privacy Act</li>
+              <li>Foreign Intelligence Surveillance Act</li>
+              <li>Emerging AI and neurotechnology legislation</li>
+              </ul>
+            </li>
+            <li><strong>European Union</strong>:
+              <ul>
+              <li>GDPR (General Data Protection Regulation)</li>
+              <li>Charter of Fundamental Rights</li>
+              <li>AI Act and Digital Services Act</li>
+              <li>Convention on Cybercrime</li>
+              </ul>
+            </li>
+            <li><strong>China</strong>:
+              <ul>
+              <li>Cybersecurity Law</li>
+              <li>Data Security Law</li>
+              <li>Personal Information Protection Law</li>
+              <li>Social Credit System regulations</li>
+              </ul>
+            </li>
+            </ul>
+
+            <h3 id="ethical-guidelines">Ethical Guidelines</h3>
+            <ul>
+            <li><strong>Medical Ethics</strong>: Informed consent and patient autonomy</li>
+            <li><strong>Research Ethics</strong>: Human subject protection</li>
+            <li><strong>AI Ethics</strong>: Responsible AI development and deployment</li>
+            <li><strong>Neuroethics</strong>: Brain privacy and cognitive liberty</li>
+            </ul>
+
+            <h3 id="compliance-requirements">Compliance Requirements</h3>
+            <ul>
+            <li><strong>Data Protection</strong>: Encryption, anonymization, access controls</li>
+            <li><strong>Transparency</strong>: Disclosure requirements and audit trails</li>
+            <li><strong>Accountability</strong>: Responsibility frameworks and oversight</li>
+            <li><strong>Redress</strong>: Complaint mechanisms and remediation procedures</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="appendix-d-glossary">APPENDIX D: GLOSSARY</h2>
+
+            <h3 id="technical-terms">Technical Terms</h3>
+            <ul>
+            <li><strong>Biofield</strong>: The electromagnetic field generated by living organisms</li>
+            <li><strong>ELF</strong>: Extremely Low Frequency (0.1-30 Hz electromagnetic waves)</li>
+            <li><strong>SQUID</strong>: Superconducting Quantum Interference Device</li>
+            <li><strong>CSI</strong>: Channel State Information (Wi-Fi signal analysis)</li>
+            <li><strong>VOC</strong>: Volatile Organic Compounds (chemical biomarkers)</li>
+            <li><strong>rPPG</strong>: Remote Photoplethysmography (camera-based vital sign monitoring)</li>
+            <li><strong>THz</strong>: Terahertz radiation (0.1-10 THz electromagnetic waves)</li>
+            <li><strong>V2K</strong>: Voice to Skull (microwave auditory effect)</li>
+            <li><strong>CBDC</strong>: Central Bank Digital Currency</li>
+            <li><strong>PNE</strong>: Peripheral Neural Eavesdropping</li>
+            </ul>
+
+            <h3 id="acronyms">Acronyms</h3>
+            <ul>
+            <li><strong>AI</strong>: Artificial Intelligence</li>
+            <li><strong>BCI</strong>: Brain-Computer Interface</li>
+            <li><strong>EEG</strong>: Electroencephalogram</li>
+            <li><strong>EMG</strong>: Electromyogram</li>
+            <li><strong>IoT</strong>: Internet of Things</li>
+            <li><strong>MIMO</strong>: Multiple-Input Multiple-Output</li>
+            <li><strong>RF</strong>: Radio Frequency</li>
+            <li><strong>THz</strong>: Terahertz</li>
+            <li><strong>UV</strong>: Ultraviolet</li>
+            <li><strong>IR</strong>: Infrared</li>
+            </ul>
+
+            <h3 id="concepts">Concepts</h3>
+            <ul>
+            <li><strong>Closed-Loop Control</strong>: Systems that continuously monitor and adjust their own operation</li>
+            <li><strong>Predictive Analytics</strong>: Using historical data to forecast future events</li>
+            <li><strong>Real-Time Rendering</strong>: Generating content instantly based on current conditions</li>
+            <li><strong>Data Fusion</strong>: Combining multiple data sources for comprehensive analysis</li>
+            <li><strong>Neural Interface</strong>: Direct communication pathways between brains and computers</li>
+            <li><strong>Quantum Sensing</strong>: Using quantum mechanical phenomena for ultra-sensitive measurements</li>
+            <li><strong>Biofeedback</strong>: Using biological signals for monitoring and control</li>
+            <li><strong>Cognitive Mining</strong>: Extracting computational value from human thought processes</li>
+            </ul>
+
+            <h3 id="organizations">Organizations</h3>
+            <ul>
+            <li><strong>DARPA</strong>: Defense Advanced Research Projects Agency</li>
+            <li><strong>NSA</strong>: National Security Agency</li>
+            <li><strong>CIA</strong>: Central Intelligence Agency</li>
+            <li><strong>FBI</strong>: Federal Bureau of Investigation</li>
+            <li><strong>NIST</strong>: National Institute of Standards and Technology</li>
+            <li><strong>IEEE</strong>: Institute of Electrical and Electronics Engineers</li>
+            <li><strong>ISO</strong>: International Organization for Standardization</li>
+            <li><strong>ITU</strong>: International Telecommunication Union</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="appendix-e-mathematical-formulas">APPENDIX E: MATHEMATICAL FORMULAS</h2>
+
+            <h3 id="electromagnetic-field-calculations">Electromagnetic Field Calculations</h3>
+            <ul>
+            <li><strong>Magnetic Field Strength</strong>: B = μ₀(H + M)</li>
+            <li><strong>Electric Field Intensity</strong>: E = V/d</li>
+            <li><strong>Power Density</strong>: S = E × H</li>
+            <li><strong>Skin Depth</strong>: δ = √(2/(ωμσ))</li>
+            <li><strong>Antenna Gain</strong>: G = 4πA_e/λ²</li>
+            </ul>
+
+            <h3 id="signal-processing">Signal Processing</h3>
+            <ul>
+            <li><strong>Fourier Transform</strong>: F(ω) = ∫f(t)e^(-iωt)dt</li>
+            <li><strong>Signal-to-Noise Ratio</strong>: SNR = P_signal/P_noise</li>
+            <li><strong>Nyquist Frequency</strong>: f_N = f_s/2</li>
+            <li><strong>Shannon Capacity</strong>: C = B log₂(1 + S/N)</li>
+            <li><strong>Correlation Coefficient</strong>: r = Cov(X,Y)/(σ_Xσ_Y)</li>
+            </ul>
+
+            <h3 id="quantum-mechanics">Quantum Mechanics</h3>
+            <ul>
+            <li><strong>Heisenberg Uncertainty</strong>: ΔxΔp ≥ ℏ/2</li>
+            <li><strong>Schrödinger Equation</strong>: iℏ∂Ψ/∂t = ĤΨ</li>
+            <li><strong>Quantum State</strong>: |ψ⟩ = Σc_n|n⟩</li>
+            <li><strong>Expectation Value</strong>: ⟨A⟩ = ⟨ψ|Â|ψ⟩</li>
+            <li><strong>Entanglement</strong>: |Ψ⟩ = (|00⟩ + |11⟩)/√2</li>
+            </ul>
+
+            <h3 id="statistical-analysis">Statistical Analysis</h3>
+            <ul>
+            <li><strong>Standard Deviation</strong>: σ = √(Σ(x_i - μ)²/N)</li>
+            <li><strong>Confidence Interval</strong>: CI = x̄ ± t(α/2,n-1)(s/√n)</li>
+            <li><strong>Hypothesis Test</strong>: t = (x̄ - μ₀)/(s/√n)</li>
+            <li><strong>Regression</strong>: y = β₀ + β₁x + ε</li>
+            <li><strong>Bayesian Inference</strong>: P(H|E) = P(E|H)P(H)/P(E)</li>
+            </ul>
+
+            <hr>
+
+            <h2 id="appendix-f-bibliography">APPENDIX F: BIBLIOGRAPHY</h2>
+
+            <h3 id="technical-references">Technical References</h3>
+            <ul>
+            <li>Freeman, W.J. (1975). "Mass Action in the Nervous System"</li>
+            <li>Penrose, R. (1994). "Shadows of the Mind"</li>
+            <li>Hameroff, S., & Penrose, R. (2014). "Consciousness in the Universe"</li>
+            <li>Buzsáki, G. (2006). "Rhythms of the Brain"</li>
+            <li>Kandel, E.R. (2013). "Principles of Neural Science"</li>
+            </ul>
+
+            <h3 id="quantum-sensing">Quantum Sensing</h3>
+            <ul>
+            <li>Budker, D., & Romalis, M. (2007). "Optical Magnetometry"</li>
+            <li>Taylor, J.M., et al. (2008). "High-Sensitivity Diamond Magnetometer"</li>
+            <li>Degen, C.L. (2017). "Scanning Magnetic Field Microscopy with a Single Spin"</li>
+            <li>Kotler, S., et al. (2011). "Single-Atom Magnetometer"</li>
+            <li>Schlosshauer, M. (2007). "Decoherence and the Quantum-to-Classical Transition"</li>
+            </ul>
+
+            <h3 id="neurotechnology">Neurotechnology</h3>
+            <ul>
+            <li>Nicolelis, M.A.L. (2001). "Actions from Thoughts"</li>
+            <li>Lebedev, M.A., & Nicolelis, M.A.L. (2006). "Brain-Machine Interfaces"</li>
+            <li>Fetz, E.E. (1969). "Operant Conditioning of Cortical Unit Activity"</li>
+            <li>Chapin, J.K., et al. (1999). "Real-time Control of a Robot Arm"</li>
+            <li>Wessberg, J., et al. (2000). "Real-time Prediction of Hand Trajectory"</li>
+            </ul>
+
+            <h3 id="artificial-intelligence">Artificial Intelligence</h3>
+            <ul>
+            <li>Goodfellow, I., et al. (2016). "Deep Learning"</li>
+            <li>Silver, D., et al. (2016). "Mastering the Game of Go"</li>
+            <li>Vaswani, A., et al. (2017). "Attention Is All You Need"</li>
+            <li>LeCun, Y., et al. (2015). "Deep Learning"</li>
+            <li>Russell, S., & Norvig, P. (2020). "Artificial Intelligence: A Modern Approach"</li>
+            </ul>
+
+            <h3 id="surveillance-technology">Surveillance Technology</h3>
+            <ul>
+            <li>Lyon, D. (2018). "The Culture of Surveillance"</li>
+            <li>Zuboff, S. (2019). "The Age of Surveillance Capitalism"</li>
+            <li>Brin, D. (1998). "The Transparent Society"</li>
+            <li>Haggerty, K.D., & Ericson, R.V. (2000). "The Surveillant Assemblage"</li>
+            <li>Marx, G.T. (2003). "A Tack in the Shoe: Neutralizing Surveillance"</li>
+            </ul>
+
+            <h3 id="legal-and-ethical">Legal and Ethical</h3>
+            <ul>
+            <li>Brey, P., et al. (2012). "Robot Ethics"</li>
+            <li>Lin, P., et al. (2011). "Robot Ethics"</li>
+            <li>Gunkel, D.J. (2018). "Robot Rights"</li>
+            <li>Bostrom, N. (2014). "Superintelligence"</li>
+            <li>Harari, Y.N. (2017). "Homo Deus"</li>
+            </ul>
+
+            <p><em>End of Appendices</em></p>
+
+        </article>
+    </main>
+
+    <footer class="bg-black text-gray-400 py-8 mt-16">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 Fin Nyx. All rights reserved.</p>
+            <p class="mt-2 text-gray-500">ISBN: 978-82-7346-414-8 (The Right to an Un-Modeled Self)</p>
+        </div>
+    </footer>
+    
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

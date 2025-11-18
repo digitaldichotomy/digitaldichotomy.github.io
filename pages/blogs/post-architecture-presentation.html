@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Covert Self-Invasion - Presentation</title>
+    
+    <meta name="description" content="Visual presentation of the Architecture of Covert Self-Invasion - biofield surveillance and cognitive manipulation analysis.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#dc2626', 600: '#b91c1c' },
+                        secondary: { 500: '#f59e0b', 600: '#d97706' }
+                    },
+                    typography: (theme) => ({
+                        invert: {
+                            css: {
+                                '--tw-prose-body': theme('colors.gray[300]'),
+                                '--tw-prose-headings': theme('colors.white'),
+                                '--tw-prose-lead': theme('colors.gray[400]'),
+                                '--tw-prose-links': theme('colors.red[400]'),
+                                '--tw-prose-bold': theme('colors.white'),
+                                '--tw-prose-counters': theme('colors.gray[400]'),
+                                '--tw-prose-bullets': theme('colors.red[400]'),
+                                '--tw-prose-hr': theme('colors.gray[700]'),
+                                '--tw-prose-quotes': theme('colors.gray[100]'),
+                                '--tw-prose-quote-borders': theme('colors.red[600]'),
+                                '--tw-prose-captions': theme('colors.gray[400]'),
+                                '--tw-prose-code': theme('colors.white'),
+                                '--tw-prose-pre-code': theme('colors.gray[300]'),
+                                '--tw-prose-pre-bg': theme('colors.gray[800]'),
+                                '--tw-prose-th-borders': theme('colors.gray[600]'),
+                                '--tw-prose-td-borders': theme('colors.gray[700]'),
+                            },
+                        },
+                    }),
+                }
+            },
+            plugins: [
+                require('@tailwindcss/typography'),
+            ],
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <style>
+        body { font-family: sans-serif; }
+        .slide-container {
+            width: 100%;
+            max-width: 1280px;
+            aspect-ratio: 16/9;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: #0a0a0f;
+            overflow: hidden;
+        }
+        .slide-nav {
+            transition: all 0.3s ease;
+        }
+        .slide-nav:hover {
+            transform: scale(1.1);
+        }
+        .slide-nav.active {
+            background-color: #dc2626;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="/index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
+                    <i data-feather="shield-off" class="text-red-500"></i>
+                    <span>DIGITAL DICHOTOMY</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="/pages/blog.html" class="text-gray-300 hover:text-white transition-colors">BLOG / FIELD NOTES</a>
+                    <a href="/index.html#architecture" class="text-gray-300 hover:text-white transition-colors">The Architecture</a>
+                    <a href="/index.html#lexicon" class="text-gray-300 hover:text-white transition-colors">Lexicon</a>
+                    <a href="/index.html#digital-twin" class="text-gray-300 hover:text-white transition-colors">Digital Twin</a>
+                    <a href="/index.html#field-notes" class="text-gray-300 hover:text-white transition-colors">Field Notes</a>
+                    <a href="/index.html#defense" class="text-gray-300 hover:text-white transition-colors">Defense</a>
+                    <a href="/index.html#library" class="text-gray-300 hover:text-white transition-colors">Library</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold dark:text-white mb-4">Architecture Presentation</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Visual analysis of the 8-tier surveillance infrastructure and biofield manipulation systems.</p>
+        </header>
+
+        <!-- Slide Navigation -->
+        <div class="flex justify-center mb-8 space-x-2">
+            <button onclick="showSlide(0)" class="slide-nav w-3 h-3 rounded-full bg-gray-400" id="nav-0"></button>
+            <button onclick="showSlide(1)" class="slide-nav w-3 h-3 rounded-full bg-gray-400" id="nav-1"></button>
+            <button onclick="showSlide(2)" class="slide-nav w-3 h-3 rounded-full bg-gray-400" id="nav-2"></button>
+            <button onclick="showSlide(3)" class="slide-nav w-3 h-3 rounded-full bg-gray-400" id="nav-3"></button>
+            <button onclick="showSlide(4)" class="slide-nav w-3 h-3 rounded-full bg-gray-400" id="nav-4"></button>
+            <button onclick="showSlide(5)" class="slide-nav w-3 h-3 rounded-full bg-gray-400" id="nav-5"></button>
+        </div>
+
+        <!-- Slide Container -->
+        <div class="slide-container">
+            <!-- Slide 1: Title -->
+            <div id="slide-0" class="slide">
+                <div class="background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://sfile.chatglm.cn/images-ppt/2c8f9f799340.jpg'); background-size: cover; background-position: center; opacity: 0.8;"></div>
+                <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(10, 10, 30, 0.85) 0%, rgba(40, 10, 60, 0.85) 100%);"></div>
+                <div class="content" style="position: relative; z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; width: 100%; padding: 0 120px; text-align: center;">
+                    <h1 class="title" style="font-size: 64px; font-weight: 700; color: #ffffff; margin-bottom: 30px; line-height: 1.2; text-shadow: 0 0 20px rgba(100, 100, 255, 0.3);">The Architecture of Covert Self-Invasion</h1>
+                    <div class="accent-line" style="width: 120px; height: 4px; background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%); margin: 40px 0; border-radius: 2px;"></div>
+                    <p class="subtitle" style="font-size: 24px; font-weight: 400; color: #b8c5ff; max-width: 800px; line-height: 1.5;">A Technical Analysis of Biofield Surveillance and Cognitive Manipulation</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Mirror Gateway -->
+            <div id="slide-1" class="slide" style="display: none;">
+                <div class="header" style="padding: 40px 70px 20px;">
+                    <h1 class="title" style="font-size: 40px; font-weight: 700; color: #ffffff; margin-bottom: 10px; position: relative;">
+                        The Mirror Gateway: Electromagnetic Portals
+                        <span style="content: ''; position: absolute; bottom: -10px; left: 0; width: 80px; height: 4px; background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%); border-radius: 2px;"></span>
+                    </h1>
+                </div>
+                <div class="content" style="flex-grow: 1; display: flex; padding: 0 70px 40px;">
+                    <div class="left-content" style="flex: 1; padding-right: 40px;">
+                        <div class="concept" style="margin-bottom: 30px;">
+                            <div class="concept-title" style="font-size: 24px; font-weight: 600; color: #8a92ff; margin-bottom: 10px; display: flex; align-items: center;">
+                                <i data-feather="filter-center-focus" style="margin-right: 10px; color: #6a11cb;"></i>
+                                Electromagnetic Interface
+                            </div>
+                            <div class="concept-desc" style="font-size: 20px; line-height: 1.5; color: #b8c5ff;">
+                                Mirrors operate on <span style="color: #ffffff; font-weight: 600;">dual principles</span>: reflecting visible light (400-700nm) while remaining transparent to ELF waves (0.1-30 Hz)
+                            </div>
+                        </div>
+                        
+                        <div class="concept" style="margin-bottom: 30px;">
+                            <div class="concept-title" style="font-size: 24px; font-weight: 600; color: #8a92ff; margin-bottom: 10px; display: flex; align-items: center;">
+                                <i data-feather="waves" style="margin-right: 10px; color: #6a11cb;"></i>
+                                Light Spectrum Theft
+                            </div>
+                            <div class="concept-desc" style="font-size: 20px; line-height: 1.5; color: #b8c5ff;">
+                                Redirecting specific wavelengths that drive biological processes creates <span style="color: #ffffff; font-weight: 600;">electromagnetic voids</span> enhancing receptivity to external ELF transmission
+                            </div>
+                        </div>
+                        
+                        <div class="concept" style="margin-bottom: 30px;">
+                            <div class="concept-title" style="font-size: 24px; font-weight: 600; color: #8a92ff; margin-bottom: 10px; display: flex; align-items: center;">
+                                <i data-feather="activity" style="margin-right: 10px; color: #6a11cb;"></i>
+                                Scientific Validation
+                            </div>
+                            <div class="concept-desc" style="font-size: 20px; line-height: 1.5; color: #b8c5ff;">
+                                Human biofields generate measurable electromagnetic fields through:<br>
+                                • Cardiac electrical activity (0.5-100 Hz)<br>
+                                • Neural oscillations (0.5-100 Hz)<br>
+                                • Muscle fiber depolarization (10-500 Hz)
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="right-content" style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                        <div class="mirror-visual" style="width: 100%; height: 400px; background-image: url('https://sfile.chatglm.cn/images-ppt/33aef97cc586.jpg'); background-size: cover; background-position: center; border-radius: 8px; position: relative; overflow: hidden;">
+                            <div class="mirror-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(10, 10, 30, 0.6) 0%, rgba(40, 10, 60, 0.4) 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;">
+                                <div class="mirror-title" style="font-size: 28px; font-weight: 700; color: #ffffff; margin-bottom: 20px; text-align: center;">Biofield Transparency</div>
+                                <div class="frequency-range" style="display: flex; justify-content: space-between; width: 80%; margin-top: 20px;">
+                                    <div class="frequency-item" style="text-align: center;">
+                                        <div class="frequency-value" style="font-size: 22px; font-weight: 600; color: #8a92ff;">0.1-30 Hz</div>
+                                        <div class="frequency-label" style="font-size: 16px; color: #b8c5ff;">Human Biofield</div>
+                                    </div>
+                                    <div class="frequency-item" style="text-align: center;">
+                                        <div class="frequency-value" style="font-size: 22px; font-weight: 600; color: #8a92ff;">400-700nm</div>
+                                        <div class="frequency-label" style="font-size: 16px; color: #b8c5ff;">Visible Light</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: 8-Tier Infrastructure -->
+            <div id="slide-2" class="slide" style="display: none;">
+                <div class="header" style="padding: 40px 70px 20px;">
+                    <h1 class="title" style="font-size: 40px; font-weight: 700; color: #ffffff; margin-bottom: 10px; position: relative;">
+                        8-Tier Surveillance Infrastructure Overview
+                        <span style="content: ''; position: absolute; bottom: -10px; left: 0; width: 80px; height: 4px; background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%); border-radius: 2px;"></span>
+                    </h1>
+                </div>
+                <div class="content" style="flex-grow: 1; display: flex; flex-direction: column; padding: 0 70px 40px;">
+                    <p class="intro-text" style="font-size: 20px; color: #b8c5ff; margin-bottom: 20px; line-height: 1.5;">
+                        A comprehensive <span style="color: #ffffff; font-weight: 600;">hierarchical system</span> for biofield surveillance and cognitive manipulation, integrating advanced sensing, data processing, and actuation technologies.
+                    </p>
+                    <div class="infrastructure-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 20px; flex-grow: 1;">
+                        <div class="tier-card" style="background: rgba(20, 20, 40, 0.7); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; border-left: 4px solid #6a11cb;">
+                            <div class="tier-header" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <div class="tier-number" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 12px; flex-shrink: 0; color: white;">1</div>
+                                <div class="tier-title" style="font-size: 20px; font-weight: 600; color: #ffffff;">Quantum Sensing</div>
+                                <i data-feather="blur-circular" style="margin-left: auto; color: #8a92ff;"></i>
+                            </div>
+                            <div class="tier-content" style="flex-grow: 1;">
+                                <ul class="tech-list" style="list-style: none;">
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>SQUID Arrays
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Optically Pumped Magnetometers
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>NV-Center Diamond Sensors
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="tier-card" style="background: rgba(20, 20, 40, 0.7); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; border-left: 4px solid #7b3cc9;">
+                            <div class="tier-header" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <div class="tier-number" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 12px; flex-shrink: 0; color: white;">2</div>
+                                <div class="tier-title" style="font-size: 20px; font-weight: 600; color: #ffffff;">Environmental Penetration</div>
+                                <i data-feather="wifi" style="margin-left: auto; color: #8a92ff;"></i>
+                            </div>
+                            <div class="tier-content" style="flex-grow: 1;">
+                                <ul class="tech-list" style="list-style: none;">
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Wi-Fi CSI Analysis
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>THz Imaging
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>LIDAR Vibrometry
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="tier-card" style="background: rgba(20, 20, 40, 0.7); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; border-left: 4px solid #8c4dc7;">
+                            <div class="tier-header" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <div class="tier-number" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 12px; flex-shrink: 0; color: white;">3</div>
+                                <div class="tier-title" style="font-size: 20px; font-weight: 600; color: #ffffff;">Biochemical Surveillance</div>
+                                <i data-feather="droplet" style="margin-left: auto; color: #8a92ff;"></i>
+                            </div>
+                            <div class="tier-content" style="flex-grow: 1;">
+                                <ul class="tech-list" style="list-style: none;">
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>VOC Analysis
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>rPPG Systems
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Thermal Imaging
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="tier-card" style="background: rgba(20, 20, 40, 0.7); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; border-left: 4px solid #9d5ec5;">
+                            <div class="tier-header" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <div class="tier-number" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 12px; flex-shrink: 0; color: white;">4</div>
+                                <div class="tier-title" style="font-size: 20px; font-weight: 600; color: #ffffff;">Neural Interfaces</div>
+                                <i data-feather="brain" style="margin-left: auto; color: #8a92ff;"></i>
+                            </div>
+                            <div class="tier-content" style="flex-grow: 1;">
+                                <ul class="tech-list" style="list-style: none;">
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>PNE Nexus
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>DARPA N3 Program
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Optogenetic Interfaces
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="tier-card" style="background: rgba(20, 20, 40, 0.7); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; border-left: 4px solid #ae6fc3;">
+                            <div class="tier-header" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <div class="tier-number" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 12px; flex-shrink: 0; color: white;">5</div>
+                                <div class="tier-title" style="font-size: 20px; font-weight: 600; color: #ffffff;">Data Fusion Centers</div>
+                                <i data-feather="cpu" style="margin-left: auto; color: #8a92ff;"></i>
+                            </div>
+                            <div class="tier-content" style="flex-grow: 1;">
+                                <ul class="tech-list" style="list-style: none;">
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Real-Time Rendering
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Predictive Analytics
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Consensus Generation
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="tier-card" style="background: rgba(20, 20, 40, 0.7); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; border-left: 4px solid #bf80c1;">
+                            <div class="tier-header" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <div class="tier-number" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 12px; flex-shrink: 0; color: white;">6</div>
+                                <div class="tier-title" style="font-size: 20px; font-weight: 600; color: #ffffff;">Actuation Networks</div>
+                                <i data-feather="zap" style="margin-left: auto; color: #8a92ff;"></i>
+                            </div>
+                            <div class="tier-content" style="flex-grow: 1;">
+                                <ul class="tech-list" style="list-style: none;">
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Directed Energy Weapons
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>V2K Technology
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Holographic Projection
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="tier-card" style="background: rgba(20, 20, 40, 0.7); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; border-left: 4px solid #d091bf;">
+                            <div class="tier-header" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <div class="tier-number" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 12px; flex-shrink: 0; color: white;">7</div>
+                                <div class="tier-title" style="font-size: 20px; font-weight: 600; color: #ffffff;">Economic Control</div>
+                                <i data-feather="credit-card" style="margin-left: auto; color: #8a92ff;"></i>
+                            </div>
+                            <div class="tier-content" style="flex-grow: 1;">
+                                <ul class="tech-list" style="list-style: none;">
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>CBDC Infrastructure
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Social Credit Integration
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Resource Allocation
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="tier-card" style="background: rgba(20, 20, 40, 0.7); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; border-left: 4px solid #e1a2bd;">
+                            <div class="tier-header" style="display: flex; align-items: center; margin-bottom: 15px;">
+                                <div class="tier-number" style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 12px; flex-shrink: 0; color: white;">8</div>
+                                <div class="tier-title" style="font-size: 20px; font-weight: 600; color: #ffffff;">Cognitive Mining</div>
+                                <i data-feather="database" style="margin-left: auto; color: #8a92ff;"></i>
+                            </div>
+                            <div class="tier-content" style="flex-grow: 1;">
+                                <ul class="tech-list" style="list-style: none;">
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Biological Proof-of-Work
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Emotional Energy Extraction
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; margin-bottom: 8px; font-size: 16px; color: #b8c5ff;">
+                                        <i data-feather="chevron-right" style="font-size: 16px; margin-right: 8px; color: #8a92ff; margin-top: 3px;"></i>Reality Rendering
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="flex justify-between items-center mt-8 max-w-4xl mx-auto">
+            <button onclick="previousSlide()" class="flex items-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                <i data-feather="chevron-left"></i>
+                <span>Previous</span>
+            </button>
+            
+            <div class="text-center">
+                <span class="text-sm text-gray-500">Slide <span id="current-slide">1</span> of 3</span>
+            </div>
+            
+            <button onclick="nextSlide()" class="flex items-center space-x-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                <span>Next</span>
+                <i data-feather="chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Keyboard Navigation Info -->
+        <div class="text-center mt-6">
+            <p class="text-sm text-gray-500">Use arrow keys or click navigation to change slides</p>
+        </div>
+    </main>
+
+    <footer class="bg-black text-gray-400 py-8 mt-16">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 Fin Nyx. All rights reserved.</p>
+            <p class="mt-2 text-gray-500">ISBN: 978-82-7346-414-8 (The Right to an Un-Modeled Self)</p>
+        </div>
+    </footer>
+    
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 6;
+
+        function showSlide(index) {
+            // Hide all slides
+            for (let i = 0; i < totalSlides; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                const nav = document.getElementById(`nav-${i}`);
+                if (slide) slide.style.display = 'none';
+                if (nav) nav.classList.remove('active', 'bg-red-500');
+                if (nav) nav.classList.add('bg-gray-400');
+            }
+            
+            // Show current slide
+            const currentSlideElement = document.getElementById(`slide-${index}`);
+            const currentNav = document.getElementById(`nav-${index}`);
+            if (currentSlideElement) currentSlideElement.style.display = 'block';
+            if (currentNav) {
+                currentNav.classList.remove('bg-gray-400');
+                currentNav.classList.add('active', 'bg-red-500');
+            }
+            
+            // Update slide counter
+            document.getElementById('current-slide').textContent = index + 1;
+            currentSlide = index;
+            
+            // Re-initialize feather icons for the new slide
+            feather.replace();
+        }
+
+        function nextSlide() {
+            const nextIndex = (currentSlide + 1) % totalSlides;
+            showSlide(nextIndex);
+        }
+
+        function previousSlide() {
+            const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(prevIndex);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+        });
+
+        // Auto-advance (optional - comment out if not wanted)
+        // setInterval(nextSlide, 10000);
+
+        // Initialize first slide
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(0);
+            feather.replace();
+        });
+    </script>
+</body>
+</html>

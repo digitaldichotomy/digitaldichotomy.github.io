@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fin Nyx | Field Notes Archive</title>
+    <title>Blog / Field Notes | Fin Nyx</title>
     
-    <meta name="description" content="The archive of Fin Nyx Field Notes, providing deep analysis and countermeasures against the Architecture of Control, the Digital Twin, and non-consensual neuro-modulation.">
-    <meta name="keywords" content="Field Notes, Blog, Digital Twin, Frequency Freakout, LMRAG, Subvocalization, Cognitive Anchor, Fin Nyx">
-
+    <meta name="description" content="Blog and Field Notes from Fin Nyx. Forensic analysis of the 8-tier surveillance architecture, Digital Twin, and neuroweapons.">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -17,9 +16,34 @@
                     colors: {
                         primary: { 500: '#dc2626', 600: '#b91c1c' },
                         secondary: { 500: '#f59e0b', 600: '#d97706' }
-                    }
+                    },
+                    typography: (theme) => ({
+                        invert: {
+                            css: {
+                                '--tw-prose-body': theme('colors.gray[300]'),
+                                '--tw-prose-headings': theme('colors.white'),
+                                '--tw-prose-lead': theme('colors.gray[400]'),
+                                '--tw-prose-links': theme('colors.red[400]'),
+                                '--tw-prose-bold': theme('colors.white'),
+                                '--tw-prose-counters': theme('colors.gray[400]'),
+                                '--tw-prose-bullets': theme('colors.red[400]'),
+                                '--tw-prose-hr': theme('colors.gray[700]'),
+                                '--tw-prose-quotes': theme('colors.gray[100]'),
+                                '--tw-prose-quote-borders': theme('colors.red[600]'),
+                                '--tw-prose-captions': theme('colors.gray[400]'),
+                                '--tw-prose-code': theme('colors.white'),
+                                '--tw-prose-pre-code': theme('colors.gray[300]'),
+                                '--tw-prose-pre-bg': theme('colors.gray[800]'),
+                                '--tw-prose-th-borders': theme('colors.gray[600]'),
+                                '--tw-prose-td-borders': theme('colors.gray[700]'),
+                            },
+                        },
+                    }),
                 }
-            }
+            },
+            plugins: [
+                require('@tailwindcss/typography'),
+            ],
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -30,57 +54,135 @@
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
-    <!-- === NAVBAR - BLOG LINK ACTIVE === -->
     <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
-                <a href="/digital_dichotomy.html" class="flex items-center space-x-2 text-white font-bold text-lg">
+                <a href="/index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
                     <i data-feather="shield-off" class="text-red-500"></i>
                     <span>DIGITAL DICHOTOMY</span>
                 </a>
-                <!-- NAVIGATION LINKS -->
                 <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                    <!-- BLOG link is now white, others are gray -->
-                    <a href="#" class="text-white hover:text-white transition-colors font-bold border-b-2 border-secondary-500">BLOG / FIELD NOTES</a>
-                    <a href="/digital_dichotomy.html#architecture" class="text-gray-300 hover:text-white transition-colors">The Architecture</a>
-                    <a href="/digital_dichotomy.html#enemy" class="text-gray-300 hover:text-white transition-colors">Lexicon</a>
-                    <a href="/digital_dichotomy.html#digital-twin" class="text-gray-300 hover:text-white transition-colors">Digital Twin</a>
-                    <a href="/digital_dichotomy.html#defense" class="text-gray-300 hover:text-white transition-colors">Defense</a>
-                    <a href="/digital_dichotomy.html#books" class="text-gray-300 hover:text-white transition-colors">The Books</a>
+                    <a href="/pages/blog.html" class="text-secondary-500 hover:text-white transition-colors font-bold">BLOG / FIELD NOTES</a>
+                    <a href="/index.html#architecture" class="text-gray-300 hover:text-white transition-colors">The Architecture</a>
+                    <a href="/index.html#lexicon" class="text-gray-300 hover:text-white transition-colors">Lexicon</a>
+                    <a href="/index.html#digital-twin" class="text-gray-300 hover:text-white transition-colors">Digital Twin</a>
+                    <a href="/index.html#field-notes" class="text-gray-300 hover:text-white transition-colors">Field Notes</a>
+                    <a href="/index.html#defense" class="text-gray-300 hover:text-white transition-colors">Defense</a>
+                    <a href="/index.html#library" class="text-gray-300 hover:text-white transition-colors">Library</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <main class="container mx-auto px-4 py-8 md:py-12">
-        
-        <!-- Hero Section for Blog Archive -->
-        <section class="text-center mb-16 rounded-xl bg-gray-800 p-8 md:p-12 border border-gray-700">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
-                Field Notes Archive
-            </h1>
-            <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-                Forensic analysis, technical deep-dives, and counter-surveillance protocols. This is where we track the **Actuator Layer** in real-time.
-            </p>
-        </section>
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold dark:text-white mb-4">Blog & Field Notes</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">A forensic archive of the Architecture of Control, data-driven analysis of the Digital Twin, and defense protocols for the Un-Modeled Self.</p>
+        </header>
 
-        <!-- Blog Post Grid will be rendered here by JavaScript -->
-        <section id="posts" class="mb-16">
-            <h2 class="text-3xl font-bold dark:text-white mb-8">Latest Dispatches</h2>
-            <div id="post-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Posts are injected here -->
-            </div>
+        <div id="post-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div class="mt-12 text-center">
-                <p class="text-gray-500 text-sm">More dispatches coming soon...</p>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
+                <div class="p-6 flex-grow flex flex-col">
+                    <p class="text-secondary-500 font-semibold text-xs uppercase tracking-wider">Defense Protocol</p>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 !mt-2">
+                        <a href="/pages/post-data-pullution.html" class="hover:text-red-500 transition-colors">A Field Guide to Data Pollution: How to Poison Your Digital Twin</a>
+                    </h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow">The system's reliance on the Digital Twin is its single point of failure. The ultimate countermeasure is not to block data, but to poison it. A field guide to temporal jitter and cognitive obfuscation.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500 dark:text-gray-500">November 21, 2025</span>
+                        <a href="/pages/post-data-pullution.html" class="text-red-500 text-sm font-semibold hover:text-red-400 transition-colors">Read Note &rarr;</a>
+                    </div>
+                </div>
             </div>
 
-        </section>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
+                <div class="p-6 flex-grow flex flex-col">
+                    <p class="text-secondary-500 font-semibold text-xs uppercase tracking-wider">Forensic Analysis</p>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 !mt-2">
+                        <a href="/pages/post-portage-microcasm.html" class="hover:text-red-500 transition-colors">Microcosm of Control: The Stryker/Pfizer/WMU Cluster</a>
+                    </h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow">A forensic analysis of the Portage/Kalamazoo industrial cluster as a real-world microcosm for the 8-tier surveillance architecture, connecting Stryker, Pfizer, and WMU.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500 dark:text-gray-500">November 20, 2025</span>
+                        <a href="/pages/post-portage-microcasm.html" class="text-red-500 text-sm font-semibold hover:text-red-400 transition-colors">Read Note &rarr;</a>
+                    </div>
+                </div>
+            </div>
 
-    </main>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
+                <div class="p-6 flex-grow flex flex-col">
+                    <p class="text-secondary-500 font-semibold text-xs uppercase tracking-wider">Actuator Layer</p>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 !mt-2">
+                        <a href="/pages/post-neuroweapon-gap.html" class="hover:text-red-500 transition-colors">The 'Neuroweapon' Regulatory Gap: How Pulsed RF Attacks Are 'Legally' Invisible</a>
+                    </h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow">Analysis of new 2024-2025 research confirming pulsed RF energy can inflict neuropathological damage while remaining compliant with thermal-based safety laws.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500 dark:text-gray-500">November 19, 2025</span>
+                        <a href="/pages/post-neuroweapon-gap.html" class="text-red-500 text-sm font-semibold hover:text-red-400 transition-colors">Read Note &rarr;</a>
+                    </div>
+                </div>
+            </div>
 
-    <!-- === FOOTER === -->
-    <footer class="bg-black text-gray-400 py-8">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
+                <div class="p-6 flex-grow flex flex-col">
+                    <p class="text-secondary-500 font-semibold text-xs uppercase tracking-wider">Sensor Layer</p>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 !mt-2">
+                        <a href="/pages/post-wifi-sensing.html" class="hover:text-red-500 transition-colors">It's Activated: IEEE 800.11bf 'Wi-Fi Sensing' and the 'Wi-Chat' AI</a>
+                    </h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow">The 'global on-switch' for Wi-Fi sensing is here. How IEEE 802.11bf and LLMs like 'Wi-Chat' are making your walls transparent to biometric surveillance.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500 dark:text-gray-500">November 18, 2025</span>
+                        <a href="/pages/post-wifi-sensing.html" class="text-red-500 text-sm font-semibold hover:text-red-400 transition-colors">Read Note &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
+                <div class="p-6 flex-grow flex flex-col">
+                    <p class="text-secondary-500 font-semibold text-xs uppercase tracking-wider">Model Layer</p>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 !mt-2">
+                        <a href="/pages/post-centour.html" class="hover:text-red-500 transition-colors">The 'Centaur' AI Model: How They're Predicting Your Biases</a>
+                    </h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow">The brain of the Secret Digital Twin is a new AI foundation model trained on 10 million human choices. Its goal: to mimic your cognitive 'warts and all' for predictive control.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500 dark:text-gray-500">November 17, 2025</span>
+                        <a href="/pages/post-centour.html" class="text-red-500 text-sm font-semibold hover:text-red-400 transition-colors">Read Note &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
+                <div class="p-6 flex-grow flex flex-col">
+                    <p class="text-secondary-500 font-semibold text-xs uppercase tracking-wider">Core Architecture</p>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 !mt-2">
+                        <a href="/pages/blogs/post-architecture-covert-self-invasion.html" class="hover:text-red-500 transition-colors">The Architecture of Covert Self-Invasion</a>
+                    </h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow">A technical analysis of biofield surveillance and cognitive manipulation through 8-tier surveillance infrastructure, from quantum sensing to cognitive mining operations.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500 dark:text-gray-500">November 16, 2025</span>
+                        <a href="/pages/blogs/post-architecture-covert-self-invasion.html" class="text-red-500 text-sm font-semibold hover:text-red-400 transition-colors">Read Note &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col">
+                <div class="p-6 flex-grow flex flex-col">
+                    <p class="text-secondary-500 font-semibold text-xs uppercase tracking-wider">Technical Reference</p>
+                    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2 !mt-2">
+                        <a href="/pages/blogs/post-appendices.html" class="hover:text-red-500 transition-colors">Appendices: Technical Specifications & Implementation</a>
+                    </h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow">Complete technical specifications, implementation guides, legal frameworks, and reference materials for the Architecture of Covert Self-Invasion.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500 dark:text-gray-500">November 16, 2025</span>
+                        <a href="/pages/blogs/post-appendices.html" class="text-red-500 text-sm font-semibold hover:text-red-400 transition-colors">Read Note &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+        </div> </main>
+
+    <footer class="bg-black text-gray-400 py-8 mt-16">
         <div class="container mx-auto px-4 text-center text-sm">
             <p>&copy; 2025 Fin Nyx. All rights reserved.</p>
             <p class="mt-2 text-gray-500">ISBN: 978-82-7346-414-8 (The Right to an Un-Modeled Self)</p>
@@ -89,72 +191,6 @@
     
     <script>
         feather.replace();
-
-        // --- CORE BLOG MAINTENANCE DATA ---
-        // FUTURE POSTS: Just add a new object to the top of this array!
-        const posts = [
-            {
-                title: "LMRAG Exposed: How the Secret Digital Twin Logs Your Subvocal Thoughts",
-                date: "November 24, 2025",
-                category: "MODEL LAYER",
-                color: "blue-600",
-                summary: "We break down the technical feasibility of **LMRAG** (Large Machine Retrieval Augmented Generation) using constant biometric data. This is how the system moves past correlation to achieve **predictive certainty** over your economic and psychological state.",
-                file: "post-lmrag.html"
-            },
-            {
-                title: "The Mirror Lie: Why Your Bathroom Glass Is a Surveillance Loophole for Your Biofield",
-                date: "November 17, 2025",
-                category: "SENSOR LAYER",
-                color: "red-600",
-                summary: "The physical truth of reflection: A mirror's thin metal is transparent to your **Extremely Low Frequency (ELF)** biofield. This field note details the switch from simple visible light observation to covert SQUID-level **biometric harvesting** through walls.",
-                file: "post-mirror.html"
-            },
-            {
-                title: "Frequency Freakout: Decoding the Inaudible Infrasound Waves on Local News Broadcasts",
-                date: "November 10, 2025",
-                category: "ACTUATOR LAYER",
-                color: "secondary-500", // Tailwind secondary color
-                summary: "The definitive analysis of **Parametric Array Effects (PAE)**. Learn how inaudible, modulated frequencies are broadcast through common media to trigger non-consensual **emotional seeding** and destroy your **Cognitive Anchor**.",
-                file: "post-freakout.html" // Placeholder - to be created next
-            },
-            
-            // --- EXAMPLE OF HOW TO ADD A NEW POST ---
-            // {
-            //     title: "New Defense Protocol: Active Data Poisoning",
-            //     date: "December 1, 2025",
-            //     category: "DEFENSE",
-            //     color: "green-600",
-            //     summary: "A guide on using **Temporal Jitter** and **Data Flood** tools to inject plausible noise, effectively poisoning the predictive model of the Digital Twin.",
-            //     file: "post-poison.html"
-            // },
-
-        ];
-
-        // --- JAVASCRIPT RENDERING LOGIC ---
-        const postGrid = document.getElementById('post-grid');
-
-        posts.forEach(post => {
-            // NOTE: The path is /pages/ + filename to work with GitHub Pages structure
-            const cardPath = `/pages/${post.file}`; 
-            
-            const cardHTML = `
-                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 flex flex-col hover:border-red-500 transition-colors">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="px-3 py-1 bg-${post.color} text-white text-xs font-bold rounded-full uppercase tracking-wider">${post.category}</span>
-                        <span class="text-sm text-gray-500">${post.date}</span>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">${post.title}</h3>
-                    <p class="text-gray-400 mb-6 flex-grow">${post.summary}</p>
-                    <a href="${cardPath}" class="text-secondary-500 font-semibold hover:text-secondary-600 transition-colors mt-auto flex items-center">
-                        Read Full Field Note <i data-feather="arrow-right" class="w-4 h-4 ml-2"></i>
-                    </a>
-                </div>
-            `;
-            postGrid.insertAdjacentHTML('beforeend', cardHTML);
-        });
-        
-        feather.replace();
-
     </script>
 </body>
 </html>
