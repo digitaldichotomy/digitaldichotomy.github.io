@@ -1,0 +1,60 @@
+{
+  "pages": [
+    {
+      "title": "Data Pollution Guide",
+      "url": "/pages/post-data-pullution.html",
+      "category": "Defense",
+      "keywords": ["data pollution", "temporal jitter", "cognitive obfuscation", "privacy", "surveillance countermeasures"],
+      "description": "The ultimate countermeasure is not to block data, but to poison it"
+    },
+    {
+      "title": "Wi-Fi Sensing & Wi-Chat AI",
+      "url": "/pages/post-wifi-sensing.html", 
+      "category": "Sensors",
+      "keywords": ["wifi sensing", "ieee 802.11bf", "through wall sensing", "biometric monitoring", "smart city"],
+      "description": "How IEEE 802.11bf and LLMs are making your walls transparent"
+    },
+    {
+      "title": "Neuroweapon Regulatory Gap",
+      "url": "/pages/post-neuroweapon-gap.html",
+      "category": "Weapons", 
+      "keywords": ["neuroweapon", "pulsed rf", "directed energy weapons", "neuro warfare", "cognitive influence"],
+      "description": "Analysis of pulsed RF energy attacks that remain compliant with safety laws"
+    },
+    {
+      "title": "Architecture of Covert Self-Invasion",
+      "url": "/pages/post-architecture-covert-self-invasion.html",
+      "category": "Core",
+      "keywords": ["architecture", "digital twin", "covert ban", "surveillance infrastructure", "predictive control"],
+      "description": "Technical analysis of biofield surveillance and cognitive manipulation"
+    },
+    {
+      "title": "The 'Centaur' AI Model",
+      "url": "/pages/post-centour.html",
+      "category": "AI",
+      "keywords": ["centaur", "ai model", "predictive control", "machine learning", "behavioral prediction"],
+      "description": "How AI foundation models trained on 10 million human choices predict your cognitive biases"
+    },
+    {
+      "title": "Technical Specifications",
+      "url": "/pages/post-appendices.html",
+      "category": "Reference",
+      "keywords": ["technical", "specifications", "implementation", "patents", "standards"],
+      "description": "Complete technical specs, implementation guides, and legal frameworks"
+    },
+    {
+      "title": "The Right to an Un-Modeled Self",
+      "url": "https://a.co/d/c7Y2zyJ?tag=digitaldichot-20",
+      "category": "Books",
+      "keywords": ["book", "unmodeled self", "cognitive liberty", "digital rights", "privacy"],
+      "description": "The complete forensic analysis of the 8-tier architecture of control"
+    },
+    {
+      "title": "Biological Sovereignty",
+      "url": "https://a.co/d/bLte3N9?tag=digitaldichot-20", 
+      "category": "Books",
+      "keywords": ["biological sovereignty", "neuro warfare", "mind control", "brain rights", "neurological freedom"],
+      "description": "The battle for your mind in the age of neuro-warfare"
+    }
+  ]
+}

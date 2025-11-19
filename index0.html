@@ -28,6 +28,53 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="components/navbar.js"></script>
+    <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+    
+    <style>
+        /* Error handling styles */
+        .img-error {
+            opacity: 0.7 !important;
+            border: 2px dashed #dc2626 !important;
+            background: #f8f8f8 !important;
+        }
+        
+        .video-error {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%) !important;
+            border: 2px dashed #dc2626 !important;
+        }
+        
+        .media-error-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: #9ca3af;
+            text-align: center;
+            min-height: 200px;
+        }
+        
+        .media-error-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+        
+        /* Accessibility improvements */
+        img[alt] {
+            transition: opacity 0.3s ease;
+        }
+        
+        img:focus {
+            outline: 2px solid #dc2626;
+            outline-offset: 2px;
+        }
+        
+        video:focus {
+            outline: 2px solid #dc2626;
+            outline-offset: 2px;
+        }
+    </style>
     <script src="components/footer.js"></script>
     <script src="components/publication-card.js"></script>
 </head>
@@ -186,7 +233,9 @@
                 <a href="https://finnyx.gumroad.com/l/okrlpi" target="_blank" class="group bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-2xl hover:scale-105 border border-gray-200 dark:border-gray-700">
                     <div class="relative h-64 md:h-80 overflow-hidden bg-gray-200 dark:bg-gray-700">
                         <img src="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/BY%20FIN%20NYX.png" 
-                             alt="The Transparent Self" 
+                             loading="lazy"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/444444/FFFFFF?text=The+Transparent+Self';this.classList.add('img-error');this.title='Image failed to load - showing placeholder';" 
+                             alt="The Transparent Self book cover by Fin Nyx - Encyclopedia of surveillance technologies and biological sovereignty" 
                              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </div>
@@ -203,7 +252,9 @@
                 <a href="https://finnyx.gumroad.com/l/crdxv" target="_blank" class="group bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-2xl hover:scale-105 border border-gray-200 dark:border-gray-700">
                     <div class="relative h-64 md:h-80 overflow-hidden bg-gray-200 dark:bg-gray-700">
                         <img src="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/Architecture%20of%20Covert%20Self-Invasion.png" 
-                             alt="Architecture Of Covert Self-Invasion" 
+                             loading="lazy"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/444444/FFFFFF?text=Architecture+of+Covert+Self-Invasion';this.classList.add('img-error');this.title='Image failed to load - showing placeholder';" 
+                             alt="Architecture Of Covert Self-Invasion book cover - Technical analysis of biofield surveillance and cognitive manipulation systems" 
                              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </div>
@@ -221,6 +272,10 @@
                 <a href="https://finnyx.gumroad.com/l/labqoy" target="_blank" class="group bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-2xl hover:scale-105 border border-gray-200 dark:border-gray-700">
                     <div class="relative h-64 md:h-80 overflow-hidden bg-gray-200 dark:bg-gray-700">
                         <img src="https://raw.githubusercontent.com/digitaldichotomy/digitaldichotomy.github.io/main/THE%20ALGORITHMIC%20SHADOW%20SURVEILLANCE%2C%20SOVEREINITY%2C%20AND%20THE%20CHOICE%20BEFORE%20US.png" 
+                             loading="lazy"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/444444/FFFFFF?text=The+Algorithmic+Shadow';this.classList.add('img-error');this.title='Image failed to load - showing placeholder';" 
+                             alt="The Algorithmic Shadow book cover - Surveillance, sovereignty, and choice before us in the digital age" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                              alt="The Algorithmic Shadow" 
                              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -402,5 +457,122 @@
     <custom-footer></custom-footer>
     <script>feather.replace();</script>
     <script src="script.js"></script>
+    
+    <script>
+        // Comprehensive media error handling
+        function initializeMediaErrorHandling() {
+            // Handle all images
+            document.querySelectorAll('img').forEach(img => {
+                // Add loading="lazy" if not present
+                if (!img.hasAttribute('loading')) {
+                    img.setAttribute('loading', 'lazy');
+                }
+                
+                // Enhanced error handling
+                img.addEventListener('error', function() {
+                    if (!this.classList.contains('img-error')) {
+                        this.classList.add('img-error');
+                        
+                        // Create fallback based on image context
+                        const fallbackSrc = generateFallbackImage(this);
+                        if (fallbackSrc && this.src !== fallbackSrc) {
+                            this.src = fallbackSrc;
+                        }
+                        
+                        // Add error title for accessibility
+                        this.title = 'Image failed to load - fallback image shown';
+                        
+                        // Log error for debugging
+                        console.warn('Image failed to load:', this.src);
+                    }
+                });
+                
+                // Add load success handling
+                img.addEventListener('load', function() {
+                    this.classList.remove('img-error');
+                    this.style.opacity = '1';
+                });
+                
+                // Improve alt text if missing or generic
+                if (!this.alt || this.alt.trim() === '') {
+                    this.alt = generateAltText(this);
+                }
+            });
+            
+            // Handle all videos
+            document.querySelectorAll('video').forEach(video => {
+                // Enhanced error handling
+                video.addEventListener('error', function() {
+                    handleVideoError(this);
+                });
+                
+                // Handle source errors
+                video.querySelectorAll('source').forEach(source => {
+                    source.addEventListener('error', function() {
+                        handleVideoError(this.parentElement);
+                    });
+                });
+            });
+        }
+        
+        function generateFallbackImage(img) {
+            const width = img.naturalWidth || 400;
+            const height = img.naturalHeight || 300;
+            const alt = img.alt || 'Image';
+            
+            // Generate contextual fallback text
+            let fallbackText = 'Image+Unavailable';
+            if (alt.includes('Book') || alt.includes('book')) {
+                fallbackText = 'Book+Cover';
+            } else if (alt.includes('Fin') || alt.includes('Nyx')) {
+                fallbackText = 'Fin+Nyx';
+            } else if (alt.includes('Architecture') || alt.includes('Shadow')) {
+                fallbackText = 'Book+Cover';
+            }
+            
+            return `https://placehold.co/${width}x${height}/444444/FFFFFF?text=${fallbackText}`;
+        }
+        
+        function generateAltText(img) {
+            const src = img.src.toLowerCase();
+            if (src.includes('book') || src.includes('cover')) {
+                return 'Book cover image';
+            } else if (src.includes('fin') || src.includes('nyx')) {
+                return 'Fin Nyx author image';
+            } else if (src.includes('architecture')) {
+                return 'Architecture diagram or illustration';
+            } else if (src.includes('shadow')) {
+                return 'Book cover image';
+            } else {
+                return 'Content image';
+            }
+        }
+        
+        function handleVideoError(video) {
+            if (!video.classList.contains('video-error')) {
+                video.classList.add('video-error');
+                video.style.display = 'none';
+                
+                // Create error message
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'media-error-message video-error';
+                errorDiv.innerHTML = `
+                    <div class="media-error-icon">⚠️</div>
+                    <h3>Video Unavailable</h3>
+                    <p>The video content could not be loaded. This may be due to network issues or an unsupported format.</p>
+                    <button onclick="this.parentElement.style.display='none';document.querySelector('video').style.display='block';document.querySelector('video').play();" 
+                            class="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors">
+                        Try Again
+                    </button>
+                `;
+                
+                video.parentElement.appendChild(errorDiv);
+                console.error('Video failed to load:', video.src);
+            }
+        }
+        
+        // Initialize media error handling when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeMediaErrorHandling);
+    </script>
 </body>
 </html>
