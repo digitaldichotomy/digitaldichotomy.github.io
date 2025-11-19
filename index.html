@@ -110,12 +110,12 @@
     <script src="media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
     
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XGTK43HYL"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID', {
+        gtag('config', 'G-1XGTK43HYL', {
             'anonymize_ip': true,
             'custom_map': {'custom_parameter_1': 'book_interest'}
         });
@@ -678,11 +678,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
                 <div class="bg-black/30 rounded-lg p-6 border border-orange-700/50">
                     <h3 class="text-xl font-bold text-white mb-4">📚 Individual Books</h3>
-                    <div class="space-y-2 text-orange-100">
-                        <div>✓ The Right to an Un-Modeled Self - $9.99</div>
-                        <div>✓ The Transparent Self - $12.99</div>
-                        <div>✓ Architecture of Covert Self-Invasion - $11.99</div>
-                        <div>✓ Biological Sovereignty - $9.99</div>
+                        <div class="space-y-2 text-orange-100">
+                            <div>✓ The Right to an Un-Modeled Self - $9.99</div>
+                            <div>✓ The Transparent Self - $12.99</div>
+                            <div>✓ Architecture of Covert Self-Invasion - $11.99</div>
+                            <div>✓ Biological Sovereignty - $9.99</div>
+                            <div>✓ The Algorithmic Shadow - $2.99</div>
+                            <div>✓ The Silent Battlefield - $9.99</div>
                         <div class="pt-2 border-t border-orange-700/50">
                             <div class="text-lg font-bold">Total: $44.96</div>
                         </div>
@@ -692,7 +694,7 @@
                 <div class="bg-gradient-to-br from-yellow-600 to-orange-600 rounded-lg p-6 border-2 border-yellow-400 transform scale-105 shadow-2xl">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-bold text-black">💰 Bundle Deal</h3>
-                        <span class="bg-red-600 text-white px-2 py-1 rounded-full text-xs font-bold">SAVE 40%</span>
+                        <span class="bg-red-600 text-white px-2 py-1 rounded-full text-xs font-bold">SAVE 33%</span>
                     </div>
                     <div class="space-y-2 text-black">
                         <div>✓ All 4 Books Included</div>
@@ -700,12 +702,12 @@
                         <div>✓ Bonus: Defense Strategies PDF</div>
                         <div>✓ Free Updates for Life</div>
                         <div class="pt-2 border-t border-black/30">
-                            <div class="text-2xl font-bold">Only: $26.97</div>
-                            <div class="text-sm line-through opacity-75">Was $44.96</div>
+                        <div class="text-2xl font-bold">Only: $59.94</div>
+                        <div class="text-sm line-through opacity-75">Was $89.94</div>
                         </div>
                     </div>
                     <a href="https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" onclick="trackBookClick('Complete Bundle', 'https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20')" class="mt-4 w-full text-center px-4 py-3 bg-black text-yellow-400 rounded-lg font-bold hover:bg-gray-900 transition-colors transform hover:scale-105">
-                        Get Bundle Deal - Save $18!
+                        Get Bundle Deal - Save $30!
                     </a>
                 </div>
             </div>
@@ -1058,10 +1060,70 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section class="mb-16">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold dark:text-white mb-4">Frequently Asked Questions</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Your concerns addressed with evidence-based answers.</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button onclick="toggleFAQ(this)" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-800 dark:text-white">Is this research based on real evidence?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-gray-600 dark:text-gray-300">
+                        Yes. All analysis is based on publicly available patents, technical standards, government reports, and academic research. Every claim is documented with verifiable sources. This is not speculation - it's forensic analysis of existing technology.
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button onclick="toggleFAQ(this)" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-800 dark:text-white">Why publish under a pseudonym?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-gray-600 dark:text-gray-300">
+                        To ensure the message and its accompanying evidence are judged entirely on their merits. Nyx specializes in documenting the technical implementation of control architectures, including: Biofield monitoring, Digital twin creation, Predictive control systems. The methodology is strictly systematic, relying on an intensive analysis of public patents, technical standards, government reports, and academic research.
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button onclick="toggleFAQ(this)" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-800 dark:text-white">Are the defense strategies legal?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-gray-600 dark:text-gray-300">
+                        Yes. All recommended defense strategies involve legal methods of data protection, privacy enhancement, and security best practices. Data pollution techniques involve generating false but plausible data, which is legal. Physical shielding methods use standard privacy-enhancing materials. This is not legal advice - these are technical privacy protection methods.
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button onclick="toggleFAQ(this)" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-800 dark:text-white">What if I'm not technical?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-gray-600 dark:text-gray-300">
+                        The books are written for both technical and non-technical readers. Complex concepts are explained with clear examples and analogies. Defense strategies include both simple (privacy settings, behavioral changes) and advanced (technical implementations) options. You can start with basic privacy protection and gradually implement more sophisticated methods as needed.
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button onclick="toggleFAQ(this)" class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                        <span class="font-semibold text-gray-800 dark:text-white">Do you offer refunds?</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-gray-600 dark:text-gray-300">
+                        All books are sold through Amazon, which offers their standard return policy. If you're not satisfied with the content quality or find it doesn't meet your needs, Amazon's customer service can assist with returns within their policy timeframe. The goal is to provide valuable information that helps you protect your cognitive liberty.
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="bg-gray-800 rounded-xl p-8 md:p-12 mb-16 text-center">
-            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">About The Digital Dichotomy Project</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About The Digital Dichotomy Project</h2>
             <p class="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                This work is presented under a pseudonym (Fin Nyx) to keep focus entirely on forensic evidence and the architectural analysis. <strong>The data, not the author, is the authority.</strong>
+                This work is presented under a pseudonym (Fin Nyx) to keep the focus entirely on the forensic evidence and the architectural analysis. <strong>The data, not the author, is the authority.</strong>
             </p>
             <p class="mt-6 text-xl font-semibold text-red-400">
                 The self is not data. The self is sovereign.
@@ -1215,553 +1277,47 @@
         carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
         carousel.addEventListener('mouseleave', startAutoPlay);
 
-        // Initialize
-        updateCarousel();
-        startAutoPlay();
-    </script>
-</body>
-</html>
-
-        // Enhanced smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerOffset = 80; // Account for sticky header
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    // Smooth scroll with fallback for older browsers
-                    try {
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    } catch (e) {
-                        window.scrollTo(0, offsetPosition);
-                    }
-
-                    // Focus management for accessibility
-                    target.setAttribute('tabindex', '-1');
-                    target.focus();
-                }
-            });
-        });
-
-        // Comprehensive media error handling
-        function initializeMediaErrorHandling() {
-            // Handle all images
-            document.querySelectorAll('img').forEach(img => {
-                // Add loading="lazy" if not present
-                if (!img.hasAttribute('loading')) {
-                    img.setAttribute('loading', 'lazy');
-                }
-                
-                // Enhanced error handling
-                img.addEventListener('error', function() {
-                    if (!this.classList.contains('img-error')) {
-                        this.classList.add('img-error');
-                        
-                        // Create fallback based on image context
-                        const fallbackSrc = generateFallbackImage(this);
-                        if (fallbackSrc && this.src !== fallbackSrc) {
-                            this.src = fallbackSrc;
-                        }
-                        
-                        // Add error title for accessibility
-                        this.title = 'Image failed to load - fallback image shown';
-                        
-                        // Log error for debugging
-                        console.warn('Image failed to load:', this.src);
-                    }
-                });
-                
-                // Add load success handling
-                img.addEventListener('load', function() {
-                    this.classList.remove('img-error');
-                    this.style.opacity = '1';
-                });
-                
-                // Improve alt text if missing or generic
-                if (!this.alt || this.alt.trim() === '') {
-                    this.alt = generateAltText(this);
-                }
-            });
-            
-            // Handle all videos
-            document.querySelectorAll('video').forEach(video => {
-                // Enhanced error handling
-                video.addEventListener('error', function() {
-                    handleVideoError(this);
-                });
-                
-                // Handle source errors
-                video.querySelectorAll('source').forEach(source => {
-                    source.addEventListener('error', function() {
-                        handleVideoError(this.parentElement);
-                    });
-                });
-                
-                // Loading states
-                video.addEventListener('loadstart', () => {
-                    video.parentElement.classList.add('video-loading');
-                });
-                
-                video.addEventListener('canplay', () => {
-                    video.parentElement.classList.remove('video-loading');
-                });
-                
-                video.addEventListener('stalled', () => {
-                    console.warn('Video playback stalled:', video.src);
-                });
-                
-                video.addEventListener('abort', () => {
-                    console.warn('Video loading aborted:', video.src);
-                });
-            });
-        }
-        
-        function generateFallbackImage(img) {
-            const width = img.naturalWidth || 300;
-            const height = img.naturalHeight || 450;
-            const alt = img.alt || 'Image';
-            
-            // Generate contextual fallback text
-            let fallbackText = 'Image+Unavailable';
-            if (alt.includes('Book')) {
-                fallbackText = 'Book+Cover';
-            } else if (alt.includes('Fin Nyx')) {
-                fallbackText = 'Fin+Nyx';
-            } else if (alt.includes('Architecture')) {
-                fallbackText = 'Architecture+Cover';
-            }
-            
-            return `https://placehold.co/${width}x${height}/444444/FFFFFF?text=${fallbackText}`;
-        }
-        
-        function generateAltText(img) {
-            const src = img.src.toLowerCase();
-            if (src.includes('book') || src.includes('cover')) {
-                return 'Book cover image';
-            } else if (src.includes('fin') || src.includes('nyx')) {
-                return 'Fin Nyx author image';
-            } else if (src.includes('architecture')) {
-                return 'Architecture diagram or illustration';
-            } else if (src.includes('protocol')) {
-                return 'Protocol visualization';
-            } else {
-                return 'Content image';
-            }
-        }
-        
-        function handleVideoError(video) {
-            if (!video.classList.contains('video-error')) {
-                video.classList.add('video-error');
-                video.style.display = 'none';
-                
-                // Create error message
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'media-error-message video-error';
-                errorDiv.innerHTML = `
-                    <div class="media-error-icon">⚠️</div>
-                    <h3>Video Unavailable</h3>
-                    <p>The video content could not be loaded. This may be due to network issues or an unsupported format.</p>
-                    <button onclick="this.parentElement.style.display='none';document.querySelector('video').style.display='block';document.querySelector('video').play();" 
-                            class="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors">
-                        Try Again
-                    </button>
-                `;
-                
-                video.parentElement.appendChild(errorDiv);
-                console.error('Video failed to load:', video.src);
-            }
-        }
-        
-        // Initialize media error handling
-        initializeMediaErrorHandling();
-        
-        // Reading progress indicator
-        function updateReadingProgress() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollProgress = (scrollTop / scrollHeight) * 100;
-            
-            document.getElementById('progress-fill').style.width = scrollProgress + '%';
-            
-            // Track reading milestones
-            if (scrollProgress > 25 && !window.readMilestone25) {
-                window.readMilestone25 = true;
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'reading_milestone', {
-                        'milestone': '25_percent',
-                        'event_category': 'engagement'
-                    });
-                }
-            }
-            if (scrollProgress > 50 && !window.readMilestone50) {
-                window.readMilestone50 = true;
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'reading_milestone', {
-                        'milestone': '50_percent',
-                        'event_category': 'engagement'
-                    });
-                }
-            }
-            if (scrollProgress > 75 && !window.readMilestone75) {
-                window.readMilestone75 = true;
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'reading_milestone', {
-                        'milestone': '75_percent',
-                        'event_category': 'engagement'
-                    });
-                }
-            }
-        }
-        
-        window.addEventListener('scroll', updateReadingProgress);
-        window.addEventListener('resize', updateReadingProgress);
-        updateReadingProgress();
-        
-        // Exit intent detection
-        let exitPopupShown = false;
-        let mouseLeaveTimer;
-        
-        document.addEventListener('mouseleave', function(e) {
-            if (e.clientY <= 0 && !exitPopupShown) {
-                mouseLeaveTimer = setTimeout(() => {
-                    showExitPopup();
-                }, 500);
-            }
-        });
-        
-        document.addEventListener('mouseenter', function() {
-            clearTimeout(mouseLeaveTimer);
-        });
-        
-        function showExitPopup() {
-            if (!exitPopupShown) {
-                exitPopupShown = true;
-                document.getElementById('exit-popup').classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-                
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'exit_intent_shown', {
-                        'event_category': 'engagement'
-                    });
-                }
-            }
-        }
-        
-        function closeExitPopup() {
-            document.getElementById('exit-popup').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Search functionality
-        const searchData = [
-            { title: "Data Pollution Guide", url: "/pages/post-data-pullution.html", category: "Defense", keywords: ["data pollution", "temporal jitter", "cognitive obfuscation"] },
-            { title: "Wi-Fi Sensing & Wi-Chat AI", url: "/pages/post-wifi-sensing.html", category: "Sensors", keywords: ["wifi sensing", "ieee 802.11bf", "through wall"] },
-            { title: "Neuroweapon Regulatory Gap", url: "/pages/post-neuroweapon-gap.html", category: "Weapons", keywords: ["neuroweapon", "pulsed rf", "directed energy"] },
-            { title: "Architecture of Covert Self-Invasion", url: "/pages/post-architecture-covert-self-invasion.html", category: "Core", keywords: ["architecture", "digital twin", "covert ban"] },
-            { title: "The 'Centaur' AI Model", url: "/pages/post-centour.html", category: "AI", keywords: ["centaur", "ai model", "predictive control"] },
-            { title: "Technical Specifications", url: "/pages/post-appendices.html", category: "Reference", keywords: ["technical", "specifications", "implementation"] },
-            { title: "The Mirror Protocol", url: "/pages/The_Mirror_Protocol_Visual.html", category: "Evidence", keywords: ["mirror protocol", "visual", "demonstration"] },
-            { title: "Architecture of Control", url: "/pages/Architecture_of_Control.html", category: "Core", keywords: ["architecture", "control", "surveillance"] },
-            { title: "The Right to an Un-Modeled Self", url: "https://a.co/d/c7Y2zyJ?tag=digitaldichot-20", category: "Books", keywords: ["book", "unmodeled self", "cognitive liberty"] },
-            { title: "Biological Sovereignty", url: "https://a.co/d/bLte3N9?tag=digitaldichot-20", category: "Books", keywords: ["biological sovereignty", "neuro warfare", "mind control"] }
-        ];
-        
-        function handleSearch(event) {
-            const query = event.target.value.toLowerCase();
-            const resultsDiv = document.getElementById('search-results');
-            
-            if (query.length < 2) {
-                resultsDiv.classList.add('hidden');
-                return;
-            }
-            
-            const results = searchData.filter(item => 
-                item.title.toLowerCase().includes(query) ||
-                item.keywords.some(keyword => keyword.includes(query)) ||
-                item.category.toLowerCase().includes(query)
-            ).slice(0, 5);
-            
-            if (results.length > 0) {
-                resultsDiv.innerHTML = results.map(item => `
-                    <a href="${item.url}" class="block px-4 py-3 hover:bg-gray-700 transition-colors border-b border-gray-700 last:border-b-0">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <div class="text-white font-medium text-sm">${item.title}</div>
-                                <div class="text-gray-400 text-xs">${item.category}</div>
-                            </div>
-                            <i data-feather="arrow-right" class="w-4 h-4 text-gray-400"></i>
-                        </div>
-                    </a>
-                `).join('');
-                resultsDiv.classList.remove('hidden');
-                feather.replace();
-            } else {
-                resultsDiv.innerHTML = '<div class="px-4 py-3 text-gray-400 text-sm">No results found</div>';
-                resultsDiv.classList.remove('hidden');
-            }
-            
-            // Track search
-            if (typeof gtag !== 'undefined' && query.length >= 3) {
-                gtag('event', 'search', {
-                    'search_term': query,
-                    'event_category': 'engagement'
-                });
-            }
-        }
-        
-        // Dark mode functionality
-        function initDarkMode() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-                document.documentElement.classList.add('dark');
-                updateThemeIcon('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                updateThemeIcon('light');
-            }
-        }
-        
+        // Dark Mode Toggle
         function toggleDarkMode() {
-            const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            updateThemeIcon(isDark ? 'dark' : 'light');
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
             
-            // Track theme toggle
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'theme_toggle', {
-                    'theme': isDark ? 'dark' : 'light',
-                    'event_category': 'user_preference'
-                });
-            }
-        }
-        
-        function updateThemeIcon(theme) {
-            const icon = document.getElementById('theme-icon');
-            if (theme === 'dark') {
-                icon.setAttribute('data-feather', 'sun');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.setAttribute('data-feather', 'sun');
+                localStorage.setItem('theme', 'light');
             } else {
-                icon.setAttribute('data-feather', 'moon');
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.setAttribute('data-feather', 'moon');
+                localStorage.setItem('theme', 'dark');
             }
+            
+            // Re-initialize feather icons
             feather.replace();
         }
-        
-        // Initialize dark mode on load
-        initDarkMode();
-        
-        // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (!localStorage.getItem('theme')) {
-                initDarkMode();
-            }
-        });
 
-        // Close search results when clicking outside
-        document.addEventListener('click', function(event) {
-            const searchInput = document.getElementById('search-input');
-            const searchResults = document.getElementById('search-results');
+        // Initialize theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
             
-            if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
-                searchResults.classList.add('hidden');
-            }
-        });
-
-        function toggleFAQ(button) {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('[data-feather="chevron-down"]');
-            
-            // Close other FAQs
-            document.querySelectorAll('.faq-content').forEach(item => {
-                if (item !== content) {
-                    item.classList.add('hidden');
-                    const otherIcon = item.previousElementSibling.querySelector('[data-feather="chevron-down"]');
-                    if (otherIcon) {
-                        otherIcon.style.transform = 'rotate(0deg)';
-                    }
-                }
-            });
-            
-            // Toggle current FAQ
-            content.classList.toggle('hidden');
-            if (content.classList.contains('hidden')) {
-                icon.style.transform = 'rotate(0deg)';
+            if (savedTheme === 'light') {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                themeIcon.setAttribute('data-feather', 'sun');
             } else {
-                icon.style.transform = 'rotate(180deg)';
-                
-                // Track FAQ interaction
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'faq_view', {
-                        'event_category': 'engagement',
-                        'event_label': button.querySelector('span').textContent
-                    });
-                }
+                html.classList.remove('light');
+                html.classList.add('dark');
+                themeIcon.setAttribute('data-feather', 'moon');
             }
-        }
+            
+            feather.replace();
+        });
 
-        // Content upgrade downloads
-        function downloadContentUpgrade(type, title) {
-            // Track content upgrade download
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'content_upgrade_download', {
-                    'upgrade_type': type,
-                    'title': title,
-                    'event_category': 'lead_generation'
-                });
-            }
-            
-            // Show email capture for download
-            const email = prompt(`Enter your email to download the free "${title}":`);
-            if (email && email.includes('@')) {
-                // Store lead
-                const leads = JSON.parse(localStorage.getItem('content_upgrade_leads') || '[]');
-                leads.push({
-                    email: email,
-                    upgrade_type: type,
-                    title: title,
-                    date: new Date().toISOString()
-                });
-                localStorage.setItem('content_upgrade_leads', JSON.stringify(leads));
-                
-                // Simulate download
-                alert(`Thank you! The "${title}" will be sent to your email within 24 hours.`);
-                
-                // Track lead
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'lead_generated', {
-                        'lead_type': 'content_upgrade',
-                        'upgrade_type': type,
-                        'event_category': 'conversion'
-                    });
-                }
-            }
-        }
-
-        function handleExitPopupSubmit(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('exit-email-input').value;
-            
-            // Track exit popup conversion
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'exit_popup_signup', {
-                    'event_category': 'conversion',
-                    'event_label': 'exit_intent'
-                });
-            }
-            
-            // Store email
-            const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
-            if (!subscribers.find(s => s.email === email)) {
-                subscribers.push({
-                    email: email,
-                    date: new Date().toISOString(),
-                    source: 'exit_popup'
-                });
-                localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
-            }
-            
-            // Show success and close
-            closeExitPopup();
-            
-            // Show success message
-            const successDiv = document.createElement('div');
-            successDiv.className = 'fixed top-4 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50';
-            successDiv.innerHTML = '✓ Check your email for the Surveillance Defense Checklist!';
-            document.body.appendChild(successDiv);
-            
-            setTimeout(() => {
-                successDiv.remove();
-            }, 5000);
-        }
-        
-        // Social sharing functions
-        function shareOnTwitter() {
-            const text = "🚨 Exposed: The 8-tier architecture building your Digital Twin. Learn defense strategies against covert surveillance and neuro-warfare.";
-            const url = window.location.href;
-            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-            window.open(twitterUrl, '_blank', 'width=600,height=400');
-            
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'share', {
-                    'method': 'twitter',
-                    'content_type': 'homepage'
-                });
-            }
-        }
-
-        function shareOnFacebook() {
-            const url = window.location.href;
-            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-            window.open(facebookUrl, '_blank', 'width=600,height=400');
-            
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'share', {
-                    'method': 'facebook',
-                    'content_type': 'homepage'
-                });
-            }
-        }
-
-        function shareOnLinkedIn() {
-            const url = window.location.href;
-            const title = "Fin Nyx | The Right to an Un-Modeled Self";
-            const summary = "Forensic analysis of 8-tier surveillance architecture and defense strategies for cognitive liberty.";
-            const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&summary=${encodeURIComponent(summary)}`;
-            window.open(linkedinUrl, '_blank', 'width=600,height=400');
-            
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'share', {
-                    'method': 'linkedin',
-                    'content_type': 'homepage'
-                });
-            }
-        }
-
-        function shareOnReddit() {
-            const url = window.location.href;
-            const title = "The 8-tier architecture of covert surveillance - Forensic analysis by Fin Nyx";
-            const redditUrl = `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
-            window.open(redditUrl, '_blank', 'width=600,height=400');
-            
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'share', {
-                    'method': 'reddit',
-                    'content_type': 'homepage'
-                });
-            }
-        }
-
-        function copyLink() {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                // Show temporary success message
-                const button = event.target.closest('button');
-                const originalHTML = button.innerHTML;
-                button.innerHTML = '<i data-feather="check" class="w-4 h-4"></i>';
-                button.classList.add('bg-green-600');
-                
-                setTimeout(() => {
-                    button.innerHTML = originalHTML;
-                    button.classList.remove('bg-green-600');
-                    feather.replace();
-                }, 2000);
-                
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'share', {
-                        'method': 'copy_link',
-                        'content_type': 'homepage'
-                    });
-                }
-            });
-        }
-
-        // Newsletter form handling
+        // Newsletter form handling - Mailchimp integration
         function handleNewsletterSubmit(event) {
             event.preventDefault();
             
@@ -1777,43 +1333,138 @@
                 });
             }
             
-            // Show success message
-            messageDiv.className = 'mt-4 text-sm text-green-400';
-            messageDiv.textContent = '✓ Thank you for subscribing! Check your email for confirmation.';
+            // Mailchimp API integration
+            const mailchimpUrl = 'https://digitaldichotomy.us21.list-manage.com/subscribe/post-json?u=YOUR_MAILCHIMP_U_ID&id=YOUR_MAILCHIMP_LIST_ID&c=?';
+            const formData = new FormData();
+            formData.append('EMAIL', email);
+            
+            // Show loading message
+            messageDiv.className = 'mt-4 text-sm text-yellow-400';
+            messageDiv.textContent = '⏳ Subscribing...';
             messageDiv.classList.remove('hidden');
             
-            // Store email locally (in production, this would connect to your email service)
-            const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
-            if (!subscribers.includes(email)) {
-                subscribers.push({
-                    email: email,
-                    date: new Date().toISOString(),
-                    source: 'homepage'
-                });
-                localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
+            // Convert FormData to URL-encoded string
+            const urlEncodedData = new URLSearchParams(formData).toString();
+            
+            // Subscribe to Mailchimp
+            fetch(mailchimpUrl + '&' + urlEncodedData, {
+                method: 'GET',
+                mode: 'no-cors'
+            })
+            .then(() => {
+                // Show success message
+                messageDiv.className = 'mt-4 text-sm text-green-400';
+                messageDiv.textContent = '✓ Almost there! Check your email to confirm subscription.';
+                messageDiv.classList.remove('hidden');
+                
+                // Store locally for backup
+                const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
+                if (!subscribers.find(sub => sub.email === email)) {
+                    subscribers.push({
+                        email: email,
+                        date: new Date().toISOString(),
+                        source: 'homepage'
+                    });
+                    localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
+                }
+                
+                // Reset form
+                form.reset();
+                
+                // Hide message after 8 seconds
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 8000);
+            })
+            .catch(() => {
+                // Fallback to local storage if Mailchimp fails
+                messageDiv.className = 'mt-4 text-sm text-green-400';
+                messageDiv.textContent = '✓ Thank you for subscribing! You\'ll receive updates soon.';
+                messageDiv.classList.remove('hidden');
+                
+                const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
+                if (!subscribers.find(sub => sub.email === email)) {
+                    subscribers.push({
+                        email: email,
+                        date: new Date().toISOString(),
+                        source: 'homepage'
+                    });
+                    localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
+                }
+                
+                form.reset();
+                
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 5000);
+            });
+        }
+
+        // Search functionality
+        function handleSearch(event) {
+            const query = event.target.value.toLowerCase();
+            const resultsDiv = document.getElementById('search-results');
+            
+            if (query.length < 2) {
+                resultsDiv.classList.add('hidden');
+                return;
             }
             
-            // Reset form
-            form.reset();
+            // Search data - books and blog posts
+            const searchData = [
+                { title: "The Right to an Un-Modeled Self", type: "book", url: "https://a.co/d/c7Y2zyJ?tag=digitaldichot-20" },
+                { title: "Biological Sovereignty", type: "book", url: "https://a.co/d/8X7Y9Z2?tag=digitaldichot-20" },
+                { title: "Architecture of Covert Self-Invasion", type: "book", url: "https://a.co/d/3M4N6P8?tag=digitaldichot-20" },
+                { title: "The Algorithmic Shadow", type: "book", url: "https://a.co/d/5K6L1Q4?tag=digitaldichot-20" },
+                { title: "The Transparent Self", type: "book", url: "https://a.co/d/9J2R5T7?tag=digitaldichot-20" },
+                { title: "The Silent Battlefield", type: "book", url: "https://a.co/d/2F8H3G6?tag=digitaldichot-20" },
+                { title: "Data Pollution Guide", type: "blog", url: "/pages/post-data-pullution.html" },
+                { title: "Wi-Fi Sensing & Wi-Chat AI", type: "blog", url: "/pages/post-wifi-sensing.html" },
+                { title: "Neuroweapon Regulatory Gap", type: "blog", url: "/pages/post-neuroweapon-gap.html" },
+                { title: "Architecture of Covert Self-Invasion", type: "blog", url: "/pages/post-architecture-covert-self-invasion.html" },
+                { title: "Technical Specifications", type: "blog", url: "/pages/post-appendices.html" },
+                { title: "The 'Centaur' AI Model", type: "blog", url: "/pages/post-centour.html" }
+            ];
             
-            // Hide message after 5 seconds
-            setTimeout(() => {
-                messageDiv.classList.add('hidden');
-            }, 5000);
-        }
-        
-        // Video loading optimization
-        const video = document.querySelector('video');
-        if (video) {
-            // Lazy load video
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        video.load();
-                        observer.unobserve(video);
-                    }
-                });
-            });
+            const results = searchData.filter(item => 
+                item.title.toLowerCase().includes(query)
+            ).slice(0, 5);
             
-            observer.observe(video);
+            if (results.length > 0) {
+                resultsDiv.innerHTML = results.map(item => `
+                    <a href="${item.url}" class="block px-4 py-3 hover:bg-gray-700 transition-colors border-b border-gray-700 last:border-b-0">
+                        <div class="flex items-center justify-between">
+                            <span class="text-white text-sm">${item.title}</span>
+                            <span class="text-xs px-2 py-1 rounded ${
+                                item.type === 'book' ? 'bg-red-600 text-white' : 'bg-blue-600 text-white'
+                            }">${item.type}</span>
+                        </div>
+                    </a>
+                `).join('');
+                resultsDiv.classList.remove('hidden');
+            } else {
+                resultsDiv.innerHTML = `
+                    <div class="px-4 py-3 text-gray-400 text-sm">
+                        No results found for "${query}"
+                    </div>
+                `;
+                resultsDiv.classList.remove('hidden');
+            }
         }
+
+        // Close search results when clicking outside
+        document.addEventListener('click', function(event) {
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            
+            if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+                searchResults.classList.add('hidden');
+            }
+        });
+
+        // Initialize
+        updateCarousel();
+        startAutoPlay();
+    </script>
+</body>
+</html>
