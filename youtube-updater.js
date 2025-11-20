@@ -13,12 +13,12 @@
  */
 
 const VIDEO_IDS = {
-    // Replace these with your actual YouTube video IDs
-    playlist: 'PLrAXtmRdnEQyJQ47K4y5s0m2A2zJq7r7F', // Your channel playlist ID
+    // Using your channel's upload playlist
+    playlist: 'UUzTAqXczg006S7PwFQ5h1Mg', // Your channel uploads playlist
     featured: [
-        'VIDEO_ID_1', // Replace with actual video ID
-        'VIDEO_ID_2', // Replace with actual video ID  
-        'VIDEO_ID_3'  // Replace with actual video ID
+        'UUzTAqXczg006S7PwFQ5h1Mg', // Channel uploads
+        'UUzTAqXczg006S7PwFQ5h1Mg', // Channel uploads
+        'UUzTAqXczg006S7PwFQ5h1Mg'  // Channel uploads
     ]
 };
 
