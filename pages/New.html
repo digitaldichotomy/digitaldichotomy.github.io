@@ -1,0 +1,966 @@
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import { Sun, Moon, Menu, X, ChevronDown, ChevronRight, BookOpen, Shield, Eye, Users, BarChart3, Zap, Globe, Database, Lock, AlertTriangle } from 'lucide-react';
+
+const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const [expandedSections, setExpandedSections] = useState({});
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  useEffect(() => {
+    document.querySelectorAll('[data-ref]').forEach(el => {
+      // Skip if already processed
+      if (el.dataset.citationProcessed) return;
+      
+      const refData = el.getAttribute('data-ref');
+      if (!refData?.trim()) return;
+
+      // Parse format: "url|indexNumber" e.g., "https://example.com|1"
+      const separatorIndex = refData.indexOf('|');
+      if (separatorIndex === -1) return;
+      
+      const url = refData.substring(0, separatorIndex).trim();
+      const indexNum = refData.substring(separatorIndex + 1).trim();
+
+      // Only add citation if element has text content
+      if (!el.textContent?.trim()) return;
+
+      const btn = document.createElement('sup');
+      btn.textContent = String(indexNum);
+      
+      Object.assign(btn.style, {
+        fontSize: '8px', top: '1%', color: '#fff', cursor: 'pointer', fontWeight: 'bold',
+        backgroundColor: '#0284c7', borderRadius: '50%', transition: 'all .2s',
+        userSelect: 'none', minWidth: '18px', height: '18px', marginLeft: '2px',
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        boxShadow: '0 1px 3px rgba(0,0,0,.2)', fontFamily: 'system-ui,-apple-system,sans-serif',
+        lineHeight: '1', verticalAlign: 'baseline', padding: '0 2px'
+      });
+
+      btn.onmouseenter = () => Object.assign(btn.style, { backgroundColor: '#0369a1', transform: 'scale(1.15)', boxShadow: '0 2px 6px rgba(0,0,0,.3)' });
+      btn.onmouseleave = () => Object.assign(btn.style, { backgroundColor: '#0284c7', transform: 'scale(1)', boxShadow: '0 1px 3px rgba(0,0,0,.2)' });
+      btn.onclick = e => { e.stopPropagation(); e.preventDefault(); window.open(url, '_blank'); };
+
+      el.appendChild(btn);
+      
+      // Mark as processed
+      el.dataset.citationProcessed = 'true';
+    });
+  }, []);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const toggleSection = (sectionId) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [sectionId]: !prev[sectionId]
+    }));
+  };
+
+  const navItems = [
+    { id: 'intro', label: 'Introduction', icon: BookOpen },
+    { id: 'threat-modeling', label: 'Threat Modeling', icon: Shield },
+    { id: 'surveillance-tech', label: 'Surveillance Technologies', icon: Eye },
+    { id: 'facial-recognition', label: 'Facial Recognition', icon: Users },
+    { id: 'predictive-policing', label: 'Predictive Policing', icon: BarChart3 },
+    { id: 'iot-security', label: 'IoT Security', icon: Zap },
+    { id: 'regulatory-framework', label: 'Regulatory Framework', icon: Globe },
+    { id: 'conclusion', label: 'Conclusion', icon: AlertTriangle }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map(item => document.getElementById(item.id));
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            setActiveSection(section.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'}`}>
+      {/* Progress bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-blue-500 transform-origin-left z-50"
+        style={{ scaleX }}
+      />
+
+      {/* Floating Header */}
+      <header className={`fixed top-0 left-0 right-0 z-40 backdrop-blur-md transition-colors duration-300 ${
+        darkMode ? 'bg-gray-900/80 border-b border-gray-700' : 'bg-white/80 border-b border-gray-200'
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                Surveillance Technology Research
+              </h1>
+            </div>
+            
+            <nav className="hidden md:flex space-x-8">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className={`flex items-center space-x-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                      activeSection === item.id
+                        ? darkMode ? 'text-blue-400 bg-gray-800' : 'text-blue-600 bg-gray-100'
+                        : darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                    }`}
+                  >
+                    <Icon size={16} />
+                    <span>{item.label}</span>
+                  </a>
+                );
+              })}
+            </nav>
+
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={toggleDarkMode}
+                className={`p-2 rounded-full transition-colors ${
+                  darkMode ? 'text-yellow-400 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className={`md:hidden p-2 rounded-md transition-colors ${
+                  darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className={`md:hidden border-t ${darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-gray-50'}`}>
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      activeSection === item.id
+                        ? darkMode ? 'text-blue-400 bg-gray-700' : 'text-blue-600 bg-gray-200'
+                        : darkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Icon size={18} />
+                    <span>{item.label}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* Main Content */}
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section id="intro" className={`py-20 ${darkMode ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-blue-50 to-indigo-50'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h1 className={`text-4xl md:text-6xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                Emerging Surveillance Technologies
+              </h1>
+              <p className={`text-xl md:text-2xl mb-8 max-w-4xl mx-auto ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                A comprehensive analysis of modern surveillance and data collection technologies, their capabilities, implications, and regulatory frameworks
+              </p>
+              
+              <img 
+                src="https://cdn.qwenlm.ai/wV14g691f52c47d9b7f22000ffc1040a2/06b3e5ba-3eae-4d51-81ad-5ec327e5b324/07f44709-358c-4854-a9f6-2aa2b0ae6d4a.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoid1YxNGc2OTFmNTJjNDdkOWI3ZjIyMDAwZmZjMTA0MGEyIiwicmVzb3VyY2VfaWQiOiIwNmIzZTViYS0zZWFlLTRkNTEtODFhZC01ZWMzMjdlNWIzMjQiLCJyZXNvdXJjZV9jaGF0X2lkIjpudWxsfQ.Ru2PWD95O9Mu0hMpUEOxTXSUgDemmCBB2VMtti41fN0" 
+                alt="A modern digital surveillance control room with multiple large screens displaying real-time data feeds, facial recognition interfaces, and network monitoring dashboards. The room features dark lighting with blue and green accent lighting on the screens, showing various data visualizations including heat maps, network diagrams, and biometric data streams. The environment appears professional with security personnel monitoring the systems. The overall aesthetic is futuristic and high-tech, emphasizing the complexity of modern surveillance infrastructure."
+                className="w-full max-w-4xl mx-auto rounded-xl shadow-2xl mb-8"
+                data-ref="https://www.igi-global.com/chapter/modern-advancements-in-surveillance-systems-and-technologies/362349|41"
+              />
+              
+              <p className={`text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                This research examines the capabilities, implications, and architecture of emerging surveillance technologies
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Threat Modeling Section */}
+        <section id="threat-modeling" className={`py-16 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <button 
+                  onClick={() => toggleSection('threat-modeling')}
+                  className="flex items-center justify-center w-full"
+                >
+                  Threat Modeling Frameworks
+                  {expandedSections['threat-modeling'] ? <ChevronDown className="ml-2" /> : <ChevronRight className="ml-2" />}
+                </button>
+              </h2>
+              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Systematic approaches to identifying and mitigating security risks in surveillance systems
+              </p>
+            </div>
+
+            {expandedSections['threat-modeling'] && (
+              <div className="grid md:grid-cols-2 gap-8 mb-12">
+                <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                  <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    STRIDE Methodology
+                  </h3>
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                    The STRIDE methodology, developed by Microsoft, identifies threats across six categories: Spoofing (violates Authentication), Tampering (Integrity), Repudiation (Non-Repudiation), Information Disclosure (Confidentiality), Denial of Service (Availability), and Elevation of Privilege (Authorization)
+                  </p>
+                  <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li>• Spoofing - Pretending to be someone else</li>
+                    <li>• Tampering - Unauthorized data modification</li>
+                    <li>• Repudiation - Denial of actions without audit trails</li>
+                    <li>• Information Disclosure - Exposing data to unauthorized parties</li>
+                    <li>• Denial of Service - Overloading resources to disrupt service</li>
+                    <li>• Elevation of Privilege - Gaining unauthorized permissions</li>
+                  </ul>
+                </div>
+
+                <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                  <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                    Four Question Framework
+                  </h3>
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                    The Four Question Framework in threat modeling consists of: (1) What are we working on? (2) What can go wrong? (3) What are we going to do about it? (4) Did we do a good job? This framework helps organize the threat modeling process across different levels of abstraction and system lifecycles.
+                  </p>
+                  <div className="space-y-2">
+                    <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-blue-50'}`}>
+                      <p className={`font-medium ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>Question 1: What are we working on?</p>
+                    </div>
+                    <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-green-50'}`}>
+                      <p className={`font-medium ${darkMode ? 'text-green-300' : 'text-green-700'}`}>Question 2: What can go wrong?</p>
+                    </div>
+                    <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-yellow-50'}`}>
+                      <p className={`font-medium ${darkMode ? 'text-yellow-300' : 'text-yellow-700'}`}>Question 3: What are we going to do about it?</p>
+                    </div>
+                    <div className={`p-3 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-purple-50'}`}>
+                      <p className={`font-medium ${darkMode ? 'text-purple-300' : 'text-purple-700'}`}>Question 4: Did we do a good job?</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  PASTA Framework
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  PASTA (Process for Attack Simulation and Threat Analysis) is a risk-focused, seven-stage threat modeling methodology that emphasizes business context and prioritizes high-impact threats. The stages are: 1) Identify assets and define application architecture, 2) Define threat environment, 3) Decompose application functionally and analyze exploitable weaknesses, 4) Identify key attack scenarios, 5) Conduct structured analysis using STRIDE, 6) Identify threat agents, and 7) Prioritize and mitigate threats.
+                </p>
+              </div>
+
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  DREAD Scoring
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  DREAD is a Microsoft-developed threat scoring framework that assesses risks based on five components: Damage potential, Reproducibility, Exploitability, Affected users, and Discoverability; each threat is rated from 1 to 10 per component, and the total score determines priority for mitigation.
+                </p>
+              </div>
+
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  CVSS System
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  Common Vulnerability Scoring System (CVSS), standardized by NIST, evaluates vulnerabilities using a severity scale up to 10; the process includes identifying vulnerabilities, gathering information, assigning base scores, optionally determining environmental scores, prioritizing, mitigating risks, and continuous monitoring.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Surveillance Technologies Section */}
+        <section id="surveillance-tech" className={`py-16 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <button 
+                  onClick={() => toggleSection('surveillance-tech')}
+                  className="flex items-center justify-center w-full"
+                >
+                  Modern Surveillance Technologies
+                  {expandedSections['surveillance-tech'] ? <ChevronDown className="ml-2" /> : <ChevronRight className="ml-2" />}
+                </button>
+              </h2>
+              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Advanced surveillance systems integrating AI, IoT, and cloud technologies
+              </p>
+            </div>
+
+            {expandedSections['surveillance-tech'] && (
+              <div className="mb-12">
+                <img 
+                  src="https://cdn.qwenlm.ai/wV14g691f52c47d9b7f22000ffc1040a2/06b3e5ba-3eae-4d51-81ad-5ec327e5b324/9b1fc28b-b511-4e75-94cd-be29d9dd219d.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoid1YxNGc2OTFmNTJjNDdkOWI3ZjIyMDAwZmZjMTA0MGEyIiwicmVzb3VyY2VfaWQiOiIwNmIzZTViYS0zZWFlLTRkNTEtODFhZC01ZWMzMjdlNWIzMjQiLCJyZXNvdXJjZV9jaGF0X2lkIjpudWxsfQ.Ru2PWD95O9Mu0hMpUEOxTXSUgDemmCBB2VMtti41fN0" 
+                  alt="A comprehensive visualization of modern surveillance infrastructure showing interconnected systems. The image displays a cityscape with multiple surveillance cameras, drones in flight, data centers with glowing server racks, and network connections represented by light trails. The scene includes facial recognition interfaces, real-time data dashboards, and biometric scanning devices. The color scheme features dark blues and purples with bright accent lights showing the flow of data and information. The overall composition emphasizes the interconnected nature of modern surveillance technologies."
+                  className="w-full rounded-xl shadow-lg mb-8"
+                  data-ref="http://www.milestonesys.com/resources/content/articles/video-surveillance-trends-cloud-iot-ai/|48"
+                />
+              </div>
+            )}
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Video-Surveillance-as-a-Service (VSaaS)
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  VSaaS is a cloud-based subscription model that eliminates upfront hardware investments, enables scalability, remote accessibility, and secure data transmission via encryption. Platforms like Arcules offer centralized management of live/recorded video, alarms, and analytics across distributed locations through a hybrid approach combining cloud flexibility with on-premises reliability.
+                </p>
+                <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <li>• Eliminates upfront hardware investments</li>
+                  <li>• Enables scalability and remote accessibility</li>
+                  <li>• Provides secure data transmission via encryption</li>
+                  <li>• Offers centralized management capabilities</li>
+                </ul>
+              </div>
+
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  AI-Powered Video Analytics
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  AI-powered video surveillance enables predictive security, facial recognition for access control and tracking, Automatic License Plate Recognition (ALPR) for real-time vehicle identification and watchlist cross-referencing, object detection (e.g., weapons, unattended bags), and automation of monitoring tasks.
+                </p>
+                <ul className={`space-y-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <li>• Predictive security capabilities</li>
+                  <li>• Facial recognition for access control</li>
+                  <li>• Automatic License Plate Recognition</li>
+                  <li>• Real-time object detection</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-8 grid md:grid-cols-3 gap-6">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  IoT Integration
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  The Internet of Things (IoT) enhances video surveillance through interconnected devices like cameras, sensors, and smart locks, enabling real-time monitoring, automation, and improved situational awareness.
+                </p>
+              </div>
+
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Edge Computing
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  Edge computing constraints on surveillance devices limit deep learning model deployment, necessitating lightweight models, model compression, and hierarchical edge-cloud strategies for real-time performance.
+                </p>
+              </div>
+
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  5G Networks
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  5G networks enable faster data transmission and high-quality video streaming across distributed surveillance systems, supporting more intelligent and responsive security ecosystems.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Facial Recognition Section */}
+        <section id="facial-recognition" className={`py-16 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <button 
+                  onClick={() => toggleSection('facial-recognition')}
+                  className="flex items-center justify-center w-full"
+                >
+                  Facial Recognition Technology
+                  {expandedSections['facial-recognition'] ? <ChevronDown className="ml-2" /> : <ChevronRight className="ml-2" />}
+                </button>
+              </h2>
+              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Advanced biometric systems for identity verification and surveillance applications
+              </p>
+            </div>
+
+            {expandedSections['facial-recognition'] && (
+              <div className="mb-12">
+                <img 
+                  src="https://cdn.qwenlm.ai/wV14g691f52c47d9b7f22000ffc1040a2/06b3e5ba-3eae-4d51-81ad-5ec327e5b324/5e8b99a3-0a4b-4737-9a15-f5a69919e23d.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoid1YxNGc2OTFmNTJjNDdkOWI3ZjIyMDAwZmZjMTA0MGEyIiwicmVzb3VyY2VfaWQiOiIwNmIzZTViYS0zZWFlLTRkNTEtODFhZC01ZWMzMjdlNWIzMjQiLCJyZXNvdXJjZV9jaGF0X2lkIjpudWxsfQ.Ru2PWD95O9Mu0hMpUEOxTXSUgDemmCBB2VMtti41fN0" 
+                  alt="A detailed visualization of facial recognition technology showing the technical process. The image displays a person's face with overlay markers showing key facial feature points, algorithmic processing elements, and data flow paths. The background features a clean, scientific layout with technical diagrams showing neural network processing, feature extraction, and matching algorithms. The color scheme uses blue and green tones to represent data processing, with red highlights for security aspects. The overall design emphasizes the technical sophistication of facial recognition systems."
+                  className="w-full rounded-xl shadow-lg mb-8"
+                  data-ref="https://pmc.ncbi.nlm.nih.gov/articles/PMC11856072/|56"
+                />
+              </div>
+            )}
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Technology and Applications
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  Facial recognition technology (FRT) identifies individuals by analyzing facial features from images or videos, with applications in law enforcement, border control, access control, mobile authentication, and targeted advertising. Advancements in deep learning, particularly convolutional neural networks (CNNs), have significantly improved accuracy, often surpassing human performance on benchmark datasets as of 2018.
+                </p>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-blue-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
+                    Key Applications:
+                  </h4>
+                  <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li>• Law enforcement and suspect identification</li>
+                    <li>• Border control and identity verification</li>
+                    <li>• Access control for secure facilities</li>
+                    <li>• Mobile phone authentication</li>
+                    <li>• Targeted advertising systems</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Privacy and Regulatory Concerns
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  The European Union's General Data Protection Regulation (GDPR), effective since 2018, governs personal data processing, including biometric data such as facial images. Article 9 classifies biometric data as special category data, prohibiting its use for identification without explicit consent or legal exemptions. The proposed Commercial Facial Recognition Privacy Act of 2019 would prohibit commercial entities from using FRT for identification or tracking without affirmative user consent.
+                </p>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-red-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-red-300' : 'text-red-700'}`}>
+                    Regulatory Frameworks:
+                  </h4>
+                  <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li>• GDPR in the European Union</li>
+                    <li>• Illinois Biometric Information Privacy Act</li>
+                    <li>• California Consumer Privacy Act</li>
+                    <li>• Proposed federal legislation</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Clearview AI Case Study
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  Clearview AI, founded in 2016 and based in New York, scraped over three billion facial images from social media and public websites to build a biometric database used by more than 600 U.S. law enforcement agencies including the FBI and Department of Homeland Security. The company faced legal challenges in Illinois, Vermont, New York, and Virginia, and received cease-and-desist letters from Twitter and Google over unauthorized data collection practices.
+                </p>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-yellow-50'}`}>
+                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-yellow-300' : 'text-yellow-700'}`}>
+                      Legal Challenges:
+                    </h4>
+                    <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <li>• Violations of BIPA in Illinois</li>
+                      <li>• Canadian privacy law violations</li>
+                      <li>• Cease-and-desist from social platforms</li>
+                    </ul>
+                  </div>
+                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-green-50'}`}>
+                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-green-300' : 'text-green-700'}`}>
+                      Regulatory Actions:
+                    </h4>
+                    <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <li>• Swedish police fined 2.5 million SEK</li>
+                      <li>• Canadian privacy authority findings</li>
+                      <li>• Municipal bans in US cities</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Predictive Policing Section */}
+        <section id="predictive-policing" className={`py-16 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <button 
+                  onClick={() => toggleSection('predictive-policing')}
+                  className="flex items-center justify-center w-full"
+                >
+                  Predictive Policing Systems
+                  {expandedSections['predictive-policing'] ? <ChevronDown className="ml-2" /> : <ChevronRight className="ml-2" />}
+                </button>
+              </h2>
+              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Algorithmic approaches to forecasting crime and identifying high-risk individuals
+              </p>
+            </div>
+
+            {expandedSections['predictive-policing'] && (
+              <div className="mb-12">
+                <img 
+                  src="https://cdn.qwenlm.ai/wV14g691f52c47d9b7f22000ffc1040a2/06b3e5ba-3eae-4d51-81ad-5ec327e5b324/588fc2a5-98a8-4872-8841-64282566d86a.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoid1YxNGc2OTFmNTJjNDdkOWI3ZjIyMDAwZmZjMTA0MGEyIiwicmVzb3VyY2VfaWQiOiIwNmIzZTViYS0zZWFlLTRkNTEtODFhZC01ZWMzMjdlNWIzMjQiLCJyZXNvdXJjZV9jaGF0X2lkIjpudWxsfQ.Ru2PWD95O9Mu0hMpUEOxTXSUgDemmCBB2VMtti41fN0" 
+                  alt="A visualization of predictive policing analytics showing crime prediction maps and data analysis interfaces. The image displays a city map with highlighted high-risk zones, algorithmic processing elements, and statistical analysis charts. The interface shows heat maps, trend analysis, and predictive models with various data points and forecasting elements. The color scheme uses red and orange for high-risk areas, blue for analytical elements, and white for interface components. The overall design emphasizes the data-driven nature of predictive policing systems."
+                  className="w-full rounded-xl shadow-lg mb-8"
+                  data-ref="https://vce.usc.edu/volume-5-issue-3/pitfalls-of-predictive-policing-an-ethical-analysis/|28"
+                />
+              </div>
+            )}
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  System Architecture and Implementation
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  Predictive policing involves using machine-learning models on historical crime data and additional inputs such as social media content, CCTV footage, biometrics, demographic indicators, socio-economic metrics, weather, and traffic patterns to forecast when and where crimes are likely to occur; it falls into two categories: location-based (predicting high-risk areas/times) and person-based (identifying individuals or groups more likely to commit or be victims of crime).
+                </p>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-blue-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
+                    Key Components:
+                  </h4>
+                  <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li>• Historical crime data analysis</li>
+                    <li>• Real-time data integration</li>
+                    <li>• Machine learning algorithms</li>
+                    <li>• Predictive modeling systems</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Ethical Concerns and Bias
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  Algorithmic bias arises because predictive models rely on historical crime data shaped by systemic biases and discriminatory policing; this leads to over-policing in minority neighborhoods, reinforcing existing inequalities and generating feedback loops where increased police presence yields more recorded crime, further skewing future predictions.
+                </p>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-red-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-red-300' : 'text-red-700'}`}>
+                    Bias Issues:
+                  </h4>
+                  <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li>• Historical data bias</li>
+                    <li>• Feedback loops</li>
+                    <li>• Disproportionate targeting</li>
+                    <li>• Racial profiling concerns</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Case Studies and Real-World Applications
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      Chicago's Strategic Subject List
+                    </h4>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      Chicago's Strategic Subject List (SSL) combines crime data with social network analysis to identify people at high risk for involvement in gun violence; a study found mixed results on its effectiveness in reducing gun violence, raising concerns about fairness and equity despite some evidence of crime reduction.
+                    </p>
+                  </div>
+                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      Los Angeles Strategic Extraction and Restoration
+                    </h4>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      The LASER program identified 124 individuals as potential repeat offenders, of whom 87 were arrested at least once for similar crimes within the subsequent period, indicating short-term operational effectiveness but raising concerns about targeting criteria.
+                    </p>
+                  </div>
+                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      International Examples
+                    </h4>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      Japan has used intelligent police tools based on deep learning since before the 2020 Tokyo Olympic Games; the Crime Nabi system, developed by a private start-up, is claimed to be over 50 percent more effective than conventional policing tactics in identifying high-risk areas.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* IoT Security Section */}
+        <section id="iot-security" className={`py-16 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <button 
+                  onClick={() => toggleSection('iot-security')}
+                  className="flex items-center justify-center w-full"
+                >
+                  IoT Security and Surveillance
+                  {expandedSections['iot-security'] ? <ChevronDown className="ml-2" /> : <ChevronRight className="ml-2" />}
+                </button>
+              </h2>
+              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Security frameworks for interconnected surveillance devices and sensors
+              </p>
+            </div>
+
+            {expandedSections['iot-security'] && (
+              <div className="mb-12">
+                <img 
+                  src="https://cdn.qwenlm.ai/wV14g691f52c47d9b7f22000ffc1040a2/06b3e5ba-3eae-4d51-81ad-5ec327e5b324/1d4db2eb-b00f-4392-8e83-d3a1578191c8.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoid1YxNGc2OTFmNTJjNDdkOWI3ZjIyMDAwZmZjMTA0MGEyIiwicmVzb3VyY2VfaWQiOiIwNmIzZTViYS0zZWFlLTRkNTEtODFhZC01ZWMzMjdlNWIzMjQiLCJyZXNvdXJjZV9jaGF0X2lkIjpudWxsfQ.Ru2PWD95O9Mu0hMpUEOxTXSUgDemmCBB2VMtti41fN0" 
+                  alt="A visualization of IoT security architecture showing interconnected devices, sensors, and security protocols. The image displays various IoT devices like cameras, sensors, and gateways connected through secure networks. The visualization includes security layers, encryption elements, and threat detection systems. The color scheme uses blue for secure connections, red for security alerts, and green for trusted devices. The overall design emphasizes the complexity and security requirements of IoT surveillance networks."
+                  className="w-full rounded-xl shadow-lg mb-8"
+                  data-ref="https://www.researchgate.net/figure/surveillance-system-architecture_fig1_371834994|23"
+                />
+              </div>
+            )}
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  IoT Device Identification Systems
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  The US11115799B1 patent describes a system for IoT device discovery and identification that uses network traffic analysis to classify devices. The system employs a hybrid approach combining rule-based methods with machine learning techniques, including supervised and unsupervised learning models such as neural networks (multi-layer perceptron with convolutional neural network) and extreme gradient boosting (XGB).
+                </p>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-blue-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
+                    Technical Components:
+                  </h4>
+                  <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li>• Network traffic analysis</li>
+                    <li>• Machine learning classification</li>
+                    <li>• Pattern ID generation</li>
+                    <li>• Passive AAA functionality</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Anomaly Detection Systems
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  IoT-PRIDS is a host-based anomaly detection system for IoT networks that leverages 'packet representations'—a fixed-size vector summarizing key header fields, communication patterns, and service usage—to create baseline profiles of normal device behavior using only benign traffic. It maps packets to representations by extracting and engineering features from Layer 2–5 headers.
+                </p>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-green-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-green-300' : 'text-green-700'}`}>
+                    Detection Capabilities:
+                  </h4>
+                  <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li>• Web attack detection</li>
+                    <li>• Reconnaissance detection</li>
+                    <li>• DoS/DDoS protection</li>
+                    <li>• High efficiency performance</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Environmental Monitoring Applications
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  IoT-based environmental pollution monitoring systems integrate sensing, communication, and real-time data processing in environmental surveillance. These systems follow a four-layer model: (1) Perception layer uses sensors to collect data, (2) Transmission layer employs protocols like Zigbee, Wi-Fi, Bluetooth, (3) Computation layer processes data using platforms like Arduino, Raspberry Pi, and (4) Application layer delivers real-time monitoring interfaces.
+                </p>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-yellow-50'}`}>
+                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-yellow-300' : 'text-yellow-700'}`}>
+                      Sensor Technologies:
+                    </h4>
+                    <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <li>• Air quality sensors</li>
+                      <li>• Water quality monitors</li>
+                      <li>• Soil contamination detectors</li>
+                      <li>• Noise pollution sensors</li>
+                    </ul>
+                  </div>
+                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-600' : 'bg-purple-50'}`}>
+                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-purple-300' : 'text-purple-700'}`}>
+                      Communication Protocols:
+                    </h4>
+                    <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <li>• Zigbee for low power</li>
+                      <li>• LoRaWAN for long range</li>
+                      <li>• Wi-Fi for high bandwidth</li>
+                      <li>• Bluetooth for proximity</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Regulatory Framework Section */}
+        <section id="regulatory-framework" className={`py-16 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <button 
+                  onClick={() => toggleSection('regulatory-framework')}
+                  className="flex items-center justify-center w-full"
+                >
+                  Regulatory Framework and Standards
+                  {expandedSections['regulatory-framework'] ? <ChevronDown className="ml-2" /> : <ChevronRight className="ml-2" />}
+                </button>
+              </h2>
+              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Legal frameworks and standards governing surveillance technology deployment
+              </p>
+            </div>
+
+            {expandedSections['regulatory-framework'] && (
+              <div className="mb-12">
+                <img 
+                  src="https://cdn.qwenlm.ai/wV14g691f52c47d9b7f22000ffc1040a2/06b3e5ba-3eae-4d51-81ad-5ec327e5b324/dc45c783-e168-4e69-b903-ee277e9121a4.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoid1YxNGc2OTFmNTJjNDdkOWI3ZjIyMDAwZmZjMTA0MGEyIiwicmVzb3VyY2VfaWQiOiIwNmIzZTViYS0zZWFlLTRkNTEtODFhZC01ZWMzMjdlNWIzMjQiLCJyZXNvdXJjZV9jaGF0X2lkIjpudWxsfQ.Ru2PWD95O9Mu0hMpUEOxTXSUgDemmCBB2VMtti41fN0" 
+                  alt="A visualization of regulatory compliance frameworks for surveillance technology. The image shows interconnected legal documents, compliance checklists, and regulatory oversight elements. The design includes icons representing GDPR, CCPA, and other regulatory frameworks, with flow diagrams showing compliance processes. The color scheme uses official document colors like navy blue, deep green, and gold accents to represent legal and regulatory elements. The overall composition emphasizes the complexity and importance of regulatory compliance in surveillance technology."
+                  className="w-full rounded-xl shadow-lg mb-8"
+                  data-ref="https://www.epo.org/en/searching-for-patents/business/technology-insight-reports|36"
+                />
+              </div>
+            )}
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Privacy Regulations
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  The European Union's General Data Protection Regulation (GDPR) classifies biometric data as a special category of personal data, requiring explicit consent for processing and granting individuals the right to object, providing stronger protections than many U.S. frameworks. The Illinois Biometric Information Privacy Act (BIPA), enacted in 2008, regulates private entities by requiring informed written consent before collecting biometric data, prohibiting sale or profit from such data, and mandating protection equivalent to confidential information.
+                </p>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-blue-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
+                    Key Regulations:
+                  </h4>
+                  <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li>• GDPR - EU data protection</li>
+                    <li>• BIPA - Illinois biometric privacy</li>
+                    <li>• CCPA - California consumer privacy</li>
+                    <li>• EU AI Act - Artificial intelligence</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Patent and Innovation Framework
+                </h3>
+                <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                  There were 10 times as many AI patent applications published worldwide in 2019 as in 2013, with the majority of these applications still awaiting examination as of the report's publication. From 2009 to 2019, the Chinese patent office saw a 500 percent increase in AI patent applications, 90 percent of which were domestic; during the same period, the U.S. patent office experienced a 35 percent increase in AI patent applications, with 48 percent being domestic filings.
+                </p>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-green-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-green-300' : 'text-green-700'}`}>
+                    Innovation Trends:
+                  </h4>
+                  <ul className={`space-y-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <li>• Exponential patent growth</li>
+                    <li>• Geographic distribution</li>
+                    <li>• Technology specialization</li>
+                    <li>• Legal framework evolution</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  International Standards and Compliance
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      NIST Frameworks
+                    </h4>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      NIST collaborates with standards-developing organizations by providing expert input; for example, after investigating structural failures like the World Trade Center and Champlain Towers South, NIST provides safety recommendations that groups such as the International Code Council may translate into building codes and standards.
+                    </p>
+                  </div>
+                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      ISO Standards
+                    </h4>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      International standards bodies include the International Organization for Standardization (ISO), the International Electrotechnical Commission (IEC), and ASTM International, all of which collaborate globally with public and private entities to develop standards for surveillance and security technologies.
+                    </p>
+                  </div>
+                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                      Compliance Requirements
+                    </h4>
+                    <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      Regulatory compliance for surveillance systems includes data protection, privacy impact assessments, transparency requirements, and accountability mechanisms. Organizations must implement appropriate technical and organizational measures to ensure compliance with applicable laws and regulations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Conclusion Section */}
+        <section id="conclusion" className={`py-16 ${darkMode ? 'bg-gradient-to-br from-gray-800 to-gray-900' : 'bg-gradient-to-br from-blue-50 to-indigo-50'}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                <button 
+                  onClick={() => toggleSection('conclusion')}
+                  className="flex items-center justify-center w-full"
+                >
+                  Conclusion and Future Outlook
+                  {expandedSections['conclusion'] ? <ChevronDown className="ml-2" /> : <ChevronRight className="ml-2" />}
+                </button>
+              </h2>
+              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                Key findings and recommendations for responsible surveillance technology deployment
+              </p>
+            </div>
+
+            {expandedSections['conclusion'] && (
+              <div className="mb-12">
+                <img 
+                  src="https://cdn.qwenlm.ai/wV14g691f52c47d9b7f22000ffc1040a2/06b3e5ba-3eae-4d51-81ad-5ec327e5b324/0a259151-f7af-4cac-ba1a-8c9602ca3737.png?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXNvdXJjZV91c2VyX2lkIjoid1YxNGc2OTFmNTJjNDdkOWI3ZjIyMDAwZmZjMTA0MGEyIiwicmVzb3VyY2VfaWQiOiIwNmIzZTViYS0zZWFlLTRkNTEtODFhZC01ZWMzMjdlNWIzMjQiLCJyZXNvdXJjZV9jaGF0X2lkIjpudWxsfQ.Ru2PWD95O9Mu0hMpUEOxTXSUgDemmCBB2VMtti41fN0" 
+                  alt="A forward-looking visualization of future surveillance technology trends. The image shows emerging technologies like quantum computing, advanced AI, and next-generation sensors integrated into a futuristic cityscape. The visualization includes concepts like privacy-preserving technologies, ethical AI frameworks, and sustainable surveillance solutions. The color scheme uses futuristic blues and purples with accent lighting representing innovation and progress. The overall design emphasizes the balance between technological advancement and ethical considerations."
+                  className="w-full rounded-xl shadow-lg mb-8"
+                  data-ref="https://www.igi-global.com/chapter/modern-advancements-in-surveillance-systems-and-technologies/362349|41"
+                />
+              </div>
+            )}
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Key Findings
+                </h3>
+                <ul className={`space-y-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <li className="flex items-start">
+                    <Lock className="flex-shrink-0 mt-1 mr-3 text-blue-500" size={20} />
+                    <span>Modern surveillance systems integrate AI, IoT, and cloud technologies to create comprehensive monitoring capabilities</span>
+                  </li>
+                  <li className="flex items-start">
+                    <AlertTriangle className="flex-shrink-0 mt-1 mr-3 text-yellow-500" size={20} />
+                    <span>Significant privacy and civil liberties concerns exist, particularly regarding facial recognition and predictive policing</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Shield className="flex-shrink-0 mt-1 mr-3 text-green-500" size={20} />
+                    <span>Threat modeling frameworks like STRIDE and PASTA provide systematic approaches to identifying security risks</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Globe className="flex-shrink-0 mt-1 mr-3 text-purple-500" size={20} />
+                    <span>Regulatory frameworks vary significantly across jurisdictions, creating compliance challenges</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className={`p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Recommendations
+                </h3>
+                <ul className={`space-y-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <li className="flex items-start">
+                    <Database className="flex-shrink-0 mt-1 mr-3 text-blue-500" size={20} />
+                    <span>Implement privacy-by-design principles in all surveillance technology development</span>
+                  </li>
+                  <li className="flex items-start">
+                    <Users className="flex-shrink-0 mt-1 mr-3 text-green-500" size={20} />
+                    <span>Establish community oversight and accountability mechanisms</span>
+                  </li>
+                  <li className="flex items-start">
+                    <BarChart3 className="flex-shrink-0 mt-1 mr-3 text-yellow-500" size={20} />
+                    <span>Conduct regular bias audits and impact assessments</span>
+                  </li>
+                  <li className="flex items-start">
+                    <BookOpen className="flex-shrink-0 mt-1 mr-3 text-purple-500" size={20} />
+                    <span>Develop comprehensive regulatory frameworks addressing emerging technologies</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className={`mt-8 p-6 rounded-xl shadow-lg ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+              <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                Future Research Directions
+              </h3>
+              <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+                The research indicates that privacy violations include unauthorized capture of private residences by traffic cameras, invasive employee monitoring, drone surveillance of private gatherings, and mass data collection programs revealed by Edward Snowden in 2013. Such practices often occur without consent or transparency, undermining individual autonomy and trust.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-blue-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
+                    Privacy-Preserving Technologies
+                  </h4>
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    End-to-end encryption, homomorphic encryption, anonymization/data masking, blockchain for tamper-evident logs, and differential privacy
+                  </p>
+                </div>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-green-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-green-300' : 'text-green-700'}`}>
+                    Ethical AI Development
+                  </h4>
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Fairness-aware machine learning, bias mitigation techniques, transparent algorithmic decision-making, and human-in-the-loop systems
+                  </p>
+                </div>
+                <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-purple-50'}`}>
+                  <h4 className={`font-semibold mb-2 ${darkMode ? 'text-purple-300' : 'text-purple-700'}`}>
+                    Regulatory Innovation
+                  </h4>
+                  <p className={`${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    International standards for cross-border data flows, real-time compliance monitoring, and adaptive regulatory frameworks
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className={`py-8 ${darkMode ? 'bg-gray-800 border-t border-gray-700' : 'bg-gray-50 border-t border-gray-200'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              Comprehensive Research on Emerging Surveillance Technologies
+            </p>
+            <p className={`mt-2 text-sm ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>
+              All content sourced from publicly available research and documentation
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
