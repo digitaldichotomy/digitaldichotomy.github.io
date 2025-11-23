@@ -48,24 +48,38 @@
             background: #6b7280;
         }
         
-        /* Threat level animations */
+        /* High contrast improvements */
+        .patent-card {
+            background: #1f2937 !important;
+            border: 2px solid #374151 !important;
+            color: #f9fafb !important;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .patent-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.8);
+            border-color: #4b5563 !important;
+            background: #111827 !important;
+        }
+        
+        /* Threat level improvements */
         .threat-critical {
             animation: pulse-red 2s infinite;
+            border-color: #dc2626 !important;
         }
         @keyframes pulse-red {
             0%, 100% { border-color: #dc2626; }
             50% { border-color: #ef4444; }
         }
         
-        /* Patent card hover effects */
-        .patent-card {
-            transition: all 0.3s ease;
-            transform-style: preserve-3d;
-        }
-        .patent-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-        }
+        /* Text contrast fixes */
+        .text-gray-300 { color: #d1d5db !important; }
+        .text-gray-400 { color: #9ca3af !important; }
+        .text-gray-500 { color: #6b7280 !important; }
+        .text-gray-600 { color: #4b5563 !important; }
+        .text-gray-700 { color: #374151 !important; }
+        .text-gray-800 { color: #1f2937 !important; }
         
         /* Modal backdrop blur */
         .modal-backdrop {
@@ -225,7 +239,7 @@
     </section>
 
     <!-- Results Summary -->
-    <section class="p-4 bg-gray-900 border-b border-gray-700">
+    <section class="p-4 bg-gray-800 border-b border-gray-700">
         <div class="container mx-auto">
             <div class="flex justify-between items-center">
                 <div class="text-sm text-gray-300">
@@ -240,7 +254,7 @@
     </section>
 
     <!-- Patent Grid -->
-    <main class="p-6">
+    <main class="p-6 bg-gray-900">
         <div class="container mx-auto">
             <div id="patent-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Patent cards will be dynamically inserted here -->
@@ -265,7 +279,7 @@
     <div id="patent-modal" class="fixed inset-0 z-50 hidden">
         <div class="modal-backdrop absolute inset-0 bg-black/80"></div>
         <div class="relative flex items-center justify-center min-h-screen p-4">
-            <div class="modal-content bg-gray-900 rounded-xl border border-gray-700 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="modal-content bg-gray-800 rounded-xl border border-gray-600 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
                 <!-- Modal content will be dynamically inserted here -->
             </div>
         </div>

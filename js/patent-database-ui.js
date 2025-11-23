@@ -52,7 +52,7 @@ class PatentDatabaseUI {
         const feasibilityStars = this.getFeasibilityStars(patent.countermeasures);
         
         return `
-            <article class="patent-card bg-gray-800 rounded-lg p-6 border-2 ${threatBorder} hover:shadow-xl transition-all duration-300 cursor-pointer focus-visible" 
+            <article class="patent-card rounded-lg p-6 border-2 ${threatBorder} hover:shadow-xl transition-all duration-300 cursor-pointer focus-visible" 
                  tabindex="0"
                  role="button"
                  aria-label="View details for ${patent.title}"
@@ -195,30 +195,30 @@ class PatentDatabaseUI {
                 <div class="p-6 space-y-6">
                     <!-- Threat Analysis -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div class="bg-red-900/20 p-4 rounded-lg border border-red-800">
-                            <h3 class="text-red-400 font-bold mb-3 flex items-center gap-2">
+                        <div class="bg-red-900/40 p-4 rounded-lg border border-red-700">
+                            <h3 class="text-red-300 font-bold mb-3 flex items-center gap-2">
                                 <i data-feather="alert-triangle" class="w-5 h-5"></i>
                                 Why It's Alarming
                             </h3>
-                            <p class="text-sm text-gray-300 leading-relaxed">${patent.alarmingReason}</p>
+                            <p class="text-sm text-gray-200 leading-relaxed">${patent.alarmingReason}</p>
                         </div>
                         
-                        <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
-                            <h3 class="text-gray-400 font-bold mb-3 flex items-center gap-2">
+                        <div class="bg-gray-700 p-4 rounded-lg border border-gray-600">
+                            <h3 class="text-gray-300 font-bold mb-3 flex items-center gap-2">
                                 <i data-feather="cpu" class="w-5 h-5"></i>
                                 Technical Details
                             </h3>
-                            <p class="text-sm text-gray-300 font-mono leading-relaxed">${patent.technicalDetail}</p>
+                            <p class="text-sm text-gray-200 font-mono leading-relaxed">${patent.technicalDetail}</p>
                         </div>
                     </div>
 
                     <!-- Static Analysis -->
-                    <div class="bg-gray-900 p-4 rounded-lg border border-gray-700">
-                        <h3 class="text-gray-400 font-bold mb-3 flex items-center gap-2">
+                    <div class="bg-gray-800 p-4 rounded-lg border border-gray-600">
+                        <h3 class="text-gray-300 font-bold mb-3 flex items-center gap-2">
                             <i data-feather="file-text" class="w-5 h-5"></i>
                             Intelligence Analysis
                         </h3>
-                        <p class="text-sm text-gray-300 leading-relaxed">${patent.staticAnalysis}</p>
+                        <p class="text-sm text-gray-200 leading-relaxed">${patent.staticAnalysis}</p>
                     </div>
 
                     <!-- Defense Countermeasures -->
@@ -275,9 +275,9 @@ class PatentDatabaseUI {
         const feasibilityStars = this.getFeasibilityStars([countermeasure]);
         
         return `
-            <div class="p-4 rounded-lg border ${typeColor} bg-gray-800/50">
+                <div class="p-4 rounded-lg border ${typeColor} bg-gray-700/50">
                 <div class="flex justify-between items-start mb-3">
-                    <h4 class="font-bold text-white flex items-center gap-2">
+                    <h4 class="font-bold text-gray-100 flex items-center gap-2">
                         ${this.getCountermeasureIcon(countermeasure.type)}
                         ${countermeasure.protocol}
                     </h4>
@@ -286,14 +286,14 @@ class PatentDatabaseUI {
                         <span class="text-xs" title="Feasibility">${feasibilityStars}</span>
                     </div>
                 </div>
-                <p class="text-sm text-gray-300 mb-3 leading-relaxed">${countermeasure.description}</p>
+                <p class="text-sm text-gray-200 mb-3 leading-relaxed">${countermeasure.description}</p>
                 <div class="text-xs text-gray-400 italic mb-3">${countermeasure.evidence}</p>
                 <div class="flex justify-between items-center text-xs">
-                    <div class="text-gray-400">
+                    <div class="text-gray-300">
                         <i data-feather="dollar-sign" class="w-3 h-3 inline mr-1"></i>
                         ${countermeasure.cost}
                     </div>
-                    <div class="text-gray-400">
+                    <div class="text-gray-300">
                         <i data-feather="alert-circle" class="w-3 h-3 inline mr-1"></i>
                         Difficulty: ${countermeasure.difficulty}
                     </div>
@@ -324,15 +324,15 @@ class PatentDatabaseUI {
         const threatColor = this.getThreatColor(patent.threatLevel);
         
         return `
-            <div class="p-3 bg-gray-800 rounded-lg border border-gray-700 hover:border-gray-600 transition-colors cursor-pointer"
+                <div class="p-3 bg-gray-700 rounded-lg border border-gray-600 hover:border-gray-500 transition-colors cursor-pointer"
                  onclick="patentDB.showPatentDetail('${patent.id}')">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="text-xs font-mono text-gray-400">${patent.id}</span>
-                    <span class="text-xs px-2 py-1 rounded ${threatColor}">${patent.threatLevel}</span>
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-xs font-mono text-gray-400">${patent.id}</span>
+                        <span class="text-xs px-2 py-1 rounded ${threatColor}">${patent.threatLevel}</span>
+                    </div>
+                    <h4 class="text-sm font-semibold text-gray-100 mb-1 line-clamp-2">${patent.title}</h4>
+                    <div class="text-xs text-gray-400">${patent.assignee}</div>
                 </div>
-                <h4 class="text-sm font-semibold text-white mb-1 line-clamp-2">${patent.title}</h4>
-                <div class="text-xs text-gray-400">${patent.assignee}</div>
-            </div>
         `;
     }
 
