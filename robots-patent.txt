@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://digitaldichotomy.github.io/sitemap.xml
+
+# Patent Database
+Sitemap: https://digitaldichotomy.github.io/sentinel-patent-database.html
+
+# Blog Posts
+Sitemap: https://digitaldichotomy.github.io/pages/blog.html
+
+# Crawl delay for respectful indexing
+Crawl-delay: 1

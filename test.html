@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Sentinel Database</title>
+</head>
+<body>
+    <h1>Testing Sentinel Patent Database</h1>
+    <div id="test-results"></div>
+    
+    <script src="js/patent-database.js"></script>
+    <script>
+        // Test if data loads correctly
+        document.addEventListener('DOMContentLoaded', () => {
+            const results = document.getElementById('test-results');
+            
+            if (typeof PATENTS_DATABASE !== 'undefined') {
+                results.innerHTML = `
+                    <p>✅ Patent database loaded successfully!</p>
+                    <p>📊 Total patents: ${PATENTS_DATABASE.metadata.totalPatents}</p>
+                    <p>🔴 Critical threats: ${PATENTS_DATABASE.metadata.criticalCount}</p>
+                    <p>🛡️ Countermeasures: ${COUNTERMEASURES_DATABASE.length}</p>
+                    <p><a href="sentinel-patent-database.html">Open Database →</a></p>
+                `;
+            } else {
+                results.innerHTML = '<p>❌ Failed to load patent database</p>';
+            }
+        });
+    </script>
+</body>
+</html>
