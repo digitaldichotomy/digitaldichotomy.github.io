@@ -59,34 +59,17 @@ class PatentDatabaseUI {
                  onclick="patentDB.showPatentDetail('${patent.id}')"
                  onkeypress="patentDB.handleCardKeypress(event, '${patent.id}')">
                 
-                <!-- Patent Number Header -->
-                <div class="bg-gradient-to-r from-gray-800 to-gray-900 -mx-6 -mt-6 px-6 py-3 mb-4 rounded-t-lg border-b ${threatBorder}">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="text-lg font-bold text-red-400 font-mono tracking-wider">
-                                ${patent.id}
-                            </div>
-                            <div class="text-xs px-2 py-1 bg-red-900/50 text-red-300 rounded border border-red-700/50">
-                                PATENT
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="text-xs text-gray-400">Rank</span>
-                            <span class="text-sm font-bold text-white bg-gray-700 px-2 py-1 rounded">#${patent.rank}</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Assignee & Threat -->
+                <!-- Header -->
                 <div class="flex justify-between items-start mb-4">
                     <div class="flex-1">
-                        <div class="text-sm text-gray-300 font-semibold mb-1">${patent.assignee}</div>
-                        <div class="text-xs text-gray-500">Filed: ${patent.filingDate || 'Unknown'}</div>
+                        <div class="text-xs font-mono text-gray-400 mb-1">${patent.id}</div>
+                        <div class="text-sm text-gray-300 font-semibold">${patent.assignee}</div>
                     </div>
                     <div class="flex flex-col items-end gap-2">
-                        <span class="px-3 py-1 rounded text-xs font-bold ${threatColor} ${patent.threatLevel === 'CRITICAL' ? 'threat-critical animate-pulse' : ''}">
+                        <span class="px-2 py-1 rounded text-xs font-bold ${threatColor} ${patent.threatLevel === 'CRITICAL' ? 'threat-critical' : ''}">
                             ${patent.threatLevel}
                         </span>
+                        <div class="text-xs text-gray-500">#${patent.rank}</div>
                     </div>
                 </div>
                 
@@ -95,28 +78,20 @@ class PatentDatabaseUI {
                 
                 <div class="flex items-center gap-2 mb-3">
                     <span class="text-xs px-2 py-1 bg-gray-700 rounded text-gray-300">${patent.category}</span>
-                    <span class="text-xs px-2 py-1 ${patent.deploymentStatus.includes('active') ? 'bg-green-900/50 text-green-300' : 'bg-yellow-900/50 text-yellow-300'} rounded">
-                        ${patent.deploymentStatus}
-                    </span>
+                    <span class="text-xs text-gray-400">${patent.deploymentStatus}</span>
                 </div>
                 
                 <p class="text-sm text-gray-400 mb-4 line-clamp-3 leading-relaxed">
-                    <span class="text-blue-400 mr-1">●</span>
+                    <span class="text-red-400 mr-1">⚠</span>
                     ${patent.alarmingReason}
                 </p>
-                
-                <!-- Technical Details Preview -->
-                <div class="bg-gray-800/50 rounded p-3 mb-4">
-                    <div class="text-xs text-gray-500 mb-1">Technical Detail:</div>
-                    <div class="text-xs text-gray-300 line-clamp-2">${patent.technicalDetail}</div>
-                </div>
                 
                 <!-- Footer -->
                 <div class="flex justify-between items-center pt-4 border-t border-gray-700">
                     <div class="flex items-center gap-3">
                         <div class="text-xs text-gray-500">
                             <i data-feather="shield" class="w-3 h-3 inline mr-1"></i>
-                            ${patent.countermeasures.length} Defenses
+                            ${patent.countermeasures.length} Countermeasures
                         </div>
                         <div class="text-xs text-gray-500">
                             <i data-feather="trending-up" class="w-3 h-3 inline mr-1"></i>
@@ -199,54 +174,20 @@ class PatentDatabaseUI {
                 </button>
                 
                 <!-- Modal Header -->
-                <div class="bg-gradient-to-r from-gray-800 to-gray-900 p-6 border-b border-gray-700">
-                    <!-- Patent Number Bar -->
-                    <div class="bg-black/50 rounded-lg p-4 mb-4 border border-gray-600">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-4">
-                                <div class="text-2xl font-bold text-red-400 font-mono tracking-wider">
-                                    ${patent.id}
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <div class="px-3 py-1 bg-red-900/50 text-red-300 rounded text-sm font-semibold border border-red-700/50">
-                                        PATENT
-                                    </div>
-                                    <div class="px-3 py-1 bg-gray-700 text-gray-300 rounded text-sm">
-                                        Filed: ${patent.filingDate || 'Unknown'}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="px-4 py-2 rounded text-sm font-bold ${threatColor} ${patent.threatLevel === 'CRITICAL' ? 'animate-pulse' : ''}">
-                                    ${patent.threatLevel}
-                                </span>
-                                <div class="text-center">
-                                    <div class="text-xs text-gray-500">RANK</div>
-                                    <div class="text-lg font-bold text-white">#${patent.rank}</div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="p-6 border-b border-gray-700">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-xs font-mono text-gray-400">${patent.id}</span>
+                        <span class="px-3 py-1 rounded text-sm font-bold ${threatColor}">
+                            ${patent.threatLevel}
+                        </span>
+                        <span class="text-sm text-gray-300">${patent.assignee}</span>
+                        <span class="text-xs text-gray-500">Rank #${patent.rank}</span>
                     </div>
-                    
-                    <!-- Title and Meta -->
-                    <h2 class="text-2xl font-bold text-white mb-3">${patent.title}</h2>
-                    <div class="flex items-center gap-6 text-sm text-gray-400">
-                        <div class="flex items-center gap-2">
-                            <i data-feather="building" class="w-4 h-4"></i>
-                            <span class="text-gray-300 font-semibold">${patent.assignee}</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-feather="folder" class="w-4 h-4"></i>
-                            <span>${patent.category}</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-feather="activity" class="w-4 h-4"></i>
-                            <span>Impact: ${patent.impactScore}/10</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-feather="zap" class="w-4 h-4"></i>
-                            <span class="${patent.deploymentStatus.includes('active') ? 'text-green-400' : 'text-yellow-400'}">${patent.deploymentStatus}</span>
-                        </div>
+                    <h2 class="text-2xl font-bold text-white mb-2">${patent.title}</h2>
+                    <div class="flex items-center gap-4 text-sm text-gray-400">
+                        <span><i data-feather="folder" class="w-4 h-4 inline mr-1"></i>${patent.category}</span>
+                        <span><i data-feather="activity" class="w-4 h-4 inline mr-1"></i>Impact: ${patent.impactScore}/10</span>
+                        <span><i data-feather="clock" class="w-4 h-4 inline mr-1"></i>${patent.deploymentStatus}</span>
                     </div>
                 </div>
 
@@ -254,10 +195,10 @@ class PatentDatabaseUI {
                 <div class="p-6 space-y-6">
                     <!-- Threat Analysis -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div class="bg-gray-800 p-4 rounded-lg border border-gray-600">
-                            <h3 class="text-gray-300 font-bold mb-3 flex items-center gap-2">
-                                <i data-feather="info" class="w-5 h-5"></i>
-                                Technical Assessment
+                        <div class="bg-red-900/40 p-4 rounded-lg border border-red-700">
+                            <h3 class="text-red-300 font-bold mb-3 flex items-center gap-2">
+                                <i data-feather="alert-triangle" class="w-5 h-5"></i>
+                                Why It's Alarming
                             </h3>
                             <p class="text-sm text-gray-200 leading-relaxed">${patent.alarmingReason}</p>
                         </div>
@@ -283,8 +224,8 @@ class PatentDatabaseUI {
                     <!-- Defense Countermeasures -->
                     <div>
                         <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                            <i data-feather="shield" class="w-5 h-5 text-blue-400"></i>
-                            Mitigation Protocols (${patent.countermeasures.length} documented)
+                            <i data-feather="shield" class="w-5 h-5 text-green-400"></i>
+                            Defense Countermeasures (${patent.countermeasures.length} protocols)
                         </h3>
                         <div class="space-y-4">
                             ${patent.countermeasures.map(cm => this.createCountermeasureCard(cm)).join('')}
