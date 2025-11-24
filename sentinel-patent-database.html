@@ -102,6 +102,38 @@
             outline-offset: 2px;
         }
         
+        /* Critical threat animations */
+        .threat-critical {
+            animation: criticalPulse 2s infinite;
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+        }
+        
+        @keyframes criticalPulse {
+            0%, 100% { 
+                background-color: rgb(127, 29, 29);
+                transform: scale(1);
+            }
+            50% { 
+                background-color: rgb(153, 27, 27);
+                transform: scale(1.02);
+            }
+        }
+        
+        /* Patent number highlighting */
+        .patent-number {
+            background: linear-gradient(135deg, #dc2626, #991b1b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
+        }
+        
+        /* Enhanced card hover effects */
+        .patent-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
         /* Mobile optimizations */
         @media (max-width: 768px) {
             .patent-grid {
@@ -127,7 +159,7 @@
                 </a>
                 <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
                     <a href="/sentinel-patent-database.html" class="text-red-500 hover:text-red-400 font-bold">
-                        🔴 SENTINEL DATABASE
+ 📊 SENTINEL DATABASE
                     </a>
                     <a href="/pages/blog.html" class="text-gray-300 hover:text-white">BLOG / FIELD NOTES</a>
                     <a href="/index.html#architecture" class="text-gray-300 hover:text-white">The Architecture</a>
@@ -143,12 +175,16 @@
         <div class="container mx-auto">
             <div class="text-center mb-8">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">
-                    SENTINEL
-                    <span class="block text-red-400 mt-2">PATENT DATABASE</span>
+                    SENTINEL PATENT
+                    <span class="block text-red-400 mt-2">INTELLIGENCE DATABASE</span>
                 </h1>
                 <div class="w-24 h-1 bg-red-500 mx-auto mb-6"></div>
+                <div class="bg-gray-800/50 border border-gray-600 rounded-lg p-4 mb-6 max-w-2xl mx-auto">
+                    <p class="text-sm text-gray-300 font-semibold mb-2">TECHNOLOGY ASSESSMENT & ANALYSIS</p>
+                    <p class="text-sm text-gray-400">Biometric sensing, neural interfaces, and behavioral influence systems</p>
+                </div>
                 <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                    Comprehensive intelligence database tracking 29 critical surveillance technology patents with threat analysis and defense countermeasures
+                    Comprehensive analysis of emerging surveillance technologies with technical specifications, deployment status, and documented countermeasure protocols
                 </p>
             </div>
             
@@ -284,6 +320,48 @@
             </div>
         </div>
     </div>
+
+    <!-- Next Steps Section -->
+    <section class="bg-gray-900 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-white">Continue Your Research</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-red-500 transition-colors">
+                    <div class="text-red-500 mb-4">
+                        <i data-feather="book-open" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Architecture Analysis</h3>
+                    <p class="text-gray-400 mb-4">Deep dive into the 8-tier surveillance infrastructure and defensive countermeasures.</p>
+                    <a href="/pages/post-architecture-covert-self-invasion.html" class="text-red-500 font-semibold hover:text-red-400 transition-colors">Read Analysis →</a>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-red-500 transition-colors">
+                    <div class="text-red-500 mb-4">
+                        <i data-feather="shield" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Defense Guide</h3>
+                    <p class="text-gray-400 mb-4">Practical countermeasures against biofield surveillance and cognitive manipulation.</p>
+                    <a href="/pages/post-surveillance-countermeasures.html" class="text-red-500 font-semibold hover:text-red-400 transition-colors">View Defense →</a>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-red-500 transition-colors">
+                    <div class="text-red-500 mb-4">
+                        <i data-feather="file-text" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-white">Technical Specs</h3>
+                    <p class="text-gray-400 mb-4">Complete technical specifications and implementation details for researchers.</p>
+                    <a href="/pages/post-appendices.html" class="text-red-500 font-semibold hover:text-red-400 transition-colors">View Specs →</a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="/" class="inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                    <i data-feather="home" class="w-5 h-5 mr-2"></i>
+                    Back to Main Site
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-black text-gray-400 py-8 border-t border-gray-800">
