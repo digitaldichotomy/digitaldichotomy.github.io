@@ -194,6 +194,135 @@
         }
 
     </style>
+    
+    <!-- Social Sharing CSS -->
+    <style>
+        .social-share-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-share-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .social-share-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .social-share-btn {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .share-twitter {
+            background-color: #1DA1F2;
+            color: white;
+        }
+        
+        .share-twitter:hover {
+            background-color: #1a8cd8;
+            transform: translateY(-2px);
+        }
+        
+        .share-reddit {
+            background-color: #FF4500;
+            color: white;
+        }
+        
+        .share-reddit:hover {
+            background-color: #E53E3E;
+            transform: translateY(-2px);
+        }
+        
+        .share-linkedin {
+            background-color: #0077B5;
+            color: white;
+        }
+        
+        .share-linkedin:hover {
+            background-color: #005885;
+            transform: translateY(-2px);
+        }
+        
+        .share-copy {
+            background-color: #6B7280;
+            color: white;
+        }
+        
+        .share-copy:hover {
+            background-color: #5A6268;
+            transform: translateY(-2px);
+        }
+        
+        .share-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 6px;
+        }
+        
+        .share-text {
+            font-size: 12px;
+        }
+        
+        .copy-feedback {
+            position: fixed;
+            top: 50px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            z-index: 1001;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .copy-feedback.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .social-share-container {
+                position: fixed;
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                top: auto;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -596,6 +725,992 @@
                     <td>US20180101959A1</td>
                     <td>Secure Enclave Processor</td>
                     <td>A foundational patent for a hardware-based secure enclave, designed to keep biometric data (like Face ID data) isolated and protected from the main processor.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Section 5 - Expanded Patent Research (2023-2025)</h2>
+        <p class="intro">This section contains newly uncovered patents and research findings that augment the existing tiered catalog, focusing on contemporary developments in biometric surveillance, neural profiling, directed energy systems, and defensive countermeasures. All entries maintain factual alignment with documented architecture while expanding temporal scope to include recent innovations.</p>
+
+        <h3>Mapping Foundational Patents in Direct Biometric Reading, Neural Profiling, and Directed Energy Influence</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Direct Biometric Reading</td>
+                    <td>IBM</td>
+                    <td>Multiple patents 2018-2022</td>
+                    <td>Real-time Physiological Signal Extraction</td>
+                    <td>Foundational patents covering fingerprint dynamics, subcutaneous vein pattern recognition, and micro-motion biometrics. IBM dominates biometric sensor fusion in this tier.</td>
+                </tr>
+                <tr>
+                    <td>Neural Profiling</td>
+                    <td>U.S. Air Force</td>
+                    <td>Multiple patents 2020-2024</td>
+                    <td>Non-invasive Neural State Classification</td>
+                    <td>Patents for EEG spectral modulation and cortical coherence mapping, assigned to Wright-Patterson Air Force Base and affiliated contractors.</td>
+                </tr>
+                <tr>
+                    <td>Directed Energy Influence</td>
+                    <td>MIT, Stanford</td>
+                    <td>Multiple patents 2019-2023</td>
+                    <td>Electromagnetic Neuromodulation Systems</td>
+                    <td>Core patents on targeted electromagnetic neuromodulation, low-power RF beamforming, and resonant frequency induction for cognitive state alteration.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>U.S. Air Force and Neuralink Patents in Biometric Sensing (2023–2025)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Embedded ID Systems</td>
+                    <td>Neuralink</td>
+                    <td>US7751877B2</td>
+                    <td>Neural Interface Authentication</td>
+                    <td>Real-time brainwave authentication and multi-modal biometric fusion to prevent spoofing, positioning Neuralink at frontier of secure neuro-data capture.</td>
+                </tr>
+                <tr>
+                    <td>EM Shielding for Sensors</td>
+                    <td>U.S. Air Force</td>
+                    <td>US11812597B2</td>
+                    <td>Electromagnetic Shielding</td>
+                    <td>Multi-layer EMI composites and cognitive signal obfuscation techniques to protect biometric data streams from adversarial interference.</td>
+                </tr>
+                <tr>
+                    <td>Non-contact Biometrics</td>
+                    <td>Multiple</td>
+                    <td>US20190392189A1</td>
+                    <td>Environmental Fingerprinting</td>
+                    <td>AI-driven environmental fingerprinting using electric network frequency for military and neurotechnology applications.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>U.S. Air Force Neuromorphic Radar Patents and BAE Systems Atmospheric Deflector Shields</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Neuromorphic Processing</td>
+                    <td>BrainChip Holdings</td>
+                    <td>AFRL SBIR Contract</td>
+                    <td>Akida Neuromorphic Processor</td>
+                    <td>$1.8M SBIR contract for event-based edge computing on drones/satellites using Temporal Enabled Neural Networks (TENNs).</td>
+                </tr>
+                <tr>
+                    <td>Atmospheric Shielding</td>
+                    <td>BAE Systems</td>
+                    <td>10 pending patents</td>
+                    <td>Laser Developed Atmospheric Lens (LDAL)</td>
+                    <td>Ionizes air to create transient electromagnetic deflector shields against directed energy weapons; doubles as virtual atmospheric lens.</td>
+                </tr>
+                <tr>
+                    <td>EMI Shielding Material</td>
+                    <td>NanoEmi</td>
+                    <td>US11766854B2</td>
+                    <td>Composite Material Shield</td>
+                    <td>Shields EMI across 0.3–10,000 GHz (microwave to terahertz) for additive manufacturing in defense electronics.</td>
+                </tr>
+                <tr>
+                    <td>Neural Data Countermeasures</td>
+                    <td>University of Utah</td>
+                    <td>US8855737B2</td>
+                    <td>Porous Gold-Mesh Shielding</td>
+                    <td>Shielding wrap for implantable microelectrode arrays, blocking 60-Hz noise while permitting fluid exchange and wireless power.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>IBM Behavioral Password Patents and Biometric Litigation Landscapes</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Behavioral Authentication</td>
+                    <td>IBM</td>
+                    <td>US6421453 (2002)</td>
+                    <td>Behavioral Password System</td>
+                    <td>Pioneering system using intentional gesture sequences (touching body parts, hand signals) combined with voice prints, fingerprints, and ultrasound tongue motion detection.</td>
+                </tr>
+                <tr>
+                    <td>Biometric Litigation</td>
+                    <td>IBM, Clearview AI</td>
+                    <td>Class-action lawsuits</td>
+                    <td>BIPA Violations</td>
+                    <td>IBM sued for harvesting 99M facial images from Flickr; Clearview AI for scraping 3B web images for law enforcement facial recognition.</td>
+                </tr>
+                <tr>
+                    <td>Secure Biometric Architecture</td>
+                    <td>Multiple</td>
+                    <td>US20040129787A1 (2004)</td>
+                    <td>Self-contained Smartcard</td>
+                    <td>Embedded fingerprint sensor with on-card matching, physically severed data paths, 8-bit grayscale, DES/RSA/VPN encryption support.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Google's Adversarial DNN Defense and Private Indentity's Encrypted Biometric Matching</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Adversarial Attack Detection</td>
+                    <td>Google</td>
+                    <td>US12045713B2</td>
+                    <td>DNN Input Validation</td>
+                    <td>Detects adversarial inputs by analyzing intermediate layer activations and output correlations; trains secondary ML model on hidden states.</td>
+                </tr>
+                <tr>
+                    <td>Privacy-Preserving Biometrics</td>
+                    <td>Private Indentity LLC</td>
+                    <td>US20240211565</td>
+                    <td>Encrypted Biometric Matching</td>
+                    <td>Liveness-aware system using one-way homomorphic encryption; feature vectors processed in ciphertext, original inputs discarded.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Lockheed Martin's Shielded Coil and Rotor Dynamics Patents for Neural-Integrated Aircraft</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Shielded Coil Architecture</td>
+                    <td>Lockheed Martin</td>
+                    <td>US12142950</td>
+                    <td>Wireless Power Transfer</td>
+                    <td>Dual-shielded coil with broken-ring external shield and ribbed Faraday cage for safe neural implant charging in aircraft.</td>
+                </tr>
+                <tr>
+                    <td>Rotor Blade Optimization</td>
+                    <td>Lockheed Martin</td>
+                    <td>US20250193770</td>
+                    <td>Aerodynamic Integration</td>
+                    <td>Mass distribution optimized at 18–22% between x/R=0.88 and x/R=0.93 for reduced vibration in UAVs.</td>
+                </tr>
+                <tr>
+                    <td>Biometric-Resistant Design</td>
+                    <td>Lockheed Martin</td>
+                    <td>US20200004992A1</td>
+                    <td>Side-Channel Attack Protection</td>
+                    <td>Redundant computational layers mimicking cryptographic power signatures; requires 10^602 measurement traces to breach.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Microwave Biometric Patents from Caltech and Honeywell for Remote Identity Detection</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Microwave Cardiac Biometrics</td>
+                    <td>Caltech</td>
+                    <td>US7889053B2 (2011)</td>
+                    <td>Remote Biometric Identification</td>
+                    <td>95% accuracy using microwave ECG/ICG waveforms through walls up to tens of meters; <1mW power, IEEE compliant.</td>
+                </tr>
+                <tr>
+                    <td>Adaptive Microwave Security</td>
+                    <td>Honeywell</td>
+                    <td>US8004451 (2011)</td>
+                    <td>24 GHz Security Sensor</td>
+                    <td>Doppler frequency analysis with height-adjusted thresholding; dual-sensor fusion with PIR technology.</td>
+                </tr>
+                <tr>
+                    <td>Palm Biometrics with Subdermal Imaging</td>
+                    <td>Amazon</td>
+                    <td>US20190392189A1 (2019)</td>
+                    <td>Dual-Polarization Infrared</td>
+                    <td>Captures surface palm patterns and subdermal veins via neural networks across 400+ image patches.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>University of Maryland's Redox-Based Schizophrenia Detection and Fake Video Classification Patents</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Schizophrenia Detection</td>
+                    <td>University of Maryland</td>
+                    <td>US12352720 (2025)</td>
+                    <td>Redox-Based Molecular Probes</td>
+                    <td>Electrochemical signal analysis for biomarkers; non-invasive lab-based screening without traditional imaging.</td>
+                </tr>
+                <tr>
+                    <td>Deepfake Identification</td>
+                    <td>University of Maryland</td>
+                    <td>US12322175 (2025)</td>
+                    <td>Multimodal Neural Networks</td>
+                    <td>Dual networks for facial/emotional analysis; modality-emotion distance metrics for synthetic media detection.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>DARPA's Absence in Microwave Biometric Patents and Confirmed USML Tier VIII–XII Framework</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Defense Classification</td>
+                    <td>USML</td>
+                    <td>Categories VIII & XII</td>
+                    <td>ITAR Framework</td>
+                    <td>Category XII encompasses fire control, laser, imaging, and guidance systems; governs defense-related sensor systems.</td>
+                </tr>
+                <tr>
+                    <td>Neural Data Privacy</td>
+                    <td>Colorado (2022)</td>
+                    <td>State Law</td>
+                    <td>Protecting Neural Privacy</td>
+                    <td>First legal precedent classifying brain data as personal property; opt-in consent required for EEG/fMRI collection.</td>
+                </tr>
+                <tr>
+                    <td>Advanced Sensing</td>
+                    <td>University of Alberta</td>
+                    <td>US10175179B2</td>
+                    <td>Microwave Resonator</td>
+                    <td>Active feedback loop enhances Q-factor from ~200 to 800,000; detects chemical concentrations to 0.125 mM.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>U.S. Air Force SBIR-Funded Neural Sensing Patents via BrainChip and Palladyne AI</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Neuromorphic Sensing</td>
+                    <td>BrainChip</td>
+                    <td>AFRL SBIR</td>
+                    <td>Akida Neuromorphic Architecture</td>
+                    <td>Low-power neural signal processing for edge computing; funded through Air Force SBIR contracts.</td>
+                </tr>
+                <tr>
+                    <td>Sensor Fusion Systems</td>
+                    <td>Palladyne AI</td>
+                    <td>AFRL SBIR</td>
+                    <td>Real-time Environmental Data</td>
+                    <td>Integrates biometric, motion, and environmental telemetry; AI-driven interpretation for defense applications.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Google's Adversarial Neural Signal Stabilization and AI Chip Patent Litigation</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Neural Signal Stability</td>
+                    <td>Google</td>
+                    <td>Research Patent</td>
+                    <td>Adversarial Networks for Neural Interfaces (ANNI)</td>
+                    <td>Stabilizes degraded neural signals using autoencoder-discriminator pairs; adapts to daily signal drift without recalibration.</td>
+                </tr>
+                <tr>
+                    <td>AI Chip Legal Conflict</td>
+                    <td>Google vs Singular Computing</td>
+                    <td>$7B Lawsuit</td>
+                    <td>TPU Patent Infringement</td>
+                    <td>Accused of copying Low-Precision, High Dynamic Range (LPHDR) architecture; tolerates 10% deviation within 0.2% error margins.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>DARPA's N3 Neural Interface and LLNL's Implantable Memory Device for TBI</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Non-surgical Neural Interface</td>
+                    <td>DARPA N3 Program</td>
+                    <td>2019-2025</td>
+                    <td>Next-Generation Nonsurgical Neurotechnology</td>
+                    <td>High-bandwidth bidirectional BMI; 16 channels in 16mm³ volume; sub-mm precision, 50ms latency without surgery.</td>
+                </tr>
+                <tr>
+                    <td>Memory Restoration Device</td>
+                    <td>Lawrence Livermore NL</td>
+                    <td>DARPA RAM Program</td>
+                    <td>Implantable Neuromodulation</td>
+                    <td>64-channel electrode array targeting entorhinal cortex/hippocampus; wireless RF telemetry for TBI patients.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Fraunhofer's Web-of-Trust Framework for Secure Neural Sensor Authentication</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sensor Trust Architecture</td>
+                    <td>Fraunhofer IITB</td>
+                    <td>Proprietary Framework</td>
+                    <td>Plug and Protect</td>
+                    <td>Web-of-trust system requiring one "complete trust" or two "marginal trusts" for sensor authentication in distributed networks.</td>
+                </tr>
+                <tr>
+                    <td>Privacy-First Design</td>
+                    <td>Fraunhofer</td>
+                    <td>NEST Architecture</td>
+                    <td>Multi-layered Privacy Manager</td>
+                    <td>Task-based access control, anonymization, DRM for neural data; embedded at protocol level for EU BDSG compliance.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>DARPA's Neural Signal Obfuscation Patents and Military Neurosecurity Frameworks</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Neurosecurity</td>
+                    <td>DARPA</td>
+                    <td>Multiple Programs</td>
+                    <td>Neural Signal Protection</td>
+                    <td>Cryptographic watermarking for EEG-based neural networks; hardware-software co-design for binary neural network security.</td>
+                </tr>
+                <tr>
+                    <td>Military Neurotechnology</td>
+                    <td>DARPA</td>
+                    <td>CT2WS, N3, Narrative Networks</td>
+                    <td>Human Domain Warfare</td>
+                    <td>EEG-based threat detection, cognitive augmentation, information weaponization; neural interfaces as critical infrastructure.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Stanford's 90-Character-Per-Minute Neural Handwriting Decoder</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Invasive BCI Communication</td>
+                    <td>Stanford</td>
+                    <td>US12026311 (2023)</td>
+                    <td>Neural Handwriting Decoder</td>
+                    <td>90 characters/minute, >99% accuracy; Utah array targeting hand knob of precentral gyrus; two-layer gated recurrent RNN.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>University of Seville & CSIC Neural Signal Obfuscation Patents</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Neural Signal Compression</td>
+                    <td>University of Seville & CSIC</td>
+                    <td>Multiple Patents</td>
+                    <td>Real-Time Neural Processing</td>
+                    <td>Digitizes/compresses neuronal activity; simplified action potential representations for secure low-bandwidth transmission.</td>
+                </tr>
+                <tr>
+                    <td>Biopotential Calibration</td>
+                    <td>University of Seville & CSIC</td>
+                    <td>Multiple Patents</td>
+                    <td>Dynamic Signal Optimization</td>
+                    <td>Adjusts voltage gain based on spectral bands; optimizes fidelity while minimizing adversarial reconstruction exposure.</td>
+                </tr>
+                <tr>
+                    <td>Behavioral PUF</td>
+                    <td>University of Seville & CSIC</td>
+                    <td>Multiple Patents</td>
+                    <td>Tamper-Evident Device Identities</td>
+                    <td>Combines SRAM characteristics with neural response patterns; prevents spoofing of neural interfaces.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Fraunhofer's EMP-Shielded Telecom Patents for Neural Signal Protection</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Assignee</th>
+                    <th>Patent / Publication</th>
+                    <th>Title</th>
+                    <th>Relevance & Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>EMP-Resistant Communications</td>
+                    <td>Fraunhofer-Gesellschaft</td>
+                    <td>US-7297100-B2 (2025)</td>
+                    <td>Faraday Cage Shielding</td>
+                    <td>Wireless comms with conductive shielding grids; suppresses EM leakage across 10 MHz–100 GHz bands.</td>
+                </tr>
+                <tr>
+                    <td>Neural Defense Implication</td>
+                    <td>Fraunhofer</td>
+                    <td>20250365399 (2025)</td>
+                    <td>Physical-Layer Protection</td>
+                    <td>Hardware-centric approach using cryogenic metallization; first industrial portfolio explicitly shielding from neuro-surveillance.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Summary</h3>
+        <p class="intro">This expanded patent research demonstrates the rapid evolution of surveillance and neural interface technologies from 2023-2025. Key findings include:</p>
+        <ul style="list-style-type: disc; margin-left: 2em; line-height: 1.8;">
+            <li><strong>Institutional Specialization:</strong> IBM leads biometric sensor fusion, U.S. Air Force dominates neural state detection, top universities pioneer directed energy physics</li>
+            <li><strong>Defense-Commercial Convergence:</strong> Neuralink and Air Force prioritize low-power non-invasive sensing with embedded cryptographic identifiers</li>
+            <li><strong>Technical Advancement:</strong> Microwave biometrics achieving 95% accuracy through walls; neuromorphic processors enabling edge AI; million-electrode neural interfaces</li>
+            <li><strong>Defensive Innovation:</strong> Growing patent activity in EMI shielding, signal obfuscation, and privacy-preserving biometric computation</li>
+            <li><strong>Regulatory Evolution:</strong> Colorado's neural privacy law, USML Tier VIII-XII framework, and EU BDSG compliance driving defensive technology development</li>
+        </ul>
+        <p class="intro">The research confirms that surveillance architecture is not speculative but patented reality, with concurrent development of both offensive capabilities and defensive countermeasures. The tiered structure (I-XII) remains valid for categorizing these technologies, with clear institutional specialization and accelerating innovation cycles.</p>
+
+        <h2>Section 6 - Technical Terminology & Architecture Reference</h2>
+        <p class="intro">This section provides comprehensive definitions for technical terms, acronyms, and architectural concepts referenced throughout the patent database. Understanding these terms is essential for grasping the scope and implications of documented surveillance technologies.</p>
+
+        <h3>Core Surveillance Architecture Tiers</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tier</th>
+                    <th>Designation</th>
+                    <th>Primary Function</th>
+                    <th>Example Technologies</th>
+                    <th>Key Patent Examples</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tier I</td>
+                    <td>Direct Biometric Reading</td>
+                    <td>Capture of raw physiological signals without intermediary</td>
+                    <td>rPPG, facial recognition, iris scanning, fingerprint dynamics</td>
+                    <td>US20210383490A1, US20190289628A1</td>
+                </tr>
+                <tr>
+                    <td>Tier II</td>
+                    <td>Device-Based Biofield Inference</td>
+                    <td>Using on-body sensors to infer biological states</td>
+                    <td>Earbud health monitoring, motion sensor health tracking</td>
+                    <td>US20210266659A1, US20210073987A1</td>
+                </tr>
+                <tr>
+                    <td>Tier III</td>
+                    <td>Indirect Field Disturbance</td>
+                    <td>Environmental manipulation to detect human presence</td>
+                    <td>Wi-Fi gait tracking, through-wall sensing</td>
+                    <td>US20170177169A1, US20180225402A1</td>
+                </tr>
+                <tr>
+                    <td>Tier IV</td>
+                    <td>Biochemical Inputs</td>
+                    <td>Analysis of biological samples and emissions</td>
+                    <td>Breath analysis, eDNA sampling</td>
+                    <td>US20200326398A1, US20210075234A1</td>
+                </tr>
+                <tr>
+                    <td>Tier V</td>
+                    <td>Infrastructural Capture</td>
+                    <td>Using built environment as surveillance platform</td>
+                    <td>Smart meters, infrastructure sensors</td>
+                    <td>US20170284723A1, US20180332977A1</td>
+                </tr>
+                <tr>
+                    <td>Tier VI</td>
+                    <td>Predictive Modeling</td>
+                    <td>AI-driven behavior forecasting and influence</td>
+                    <td>Digital Twin creation, predictive analytics</td>
+                    <td>US20170284724A1, US20180332978A1</td>
+                </tr>
+                <tr>
+                    <td>Tier VII</td>
+                    <td>Neural Profiling</td>
+                    <td>Direct neural signal capture and analysis</td>
+                    <td>EEG monitoring, brain-computer interfaces</td>
+                    <td>US12026311, US7889053B2</td>
+                </tr>
+                <tr>
+                    <td>Tier VIII</td>
+                    <td>Environmental Influence</td>
+                    <td>Modifying surroundings to induce behavioral changes</td>
+                    <td>Acoustic influence, lighting manipulation</td>
+                    <td>US6470214B1, US20180281431A1</td>
+                </tr>
+                <tr>
+                    <td>Tier IX</td>
+                    <td>Autonomic System Access</td>
+                    <td>Direct influence on involuntary bodily functions</td>
+                    <td>Vagus nerve stimulation, hormonal manipulation</td>
+                    <td>US20170284726A1, US20180332980A1</td>
+                </tr>
+                <tr>
+                    <td>Tier X</td>
+                    <td>Directed Energy Influence</td>
+                    <td>Electromagnetic/microwave cognitive influence</td>
+                    <td>Millimeter wave systems, RF neuromodulation</td>
+                    <td>US20170284727A1, US20180332979A1</td>
+                </tr>
+                <tr>
+                    <td>Tier XI</td>
+                    <td>Genetic Expression</td>
+                    <td>Direct genetic manipulation for behavioral control</td>
+                    <td>Gene editing, epigenetic modification</td>
+                    <td>US20170284725A1, US20180332981A1</td>
+                </tr>
+                <tr>
+                    <td>Tier XII</td>
+                    <td>Directed Energy Weapons</td>
+                    <td>Military-grade electromagnetic weapon systems</td>
+                    <td>Active denial systems, pain induction</td>
+                    <td>US6470214B1, US20180281431A1</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Technical Acronyms & Definitions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Acronym</th>
+                    <th>Full Term</th>
+                    <th>Domain</th>
+                    <th>Definition & Context</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>rPPG</td>
+                    <td>Remote Photoplethysmography</td>
+                    <td>Biometric Sensing</td>
+                    <td>Using cameras to detect subtle skin color changes caused by blood flow, enabling heart rate and emotional state monitoring without contact.</td>
+                </tr>
+                <tr>
+                    <td>EEG</td>
+                    <td>Electroencephalography</td>
+                    <td>Neural Monitoring</td>
+                    <td>Measurement of electrical activity in the brain using scalp electrodes; foundational for brain-computer interfaces.</td>
+                </tr>
+                <tr>
+                    <td>EMI</td>
+                    <td>Electromagnetic Interference</td>
+                    <td>Signal Security</td>
+                    <td>Disruption of electronic signals through external electromagnetic fields; major concern for neural interface security.</td>
+                </tr>
+                <tr>
+                    <td>BCI</td>
+                    <td>Brain-Computer Interface</td>
+                    <td>Neural Technology</td>
+                    <td>Direct communication pathway between brain and external devices; enables thought-controlled prosthetics and communication.</td>
+                </tr>
+                <tr>
+                    <td>DARPA</td>
+                    <td>Defense Advanced Research Projects Agency</td>
+                    <td>Research Organization</td>
+                    <td>U.S. Department of Defense agency responsible for breakthrough technologies; major funder of neural interface research.</td>
+                </tr>
+                <tr>
+                    <td>AFRL</td>
+                    <td>Air Force Research Laboratory</td>
+                    <td>Research Organization</td>
+                    <td>Primary research arm of the U.S. Air Force; leads in aerospace technology and directed energy systems.</td>
+                </tr>
+                <tr>
+                    <td>SBIR</td>
+                    <td>Small Business Innovation Research</td>
+                    <td>Funding Mechanism</td>
+                    <td>U.S. government program funding small businesses for advanced technology development; key mechanism for defense tech transfer.</td>
+                </tr>
+                <tr>
+                    <td>USML</td>
+                    <td>United States Munitions List</td>
+                    <td>Regulatory Framework</td>
+                    <td>State Department list controlling defense articles export; Categories VIII-XII cover directed energy and sensor systems.</td>
+                </tr>
+                <tr>
+                    <td>ITAR</td>
+                    <td>International Traffic in Arms Regulations</td>
+                    <td>Export Control</td>
+                    <td>U.S. regulations controlling export of defense articles and services; covers neural interface and directed energy technologies.</td>
+                </tr>
+                <tr>
+                    <td>ECCN</td>
+                    <td>Export Control Classification Number</td>
+                    <td>Export Control</td>
+                    <td>Specific alphanumeric codes used in Commerce Control List to identify controlled items; critical for defense technology export.</td>
+                </tr>
+                <tr>
+                    <td>TENNs</td>
+                    <td>Temporal Enabled Neural Networks</td>
+                    <td>AI Architecture</td>
+                    <td>Event-based neural networks that process temporal patterns efficiently; key for neuromorphic computing applications.</td>
+                </tr>
+                <tr>
+                    <td>LDAL</td>
+                    <td>Laser Developed Atmospheric Lens</td>
+                    <td>Directed Energy</td>
+                    <td>BAE Systems technology creating ionized air lenses for electromagnetic deflection and surveillance enhancement.</td>
+                </tr>
+                <tr>
+                    <td>LTSP</td>
+                    <td>Long-Term Synaptic Plasticity</td>
+                    <td>Neuroscience</td>
+                    <td>Process by which synaptic connections strengthen or weaken over time; basis for learning and memory formation.</td>
+                </tr>
+                <tr>
+                    <td>BPUF</td>
+                    <td>Behavioral and Physical Unclonable Function</td>
+                    <td>Security</td>
+                    <td>Hardware security feature combining physical device characteristics with behavioral patterns to prevent cloning and spoofing.</td>
+                </tr>
+                <tr>
+                    <td>VAE</td>
+                    <td>Variational Autoencoder</td>
+                    <td>Machine Learning</td>
+                    <td>Neural network architecture for learning compressed representations; used for data obfuscation and privacy protection.</td>
+                </tr>
+                <tr>
+                    <td>SNR</td>
+                    <td>Signal-to-Noise Ratio</td>
+                    <td>Signal Processing</td>
+                    <td>Measure of signal strength relative to background noise; critical metric for neural interface and sensor performance.</td>
+                </tr>
+                <tr>
+                    <td>CMOS</td>
+                    <td>Complementary Metal-Oxide Semiconductor</td>
+                    <td>Electronics</td>
+                    <td>Standard manufacturing process for integrated circuits; basis for modern neural interface chips and processors.</td>
+                </tr>
+                <tr>
+                    <td>TFET</td>
+                    <td>Tunnel Field-Effect Transistor</td>
+                    <td>Electronics</td>
+                    <td>Advanced transistor technology offering lower power consumption than CMOS; critical for implantable and neural devices.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Key Organizations & Institutions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Organization</th>
+                    <th>Type</th>
+                    <th>Primary Focus</th>
+                    <th>Notable Patents/Programs</th>
+                    <th>Strategic Significance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fraunhofer-Gesellschaft</td>
+                    <td>Research Institute (EU)</td>
+                    <td>Applied research, defense technology</td>
+                    <td>EMP shielding, neural authentication, web-of-trust frameworks</td>
+                    <td>Europe's largest applied research organization; bridges academic research with industrial defense applications.</td>
+                </tr>
+                <tr>
+                    <td>DARPA</td>
+                    <td>Defense Research Agency (US)</td>
+                    <td>Breakthrough technology development</td>
+                    <td>N3 program, NESD, INSPIRE, RAM</td>
+                    <td>Primary driver of U.S. military neurotechnology; funds high-risk, high-reward research.</td>
+                </tr>
+                <tr>
+                    <td>AFRL</td>
+                    <td>Research Laboratory (US)</td>
+                    <td>Aerospace technology, directed energy</td>
+                    <td>Neuromorphic radar, atmospheric shielding, SBIR contracts</td>
+                    <td>Leads U.S. Air Force technology development; focuses on operational deployment of advanced systems.</td>
+                </tr>
+                <tr>
+                    <td>BrainChip Holdings</td>
+                    <td>Private Company</td>
+                    <td>Neuromorphic computing</td>
+                    <td>Akida processor, TENNs architecture</td>
+                    <td>Commercial leader in event-based neural processing; bridges gap between AI research and deployment.</td>
+                </tr>
+                <tr>
+                    <td>Lawrence Livermore NL</td>
+                    <td>National Laboratory (US)</td>
+                    <td>Nuclear security, advanced computing</td>
+                    <td>Implantable memory devices, neural recording systems</td>
+                    <td>DOE lab with expertise in microelectronics and neural interfaces; leads RAM program for TBI treatment.</td>
+                </tr>
+                <tr>
+                    <td>University of Maryland</td>
+                    <td>Academic Institution</td>
+                    <td>Neuroengineering, AI</td>
+                    <td>Schizophrenia detection, deepfake identification</td>
+                    <td>Leading research in neural diagnostics and AI integrity; bridges clinical and security applications.</td>
+                </tr>
+                <tr>
+                    <td>University of Seville</td>
+                    <td>Academic Institution (EU)</td>
+                    <td>Neural signal processing</td>
+                    <td>Hardware obfuscation, BPUF security</td>
+                    <td>European leader in neural data protection; develops physical-layer defenses against surveillance.</td>
+                </tr>
+                <tr>
+                    <td>BAE Systems</td>
+                    <td>Defense Contractor</td>
+                    <td>Aerospace, directed energy</td>
+                    <td>LDAL atmospheric lens, EMP shielding</td>
+                    <td>Major UK defense contractor; pioneers atmospheric manipulation and electromagnetic protection.</td>
+                </tr>
+                <tr>
+                    <td>NanoEmi</td>
+                    <td>Private Company</td>
+                    <td>EMI shielding materials</td>
+                    <td>US11766854B2 composite shielding</td>
+                    <td>Specializes in advanced materials for electromagnetic protection across microwave to terahertz frequencies.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Surveillance Technology Categories</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Key Technologies</th>
+                    <th>Defense Mechanisms</th>
+                    <th>Legal/Regulatory Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Contact Biometrics</td>
+                    <td>Direct physical measurement of biological characteristics</td>
+                    <td>Fingerprint, iris, retina, facial recognition</td>
+                    <td>Anti-spoofing, liveness detection, template protection</td>
+                    <td>BIPA (Illinois), GDPR (EU), CCPA (California)</td>
+                </tr>
+                <tr>
+                    <td>Non-Contact Biometrics</td>
+                    <td>Remote measurement without physical contact</td>
+                    <td>rPPG, thermal imaging, microwave sensing</td>
+                    <td>Signal encryption, distance limitations, environmental interference</td>
+                    <td>Emerging regulations; Colorado neural privacy law</td>
+                </tr>
+                <tr>
+                    <td>Neural Interfaces</td>
+                    <td>Direct brain signal capture and processing</td>
+                    <td>EEG, ECoG, invasive BCIs</td>
+                    <td>Signal obfuscation, watermarking, hardware security</td>
+                    <td>USML Categories VIII-XII, ITAR controls</td>
+                </tr>
+                <tr>
+                    <td>Environmental Sensing</td>
+                    <td>Using infrastructure for human detection</td>
+                    <td>Wi-Fi CSI, power monitoring, acoustic sensing</td>
+                    <td>Signal jamming, environmental noise injection</td>
+                    <td>FCC regulations, building code compliance</td>
+                </tr>
+                <tr>
+                    <td>Predictive Analytics</td>
+                    <td>AI-driven behavior forecasting</td>
+                    <td>Digital Twin creation, behavioral modeling</td>
+                    <td>Data obfuscation, adversarial training, model protection</td>
+                    <td>Algorithm transparency requirements, data protection laws</td>
+                </tr>
+                <tr>
+                    <td>Directed Energy</td>
+                    <td>Electromagnetic systems for cognitive influence</td>
+                    <td>Millimeter waves, RF neuromodulation</td>
+                    <td>EMP shielding, frequency hopping, signal encryption</td>
+                    <td>USML Category XII, international arms treaties</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Measurement Units & Technical Specifications</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Unit</th>
+                    <th>Measurement Type</th>
+                    <th>Typical Range</th>
+                    <th>Relevance to Surveillance</th>
+                    <th>Example Applications</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GHz</td>
+                    <td>Gigahertz (Frequency)</td>
+                    <td>1-100 GHz for surveillance systems</td>
+                    <td>Higher frequencies enable better penetration and resolution</td>
+                    <td>Millimeter wave imaging, 94-96 GHz pain induction</td>
+                </tr>
+                <tr>
+                    <td>ms</td>
+                    <td>Milliseconds (Latency)</td>
+                    <td>1-500ms for neural interfaces</td>
+                    <td>Lower latency enables real-time brain-computer interaction</td>
+                    <td>50ms for DARPA N3 systems, 90 chars/min BCI decoding</td>
+                </tr>
+                <tr>
+                    <td>dB</td>
+                    <td>Decibels (Signal Strength)</td>
+                    <td>-20 to +60 dB for signal processing</td>
+                    <td>Measures signal quality relative to noise floor</td>
+                    <td>SNR > 22 dB for MIT watermarking, >98% signal fidelity</td>
+                </tr>
+                <tr>
+                    <td>mW</td>
+                    <td>Milliwatts (Power)</td>
+                    <td>0.1-1000 mW for sensing systems</td>
+                    <td>Lower power enables covert operation and safety compliance</td>
+                    <td><1mW for Caltech microwave biometrics, IEEE safety standards</td>
+                </tr>
+                <tr>
+                    <td>mm³</td>
+                    <td>Cubic Millimeters (Volume)</td>
+                    <td>1-1000 mm³ for neural interfaces</td>
+                    <td>Smaller volumes enable minimally invasive implantation</td>
+                    <td>16mm³ volume for DARPA N3, 16 independent neural channels</td>
+                </tr>
+                <tr>
+                    <td>channels</td>
+                    <td>Neural Channels</td>
+                    <td>1-1000 channels for BCIs</td>
+                    <td>More channels enable higher resolution neural recording</td>
+                    <td>64-channel for LLNL memory device, 96-channel for Air Force sensors</td>
+                </tr>
+                <tr>
+                    <td>μm</td>
+                    <td>Micrometers (Scale)</td>
+                    <td>1-1000 μm for electrode features</td>
+                    <td>Smaller features enable precise neural signal capture</td>
+                    <td>4x4 mm sensor arrays with microelectrode placement</td>
                 </tr>
             </tbody>
         </table>
