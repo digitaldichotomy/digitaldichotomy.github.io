@@ -1,0 +1,168 @@
+/* Social Share Buttons - Privacy First Styles */
+
+/* Share container */
+.share-container {
+    @apply flex flex-wrap gap-2 items-center justify-center;
+    @apply py-4;
+}
+
+/* Individual share buttons */
+.share-btn {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm;
+    @apply transition-all duration-200 ease-in-out;
+    @apply border border-transparent;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+/* Twitter/X button */
+.share-btn.twitter {
+    @apply bg-black text-white hover:bg-gray-800;
+    @apply focus:ring-black;
+}
+
+.share-btn.twitter:hover {
+    @apply transform -translate-y-0.5;
+}
+
+/* Facebook button */
+.share-btn.facebook {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+    @apply focus:ring-blue-600;
+}
+
+.share-btn.facebook:hover {
+    @apply transform -translate-y-0.5;
+}
+
+/* LinkedIn button */
+.share-btn.linkedin {
+    @apply bg-blue-700 text-white hover:bg-blue-800;
+    @apply focus:ring-blue-700;
+}
+
+.share-btn.linkedin:hover {
+    @apply transform -translate-y-0.5;
+}
+
+/* Reddit button */
+.share-btn.reddit {
+    @apply bg-orange-600 text-white hover:bg-orange-700;
+    @apply focus:ring-orange-600;
+}
+
+.share-btn.reddit:hover {
+    @apply transform -translate-y-0.5;
+}
+
+/* Copy link button */
+.share-btn.copy {
+    @apply bg-gray-600 text-white hover:bg-gray-700;
+    @apply focus:ring-gray-600;
+}
+
+.share-btn.copy:hover {
+    @apply transform -translate-y-0.5;
+}
+
+/* Success state for copy button */
+.share-btn.copy.success {
+    @apply bg-green-600 hover:bg-green-700;
+}
+
+/* Floating share button for mobile */
+.floating-share {
+    @apply fixed bottom-6 right-6 z-40;
+    @apply bg-red-600 text-white p-3 rounded-full shadow-lg;
+    @apply hover:bg-red-700 transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
+}
+
+.floating-share:hover {
+    @apply transform scale-110;
+}
+
+/* Share section styling */
+.share-section {
+    @apply border-t border-gray-200 dark:border-gray-700 pt-6 mt-8;
+}
+
+.share-section-title {
+    @apply text-center text-sm font-medium text-gray-600 dark:text-gray-400 mb-4;
+    @apply uppercase tracking-wider;
+}
+
+/* Compact share buttons for inline use */
+.share-compact .share-btn {
+    @apply px-3 py-1.5 text-xs;
+}
+
+/* Large share buttons for featured content */
+.share-large .share-btn {
+    @apply px-6 py-3 text-base;
+}
+
+/* Dark mode adjustments */
+.dark .share-btn.twitter {
+    @apply bg-gray-900 text-white hover:bg-gray-800;
+}
+
+.dark .share-btn.copy {
+    @apply bg-gray-700 text-white hover:bg-gray-600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .share-container {
+        @apply justify-center;
+    }
+    
+    .share-btn {
+        @apply px-3 py-2 text-xs;
+    }
+    
+    .floating-share {
+        @apply bottom-4 right-4 p-2.5;
+    }
+}
+
+/* Accessibility */
+.share-btn:focus-visible {
+    @apply ring-2 ring-offset-2;
+}
+
+/* Animation for button feedback */
+@keyframes share-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.share-btn:active {
+    animation: share-pulse 0.2s ease-in-out;
+}
+
+/* Share dropdown for mobile (optional future feature) */
+.share-dropdown {
+    @apply absolute bottom-full right-0 mb-2;
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700;
+    @apply p-2 min-w-48;
+    @apply hidden;
+}
+
+.share-dropdown.show {
+    @apply block;
+}
+
+.share-dropdown .share-btn {
+    @apply w-full justify-start;
+    @apply border-0 rounded-md;
+}
+
+/* Print styles - hide share buttons */
+@media print {
+    .share-container,
+    .floating-share,
+    .share-section {
+        display: none !important;
+    }
+}

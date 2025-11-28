@@ -121,6 +121,8 @@
     </script>
     <script src="media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
     <script src="youtube-updater.js" onerror="console.warn('YouTube updater failed to load');"></script>
+    <script src="social-share.js" onerror="console.warn('Social share failed to load');"></script>
+    <link rel="stylesheet" href="social-share.css">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1XGTK43HYL"></script>
@@ -328,8 +330,24 @@
                 </div>
 
                 <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed font-light">
-                    Academic research on biofield surveillance infrastructure, cognitive sovereignty, and defensive countermeasures against covert control systems.
+                    Academic research on biofield surveillance infrastructure, cognitive sovereignty, and defensive countermeasures. Technical analysis of surveillance patents, privacy engineering, and the battle for biological sovereignty.
                 </p>
+                
+                <!-- Homepage Share Buttons -->
+                <div class="share-container justify-center mb-8">
+                    <button onclick="shareToTwitter()" class="share-btn twitter">
+                        <i data-feather="twitter"></i> Share Research
+                    </button>
+                    <button onclick="shareToFacebook()" class="share-btn facebook">
+                        <i data-feather="facebook"></i> Share
+                    </button>
+                    <button onclick="shareToLinkedIn()" class="share-btn linkedin">
+                        <i data-feather="linkedin"></i> Share
+                    </button>
+                    <button onclick="copyLink()" class="share-btn copy">
+                        <i data-feather="link"></i> Copy Link
+                    </button>
+                </div>
 
                 <!-- Research Overview -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -981,6 +999,11 @@
 
     </main>
 
+    <!-- Floating Share Button (Mobile) -->
+    <button onclick="shareToTwitter()" class="floating-share md:hidden" aria-label="Share page">
+        <i data-feather="share-2"></i>
+    </button>
+
     <footer class="bg-black text-gray-400 py-8">
         <div class="container mx-auto px-4 text-center text-sm">
             <p>&copy; 2025 Fin Nyx. All rights reserved.</p>
@@ -1330,6 +1353,11 @@
         // Initialize
         updateCarousel();
         startAutoPlay();
+        
+        // Initialize share buttons
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
     </script>
 </body>
 </html>

@@ -281,6 +281,11 @@
 
         </div> </main>
 
+    <!-- Floating Share Button (Mobile) -->
+    <button onclick="shareToTwitter()" class="floating-share md:hidden" aria-label="Share page">
+        <i data-feather="share-2"></i>
+    </button>
+
     <footer class="bg-black text-gray-400 py-8 mt-16">
         <div class="container mx-auto px-4 text-center text-sm">
             <p>&copy; 2025 Fin Nyx. All rights reserved.</p>
@@ -292,5 +297,7 @@
         feather.replace();
     </script>
     <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+    <script src="../social-share.js" onerror="console.warn('Social share failed to load');"></script>
+    <link rel="stylesheet" href="../social-share.css">
 </body>
 </html>
