@@ -346,14 +346,28 @@
         </div>
     </nav>
 
-    <script src="https://cdn.tailwindcss.com" onerror="document.head.innerHTML+='<style>body{font-family:sans-serif}.bg-gray-100{background:#f3f4f6}.dark\:bg-gray-900{background:#111827}.text-gray-800{color:#1f2937}.dark\:text-gray-200{color:#e5e7eb}.container{max-width:1200px;margin:0 auto;padding:0 1rem}</style>'"></script>
+     <script src="https://cdn.tailwindcss.com" onerror="document.head.innerHTML+='<style>body{font-family:sans-serif}.bg-gray-100{background:#f3f4f6}.dark\:bg-gray-900{background:#111827}.text-gray-800{color:#1f2937}.dark\:text-gray-200{color:#e5e7eb}.container{max-width:1200px;margin:0 auto;padding:0 1rem}</style>'"></script>
     <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" onerror="console.warn('Feather Icons CDN failed - icons may not display');document.querySelectorAll('[data-feather]').forEach(el=>el.style.display='none')"></script>
-    <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+    <script src="../social-share.js" onerror="console.warn('Social share failed to load');"></script>
     <script>
         feather.replace();
     </script>
-    <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+
+    <!-- Patent Search Functionality -->
+    <div class="mb-6 p-4 bg-gray-50 rounded-lg border">
+        <div class="flex items-center space-x-4">
+            <div class="flex-1">
+                <input type="text" id="patent-search" placeholder="Search patents by technology, company, or patent number..." 
+                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+            </div>
+            <button onclick="searchPatents()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                <i data-feather="search" class="w-4 h-4 inline mr-2"></i>
+                Search
+            </button>
+        </div>
+        <div id="search-results" class="mt-4 hidden"></div>
+    </div>
 
     <div class="paper-container">
         <h1>Patent References (Expanded & Exhaustive)</h1>
@@ -1715,7 +1729,56 @@
             </tbody>
         </table>
 
-    </div>
+        <script>
+            // Patent Search Functionality
+            function searchPatents() {
+                const searchTerm = document.getElementById('patent-search').value.toLowerCase();
+                const resultsDiv = document.getElementById('search-results');
+                const allRows = document.querySelectorAll('tbody tr');
+                let foundCount = 0;
 
+                // Clear previous results
+                resultsDiv.innerHTML = '';
+                resultsDiv.classList.add('hidden');
+
+                if (searchTerm.length < 2) return;
+
+                // Search through all table rows
+                allRows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        row.style.display = '';
+                        foundCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                // Show results message
+                if (foundCount > 0) {
+                    resultsDiv.innerHTML = `<p class="text-green-600 font-semibold">Found ${foundCount} patents matching "${searchTerm}"</p>`;
+                    resultsDiv.classList.remove('hidden');
+                } else {
+                    resultsDiv.innerHTML = `<p class="text-red-600 font-semibold">No patents found matching "${searchTerm}"</p>`;
+                    resultsDiv.classList.remove('hidden');
+                }
+
+                // Scroll to first result
+                if (foundCount > 0) {
+                    const firstVisible = document.querySelector('tbody tr[style=""]');
+                    if (firstVisible) {
+                        firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            }
+
+            // Add search on Enter key
+            document.getElementById('patent-search').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchPatents();
+                }
+            });
+        </script>
+    </div>
 </body>
 </html>

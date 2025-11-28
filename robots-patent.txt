@@ -5,7 +5,7 @@ Allow: /
 Sitemap: https://digitaldichotomy.github.io/sitemap.xml
 
 # Patent Database
-Sitemap: https://digitaldichotomy.github.io/sentinel-patent-database.html
+Sitemap: https://digitaldichotomy.github.io/pages/pat.html
 
 # Blog Posts
 Sitemap: https://digitaldichotomy.github.io/pages/blog.html
