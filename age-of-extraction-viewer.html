@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age of Extraction - PDF Viewer | Fin Nyx | Digital Dichotomy</title>
+    
+    <meta name="description" content="Interactive PDF viewer for Age of Extraction early release document. Analysis of the extraction economy and biological sovereignty.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#dc2626', 600: '#b91c1c' },
+                        secondary: { 500: '#f59e0b', 600: '#d97706' }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf_viewer.min.css">
+    
+    <style>
+        body { font-family: sans-serif; }
+        .pdf-container {
+            height: calc(100vh - 200px);
+            min-height: 600px;
+        }
+        .pdfViewer {
+            border: 1px solid #374151;
+            border-radius: 8px;
+        }
+        .toolbar {
+            background: #1f2937;
+            border-bottom: 1px solid #374151;
+            border-radius: 8px 8px 0 0;
+        }
+        .page {
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Dark mode overrides */
+        .dark .page {
+            background: #1f2937;
+            border: 1px solid #374151;
+        }
+        .dark .toolbar {
+            background: #111827;
+            border-bottom: 1px solid #1f2937;
+        }
+        .dark .pdfViewer {
+            border: 1px solid #1f2937;
+        }
+        /* Loading animation */
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #dc2626;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* Early release badge */
+        .early-release-badge {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <!-- Navigation -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="/index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
+                    <i data-feather="shield-off" class="text-red-500"></i>
+                    <span>DIGITAL DICHOTOMY</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="/index.html" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="/the-analog-self.html" class="text-gray-300 hover:text-white transition-colors">THE ANALOG SELF</a>
+                    <a href="/pages/blog.html" class="text-gray-300 hover:text-white transition-colors">Blog</a>
+                    <a href="https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
+                        <i data-feather="shopping-cart" class="inline-block w-4 h-4 mr-1"></i>
+                        Get Books
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <header class="text-center mb-8">
+            <div class="mb-4">
+                <span class="inline-block px-4 py-2 bg-yellow-500 text-black rounded-full text-sm font-bold early-release-badge">
+                    🚀 EARLY RELEASE DRAFT
+                </span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold dark:text-white mb-4">Age of Extraction</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Interactive PDF viewer for the early release document. Analysis of the extraction economy and the path to biological sovereignty.</p>
+        </header>
+
+        <!-- PDF Controls -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 mb-6 border border-gray-200 dark:border-gray-700">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <button id="prevPage" class="flex items-center px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                        <i data-feather="chevron-left" class="w-4 h-4 mr-2"></i>
+                        Previous
+                    </button>
+                    <button id="nextPage" class="flex items-center px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                        Next
+                        <i data-feather="chevron-right" class="w-4 h-4 ml-2"></i>
+                    </button>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="zoomOut" class="p-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                        <i data-feather="zoom-out" class="w-4 h-4"></i>
+                    </button>
+                    <span id="pageInfo" class="text-sm text-gray-600 dark:text-gray-300 px-3">Page 1 of 1</span>
+                    <button id="zoomIn" class="p-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                        <i data-feather="zoom-in" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="downloadPdf" class="flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
+                        <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                        Download PDF
+                    </button>
+                    <button id="fullscreen" class="p-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors">
+                        <i data-feather="maximize" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PDF Viewer Container -->
+        <div class="pdf-container bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+            <div id="loading" class="flex items-center justify-center h-full">
+                <div class="text-center">
+                    <div class="loading-spinner mx-auto mb-4"></div>
+                    <p class="text-gray-600 dark:text-gray-300">Loading PDF...</p>
+                </div>
+            </div>
+            <div id="pdfViewer" class="pdfViewer" style="display: none;">
+                <div id="viewerContainer" class="h-full"></div>
+            </div>
+        </div>
+
+        <!-- Document Info & Actions -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <div class="flex items-center mb-3">
+                    <i data-feather="file-text" class="w-5 h-5 text-red-500 mr-3"></i>
+                    <h3 class="font-bold text-gray-800 dark:text-white">Document Info</h3>
+                </div>
+                <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                    <li><strong>Title:</strong> Age of Extraction</li>
+                    <li><strong>Status:</strong> Early Release Draft</li>
+                    <li><strong>Format:</strong> PDF</li>
+                    <li><strong>Size:</strong> ~1.8 MB</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <div class="flex items-center mb-3">
+                    <i data-feather="eye" class="w-5 h-5 text-red-500 mr-3"></i>
+                    <h3 class="font-bold text-gray-800 dark:text-white">Quick Navigation</h3>
+                </div>
+                <div class="space-y-3">
+                    <a href="/the-analog-self.html" class="block w-full text-left px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors text-sm">
+                        <i data-feather="arrow-left" class="w-3 h-3 inline mr-2"></i>
+                        Back to THE ANALOG SELF
+                    </a>
+                    <button onclick="window.print()" class="w-full text-left px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors text-sm">
+                        <i data-feather="printer" class="w-3 h-3 inline mr-2"></i>
+                        Print Document
+                    </button>
+                </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                <div class="flex items-center mb-3">
+                    <i data-feather="shopping-cart" class="w-5 h-5 text-red-500 mr-3"></i>
+                    <h3 class="font-bold text-gray-800 dark:text-white">Get Complete Series</h3>
+                </div>
+                <div class="space-y-3">
+                    <a href="https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="block w-full text-center px-3 py-2 bg-yellow-500 hover:bg-yellow-600 text-black rounded font-bold transition-colors text-sm">
+                        <i data-feather="book" class="w-3 h-3 inline mr-2"></i>
+                        Get Book Bundle
+                    </a>
+                    <a href="/the-analog-self.html#early-release" class="block w-full text-center px-3 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors text-sm">
+                        <i data-feather="download" class="w-3 h-3 inline mr-2"></i>
+                        Download Free PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="mt-12 bg-gradient-to-br from-red-900 to-gray-900 rounded-xl p-8 text-center border border-red-700">
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Want the Complete Defense Library?</h2>
+            <p class="text-lg text-gray-300 mb-6">Get all 6 published books plus THE ANALOG SELF when it's released. The complete battle plan for biological sovereignty.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-lg transition-colors">
+                    <i data-feather="shopping-cart" class="inline-block w-5 h-5 mr-2"></i>
+                    Get Complete Bundle - $59.94
+                </a>
+                <a href="/the-analog-self.html" class="px-8 py-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition-colors">
+                    <i data-feather="arrow-left" class="inline-block w-5 h-5 mr-2"></i>
+                    Back to THE ANALOG SELF
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 py-8 mt-16">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 Fin Nyx. All rights reserved.</p>
+            <p class="mt-2 text-gray-500">Early Release Draft - Work in Progress</p>
+        </div>
+    </footer>
+    
+    <script>
+        let pdfDoc = null;
+        let pageNum = 1;
+        let pageRendering = false;
+        let pageNumPending = null;
+        let scale = 1.5;
+
+        // PDF URL - Update this to your actual PDF path
+        const PDF_URL = '/editing-AgeOfExtraction.pdf';
+
+        // Initialize PDF viewer
+        function initPDFViewer() {
+            const loading = document.getElementById('loading');
+            const viewer = document.getElementById('pdfViewer');
+            
+            // Load PDF
+            pdfjsLib.getDocument(PDF_URL).promise.then(function(pdf) {
+                pdfDoc = pdf;
+                document.getElementById('pageInfo').textContent = `Page 1 of ${pdf.numPages}`;
+                renderPage(pageNum);
+                loading.style.display = 'none';
+                viewer.style.display = 'block';
+            }).catch(function(error) {
+                console.error('Error loading PDF:', error);
+                loading.innerHTML = `
+                    <div class="text-center">
+                        <i data-feather="alert-circle" class="w-12 h-12 text-red-500 mx-auto mb-4"></i>
+                        <p class="text-gray-600 dark:text-gray-300">Failed to load PDF</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Please check if the file exists at the correct path</p>
+                        <a href="${PDF_URL}" class="inline-flex items-center mt-4 px-4 py-2 bg-red-600 text-white rounded-lg">
+                            <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                            Download PDF Directly
+                        </a>
+                    </div>
+                `;
+                feather.replace();
+            });
+        }
+
+        // Render page
+        function renderPage(num) {
+            pageRendering = true;
+            pdfDoc.getPage(num).then(function(page) {
+                const viewport = page.getViewport({scale: scale});
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+
+                page.render(renderContext).promise.then(function() {
+                    pageRendering = false;
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending);
+                        pageNumPending = null;
+                    }
+                });
+
+                // Update canvas
+                const container = document.getElementById('viewerContainer');
+                container.innerHTML = '';
+                canvas.className = 'page mx-auto';
+                container.appendChild(canvas);
+                
+                // Update page info
+                document.getElementById('pageInfo').textContent = `Page ${num} of ${pdfDoc.numPages}`;
+            });
+        }
+
+        // Queue render page
+        function queueRenderPage(num) {
+            if (pageRendering) {
+                pageNumPending = num;
+            } else {
+                renderPage(num);
+            }
+        }
+
+        // Navigation functions
+        function onPrevPage() {
+            if (pageNum <= 1) return;
+            pageNum--;
+            queueRenderPage(pageNum);
+        }
+
+        function onNextPage() {
+            if (pageNum >= pdfDoc.numPages) return;
+            pageNum++;
+            queueRenderPage(pageNum);
+        }
+
+        // Zoom functions
+        function onZoomIn() {
+            scale = Math.min(scale * 1.2, 3);
+            queueRenderPage(pageNum);
+        }
+
+        function onZoomOut() {
+            scale = Math.max(scale / 1.2, 0.5);
+            queueRenderPage(pageNum);
+        }
+
+        // Download function
+        function onDownload() {
+            const link = document.createElement('a');
+            link.href = PDF_URL;
+            link.download = 'Age-of-Extraction-Early-Release.pdf';
+            link.click();
+            
+            // Track download
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'pdf_download', {
+                    'event_category': 'engagement',
+                    'event_label': 'age_of_extraction_viewer',
+                    'send_to': 'G-1XGTK43HYL'
+                });
+            }
+        }
+
+        // Fullscreen function
+        function onFullscreen() {
+            const viewer = document.getElementById('pdfViewer');
+            if (!document.fullscreenElement) {
+                viewer.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Event listeners
+        document.getElementById('prevPage').addEventListener('click', onPrevPage);
+        document.getElementById('nextPage').addEventListener('click', onNextPage);
+        document.getElementById('zoomIn').addEventListener('click', onZoomIn);
+        document.getElementById('zoomOut').addEventListener('click', onZoomOut);
+        document.getElementById('downloadPdf').addEventListener('click', onDownload);
+        document.getElementById('fullscreen').addEventListener('click', onFullscreen);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') onPrevPage();
+            if (e.key === 'ArrowRight') onNextPage();
+            if (e.key === '+' || e.key === '=') onZoomIn();
+            if (e.key === '-' || e.key === '_') onZoomOut();
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+            initPDFViewer();
+        });
+
+        // Track Amazon clicks
+        document.querySelectorAll('a[href*="amazon.com"]').forEach(link => {
+            link.addEventListener('click', function() {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'amazon_click', {
+                        'event_category': 'ecommerce',
+                        'event_label': 'pdf_viewer',
+                        'send_to': 'G-1XGTK43HYL'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
