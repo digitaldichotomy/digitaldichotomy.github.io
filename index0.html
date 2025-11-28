@@ -556,15 +556,30 @@
                 // Create error message
                 const errorDiv = document.createElement('div');
                 errorDiv.className = 'media-error-message video-error';
-                errorDiv.innerHTML = `
-                    <div class="media-error-icon">⚠️</div>
-                    <h3>Video Unavailable</h3>
-                    <p>The video content could not be loaded. This may be due to network issues or an unsupported format.</p>
-                    <button onclick="this.parentElement.style.display='none';document.querySelector('video').style.display='block';document.querySelector('video').play();" 
-                            class="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors">
-                        Try Again
-                    </button>
-                `;
+                // Create error content safely
+                const iconDiv = document.createElement('div');
+                iconDiv.className = 'media-error-icon';
+                iconDiv.textContent = '⚠️';
+                
+                const titleH3 = document.createElement('h3');
+                titleH3.textContent = 'Video Unavailable';
+                
+                const errorP = document.createElement('p');
+                errorP.textContent = 'The video content could not be loaded. This may be due to network issues or an unsupported format.';
+                
+                const retryButton = document.createElement('button');
+                retryButton.className = 'mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors';
+                retryButton.textContent = 'Try Again';
+                retryButton.onclick = function() {
+                    this.parentElement.style.display='none';
+                    document.querySelector('video').style.display='block';
+                    document.querySelector('video').play();
+                };
+                
+                errorDiv.appendChild(iconDiv);
+                errorDiv.appendChild(titleH3);
+                errorDiv.appendChild(errorP);
+                errorDiv.appendChild(retryButton);
                 
                 video.parentElement.appendChild(errorDiv);
                 console.error('Video failed to load:', video.src);

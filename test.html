@@ -14,15 +14,44 @@
             const results = document.getElementById('test-results');
             
             if (typeof PATENTS_DATABASE !== 'undefined') {
-                results.innerHTML = `
-                    <p>✅ Patent database loaded successfully!</p>
-                    <p>📊 Total patents: ${PATENTS_DATABASE.metadata.totalPatents}</p>
-                    <p>🔴 Critical threats: ${PATENTS_DATABASE.metadata.criticalCount}</p>
-                    <p>🛡️ Countermeasures: ${COUNTERMEASURES_DATABASE.length}</p>
-                    <p><a href="sentinel-patent-database.html">Open Database →</a></p>
-                `;
+                // Clear results
+                while (results.firstChild) {
+                    results.removeChild(results.firstChild);
+                }
+                
+                // Create success content
+                const successP1 = document.createElement('p');
+                successP1.textContent = '✅ Patent database loaded successfully!';
+                
+                const successP2 = document.createElement('p');
+                successP2.textContent = `📊 Total patents: ${PATENTS_DATABASE.metadata.totalPatents}`;
+                
+                const successP3 = document.createElement('p');
+                successP3.textContent = `🔴 Critical threats: ${PATENTS_DATABASE.metadata.criticalCount}`;
+                
+                const successP4 = document.createElement('p');
+                successP4.textContent = `🛡️ Countermeasures: ${COUNTERMEASURES_DATABASE.length}`;
+                
+                const linkP = document.createElement('p');
+                const link = document.createElement('a');
+                link.href = 'sentinel-patent-database.html';
+                link.textContent = 'Open Database →';
+                linkP.appendChild(link);
+                
+                results.appendChild(successP1);
+                results.appendChild(successP2);
+                results.appendChild(successP3);
+                results.appendChild(successP4);
+                results.appendChild(linkP);
             } else {
-                results.innerHTML = '<p>❌ Failed to load patent database</p>';
+                // Clear results
+                while (results.firstChild) {
+                    results.removeChild(results.firstChild);
+                }
+                
+                const errorP = document.createElement('p');
+                errorP.textContent = '❌ Failed to load patent database';
+                results.appendChild(errorP);
             }
         });
     </script>

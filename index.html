@@ -39,6 +39,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com;">
+    
     <!-- Additional SEO -->
     <meta name="author" content="Digital Dichotomy Research">
     <meta name="citation_title" content="Digital Dichotomy Research: Surveillance Countermeasures and Cognitive Sovereignty Studies">
@@ -89,7 +92,8 @@
     }
     </script>
 
-    <script src="https://cdn.tailwindcss.com" onerror="document.head.innerHTML+='<style>body{font-family:sans-serif}.bg-gray-100{background:#f3f4f6}.dark\:bg-gray-900{background:#111827}.text-gray-800{color:#1f2937}.dark\:text-gray-200{color:#e5e7eb}.container{max-width:1200px;margin:0 auto;padding:0 1rem}</style>'"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com" onerror="(function(){var link=document.createElement('link');link.rel='stylesheet';link.href='styles.css';document.head.appendChild(link);})();"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -282,15 +286,13 @@
                         <i data-feather="moon" class="w-5 h-5" id="theme-icon"></i>
                     </button>
                 </div>
-                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                     <a href="/sentinel-patent-database.html" class="text-gray-300 hover:text-white transition-colors">
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium" role="navigation" aria-label="Main navigation">
+                     <a href="/sentinel-patent-database.html" class="text-gray-300 hover:text-white transition-colors" aria-label="Access Sentinel Patent Database">
                          Sentinel Database
                      </a>
-                    <a href="/the-analog-self.html" class="text-red-400 hover:text-white transition-colors font-bold">THE ANALOG SELF</a>
-                    <a href="/the-analog-self.html" class="text-red-400 hover:text-white transition-colors font-bold">THE ANALOG SELF</a>
-                    <a href="/pages/blog.html" class="text-gray-300 hover:text-white transition-colors">BLOG / FIELD NOTES</a>
-                    <a href="/sentinel-patent-database.html" class="text-gray-300 hover:text-white transition-colors">Patent Database</a>
-                    <a href="#library" class="text-gray-300 hover:text-white transition-colors">Library</a>
+                    <a href="/the-analog-self.html" class="text-red-400 hover:text-white transition-colors font-bold" aria-label="Read The Analog Self">THE ANALOG SELF</a>
+                    <a href="/pages/blog.html" class="text-gray-300 hover:text-white transition-colors" aria-label="View blog and field notes">BLOG / FIELD NOTES</a>
+                    <a href="#library" class="text-gray-300 hover:text-white transition-colors" aria-label="Jump to library section">Library</a>
                     <div class="relative">
                         <input 
                             type="text" 
@@ -298,6 +300,10 @@
                             placeholder="Search intelligence..." 
                             onkeyup="handleSearch(event)"
                             class="bg-gray-800 text-white px-3 py-1 rounded-lg text-sm w-48 focus:outline-none focus:ring-2 focus:ring-red-500 placeholder-gray-400"
+                            aria-label="Search site content"
+                            role="searchbox"
+                            aria-expanded="false"
+                            aria-autocomplete="list"
                         >
                         <div id="search-results" class="absolute top-full mt-2 w-64 bg-gray-800 border border-gray-600 rounded-lg shadow-xl hidden z-50 max-h-80 overflow-y-auto"></div>
                     </div>
@@ -1270,24 +1276,40 @@
                 item.title.toLowerCase().includes(query)
             ).slice(0, 5);
             
+            // Clear existing results
+            while (resultsDiv.firstChild) {
+                resultsDiv.removeChild(resultsDiv.firstChild);
+            }
+            
             if (results.length > 0) {
-                resultsDiv.innerHTML = results.map(item => `
-                    <a href="${item.url}" class="block px-4 py-3 hover:bg-gray-700 transition-colors border-b border-gray-700 last:border-b-0">
-                        <div class="flex items-center justify-between">
-                            <span class="text-white text-sm">${item.title}</span>
-                            <span class="text-xs px-2 py-1 rounded ${
-                                item.type === 'book' ? 'bg-red-600 text-white' : 'bg-blue-600 text-white'
-                            }">${item.type}</span>
-                        </div>
-                    </a>
-                `).join('');
+                results.forEach(item => {
+                    const link = document.createElement('a');
+                    link.href = item.url;
+                    link.className = 'block px-4 py-3 hover:bg-gray-700 transition-colors border-b border-gray-700 last:border-b-0';
+                    
+                    const flexDiv = document.createElement('div');
+                    flexDiv.className = 'flex items-center justify-between';
+                    
+                    const titleSpan = document.createElement('span');
+                    titleSpan.className = 'text-white text-sm';
+                    titleSpan.textContent = item.title;
+                    
+                    const typeSpan = document.createElement('span');
+                    typeSpan.className = 'text-xs px-2 py-1 rounded ' + 
+                        (item.type === 'book' ? 'bg-red-600 text-white' : 'bg-blue-600 text-white');
+                    typeSpan.textContent = item.type;
+                    
+                    flexDiv.appendChild(titleSpan);
+                    flexDiv.appendChild(typeSpan);
+                    link.appendChild(flexDiv);
+                    resultsDiv.appendChild(link);
+                });
                 resultsDiv.classList.remove('hidden');
             } else {
-                resultsDiv.innerHTML = `
-                    <div class="px-4 py-3 text-gray-400 text-sm">
-                        No results found for "${query}"
-                    </div>
-                `;
+                const noResultsDiv = document.createElement('div');
+                noResultsDiv.className = 'px-4 py-3 text-gray-400 text-sm';
+                noResultsDiv.textContent = `No results found for "${query}"`;
+                resultsDiv.appendChild(noResultsDiv);
                 resultsDiv.classList.remove('hidden');
             }
         }

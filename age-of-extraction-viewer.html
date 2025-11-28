@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Age of Extraction - PDF Viewer | Fin Nyx | Digital Dichotomy</title>
     
-    <meta name="description" content="Interactive PDF viewer for Age of Extraction early release document. Analysis of the extraction economy and biological sovereignty.">
+    <meta name="description" content="Interactive PDF viewer for Age of Extraction early release document. Analysis of extraction economy and biological sovereignty.">
+    
+    <link rel="canonical" href="https://digitaldichotomy.github.io/age-of-extraction-viewer.html">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -22,7 +24,7 @@
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+    <script src="media-error-handler.js" onerror=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf_viewer.min.css">
     
@@ -261,18 +263,47 @@
                 loading.style.display = 'none';
                 viewer.style.display = 'block';
             }).catch(function(error) {
-                console.error('Error loading PDF:', error);
-                loading.innerHTML = `
-                    <div class="text-center">
-                        <i data-feather="alert-circle" class="w-12 h-12 text-red-500 mx-auto mb-4"></i>
-                        <p class="text-gray-600 dark:text-gray-300">Failed to load PDF</p>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Please check if the file exists at the correct path</p>
-                        <a href="${PDF_URL}" class="inline-flex items-center mt-4 px-4 py-2 bg-red-600 text-white rounded-lg">
-                            <i data-feather="download" class="w-4 h-4 mr-2"></i>
-                            Download PDF Directly
-                        </a>
-                    </div>
-                `;
+                // Error loading PDF
+                // Clear loading content
+                while (loading.firstChild) {
+                    loading.removeChild(loading.firstChild);
+                }
+                
+                // Create error content safely
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'text-center';
+                
+                const icon = document.createElement('i');
+                icon.setAttribute('data-feather', 'alert-circle');
+                icon.className = 'w-12 h-12 text-red-500 mx-auto mb-4';
+                
+                const errorText = document.createElement('p');
+                errorText.className = 'text-gray-600 dark:text-gray-300';
+                errorText.textContent = 'Failed to load PDF';
+                
+                const subText = document.createElement('p');
+                subText.className = 'text-sm text-gray-500 dark:text-gray-400 mt-2';
+                subText.textContent = 'Please check if the file exists at the correct path';
+                
+                const downloadLink = document.createElement('a');
+                downloadLink.href = PDF_URL;
+                downloadLink.className = 'inline-flex items-center mt-4 px-4 py-2 bg-red-600 text-white rounded-lg';
+                
+                const downloadIcon = document.createElement('i');
+                downloadIcon.setAttribute('data-feather', 'download');
+                downloadIcon.className = 'w-4 h-4 mr-2';
+                
+                const downloadText = document.createTextNode('Download PDF Directly');
+                
+                downloadLink.appendChild(downloadIcon);
+                downloadLink.appendChild(downloadText);
+                
+                errorDiv.appendChild(icon);
+                errorDiv.appendChild(errorText);
+                errorDiv.appendChild(subText);
+                errorDiv.appendChild(downloadLink);
+                
+                loading.appendChild(errorDiv);
                 feather.replace();
             });
         }
@@ -302,7 +333,9 @@
 
                 // Update canvas
                 const container = document.getElementById('viewerContainer');
-                container.innerHTML = '';
+                while (container.firstChild) {
+                    container.removeChild(container.firstChild);
+                }
                 canvas.className = 'page mx-auto';
                 container.appendChild(canvas);
                 
