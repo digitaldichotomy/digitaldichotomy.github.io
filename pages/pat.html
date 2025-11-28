@@ -346,7 +346,7 @@
         </div>
     </nav>
 
-     <script src="https://cdn.tailwindcss.com" onerror="document.head.innerHTML+='<style>body{font-family:sans-serif}.bg-gray-100{background:#f3f4f6}.dark\:bg-gray-900{background:#111827}.text-gray-800{color:#1f2937}.dark\:text-gray-200{color:#e5e7eb}.container{max-width:1200px;margin:0 auto;padding:0 1rem}</style>'"></script>
+     <script src="https://cdn.tailwindcss.com" onerror="document.head.innerHTML+='<style>body{font-family:sans-serif}.bg-gray-100{background:#f3f4f6}.dark\:bg-gray-900{background:#111827}.text-gray-800{color:#1f2937}.dark\:text-gray-200{color:#e5e7eb}.container{max-width:1200px;margin:0 auto;padding:0 1rem}.search-highlight{background-color:#fef3c7;padding:2px 4px;border-radius:3px}.hidden{display:none}</style>'"></script>
     <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" onerror="console.warn('Feather Icons CDN failed - icons may not display');document.querySelectorAll('[data-feather]').forEach(el=>el.style.display='none')"></script>
     <script src="../social-share.js" onerror="console.warn('Social share failed to load');"></script>
@@ -1741,16 +1741,28 @@
                 resultsDiv.innerHTML = '';
                 resultsDiv.classList.add('hidden');
 
-                if (searchTerm.length < 2) return;
+                // Reset all rows to visible and remove highlights
+                allRows.forEach(row => {
+                    row.style.display = '';
+                    row.classList.remove('search-highlight');
+                });
+
+                if (searchTerm.length < 2) {
+                    // Reset all rows to visible
+                    allRows.forEach(row => row.style.display = '');
+                    return;
+                }
 
                 // Search through all table rows
                 allRows.forEach(row => {
                     const text = row.textContent.toLowerCase();
                     if (text.includes(searchTerm)) {
                         row.style.display = '';
+                        row.classList.add('search-highlight');
                         foundCount++;
                     } else {
                         row.style.display = 'none';
+                        row.classList.remove('search-highlight');
                     }
                 });
 
@@ -1765,17 +1777,24 @@
 
                 // Scroll to first result
                 if (foundCount > 0) {
-                    const firstVisible = document.querySelector('tbody tr[style=""]');
-                    if (firstVisible) {
-                        firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
+                    setTimeout(() => {
+                        const firstVisible = document.querySelector('tbody tr:not([style*="display: none"])');
+                        if (firstVisible) {
+                            firstVisible.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 100);
                 }
             }
 
             // Add search on Enter key
-            document.getElementById('patent-search').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    searchPatents();
+            document.addEventListener('DOMContentLoaded', function() {
+                const searchInput = document.getElementById('patent-search');
+                if (searchInput) {
+                    searchInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            searchPatents();
+                        }
+                    });
                 }
             });
         </script>
