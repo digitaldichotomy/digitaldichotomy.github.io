@@ -18,6 +18,61 @@
   color-scheme: dark;
 }
 
+/* Patent Database Table Styles */
+.patent-table {
+  @apply w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden shadow-sm;
+}
+
+.patent-table th {
+  @apply bg-gray-50 dark:bg-gray-700 px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider;
+}
+
+.patent-table td {
+  @apply px-4 py-3 text-sm text-gray-900 dark:text-gray-100 border-t border-gray-100 dark:border-gray-700;
+}
+
+.patent-table tr:hover {
+  @apply bg-gray-50 dark:bg-gray-750;
+}
+
+.patent-section {
+  @apply mb-12 scroll-mt-20;
+}
+
+.patent-section h2 {
+  @apply text-2xl font-bold text-gray-900 dark:text-white mb-6 pb-2 border-b-2 border-red-500;
+}
+
+.patent-section h3 {
+  @apply text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 mt-8;
+}
+
+/* Relevance indicator styles */
+.relevance-high {
+  @apply bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 px-2 py-1 rounded text-xs font-semibold;
+}
+
+.relevance-medium {
+  @apply bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300 px-2 py-1 rounded text-xs font-semibold;
+}
+
+.relevance-low {
+  @apply bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-2 py-1 rounded text-xs font-semibold;
+}
+
+/* Patent category badges */
+.category-tier1 { @apply bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300; }
+.category-tier2 { @apply bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300; }
+.category-tier3 { @apply bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-300; }
+.category-tier4 { @apply bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300; }
+.category-tier5 { @apply bg-lime-100 dark:bg-lime-900/30 text-lime-800 dark:text-lime-300; }
+.category-tier6 { @apply bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300; }
+.category-tier7 { @apply bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-300; }
+.category-tier8 { @apply bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300; }
+.category-tier11 { @apply bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300; }
+.category-tier12 { @apply bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300; }
+.category-defense { @apply bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300; }
+
 /* Custom component styles */
 @layer components {
   .btn-primary {
