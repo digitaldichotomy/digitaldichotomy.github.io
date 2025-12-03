@@ -247,16 +247,27 @@
         let pageNumPending = null;
         let scale = 1.5;
 
-        // PDF URL - Update this to your actual PDF path
-        const PDF_URL = '/editing-AgeOfExtraction.pdf';
+        // PDF URL - PDF not yet available
+        const PDF_URL = null; // Will show placeholder
 
         // Initialize PDF viewer
         function initPDFViewer() {
             const loading = document.getElementById('loading');
             const viewer = document.getElementById('pdfViewer');
             
-            // Load PDF
-            pdfjsLib.getDocument(PDF_URL).promise.then(function(pdf) {
+            // Show placeholder since PDF is not available
+            loading.innerHTML = `
+                <div class="text-center py-12">
+                    <h2 class="text-2xl font-bold text-gray-300 mb-4">Age of Extraction PDF Coming Soon</h2>
+                    <p class="text-gray-400 mb-4">The complete Age of Extraction analysis will be available for download and online viewing.</p>
+                    <a href="/the-analog-self.html" class="inline-block px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-colors">
+                        Return to The Analog Self
+                    </a>
+                </div>
+            `;
+            
+            // Do not attempt to load PDF since it's not available
+            return;
                 pdfDoc = pdf;
                 document.getElementById('pageInfo').textContent = `Page 1 of ${pdf.numPages}`;
                 renderPage(pageNum);

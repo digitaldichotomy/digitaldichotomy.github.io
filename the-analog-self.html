@@ -849,10 +849,13 @@
                                             <div class="text-2xl font-bold text-green-400">FREE</div>
                                             <div class="text-sm text-gray-400">Limited time offer</div>
                                         </div>
-                                        <a href="/editing-AgeOfExtraction.pdf" download class="mt-4 w-full text-center px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold transition-colors">
-                                            <i data-feather="download" class="inline-block w-4 h-4 mr-2"></i>
-                                            Download Free PDF
-                                        </a>
+                                        <div class="bg-gray-800 border border-gray-600 rounded-lg p-4 mt-4">
+                                            <p class="text-yellow-200 text-center">
+                                                <i data-feather="book-open" class="inline-block w-5 h-5 mb-2"></i><br>
+                                                PDF download coming soon<br>
+                                                <span class="text-sm text-gray-400">Complete Age of Extraction analysis</span>
+                                            </p>
+                                        </div>
                                     </div>
                                     
                                     <div class="bg-gradient-to-br from-yellow-600 to-orange-600 rounded-lg p-6 border-2 border-yellow-400 transform scale-105">
@@ -989,16 +992,7 @@
             });
         });
 
-        // PDF download tracking
-        document.querySelector('a[href="/editing-AgeOfExtraction.pdf"]').addEventListener('click', function() {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'pdf_download', {
-                    'event_category': 'engagement',
-                    'event_label': 'the_analog_self_early_release',
-                    'send_to': 'G-1XGTK43HYL'
-                });
-            }
-        });
+        // PDF download tracking removed - PDF not yet available
 
         // Scroll event listeners
         window.addEventListener('scroll', () => {
