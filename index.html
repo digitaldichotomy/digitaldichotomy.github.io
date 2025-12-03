@@ -352,7 +352,7 @@
                 <!-- Research Overview -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                     <div class="bg-red-800/50 p-4 rounded-lg border border-red-700 text-center">
-                        <div class="text-2xl font-bold text-red-300 mb-2">200+</div>
+                        <div class="text-2xl font-bold text-red-300 mb-2" id="hero-patent-count">200+</div>
                         <div class="text-sm text-red-200">Patents Analyzed</div>
                     </div>
                     <div class="bg-red-700/50 p-4 rounded-lg border border-red-600 text-center">
@@ -1199,6 +1199,23 @@
         if (typeof feather !== 'undefined') {
             feather.replace();
         }
+
+        // Ensure correct patent count display - override any dynamic modifications
+        function ensureCorrectPatentCount() {
+            const heroPatentCount = document.getElementById('hero-patent-count');
+            if (heroPatentCount && heroPatentCount.textContent !== '200+') {
+                heroPatentCount.textContent = '200+';
+                console.log('Corrected patent count in hero section to 200+');
+            }
+        }
+
+        // Run immediately and also after a short delay to catch any delayed modifications
+        ensureCorrectPatentCount();
+        setTimeout(ensureCorrectPatentCount, 100);
+        setTimeout(ensureCorrectPatentCount, 1000);
+        
+        // Also run on DOM ready
+        document.addEventListener('DOMContentLoaded', ensureCorrectPatentCount);
     </script>
 </body>
 </html>
