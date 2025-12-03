@@ -293,15 +293,15 @@
         }
         
         function downloadPDF() {
-            alert('PDF download available soon. For now, use the Print function to save as PDF.');
+            status.textContent = 'PDF download coming soon. Print to save as PDF.';
         }
         
         function downloadDOCX() {
-            alert('Word document download available soon. For now, use the Print function to save as PDF then convert.');
+            status.textContent = 'Word template coming soon. Print to PDF then convert.';
         }
         
         function downloadTXT() {
-            alert('Plain text download available soon. For now, use the Print function to save as PDF then extract text.');
+            status.textContent = 'Plain text coming soon. Print to PDF then extract.';
         }
         
         function shareToTwitter() {
@@ -319,7 +319,9 @@
         
         function copyLink() {
             navigator.clipboard.writeText(window.location.href);
-            alert('Digital Battery Declaration link copied to clipboard!');
+            navigator.clipboard.writeText(this.href);
+                this.textContent = 'Link copied!';
+                setTimeout(() => this.textContent = 'Copy Link', 2000);
         }
     </script>
 </body>

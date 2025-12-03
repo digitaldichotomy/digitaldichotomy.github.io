@@ -288,7 +288,9 @@
         
         function copyLink() {
             navigator.clipboard.writeText(window.location.href);
-            alert('Indiana Resources link copied to clipboard!');
+            navigator.clipboard.writeText(this.href);
+                this.textContent = 'Link copied!';
+                setTimeout(() => this.textContent = 'Copy Indiana Link', 2000);
         }
     </script>
 </body>

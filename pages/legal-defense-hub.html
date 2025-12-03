@@ -558,19 +558,21 @@
         
         // Emergency actions
         function showStateRequest() {
-            alert('Contact us at legal@digitaldichotomy.io with your state name and we\'ll prioritize your resistance package development.');
+            status.textContent = 'Contact legal@digitaldichotomy.io to prioritize your state.';
         }
         
         function printWalletCard() {
-            alert('Printable wallet cards are available in each state-specific resistance package. Visit your state page for downloadable emergency contact cards.');
+            status.textContent = 'Printable cards available in each state package.';
+                setTimeout(() => status.textContent = '', 5000);
         }
         
         function showEmergencyContacts() {
-            alert('Emergency law firm contacts are listed in each state package. Click your state above for immediate legal assistance.');
+            status.textContent = 'Emergency contacts listed in each state package.';
+                setTimeout(() => status.textContent = '', 5000);
         }
         
         function downloadTemplates() {
-            alert('Document templates are available in the class action guide: /pages/post-class-action-guide.html');
+            status.textContent = 'Templates available in class action guide.';
         }
         
         function showEvidenceCollector() {

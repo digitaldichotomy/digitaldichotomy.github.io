@@ -1,11 +1,5 @@
 {
   "pages": [
-    {
-      "title": "Data Pollution Guide",
-      "url": "/pages/post-data-pullution.html",
-      "category": "Defense",
-      "keywords": ["data pollution", "temporal jitter", "cognitive obfuscation", "privacy", "surveillance countermeasures"],
-      "description": "The ultimate countermeasure is not to block data, but to poison it"
     },
     {
       "title": "Wi-Fi Sensing & Wi-Chat AI",

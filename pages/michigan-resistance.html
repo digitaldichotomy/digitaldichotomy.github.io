@@ -602,11 +602,11 @@
         
         // Download functions (placeholders)
         function downloadWalletCards() {
-            alert('Wallet cards PDF download feature coming soon. For now, use the print function.');
+            status.textContent = 'Wallet cards coming soon. Use print function.';
         }
         
         function downloadTemplate(template) {
-            alert('Word document templates coming soon. Contact Fieger Law for immediate templates.');
+            status.textContent = 'Word templates coming soon. Contact Fieger Law immediately.';
         }
         
         // Social sharing
@@ -625,7 +625,9 @@
         
         function copyLink() {
             navigator.clipboard.writeText(window.location.href);
-            alert('Michigan Resources link copied to clipboard!');
+            navigator.clipboard.writeText(this.href);
+                this.textContent = 'Link copied!';
+                setTimeout(() => this.textContent = 'Copy Michigan Link', 2000);
         }
     </script>
 </body>
