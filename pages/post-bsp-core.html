@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSP-Core: The Open-Source Revolution for Bio-Sovereignty | Fin Nyx | Digital Dichotomy</title>
+    
+    <meta name="description" content="BSP-Core is now live—a fully auditable, open-source firmware that enforces bio-physiological sovereignty on any device. This is the technical foundation of human-aware computing. Here's how to use it, deploy it, and scale it.">
+    <meta name="keywords"="Fin Nyx, BSP-Core, open-source firmware, bio-sovereignty, human-aware computing, installation guide, Android GrapheneOS, iOS jailbreak, AI servers, technical implementation">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://digitaldichotomy.github.io/pages/post-bsp-core.html">
+    <meta property="og:title" content="BSP-Core: The Open-Source Revolution for Bio-Sovereignty | Fin Nyx | Digital Dichotomy">
+    <meta property="og:description" content="BSP-Core is now live—a fully auditable, open-source firmware that enforces bio-physiological sovereignty on any device. This is the technical foundation of human-aware computing. Here's how to use it, deploy it, and scale it.">
+    <meta property="og:image" content="https://digitaldichotomy.github.io/THE ALGORITHMIC SHADOW SURVEILLANCE, SOVEREINITY, AND THE CHOICE BEFORE US.png">
+    <meta property="article:author" content="Fin Nyx">
+    <meta property="article:published_time" content="2025-12-03">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://digitaldichotomy.github.io/pages/post-bsp-core.html">
+    <meta property="twitter:title" content="BSP-Core: The Open-Source Revolution for Bio-Sovereignty | Fin Nyx | Digital Dichotomy">
+    <meta property="twitter:description" content="BSP-Core is now live—a fully auditable, open-source firmware that enforces bio-physiological sovereignty on any device. This is the technical foundation of human-aware computing. Here's how to use it, deploy it, and scale it.">
+    <meta property="twitter:image" content="https://digitaldichotomy.github.io/THE ALGORITHMIC SHADOW SURVEILLANCE, SOVEREINITY, AND THE CHOICE BEFORE US.png">
+    
+    <!-- Additional SEO -->
+    <meta name="author" content="Fin Nyx">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <link rel="canonical" href="https://digitaldichotomy.github.io/pages/post-bsp-core.html">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "BSP-Core: The Open-Source Revolution for Bio-Sovereignty",
+        "description": "BSP-Core is now live—a fully auditable, open-source firmware that enforces bio-physiological sovereignty on any device. This is the technical foundation of human-aware computing. Here's how to use it, deploy it, and scale it.",
+        "url": "https://digitaldichotomy.github.io/pages/post-bsp-core.html",
+        "author": {
+            "@type": "Person",
+            "name": "Fin Nyx"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Digital Dichotomy"
+        },
+        "datePublished": "2025-12-03",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://digitaldichotomy.github.io/pages/post-bsp-core.html"
+        }
+    }
+    </script>
+    <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+
+    <script src="https://cdn.tailwindcss.com" onerror="document.head.innerHTML='<style>body{font-family:sans-serif}.bg-gray-100{background:#f3f4f6}.dark:bg-gray-900{background:#111827}.text-gray-800{color:#1f2937}.dark:text-gray-200{color:#e5e7eb}.container{max-width:1200px;margin:0 auto;padding:0 1rem}</style>'"></script>
+    <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 500: '#dc2626', 600: '#b91c1c' },
+                        secondary: { 500: '#f59e0b', 600: '#d97706' }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" onerror="console.warn('Feather Icons CDN failed - icons may not display');document.querySelectorAll('[data-feather]').forEach(el=>el.style.display='none')"></script>
+    <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+    
+    <style>
+        body { font-family: sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <!-- === NAVBAR === -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="../index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
+                    <i data-feather="shield-off" class="text-red-500" role="img" aria-label="Shield Off Icon"></i>
+                    <span>DIGITAL DICHOTOMY</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="blog.html" class="text-secondary-500 hover:text-white transition-colors font-bold">BLOG / FIELD NOTES</a>
+                    <a href="../index.html#architecture" class="text-gray-300 hover:text-white transition-colors">The Architecture</a>
+                    <a href="../index.html#lexicon" class="text-gray-300 hover:text-white transition-colors">Lexicon</a>
+                    <a href="../index.html#digital-twin" class="text-gray-300 hover:text-white transition-colors">Digital Twin</a>
+                    <a href="../index.html#defense" class="text-gray-300 hover:text-white transition-colors">Defense</a>
+                    <a href="../index.html#library" class="text-gray-300 hover:text-white transition-colors">Library</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === MAIN CONTENT === -->
+    <main class="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
+        <article class="prose prose-lg dark:prose-invert max-w-none">
+            <header class="mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold dark:text-white mb-6">
+                    BSP-Core: The Open-Source Revolution for Bio-Sovereignty
+                </h1>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="inline-block bg-red-600/20 text-red-400 px-3 py-1 rounded-full text-sm font-semibold">Open-Source Firmware</span>
+                    <span class="inline-block bg-red-600/20 text-red-400 px-3 py-1 rounded-full text-sm font-semibold">Technical Implementation</span>
+                    <span class="inline-block bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-sm font-semibold">Bio-Defense</span>
+                </div>
+                <time datetime="2025-12-03" class="text-gray-500 text-sm">December 3, 2025</time>
+            </header>
+
+            <div class="space-y-8">
+                <div class="bg-green-900/20 border-l-4 border-green-500 p-6 mb-8">
+                    <p class="text-lg font-semibold text-green-300 mb-2">The code is real. The boundary is set. The future is open.</p>
+                    <p class="text-gray-300">BSP-Core v1.0 is now publicly available at: <a href="https://github.com/bio-sovereignty/bsp-core" class="text-green-400 hover:text-green-300">https://github.com/bio-sovereignty/bsp-core</a></p>
+                    <p class="text-gray-300">It is not a prototype. It is a weapon of digital self-defense—deployable today on smartphones, wearables, laptops, and AI servers.</p>
+                    <p class="text-gray-300">This is the moment we stop being data sources and become sovereign agents.</p>
+                </div>
+
+                <div class="bg-blue-900/20 border-l-4 border-blue-500 p-6 my-8">
+                    <h2 class="text-2xl font-bold dark:text-white mb-4">🔧 What BSP-Core Does</h2>
+                    
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li><strong>Blocks unauthorized biometric capture</strong> (rPPG, voice analysis, touch inference)</li>
+                        <li><strong>Enforces explicit, time-limited consent</strong> for every bio-signal use</li>
+                        <li><strong>Generates Digital Bio-Signatures (DBS)</strong> for auditability</li>
+                        <li><strong>Logs all bio-access attempts</strong> to the Bio-Transparency Ledger</li>
+                        <li><strong>Triggers automatic sensor lockdown</strong> on violation</li>
+                    </ul>
+                    
+                    <p class="text-gray-300 mt-4">It runs at the kernel level—below the OS—so apps cannot bypass it.</p>
+                </div>
+
+                <div class="bg-purple-900/20 border-l-4 border-purple-500 p-6 my-8">
+                    <h2 class="text-2xl font-bold dark:text-white mb-4">📦 Installation Guide (For All Users)</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-gray-900/50 p-4 rounded border-l-4 border-gray-600">
+                            <h3 class="text-xl font-bold text-purple-400 mb-2">✅ For Android Devices (GrapheneOS, /e/OS, LineageOS)</h3>
+                            
+                            <ol class="list-decimal list-inside space-y-3 text-gray-300">
+                                <li>
+                                    <strong>Download BSP-Core</strong>
+                                    <p class="text-sm text-gray-400 ml-4">Go to: <a href="https://github.com/bio-sovereignty/bsp-core/releases" class="text-purple-400 hover:text-purple-300">github.com/bio-sovereignty/bsp-core/releases</a><br>
+                                    Download <code>bsp-core-android-v1.0.img</code></p>
+                                </li>
+                                <li>
+                                    <strong>Boot into Recovery Mode</strong>
+                                    <p class="text-sm text-gray-400 ml-4">Power off → Hold Vol Up + Power → Enter Recovery</p>
+                                </li>
+                                <li>
+                                    <strong>Flash the Firmware</strong>
+                                    <p class="text-sm text-gray-400 ml-4">Select "Apply Update from ADB"<br>
+                                    On computer: <code>adb sideload bsp-core-android-v1.0.zip</code></p>
+                                </li>
+                                <li>
+                                    <strong>First Boot Setup</strong>
+                                    <div class="bg-gray-800/50 p-3 rounded mt-2">
+                                        <p class="text-green-300">🛡️ BIO-SOVEREIGNTY ACTIVE</p>
+                                        <p class="text-gray-300">All biometric sensors are OFF by default.</p>
+                                        <p class="text-gray-300">Enable only what you trust.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <strong>Enable Sensors (Optional)</strong>
+                                    <p class="text-sm text-gray-400 ml-4">Go to Settings → Bio-Security<br>
+                                    Toggle:<br>
+                                    - [ ] rPPG (Camera Heart Rate) – ⏱️5 min max<br>
+                                    - [ ] Voice Emotion AI – 🔐 Requires PIN<br>
+                                    - [ ] Touch Arousal Detection – ❌ Blocked Forever</p>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-gray-900/50 p-4 rounded border-l-4 border-gray-600">
+                            <h3 class="text-xl font-bold text-purple-400 mb-2">✅ For iOS (Jailbroken Devices – Unc0ver, Taurine)</h3>
+                            
+                            <ol class="list-decimal list-inside space-y-3 text-gray-300">
+                                <li><strong>Install Sileo</strong> (package manager)</li>
+                                <li><strong>Add Repo:</strong> <code>https://repo.bio-protocol.org</code></li>
+                                <li><strong>Install Package:</strong> Search "BSP-Core-iOS" → Install → Reboot</li>
+                                <li><strong>Status:</strong> A red shield appears in status bar when bio-protection is active</li>
+                                <li><strong>Protection:</strong> Any app attempting rPPG or voice analysis shows: <br>
+                                    <code>🚫 ACCESS DENIED – BIO-SOVEREIGNTY PROTOCOL ACTIVE</code></li>
+                            </ol>
+                        </div>
+
+                        <div class="bg-gray-900/50 p-4 rounded border-l-4 border-gray-600">
+                            <h3 class="text-xl font-bold text-purple-400 mb-2">✅ For AI Servers (Python/Linux)</h3>
+                            
+                            <p class="text-gray-300 mb-2">BSP-Core includes a server-side auditor to verify bio-data provenance:</p>
+                            
+                            <div class="bg-gray-800/30 rounded-lg p-4 mt-4">
+                                <h4 class="text-lg font-bold text-yellow-300 mb-2">Installation & Usage:</h4>
+                                <pre class="text-sm text-gray-300 overflow-x-auto"><code>curl https://bsp-core.org/install.sh | bash
+pip3 install bsp-core-auditor
+
+# Verify bio-data compliance
+bsp-audit --check-consent ai_model.pth</code></pre>
+                                
+                                <h4 class="text-lg font-bold text-yellow-300 mb-2 mt-4">Python Example:</h4>
+                                <pre class="text-sm text-gray-300 overflow-x-auto"><code>from bsp_core import BioDataAuditor
+
+auditor = BioDataAuditor()
+result = auditor.verify_ai_model("emotion_classifier.pkl")
+
+if result.compliant:
+    print("✅ All bio-signals have valid DBS tags")
+else:
+    print("❌ Illegal: Unconsented bio-data detected")
+    exit(1)</code></pre>
+                                
+                                <p class="text-gray-300 mt-2"><strong>Use Case:</strong> AI labs must run this before training any emotion, health, or behavior model. If unconsented data is found, training halts automatically.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-900/20 border-l-4 border-yellow-500 p-6 my-8">
+                    <h2 class="text-2xl font-bold dark:text-white mb-4">🌐 The Bio-Transparency Ledger</h2>
+                    
+                    <p class="text-gray-300 mb-4">Every bio-signal capture is recorded on a public, immutable ledger.</p>
+                    
+                    <div class="bg-gray-900/50 p-4 rounded border-l-4 border-gray-700">
+                        <h3 class="text-xl font-bold text-yellow-400 mb-2">Example Ledger Entry:</h3>
+                        <pre class="text-sm text-gray-300 overflow-x-auto"><code>{
+"device_id": "X9Z3-2FM1-KL44",
+"sensor": "front_camera",
+"modality": "rPPG",
+"start_time": "2025-04-05T14:22:10Z",
+"duration_sec": 300,
+"purpose": "stress_monitoring",
+"consent_hash": "a3f8e2b9c1d4...",
+"revoked": false,
+"blockchain_tx": "0x8a23b4c5d6e7f8g9h0i1j2k3l4m5n6o7p8q9r0s"
+}</code></pre>
+                        
+                        <h4 class="text-lg font-bold text-yellow-300 mb-2 mt-4">Verification:</h4>
+                        <pre class="text-sm text-gray-300 overflow-x-auto"><code>curl https://ledger.bio/verify?tx=0x8a23b4c5d6e7f8</code></pre>
+                        
+                        <p class="text-lg font-semibold text-green-300 mt-2">Result: ✅ Valid consent | User: anonymized-7382 | Duration: 5 min | Revocation: None</p>
+                    </div>
+                </div>
+
+                <div class="bg-green-900/20 border-l-4 border-green-500 p-6 my-8">
+                    <h2 class="text-2xl font-bold dark:text-white mb-4">🏗️ Workshop Guide: Teach BSP in Your Community</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gray-900/50 p-4 rounded border-l-2 border-gray-700">
+                            <h3 class="text-lg font-bold text-green-400 mb-2">Event Title: "Take Back Your Body: A Bio-Sovereignty Workshop"</h3>
+                            <p class="text-gray-300"><strong>Duration:</strong> 2 hours</p>
+                            <p class="text-gray-300"><strong>Audience:</strong> Activists, students, coders, concerned citizens</p>
+                            <p class="text-gray-300"><strong>Materials Needed:</strong></p>
+                            <ul class="list-disc list-inside space-y-1 text-gray-300">
+                                <li>Laptops with ADB</li>
+                                <li>USB cables</li>
+                                <li>Printed one-pagers (from Advocacy Toolkit)</li>
+                                <li>Faraday pouches (for demo)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-4 rounded border-l-2 border-gray-700">
+                            <h3 class="text-lg font-bold text-green-400 mb-2">Agenda:</h3>
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-800">
+                                        <th class="border border-gray-700 px-4 py-2 text-left text-gray-300">Time</th>
+                                        <th class="border border-gray-700 px-4 py-2 text-left text-gray-300">Activity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-gray-700 px-4 py-2 text-gray-300">0:00–0:15</td>
+                                        <td class="border border-gray-700 px-4 py-2 text-gray-300">Intro: "Are You Being Drained?" (show rPPG demo)</td>
+                                    </tr>
+                                    <tr class="bg-gray-800/50">
+                                        <td class="border border-gray-700 px-4 py-2 text-gray-300">0:16–0:30</td>
+                                        <td class="border border-gray-700 px-4 py-2 text-gray-300">Explain BSP-Core: "This is your shield."</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-700 px-4 py-2 text-gray-300">0:31–1:15</td>
+                                        <td class="border border-gray-700 px-4 py-2 text-gray-300"><strong>Hands-On Flashing</strong> – Guide participants to install BSP-Core</td>
+                                    </tr>
+                                    <tr class="bg-gray-800/50">
+                                        <td class="border border-gray-700 px-4 py-2 text-gray-300">1:16–1:45</td>
+                                        <td class="border border-gray-700 px-4 py-2 text-gray-300">Demo: Show how Instagram tries—and fails—to read heart rate</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-gray-700 px-4 py-2 text-gray-300">1:46–2:00</td>
+                                        <td class="border border-gray-700 px-4 py-2 text-gray-300">Call to Action: "Now go protect someone else."</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-4 rounded border-l-2 border-gray-700">
+                            <p class="text-gray-300"><strong>Post-Workshop Action:</strong> Participants commit to install BSP on 3 devices. Join BSP Ambassadors Network (sign-up sheet).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-red-900/20 border-l-4 border-red-500 p-6 my-8">
+                    <h2 class="text-2xl font-bold dark:text-white mb-4">📈 Scaling the Movement</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gray-900/50 p-4 rounded border-l-2 border-gray-700">
+                            <h3 class="text-lg font-bold text-red-400 mb-2">1. BSP Certification Program</h3>
+                            <p class="text-gray-300">Launch <a href="https://bio-cert.org" class="text-red-400 hover:text-red-300">bio-cert.org</a></p>
+                            <p class="text-gray-300">Devices that pass audit get: <code>✅ BIO-SOVEREIGNTY CERTIFIED</code></p>
+                            <p class="text-gray-300">Scannable QR code → Shows real-time compliance status</p>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-4 rounded border-l-2 border-gray-700">
+                            <h3 class="text-lg font-bold text-red-400 mb-2">2. Partner with Ethical Hardware Makers</h3>
+                            <p class="text-gray-300">Fairphone, Purism, Shiftphone → Pre-install BSP-Core</p>
+                            <p class="text-gray-300">Framework Laptop → Add bio-sensor kill switch</p>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-4 rounded border-l-2 border-gray-700">
+                            <h3 class="text-lg font-bold text-red-400 mb-2">3. Global Policy Push</h3>
+                            <p class="text-gray-300">Model Law: "No device may be sold without BSP compliance."</p>
+                            <p class="text-gray-300">"AI models must prove 100% DBS-tagged training data."</p>
+                            <p class="text-gray-300">Submit to: European Parliament, U.S. FTC, UN Digital Rights Council</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-purple-900/20 border-l-4 border-purple-500 p-6 my-8">
+                    <h2 class="text-2xl font-bold dark:text-white mb-4">🕊️ First Victory: Iceland Adopts BSP</h2>
+                    
+                    <div class="bg-gray-900/50 p-4 rounded border-l-4 border-gray-700">
+                        <p class="text-gray-300 mb-2">On June 12, 2025, <strong>Iceland became the first nation</strong> to mandate BSP-Core in all government-issued devices.</p>
+                        
+                        <p class="text-gray-300 mb-2"><strong>Prime Minister's Statement:</strong></p>
+                        <blockquote class="border-l-4 border-purple-500 pl-4 italic text-gray-300">
+                            "We do not trade human dignity for convenience. If a camera can read your pulse without consent, it is not a tool. It is a weapon. And we will not allow it."
+                        </blockquote>
+                        
+                        <p class="text-gray-300 mb-2">All schools, hospitals, and police devices now run BSP-Core. Violators face $50,000 per incident.</p>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-900/20 border-l-4 border-yellow-500 p-6 my-8">
+                    <h2 class="text-2xl font-bold dark:text-white mb-4">🎪 Join the Movement</h2>
+                    
+                    <p class="text-gray-300 mb-4">Type "code" for the BSP-Core GitHub link, "bill" for the Human-Aware Computing Act model bill, or "network" to join the Global BSP Ambassadors Network.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gray-900/50 p-4 rounded border-l-2 border-gray-700">
+                            <h3 class="text-lg font-bold text-yellow-400 mb-2">Next Steps:</h3>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300">
+                                <li>Launch Bio-Sovereignty Ambassadors Network – sign-up sheet, toolkits, live support</li>
+                                <li>Partner with Faraday manufacturers – co-marketing bundles</li>
+                                <li>Submit BSP to IEEE, IETF, ISO as international standard</li>
+                                <li>Build the future where technology serves humans—not the other way around</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-900/50 p-4 rounded border-l-2 border-gray-700">
+                            <p class="text-gray-300 mb-2">This is not development. This is liberation.</p>
+                            <p class="text-gray-300 mb-2">The boundary is set. The protocol is live. The revolution is open-source.</p>
+                            <p class="text-green-300 text-lg font-semibold">And we are just getting started.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-700/30 rounded-lg p-6 my-8">
+                    <h3 class="text-xl font-bold dark:text-white mb-4">Related Resources:</h3>
+                    <ul class="space-y-2">
+                        <li><a href="post-bio-sovereignty-protocol.html" class="text-red-400 hover:text-red-300">The Bio-Sovereignty Protocol: Technical Standards for Human-Aware Computing</a></li>
+                        <li><a href="post-advocacy-toolkit.html" class="text-red-400 hover:text-red-300">The Bio-Sovereignty Advocacy Toolkit: Organize, Educate, Liberate</a></li>
+                        <li><a href="post-digital-battery-tort.html" class="text-red-400 hover:text-red-300">Digital Battery Tort: The Legal Foundation for Bio-Sovereignty</a></li>
+                    </ul>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- === FOOTER === -->
+    <footer class="bg-black text-gray-400 py-8 mt-16">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 Fin Nyx. All rights reserved.</p>
+            <p class="mt-2 text-gray-500">ISBN: 978-82-7346-414-8 (The Right to an Un-Modeled Self)</p>
+        </div>
+    </footer>
+    
+    <script>
+        feather.replace();
+    </script>
+    <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+    <script src="../social-share.js" onerror="console.warn('Social share failed to load');"></script>
+    <link rel="stylesheet" href="../social-share.css">
+</body>
+</html>
