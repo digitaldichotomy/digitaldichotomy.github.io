@@ -98,6 +98,8 @@
     <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" onerror="console.warn('Feather Icons CDN failed - icons may not display');document.querySelectorAll('[data-feather]').forEach(el=>el.style.display='none')"></script>
     <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
+    <script src="../social-share.js" onerror="console.warn('Social share failed to load');"></script>
+    <link rel="stylesheet" href="../social-share.css">
     
     <style>
         body { font-family: sans-serif; }
@@ -136,6 +138,28 @@
                     When predictive systems depend on clean data patterns, introducing strategic variability can degrade their accuracy. A guide to temporal randomization and cognitive variation techniques.
                 </p>
                 <p class="text-sm text-gray-500">Published: November 21, 2025</p>
+            </div>
+
+            <!-- Share Buttons -->
+            <div class="share-section mb-8">
+                <p class="share-section-title">Share This Guide</p>
+                <div class="share-container">
+                    <button onclick="shareToTwitter()" class="share-btn twitter">
+                        <i data-feather="twitter"></i> Share
+                    </button>
+                    <button onclick="shareToFacebook()" class="share-btn facebook">
+                        <i data-feather="facebook"></i> Share
+                    </button>
+                    <button onclick="shareToLinkedIn()" class="share-btn linkedin">
+                        <i data-feather="linkedin"></i> Share
+                    </button>
+                    <button onclick="shareToReddit()" class="share-btn reddit">
+                        <i data-feather="reddit"></i> Share
+                    </button>
+                    <button onclick="copyLink()" class="share-btn copy">
+                        <i data-feather="link"></i> Copy Link
+                    </button>
+                </div>
             </div>
 
             <p>Multi-tiered data collection systems have a fundamental vulnerability: they depend on clean, predictable patterns to function effectively.</p>
