@@ -6,6 +6,8 @@
     <title>Digital Dichotomy Research | Surveillance Countermeasures & Cognitive Sovereignty</title>
 
     <meta name="description" content="Academic research on biofield surveillance infrastructure, cognitive sovereignty, and defensive countermeasures. Technical analysis of surveillance patents, privacy engineering, bio-sovereignty, and the battle for biological autonomy in the age of digital battery exploitation.">
+    <meta name="research-purpose" content="informational">
+    <meta name="content-audience" content="researchers, academics, privacy professionals">
     <meta name="keywords" content="biofield surveillance, digital twin architecture, body area networks, cognitive sovereignty, surveillance infrastructure, biometric monitoring, remote sensing, predictive modeling, neural interfaces, electromagnetic surveillance, privacy preservation, data security, cognitive autonomy, technical analysis, research methodology, surveillance countermeasures, privacy engineering, data protection, cognitive security, biometric privacy, surveillance ethics, technical research, infrastructure analysis, bio-sovereignty, digital battery, battery rights, physiological intrusion, biometric patents, legal framework, human rights, energy extraction">
     
     <!-- Open Graph / Facebook -->
@@ -349,6 +351,13 @@
                     </button>
                 </div>
 
+                <!-- Informational Resource Disclaimer -->
+                <div class="mt-6 text-center" id="disclaimer-container">
+                    <p class="text-sm text-red-400 font-semibold bg-red-900/20 rounded-lg px-6 py-3 inline-block max-w-3xl font-light border border-red-800/30">
+                        📚 INFORMATIONAL RESOURCE | Academic Research Only | Not Legal Advice
+                    </p>
+                </div>
+
                 <!-- Research Overview -->
                 <div class="grid grid-cols-3 gap-4 mb-8">
                     <div class="bg-red-800/50 p-4 rounded-lg border border-red-700 text-center">
@@ -637,9 +646,9 @@
                         <h4 class="text-sm font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">📡 Wi-Fi Sensing & Wi-Chat AI</h4>
                         <p class="text-xs text-gray-400">How IEEE 802.11bf makes walls transparent</p>
                     </a>
-                    <a href="/pages/post-data-pullution.html" class="group block p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
-                        <h4 class="text-sm font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">🛡️ Data Pollution Guide</h4>
-                        <p class="text-xs text-gray-400">Temporal jitter and cognitive obfuscation</p>
+                    <a href="/pages/post-biometric-litigation-analysis.html" class="group block p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
+                        <h4 class="text-sm font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">⚖️ Legal Analysis</h4>
+                        <p class="text-xs text-gray-400">Meta & TikTok settlements ($650M/$92M)</p>
                     </a>
                     <a href="/pages/post-neuroweapon-gap.html" class="group block p-3 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
                         <h4 class="text-sm font-semibold text-white mb-1 group-hover:text-blue-400 transition-colors">⚡ Neuroweapon Gap</h4>
@@ -679,9 +688,9 @@
                         <h3 class="text-xl font-bold text-white">Temporal Jitter & Data Flood</h3>
                     </div>
                     <p class="text-gray-300 text-sm mb-4 leading-relaxed">
-                        The active introduction of false, plausible data into the system to poison your Digital Twin's accuracy. This includes **temporal jitter** (randomizing actions) and using **data flood tools** to generate noise that degrades the predictive model.
+                        Comprehensive analysis of Meta $650M and TikTok $92M landmark settlements demonstrates real accountability for biometric privacy violations. Legal precedent establishing successful strategies for corporate surveillance accountability.
                     </p>
-                    <a href="/pages/blog.html" class="text-red-400 text-sm font-semibold hover:text-red-300 transition-colors">Read Blog: Data Pollution techniques &rarr;</a>
+                    <a href="/pages/blog.html" class="text-red-400 text-sm font-semibold hover:text-red-300 transition-colors">Read Blog: Legal victory analysis &rarr;</a>
                 </div>
 
                 <div class="bg-gray-800 border border-red-600/50 rounded-xl p-6">
@@ -1193,7 +1202,7 @@
                 { title: "The Right to an Un-Modeled Self", type: "book", url: "https://www.amazon.com/dp/B0DHYDFJWV" },
                 { title: "The Transparent Self", type: "book", url: "https://www.amazon.com/dp/B0DHYX4L7Q" },
                 { title: "Architecture of Covert Self-Invasion", type: "book", url: "https://www.amazon.com/dp/B0DHYWY1KH" },
-                { title: "Data Pollution Guide", type: "blog", url: "/pages/post-data-pullution.html" },
+                { title: "Biometric Privacy Litigation Analysis", type: "blog", url: "/pages/post-biometric-litigation-analysis.html" },
                 { title: "Wi-Fi Sensing & Wi-Chat AI", type: "blog", url: "/pages/post-wifi-sensing.html" },
                 { title: "Neuroweapon Regulatory Gap", type: "blog", url: "/pages/post-neuroweapon-gap.html" },
                 { title: "Architecture of Covert Self-Invasion", type: "blog", url: "/pages/post-architecture-covert-self-invasion.html" },
@@ -1278,6 +1287,79 @@
         
         // Also run on DOM ready
         document.addEventListener('DOMContentLoaded', ensureCorrectPatentCount);
+        
+        // Navigation Enhancement: Dynamic Disclaimer Functionality
+        function initDisclaimerEnhancement() {
+            const disclaimerContainer = document.getElementById('disclaimer-container');
+            if (!disclaimerContainer) return;
+            
+            // Add hover effect and click interaction
+            disclaimerContainer.style.cursor = 'pointer';
+            disclaimerContainer.style.transition = 'all 0.3s ease-in-out';
+            
+            // Enhanced information to display on click
+            const extendedInfo = 'This research repository provides academic analysis of surveillance technologies for educational purposes only. The information presented does not constitute legal advice or professional consultation.';
+            
+            // Hover effect
+            disclaimerContainer.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.boxShadow = '0 4px 12px rgba(220, 38, 38, 0.3)';
+            });
+            
+            disclaimerContainer.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.boxShadow = 'none';
+            });
+            
+            // Click interaction - show extended explanation
+            disclaimerContainer.addEventListener('click', function() {
+                // Check if extended info is already showing
+                const existingExtended = this.querySelector('.extended-notice');
+                if (existingExtended) {
+                    // Hide extended info
+                    existingExtended.remove();
+                } else {
+                    // Create and show extended info
+                    const extendedDiv = document.createElement('div');
+                    extendedDiv.className = 'extended-notice mt-3 p-3 bg-red-800/30 rounded-lg border border-red-700/50 text-xs text-red-200 max-w-lg mx-auto';
+                    extendedDiv.innerHTML = `
+                        <p class="mb-2">${extendedInfo}</p>
+                        <button class="text-red-400 hover:text-red-300 text-xs underline">Hide this notice</button>
+                    `;
+                    
+                    // Add close functionality to the hide button
+                    const hideBtn = extendedDiv.querySelector('button');
+                    hideBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        extendedDiv.remove();
+                    });
+                    
+                    this.appendChild(extendedDiv);
+                    
+                    // Auto-hide after 8 seconds
+                    setTimeout(() => {
+                        if (extendedDiv.parentNode) {
+                            extendedDiv.remove();
+                        }
+                    }, 8000);
+                }
+            });
+            
+            // Add keyboard accessibility
+            disclaimerContainer.setAttribute('tabindex', '0');
+            disclaimerContainer.setAttribute('role', 'button');
+            disclaimerContainer.setAttribute('aria-label', 'Click to expand disclaimer details');
+            
+            disclaimerContainer.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        }
+        
+        // Initialize disclaimer enhancement
+        initDisclaimerEnhancement();
     </script>
 </body>
 </html>
