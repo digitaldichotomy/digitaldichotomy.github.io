@@ -23,7 +23,43 @@
       "description": "Technical analysis of biofield surveillance and cognitive manipulation"
     },
     {
+      "title": "Resource Hub",
+      "url": "/pages/resource-hub.html",
+      "category": "Action",
+      "keywords": ["resource hub", "state resistance packages", "class action tracker", "action resources", "biometric battery"],
+      "description": "Complete action resources for biometric battery cases, state-specific resistance packages, and class-action tracking"
+    },
+    {
+      "title": "Florida Resistance Hub",
+      "url": "/pages/florida-resistance.html", 
+      "category": "Resistance",
+      "keywords": ["florida", "resistance", "biometric battery", "action resources", "florida attorneys", "moscow"],
+      "description": "Complete Florida resistance package for biometric battery litigation with local attorneys and procedural protections"
+    },
+    {
+      "title": "Chapter 7: Voices from the Inside",
+      "url": "/pages/chapter-7-voices-inside.html",
+      "category": "Silent Harvest",
+      "keywords": ["silent harvest", "chapter 7", "biometric victims", "testimonials", "first person accounts"],
+      "description": "First-person accounts from biometric surveillance victims and the human impact of biological data harvesting"
+    },
+    {
+      "title": "Chapter 9: A Call for Global Biofield Rights",
+      "url": "/pages/chapter-9-global-biofield-rights.html",
+      "category": "Silent Harvest", 
+      "keywords": ["biofield rights", "biological sovereignty", "global declaration", "human rights", "international compliance"],
+      "description": "Framework for biological sovereignty rights and international protection of human biological autonomy"
+    },
+    {
+      "title": "Non-Consent Harvest on Humans for Profit",
+      "url": "/pages/non-consent-harvest.html",
+      "category": "Analysis",
+      "keywords": ["non-consent harvest", "biometric battery", "biological data theft", "corporate surveillance", "profit analysis"],
+      "description": "Complete analysis of unauthorized biometric data harvesting and the economics of biological exploitation"
+    },
+    {
       "title": "The 'Centaur' AI Model",
+      "url": "/pages/post-centaur.html",
       "url": "/pages/post-centour.html",
       "category": "AI",
       "keywords": ["centaur", "ai model", "predictive control", "machine learning", "behavioral prediction"],
