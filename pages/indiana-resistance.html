@@ -74,7 +74,40 @@
 
         <!-- Quick Actions -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <a href="https://www.indianabioclaim.org" target="_blank" class="bg-red-900/40 border border-red-700 rounded-lg p-6 text-center hover:bg-red-900/50 transition-colors no-print">
+            <div id="claimSubmissionForm" class="bg-red-900/40 border border-red-700 rounded-lg p-6 text-center hover:bg-red-900/50 transition-colors no-print">
+            <i data-feather="file-text" class="w-12 h-12 text-red-400 mx-auto mb-4"></i>
+            <h3 class="text-xl font-bold text-white mb-2">FILE YOUR CLAIM NOW</h3>
+            <p class="text-gray-300 mb-4">Submit to Hilgers Graben PLLC</p>
+            
+            <form onsubmit="submitIndianaClaim(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-left text-gray-300 mb-2">Name</label>
+                        <input type="text" name="name" required class="w-full px-3 py-2 bg-red-800/50 border border-red-600 text-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent" placeholder="Your full name">
+                    </div>
+                    <div>
+                        <label class="blocks text-left text-gray-300 mb-2">Email</label>
+                        <input type="email" name="email" required class="w-full px-3 py-2 bg-red-800/50 border border-red-600 text-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent" placeholder="your.email@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-left text-gray-300 mb-2">Phone (optional)</label>
+                        <input type="tel" name="phone" class="w-full px-3 py-2 bg-red-800/50 border border-red-600 text-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent" placeholder="(555) 123-4567">
+                    </div>
+                    <div>
+                        <label class="block text-left text-gray-300 mb-2">Message</label>
+                        <textarea name="message" rows="3" class="w-full px-3 py-2 bg-red-800/50 border border-red-600 text-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent" placeholder="I experienced biometric data collection without consent..."></textarea>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" name="consent" required class="mr-2">
+                        </div>
+                        <label class="text-gray-300 text-sm">I consent to have my claim submitted to Hilgers Graben PLLC and authorize them to contact me.</label>
+                    </div>
+                    <button type="submit" class="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold px-6 py-3 rounded-lg transition-colors">
+                        Submit Claim
+                    </button>
+                </div>
+            </form>
+        </div>
                 <i data-feather="file-text" class="w-12 h-12 text-red-400 mx-auto mb-4"></i>
                 <h3 class="text-xl font-bold text-white mb-2">FILE YOUR CLAIM NOW</h3>
                 <p class="text-gray-300">Submit to Hilgers Graben PLLC</p>
@@ -265,14 +298,74 @@
             </div>
         </div>
 
+        </main>
+
+    <script src=https://cdn.tailwindcss.com></script>
+    <script>
+            function submitIndianaClaim(event) {
+                event.preventDefault();
+                
+                const form = event.target;
+                const formData = new FormData(form);
+                
+                // Create email body
+                const emailBody = `
+INDIANA BIOMETRIC CLAIM SUBMISSION
+====================================
+
+Name: ${formData.get('name')}
+Email: ${formData.get('email')}
+Phone: ${formData.get('phone') || 'Not provided'}
+Message: ${formData.get('message')}
+
+SUBMISSION REQUEST:
+Please review my case for inclusion in the Indiana Biometric Privacy Act litigation.
+I believe my biometric data has been collected without proper consent under IBPA.
+
+Contact requested: Hilgers Graben PLLC
+Email: info@hilgersgraben.com
+Phone: 317-283-5508
+
+Date: ${new Date().toLocaleString()}
+Source: Digital Dichotomy Resource Hub
+
+${formData.get('consent') ? '✓ Consent provided for submission' : '❌ Consent not provided'}
+                `;
+                
+                // Store submission
+                const submissions = JSON.parse(localStorage.getItem('indianaSubmissions') || '[]');
+                submissions.push({
+                    timestamp: new Date().toISOString(),
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone') || 'Not provided',
+                    message: formData.get('message'),
+                    consent: formData.get('consent')
+                });
+                localStorage.setItem('indianaSubmissions', JSON.stringify(submissions));
+                
+                // Create download link for email body
+                const blob = new Blob([emailBody], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Indiana_Biometric_Claim_Request.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                // Show confirmation
+                alert('Claim submission details downloaded. Email client will open with pre-filled information. Submit the email to complete your submission.');
+            }
+        </script>
+        
         <!-- Disclaimer -->
         <div class="text-center py-8">
             <p class="text-sm text-red-400 font-semibold bg-red-900/20 rounded-lg px-6 py-3 inline-block max-w-3xl font-light border border-red-800/30">
                 📚 INFORMATIONAL RESOURCE | Academic Research Only | Not Legal Advice
             </p>
         </div>
-        
-    </main>
 
     <script>
         feather.replace();

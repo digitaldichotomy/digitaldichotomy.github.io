@@ -97,7 +97,40 @@
 
         <!-- Quick Actions -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <a href="https://secure.fiegerlaw.com/biometric" target="_blank" class="bg-red-900/40 border border-red-700 rounded-lg p-6 text-center hover:bg-red-900/50 transition-colors no-print">
+            <div id="claimSubmissionForm" class="bg-red-900/40 border border-red-700 rounded-lg p-6 text-center hover:bg-red-900/50 transition-colors no-print">
+            <i data-feather="file-text" class="w-12 h-12 text-red-400 mx-auto mb-4"></i>
+            <h3 class="text-xl font-bold text-white mb-2">FILE YOUR CLAIM NOW</h3>
+            <p class="text-gray-300 mb-4">Submit directly to Fieger Law</p>
+            
+            <form onsubmit="submitMichiganClaim(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-left text-gray-300 mb-2">Name</label>
+                        <input type="text" name="name" required class="w-full px-3 py-2 bg-red-800/50 border border-red-600 text-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent" placeholder="Your full name">
+                    </div>
+                    <div>
+                        <label class="block text-left text-gray-300 mb-2">Email</label>
+                        <input type="email" name="email" required class="w-full px-3 py-2 bg-red-800/50 border border-red-600 text-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent" placeholder="your.email@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-left text-gray-300 mb-2">Phone (optional)</label>
+                        <input type="tel" name="phone" class="w-full px-3 py-2 bg-red-800/50 border border-red-600 text-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent" placeholder="(555) 123-4567">
+                    </div>
+                    <div>
+                        <label class="block text-left text-gray-300 mb-2">Message</label>
+                        <textarea name="message" rows="3" class="w-full px-3 py-2 bg-red-800/50 border border-red-600 text-white rounded-lg focus:ring-2 focus:ring-red-400 focus:border-transparent" placeholder="I experienced biometric extraction without proper consent...">
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" name="consent" required class="mr-2">
+                        </div>
+                        <label class="text-gray-300 text-sm">I consent to have my claim submitted to Fieger Law and authorize them to contact me.</label>
+                    </div>
+                    <button type="submit" class="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold px-6 py-3 rounded-lg transition-colors">
+                        Submit Claim
+                    </button>
+                </div>
+            </form>
+        </div>
                 <i data-feather="file-text" class="w-12 h-12 text-red-400 mx-auto mb-4"></i>
                 <h3 class="text-xl font-bold text-white mb-2">FILE YOUR CLAIM NOW</h3>
                 <p class="text-gray-300">Submit directly to Fieger Law</p>

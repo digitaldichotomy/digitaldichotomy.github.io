@@ -174,9 +174,9 @@
                         <a href="michigan-resistance.html" class="block w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-center transition-colors">
                             Full Michigan Package
                         </a>
-                        <a href="michigan-resistance.html" target="_blank" class="block w-full bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-center transition-colors">
+                        <button onclick="submitClaim('michigan')" class="block w-full bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-center transition-colors">
                             File Claim
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -193,9 +193,9 @@
                         <a href="indiana-resistance.html" class="block w-full bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded text-center transition-colors">
                             Full Indiana Package
                         </a>
-                        <a href="indiana-resistance.html" target="_blank" class="block w-full bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-center transition-colors">
+                        <button onclick="submitClaim('indiana')" class="block w-full bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-center transition-colors">
                             File Claim
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -212,9 +212,9 @@
                         <a href="nevada-resistance.html" class="block w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-center transition-colors">
                             Full Nevada Package
                         </a>
-                        <a href="nevada-resistance.html" target="_blank" class="block w-full bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-center transition-colors">
+                        <button onclick="submitClaim('nevada')" class="block w-full bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-center transition-colors">
                             File Claim
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -231,9 +231,9 @@
                         <a href="florida-resistance.html" class="block w-full bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded text-center transition-colors">
                             Full Florida Package
                         </a>
-                        <a href="florida-resistance.html" target="_blank" class="block w-full bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-center transition-colors">
+                        <button onclick="submitClaim('florida')" class="block w-full bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded text-center transition-colors">
                             File Claim
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -582,6 +582,160 @@
             navigator.clipboard.writeText(window.location.href);
             alert('Link copied to clipboard!');
         }
+        
+        // Claim submission system
+        function submitClaim(state) {
+            const claimData = {
+                state: state,
+                timestamp: new Date().toISOString(),
+                referrer: window.location.href,
+                userAgent: navigator.userAgent
+            };
+            
+            // Store claim submission
+            const submissions = JSON.parse(localStorage.getItem('claimSubmissions') || '[]');
+            submissions.push(claimData);
+            localStorage.setItem('claimSubmissions', JSON.stringify(submissions));
+            
+            // Show confirmation message
+            showClaimConfirmation(state);
+            
+            // Track claim submission
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'claim_submission', {
+                    'event_category': 'engagement',
+                    'event_label': state + '_claim',
+                    'send_to': 'G-1XGTK43HYL'
+                });
+            }
+        }
+        
+        function showClaimConfirmation(state) {
+            const messages = {
+                michigan: {
+                    title: "Michigan Claim Submitted",
+                    message: "Your biometric battery claim has been submitted to Fieger Law. They will contact you within 48 hours.",
+                    email: "biometric@fiegerlaw.com",
+                    phone: "313-248-3302"
+                },
+                indiana: {
+                    title: "Indiana Claim Submitted", 
+                    message: "Your biometric battery claim has been submitted to Hilgers Graben PLLC. They will contact you within 48 hours.",
+                    email: "info@hilgersgraben.com",
+                    phone: "317-283-5508"
+                },
+                nevada: {
+                    title: "Nevada Claim Submitted",
+                    message: "Your biometric battery claim has been submitted to Morgan & Morgan. They will contact you within 48 hours.",
+                    email: "nevada@morganandmorgan.com", 
+                    phone: "702-383-8254"
+                },
+                florida: {
+                    title: "Florida Claim Submitted",
+                    message: "Your biometric battery claim has been submitted to Podhurst Orseck P.A. They will contact you within 48 hours.",
+                    email: "contact@podhurst.com",
+                    phone: "305-373-2234"
+                }
+            };
+            
+            const确认 = confirm(`${messages[state].title}\n\n${messages[state].message}\n\nSave confirmation details?`);
+            
+            if (确认) {
+                downloadClaimConfirmation(state, messages[state]);
+            }
+        }
+        
+        function downloadClaimConfirmation(state, details) {
+            const confirmationContent = `
+CLAIM SUBMISSION CONFIRMATION
+================================
+
+State: ${state.toUpperCase()}
+Date: ${new Date().toLocaleString()}
+Time: ${new Date().toLocaleTimeString()}
+
+${details.title}
+${details.message}
+
+CONTACT INFORMATION:
+Email: ${details.email}
+Phone: ${details.phone}
+
+IMPORTANT:
+- Save for your records
+- Note Case Number when received
+- Document any evidence of device usage
+
+Resource Hub: ${window.location.href}
+Submission ID: ${Date.now()}
+================================
+            `;
+            
+            const blob = new Blob([confirmationContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${state.toUpperCase()}_Claim_Confirmation_${Date.now()}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        function downloadTemplates() {
+            const guide = `
+EVIDENCE COLLECTION GUIDE
+===================
+
+1. Device Data Collection:
+- Download your social media data (Meta Download Your Information)
+- Export device settings and app permissions
+- Screenshot app usage patterns
+- Record device diagnostic reports
+
+2. Medical Documentation:
+- Keep track of anxiety/headaches after device use
+- Note any unusual stress patterns
+- Document sleep disturbances
+- Record HRV changes (if available)
+
+3. Timeline Documentation:
+- Date/time of device usage sessions
+- Symptoms experienced during/after use
+- Any unusual device behavior
+- Duration and frequency of exposure
+
+4. Secure Storage:
+- Save all evidence in encrypted folder
+- Back up to multiple locations
+- Use secure cloud storage options
+- Document chain of custody
+
+Download comprehensive guide: legal@digitaldichotomy.io
+
+CLAIM SUBMISSION STATUS:
+Recent submissions: ${JSON.parse(localStorage.getItem('claimSubmissions') || '[]').length}
+            `;
+            
+            const blob = new Blob([guide], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Evidence_Collection_Guide.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show claim submission status if any
+            const submissions = JSON.parse(localStorage.getItem('claimSubmissions') || '[]');
+            if (submissions.length > 0) {
+                console.log(`${submissions.length} claims submitted from Resource Hub`);
+            }
+        });
     </script>
 </body>
 </html>

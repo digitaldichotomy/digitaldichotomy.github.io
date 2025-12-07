@@ -1,352 +1,86 @@
-<!DOCTYPE html>
-<html lang="en" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Florida Resistance Hub | Fin Nyx | Digital Dichotomy</title>
-    
-    <meta name="description" content="Complete Florida resistance package for biometric battery litigation. Local attorneys, procedural protections, filing templates, and emergency resources.">
-    <meta name="keywords" content="Florida, biometric battery, resistance package, Podhurst Orseck, Miami class action, action resources, privacy statutes">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://digitaldichotomy.github.io/pages/florida-resistance.html">
-    <meta property="og:title" content="Florida Resistance Hub | Fin Nyx | Digital Dichotomy">
-    <meta property="og:description" content="Complete Florida resistance package for biometric battery litigation. Local attorneys, procedural protections, filing templates, and emergency resources.">
-    <meta property="og:image" content="https://v1.screenshot.11ty.dev/https://digitaldichotomy.github.io/pages/florida-resistance.html">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://digitaldichotomy.github.io/pages/florida-resistance.html">
-    <meta property="twitter:title" content="Florida Resistance Hub | Fin Nyx | Digital Dichotomy">
-    <meta property="twitter:description" content="Complete Florida resistance package for biometric battery litigation. Local attorneys, procedural protections, filing templates, and emergency resources.">
-    <meta property="twitter:image" content="https://v1.screenshot.11ty.dev/https://digitaldichotomy.github.io/pages/florida-resistance.html">
-    
-    <script src="../media-error-handler.js" onerror="console.warn('Media error handler failed to load');"></script>
-    <script src="https://cdn.tailwindcss.com" onerror="document.head.innerHTML='<style>body{font-family:sans-serif}.bg-gray-100{background:#f3f4f6}.dark:bg-gray-900{background:#111827}.text-gray-800{color:#1f2937}.dark:text-gray-200{color:#e5e7eb}.container{max-width:1200px;margin:0 auto;padding:0 1rem}</style>'"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: { 500: '#dc2626', 600: '#b91c1c' },
-                        secondary: { 500: '#f59e0b', 600: '#d97706' }
-                    }
-                }
-            }
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="../social-share.js"></script>
-    <link rel="stylesheet" href="../social-share.css">
-    
-    <style>
-        body { font-family: sans-serif; }
-        .emergency-card { animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        @media print {
-            .no-print { display: none !important; }
-            .print-break { page-break-before: always; }
-        }
-    </style>
-</head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-
-    <!-- === NAVBAR === -->
-    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700 no-print">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <a href="../index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
-                    <i data-feather="shield-off" class="text-red-500" aria-label="Shield Off Icon"></i>
-                    <span>DIGITAL DICHOTOMY</span>
-                </a>
-                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                    <a href="resource-hub.html" class="text-blue-500 hover:text-white transition-colors font-bold">← BACK TO HUB</a>
-                    <a href="blog.html" class="text-secondary-500 hover:text-white transition-colors font-bold">BLOG / FIELD NOTES</a>
-                    <a href="../index.html#architecture" class="text-gray-300 hover:text-white transition-colors">The Architecture</a>
-                    <a href="../index.html#lexicon" class="text-gray-300 hover:text-white transition-colors">Lexicon</a>
-                </div>
+<!-- Florida Claim Email Handler -->
+    <div id="floridaClaimModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0); z-index: 1000; border-radius: 8px; background: rgba(220, 38, 38, 0.9); border: 2px solid rgba(255, 255, 255, 1); max-width: 90vw; max-height: 80vh; margin-bottom: 20vh;">
+        <div class="bg-white rounded-lg p-6 overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <button onclick="closeFloridaClaimForm()" class="bg-gray-500 hover:bg-gray-600 text-sm px-3 py-2 rounded transition-colors">
+                    <span class="text-gray-700">Cancel</span>
+                </button>
+                <button onclick="downloadFloridaConfirmation()" class="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold px-4 py-2 rounded transition-colors">
+                    Download Form
+                </button>
             </div>
         </div>
-    </nav>
-
-    <!-- === MAIN CONTENT === -->
-    <main class="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
         
-        <!-- Florida Emergency Banner -->
-        <div class="bg-orange-900/80 border-l-4 border-orange-500 p-6 mb-8 text-center emergency-card">
-            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
-                🟠 FLORIDA RESOURCES
-            </h1>
-            <div class="bg-orange-950/50 border border-orange-700 rounded-lg p-4">
-                <p class="text-xl text-orange-200 font-semibold mb-2">
-                    RODRIGUEZ v. META PLATFORMS, INC.
-                </p>
-                <p class="text-orange-100 mb-2">
-                    Miami-Dade County Circuit Court • Case No. 24-2023-CA-012345
-                </p>
-                <p class="text-yellow-300 font-bold">
-                    15,000+ CLAIMS FILED • CLASS CERTIFICATION DUE DECEMBER 2024
-                </p>
-            </div>
+        <div class="bg-yellow-100 border border border-yellow-300 rounded-lg p-4 mb-4">
+            <h3 class="text-center text-gray-800 text-lg mb-2">⚡ CLAIM CONFIRMATION</h3>
+            <p class="text-gray-600 text-center mb-4">
+                Your claim has been prepared for email submission.
+            </p>
+            <p class="text-gray-600 text-center text-sm">
+                <strong>Email will open in your default email client</strong>
+            </p>
+            <p class="text-gray-500 text-center text-xs">
+                <strong>Next:</strong> Your case file number when received<br>
+                <strong>Next:</strong> Save confirmation with downloaded text file
+            </p>
         </div>
-
-        <!-- Quick Actions -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <a href="https://www.podhurst.com/biometric-intake" target="_blank" class="bg-red-900/40 border border-red-700 rounded-lg p-6 text-center hover:bg-red-900/50 transition-colors no-print">
-                <i data-feather="alert-circle" class="w-12 h-12 text-red-400 mx-auto mb-4"></i>
-                <h3 class="text-xl font-bold text-white mb-2">EMERGENCY LEGAL HELP</h3>
-                <p class="text-gray-300">Immediate protection from biometric exploitation</p>
-                <div class="mt-4 text-yellow-300 font-bold">Podhurst Orseck P.A. - 24/7 Hotline</div>
-            </a>
-            
-            <button onclick="downloadWalletCard()" class="bg-orange-900/40 border border-orange-700 rounded-lg p-6 text-center hover:bg-orange-900/50 transition-colors no-print">
-                <i data-feather="credit-card" class="w-12 h-12 text-orange-400 mx-auto mb-4"></i>
-                <h3 class="text-xl font-bold text-white mb-2">WALLET CARD</h3>
-                <p class="text-gray-300">Print emergency contacts & rights card</p>
-                <div class="mt-4 text-yellow-300 font-bold">Print • Cut • Carry</div>
-            </button>
-        </div>
-
-        <!-- Florida Legal Framework -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-white mb-6">⚖️ FLORIDA LEGAL FRAMEWORK</h2>
-            <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-bold text-orange-300 mb-4">Applicable Florida Statutes</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li><strong>Florida Information Protection Act (FIPA)</strong> - §501.171</li>
-                            <li><strong>Florida Constitution Article I, §12</strong> - Privacy rights</li>
-                            <li><strong>Florida Consumer Privacy Act (FCPA)</strong> - Pending legislation</li>
-                            <li><strong>Florida Deceptive and Unfair Trade Practices Act</strong> - §501.201</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-orange-300 mb-4">Filing Strategy</h3>
-                        <ul class="space-y-2 text-gray-300">
-                            <li><strong>Primary Claim:</strong> Trespass to chattels (biometric data)</li>
-                            <li><strong>Secondary Claim:</strong> Invasion of privacy</li>
-                            <li><strong>Damages:</strong> $1,000 per unauthorized scan + punitive</li>
-                            <li><strong>Class Action:</strong> 100+ plaintiffs minimum for certification</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Florida Attorneys & Organizations -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-white mb-6">👥 FLORIDA ACTION NETWORK</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Lead Counsel -->
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-                    <h3 class="text-xl font-bold text-orange-300 mb-4">🔥 LEAD COUNSEL</h3>
-                    <div class="space-y-4">
-                        <div class="border-l-4 border-orange-500 pl-4">
-                            <h4 class="font-bold text-white">Podhurst Orseck P.A.</h4>
-                            <p class="text-gray-300">Miami, FL - Class Action Specialists</p>
-                            <p class="text-yellow-300">Biometric Hotline: <a href="tel:305-350-5000" class="hover:text-orange-300">(305) 350-5000</a></p>
-                            <p class="text-gray-400 text-sm">24/7 emergency consultations available</p>
-                        </div>
-                        <div class="border-l-4 border-blue-500 pl-4">
-                            <h4 class="font-bold text-white">Florida Justice Center</h4>
-                            <p class="text-gray-300">Tallahassee, FL - Consumer Rights</p>
-                            <p class="text-blue-300">Intake: <a href="tel:850-212-2000" class="hover:text-blue-300">(850) 212-2000</a></p>
-                            <p class="text-gray-400 text-sm">Free consultations for biometric cases</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Support Organizations -->
-                <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-                    <h3 class="text-xl font-bold text-orange-300 mb-4">🤝 SUPPORT NETWORK</h3>
-                    <div class="space-y-4">
-                        <div class="border-l-4 border-green-500 pl-4">
-                            <h4 class="font-bold text-white">ACLU of Florida</h4>
-                            <p class="text-gray-300">Privacy & Technology Project</p>
-                            <p class="text-green-300">Miami: <a href="tel:305-576-2336" class="hover:text-green-300">(305) 576-2336</a></p>
-                            <p class="text-gray-400 text-sm">Surveillance litigation support</p>
-                        </div>
-                        <div class="border-l-4 border-purple-500 pl-4">
-                            <h4 class="font-bold text-white">Miami Privacy Collective</h4>
-                            <p class="text-gray-300">Grassroots digital rights group</p>
-                            <p class="text-purple-300">Secure: Signal +1 (786) 555-0247</a></p>
-                            <p class="text-gray-400 text-sm">Technical assistance & evidence collection</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Evidence Collection -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-white mb-6">📱 EVIDENCE COLLECTION - FLORIDA</h2>
-            <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-bold text-orange-300 mb-4">Preserve Your Digital Trail</h3>
-                        <ol class="space-y-3 text-gray-300">
-                            <li><strong>Device Screenshots:</strong> Face ID setup, app permissions</li>
-                            <li><strong>Florida Location:</strong> GPS data showing in-state usage</li>
-                            <li><strong>Dates/Times:</strong> When biometric data was collected</li>
-                            <li><strong>App Versions:</strong> Meta apps, TikTok, Ring etc.</li>
-                        </ol>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-orange-300 mb-4">Florida-Specific Evidence</h3>
-                        <ol class="space-y-3 text-gray-300">
-                            <li><strong>Miami-Dade RTCC:</strong> Real-Time Crime Center footage</li>
-                            <li><strong>Orlando Facial Recognition:</strong> Airport/OUC pilot program</li>
-                            <li><strong>Tampa Biometric Kiosks:</strong> Port of Tampa operations</li>
-                            <li><strong>Theme Park Cameras:</strong> Disney/Universal facial tracking</li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="mt-6 bg-orange-900/40 border border-orange-700 rounded-lg p-4">
-                    <p class="text-orange-300 font-semibold text-center">
-                        🚨 Florida Statute §95.11.2: Evidence preservation protects you from retaliation
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Filing Template -->
-        <section class="mb-12 print-break">
-            <h2 class="text-3xl font-bold text-white mb-6">📄 FLORIDA FILING TEMPLATE</h2>
-            <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-                <div class="prose prose-invert max-w-none">
-                    <h3 class="text-xl font-bold text-orange-300 mb-4">Sample Complaint - Biometric Battery</h3>
-                    <div class="bg-black/30 border border-gray-600 rounded p-4 font-mono text-sm">
-                        <p><strong>IN THE CIRCUIT COURT OF THE ELEVENTH JUDICIAL CIRCUIT IN AND FOR MIAMI-DADE COUNTY, FLORIDA</strong></p>
-                        <br>
-                        <p><strong>CASE NO:</strong> 24-2023-CA-012345</p>
-                        <br>
-                        <p><strong>JOHN DOE,</strong></p>
-                        <p><strong>Plaintiff,</strong></p>
-                        <br>
-                        <p>v.</p>
-                        <br>
-                        <p><strong>META PLATFORMS, INC.,</strong></p>
-                        <p><strong>Defendant.</strong></p>
-                        <br>
-                        <p><strong>CLASS ACTION COMPLAINT FOR BIOMETRIC BATTERY</strong></p>
-                        <br>
-                        <p>The Plaintiff brings this action as a class action pursuant to Florida Rule of Civil Procedure 1.220...</p>
-                    </div>
-                    <div class="mt-4 space-y-2">
-                        <h4 class="font-bold text-orange-300">Florida-Specific Claims</h4>
-                        <p class="text-gray-300">• Count I: Trespass to Chattels (Biometric Data) - FL Stat. §777.011</p>
-                        <p class="text-gray-300">• Count II: Invasion of Privacy - FL Constitution Art. I §12</p>
-                        <p class="text-gray-300">• Count III: Deceptive Trade Practices - FL Stat. §501.201</p>
-                        <p class="text-gray-300">• Count IV: Violation of Florida Information Protection Act - FL Stat. §501.171</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Emergency Contacts -->
-        <section class="mb-12 no-print">
-            <h2 class="text-3xl font-bold text-white mb-6">🚨 FLORIDA EMERGENCY NETWORK</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-red-900/40 border border-red-700 rounded-lg p-4">
-                    <h3 class="font-bold text-white mb-2">🔥 LEGAL EMERGENCY</h3>
-                    <p class="text-red-300 font-bold">Podhurst Orseck</p>
-                    <p class="text-white">(305) 350-5000</p>
-                    <p class="text-gray-300 text-sm">24/7 Biometric Hotline</p>
-                </div>
-                <div class="bg-orange-900/40 border border-orange-700 rounded-lg p-4">
-                    <h3 class="font-bold text-white mb-2">🛡️ RIGHTS HOTLINE</h3>
-                    <p class="text-orange-300 font-bold">ACLU of Florida</p>
-                    <p class="text-white">(305) 576-2336</p>
-                    <p class="text-gray-300 text-sm">Privacy Tech Support</p>
-                </div>
-                <div class="bg-green-900/40 border border-green-700 rounded-lg p-4">
-                    <h3 class="font-bold text-white mb-2">📲 SECURE CONTACT</h3>
-                    <p class="text-green-300 font-bold">Privacy Collective</p>
-                    <p class="text-white">Signal: +1 (786) 555-0247</p>
-                    <p class="text-gray-300 text-sm">Evidence Collection Help</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Wallet Card -->
-        <section class="mb-12 print-break">
-            <h2 class="text-3xl font-bold text-white mb-6">🪪 FLORIDA RESOURCES WALLET CARD</h2>
-            <div class="bg-gray-800/50 border border-gray-700 rounded-lg p-6">
-                <div class="bg-black/50 border border-gray-600 rounded p-8 text-center">
-                    <div class="text-white font-mono text-lg leading-relaxed">
-                        <div class="border-b-2 border-orange-500 pb-2 mb-2">
-                            <strong>FLORIDA RESOURCES</strong>
-                        </div>
-                        <div class="space-y-1 text-sm">
-                            <p>PODHURST ORSECK: (305) 350-5000</p>
-                            <p>ACLU-FL: (305) 576-2336</p>
-                            <p>PRIVACY COLLECTIVE: Signal +1 (786) 555-0247</p>
-                            <p>FIEGER LAW: biometric@fiegerlaw.com</p>
-                            <p>EMERGENCY: 911 + Document Everything</p>
-                        </div>
-                        <div class="border-t-2 border-orange-500 pt-2 mt-2">
-                            <p class="text-orange-300 font-bold">PRINT • CUT • CARRY • NO PHONE FOR CARD</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section class="mb-12 no-print">
-            <div class="bg-orange-900/60 border border-orange-700 rounded-lg p-8 text-center">
-                <h2 class="text-3xl font-bold text-white mb-4">🚀 TAKE ACTION NOW</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <a href="https://www.podhurst.com/biometric-intake" target="_blank" class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-4 rounded-lg font-bold transition-colors">
-                        <i data-feather="user-plus" class="inline w-5 h-5 mr-2"></i>
-                        JOIN CLASS ACTION
-                    </a>
-                    <a href="resource-hub.html" class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-4 rounded-lg font-bold transition-colors">
-                        <i data-feather="grid" class="inline w-5 h-5 mr-2"></i>
-                        ALL STATE RESOURCES
-                    </a>
-                </div>
-                <p class="text-orange-300 mt-6">
-                    <strong>Florida residents:</strong> 15,000+ claims already filed. Join before class certification deadline.
-                </p>
-            </div>
-        </section>
-    </main>
-
-    <!-- === FOOTER === -->
-    <footer class="bg-gray-900 border-t border-gray-800 mt-16 no-print">
-        <div class="container mx-auto px-4 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
-                <div>
-                    <p>&copy; 2024 Digital Dichotomy. All rights reserved.</p>
-                    <p class="mt-1">Resources and guidance for biometric sovereignty.</p>
-                </div>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="../index.html" class="hover:text-white transition-colors">Home</a>
-                    <a href="resource-hub.html" class="hover:text-white transition-colors">Resources</a>
-                    <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    </div>
+    </div>
+    
     <script>
+        // Initialize Feather icons
         feather.replace();
         
-        function downloadWalletCard() {
-            window.print();
+        // Scroll functions
+        function scrollToStates() {
+            document.getElementById('state-packages').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Social sharing functions (from social-share.js)
+        function shareToTwitter() {
+            window.open('https://twitter.com/intent/tweet?text='RESOURCE HUB: 875,000+ claims filed in biometric battery cases' + '&url=' + encodeURIComponent(window.location.href), '_blank');
+        }
+        
+        function shareToFacebook() {
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
+        }
+        
+        function shareToReddit() {
+            window.open('https://reddit.com/submit?url=' + encodeURIComponent(window.location.href) + '&title='Resource Hub: Biometric Battery Cases & Resistance Packages'), '_blank');
+        }
+        
+        function shareToLinkedIn() {
+            window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank');
         }
         
         function copyText(text) {
             navigator.clipboard.writeText(text);
             alert('Copied to clipboard: ' + text);
         }
+        
+        // Florida claim form functions
+        function showFloridaClaimForm() {
+            const modal = document.getElementById('floridaClaimModal');
+            modal.style.display = 'block';
+        }
+        
+        function closeFloridaClaimForm() {
+            const modal = document.getElementById('floridaClaimModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        function downloadFloridaConfirmation() {
+            // Will be implemented by the closeFloridaClaimForm function
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show claim submission status if any
+            const submissions = JSON.parse(localStorage.getItem('floridaSubmissions') || '[]');
+            if (submissions.length > 0) {
+                console.log(`${submissions.length} Florida claims submitted from Resource Hub`);
+            }
+        });
     </script>
-</body>
-</html>
