@@ -280,16 +280,28 @@
                     <span>DIGITAL DICHOTOMY</span>
                 </a>
                 <div class="flex items-center space-x-4">
-                    <!-- Dark Mode Toggle -->
-                    <button 
-                        onclick="toggleDarkMode()" 
-                        class="p-2 text-gray-300 hover:text-white transition-colors"
-                        title="Toggle dark mode"
-                        aria-label="Toggle dark mode"
-                    >
-                        <i data-feather="moon" class="w-5 h-5" id="theme-icon"></i>
-                    </button>
-                </div>
+                     <!-- Mobile Menu Toggle -->
+                     <button
+                         onclick="toggleMobileMenu()"
+                         class="hamburger-btn md:hidden"
+                         title="Open navigation menu"
+                         aria-label="Open navigation menu"
+                         aria-expanded="false"
+                         id="mobile-menu-btn"
+                     >
+                         <i data-feather="menu" class="w-5 h-5"></i>
+                     </button>
+
+                     <!-- Dark Mode Toggle -->
+                     <button
+                         onclick="toggleDarkMode()"
+                         class="p-2 text-gray-300 hover:text-white transition-colors"
+                         title="Toggle dark mode"
+                         aria-label="Toggle dark mode"
+                     >
+                         <i data-feather="moon" class="w-5 h-5" id="theme-icon"></i>
+                     </button>
+                 </div>
                 <nav class="hidden md:flex items-center space-x-6 text-sm font-medium" role="navigation" aria-label="Main navigation">
                       <a href="/pages/pat.html" class="text-gray-300 hover:text-white transition-colors" aria-label="Access Sentinel Patent Database">
                          Sentinel Database
@@ -321,6 +333,54 @@
             </div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="closeMobileMenu()">
+        <div class="mobile-menu" id="mobile-menu" onclick="event.stopPropagation()">
+            <div class="mobile-menu-header">
+                <span class="text-white font-bold text-lg">Navigation</span>
+                <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close navigation menu">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-search">
+                    <input
+                        type="text"
+                        id="mobile-search-input"
+                        placeholder="Search intelligence..."
+                        onkeyup="handleSearch(event)"
+                        aria-label="Search site content"
+                        role="searchbox"
+                    >
+                </div>
+                <a href="/index.html" class="mobile-menu-link active" onclick="closeMobileMenu()">
+                    <i data-feather="home"></i>
+                    Home
+                </a>
+                <a href="/pages/pat.html" class="mobile-menu-link" onclick="closeMobileMenu()">
+                    <i data-feather="database"></i>
+                    Sentinel Database
+                </a>
+                <a href="/the-analog-self.html" class="mobile-menu-link" onclick="closeMobileMenu()">
+                    <i data-feather="book"></i>
+                    THE ANALOG SELF
+                </a>
+                <a href="/pages/resource-hub.html" class="mobile-menu-link" onclick="closeMobileMenu()">
+                    <i data-feather="tool"></i>
+                    RESOURCE HUB
+                </a>
+                <a href="/pages/blog.html" class="mobile-menu-link" onclick="closeMobileMenu()">
+                    <i data-feather="file-text"></i>
+                    BLOG / FIELD NOTES
+                </a>
+                <a href="#library" class="mobile-menu-link" onclick="closeMobileMenu()">
+                    <i data-feather="archive"></i>
+                    Library
+                </a>
+            </div>
+        </div>
+    </div>
 
     <main class="container mx-auto px-4 py-8 md:py-12">
         
@@ -1291,78 +1351,35 @@
         // Also run on DOM ready
         document.addEventListener('DOMContentLoaded', ensureCorrectPatentCount);
         
-        // Navigation Enhancement: Dynamic Disclaimer Functionality
-        function initDisclaimerEnhancement() {
-            const disclaimerContainer = document.getElementById('disclaimer-container');
-            if (!disclaimerContainer) return;
-            
-            // Add hover effect and click interaction
-            disclaimerContainer.style.cursor = 'pointer';
-            disclaimerContainer.style.transition = 'all 0.3s ease-in-out';
-            
-            // Enhanced information to display on click
-            const extendedInfo = 'This research repository provides academic analysis of surveillance technologies for educational purposes only. The information presented does not constitute legal advice or professional consultation.';
-            
-            // Hover effect
-            disclaimerContainer.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.02)';
-                this.style.boxShadow = '0 4px 12px rgba(220, 38, 38, 0.3)';
-            });
-            
-            disclaimerContainer.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-                this.style.boxShadow = 'none';
-            });
-            
-            // Click interaction - show extended explanation
-            disclaimerContainer.addEventListener('click', function() {
-                // Check if extended info is already showing
-                const existingExtended = this.querySelector('.extended-notice');
-                if (existingExtended) {
-                    // Hide extended info
-                    existingExtended.remove();
-                } else {
-                    // Create and show extended info
-                    const extendedDiv = document.createElement('div');
-                    extendedDiv.className = 'extended-notice mt-3 p-3 bg-red-800/30 rounded-lg border border-red-700/50 text-xs text-red-200 max-w-lg mx-auto';
-                    extendedDiv.innerHTML = `
-                        <p class="mb-2">${extendedInfo}</p>
-                        <button class="text-red-400 hover:text-red-300 text-xs underline">Hide this notice</button>
-                    `;
-                    
-                    // Add close functionality to the hide button
-                    const hideBtn = extendedDiv.querySelector('button');
-                    hideBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        extendedDiv.remove();
-                    });
-                    
-                    this.appendChild(extendedDiv);
-                    
-                    // Auto-hide after 8 seconds
-                    setTimeout(() => {
-                        if (extendedDiv.parentNode) {
-                            extendedDiv.remove();
-                        }
-                    }, 8000);
-                }
-            });
-            
-            // Add keyboard accessibility
-            disclaimerContainer.setAttribute('tabindex', '0');
-            disclaimerContainer.setAttribute('role', 'button');
-            disclaimerContainer.setAttribute('aria-label', 'Click to expand disclaimer details');
-            
-            disclaimerContainer.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    this.click();
-                }
-            });
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const menu = document.getElementById('mobile-menu');
+            const body = document.body;
+            const isOpen = overlay.classList.contains('open');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                overlay.classList.add('open');
+                menu.classList.add('open');
+                body.classList.add('mobile-menu-open');
+                // Focus management
+                const closeBtn = document.querySelector('.mobile-menu-close');
+                if (closeBtn) closeBtn.focus();
+            }
         }
-        
-        // Initialize disclaimer enhancement
-        initDisclaimerEnhancement();
+
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const menu = document.getElementById('mobile-menu');
+            const body = document.body;
+            overlay.classList.remove('open');
+            menu.classList.remove('open');
+            body.classList.remove('mobile-menu-open');
+            // Return focus to hamburger button
+            const hamburger = document.getElementById('mobile-menu-btn');
+            if (hamburger) hamburger.focus();
+        }
     </script>
 </body>
 </html>
