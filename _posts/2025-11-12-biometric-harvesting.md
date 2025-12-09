@@ -211,7 +211,7 @@ Technologies and Privacy Considerations.\"
 ::: {.mt-8 .p-4 .bg-gray-50 .dark:bg-gray-800 .rounded-lg .border .border-gray-200 .dark:border-gray-700}
 Digital Dichotomy Research. (2025). \"Biometric Data Harvesting Through
 Ambient Radio Frequency Signals.\" Retrieved from
-https://digitaldichotomy.github.io/pages/post-biometric-harvesting.html
+https://digitaldichotomy.github.io/pages/2025-11-12-biometric-harvesting
 :::
 :::
 :::

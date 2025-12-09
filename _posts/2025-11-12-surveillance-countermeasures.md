@@ -323,7 +323,7 @@ Engineering Methodologies.\"
 ::: {.mt-8 .p-4 .bg-gray-50 .dark:bg-gray-800 .rounded-lg .border .border-gray-200 .dark:border-gray-700}
 Digital Dichotomy Research. (2025). \"Surveillance Countermeasures and
 Privacy Engineering: A Technical Framework.\" Retrieved from
-https://digitaldichotomy.github.io/pages/post-surveillance-countermeasures.html
+https://digitaldichotomy.github.io/pages/2025-11-12-surveillance-countermeasures
 :::
 :::
 :::
@@ -343,7 +343,7 @@ systems
 
 Field guide to temporal jitter and cognitive obfuscation strategies
 
-[](/pages/post-biometric-harvesting.html){.block .bg-white
+[](/pages/2025-11-12-biometric-harvesting){.block .bg-white
 .dark:bg-gray-800 .rounded-lg .p-6 .border .border-gray-200
 .dark:border-gray-700 .hover:shadow-lg .transition-shadow}
 
