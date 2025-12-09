@@ -1,0 +1,130 @@
+.:
+total 16
+drwxrwxr-x  3 new new 4096 Dec  8 20:38 .
+drwxrwxr-x 21 new new 4096 Dec  8 20:37 ..
+drwxrwxr-x  7 new new 4096 Dec  8 20:05 .git
+-rw-rw-r--  1 new new   15 Dec  8 20:05 README.md
+-rw-rw-r--  1 new new    0 Dec  8 20:38 audit-pre-restructure.txt
+
+./.git:
+total 48
+drwxrwxr-x 7 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 3 new new 4096 Dec  8 20:38 ..
+-rw-rw-r-- 1 new new   21 Dec  8 20:05 HEAD
+-rw-rw-r-- 1 new new  270 Dec  8 20:05 config
+-rw-rw-r-- 1 new new   73 Dec  8 20:05 description
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 hooks
+-rw-rw-r-- 1 new new  137 Dec  8 20:05 index
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 info
+drwxrwxr-x 3 new new 4096 Dec  8 20:05 logs
+drwxrwxr-x 4 new new 4096 Dec  8 20:05 objects
+-rw-rw-r-- 1 new new  112 Dec  8 20:05 packed-refs
+drwxrwxr-x 5 new new 4096 Dec  8 20:05 refs
+
+./.git/hooks:
+total 72
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 7 new new 4096 Dec  8 20:05 ..
+-rwxrwxr-x 1 new new  478 Dec  8 20:05 applypatch-msg.sample
+-rwxrwxr-x 1 new new  896 Dec  8 20:05 commit-msg.sample
+-rwxrwxr-x 1 new new 4726 Dec  8 20:05 fsmonitor-watchman.sample
+-rwxrwxr-x 1 new new  189 Dec  8 20:05 post-update.sample
+-rwxrwxr-x 1 new new  424 Dec  8 20:05 pre-applypatch.sample
+-rwxrwxr-x 1 new new 1649 Dec  8 20:05 pre-commit.sample
+-rwxrwxr-x 1 new new  416 Dec  8 20:05 pre-merge-commit.sample
+-rwxrwxr-x 1 new new 1374 Dec  8 20:05 pre-push.sample
+-rwxrwxr-x 1 new new 4898 Dec  8 20:05 pre-rebase.sample
+-rwxrwxr-x 1 new new  544 Dec  8 20:05 pre-receive.sample
+-rwxrwxr-x 1 new new 1492 Dec  8 20:05 prepare-commit-msg.sample
+-rwxrwxr-x 1 new new 2783 Dec  8 20:05 push-to-checkout.sample
+-rwxrwxr-x 1 new new 2308 Dec  8 20:05 sendemail-validate.sample
+-rwxrwxr-x 1 new new 3650 Dec  8 20:05 update.sample
+
+./.git/info:
+total 12
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 7 new new 4096 Dec  8 20:05 ..
+-rw-rw-r-- 1 new new  240 Dec  8 20:05 exclude
+
+./.git/logs:
+total 16
+drwxrwxr-x 3 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 7 new new 4096 Dec  8 20:05 ..
+-rw-rw-r-- 1 new new  218 Dec  8 20:05 HEAD
+drwxrwxr-x 4 new new 4096 Dec  8 20:05 refs
+
+./.git/logs/refs:
+total 16
+drwxrwxr-x 4 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 3 new new 4096 Dec  8 20:05 ..
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 heads
+drwxrwxr-x 3 new new 4096 Dec  8 20:05 remotes
+
+./.git/logs/refs/heads:
+total 12
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 4 new new 4096 Dec  8 20:05 ..
+-rw-rw-r-- 1 new new  218 Dec  8 20:05 main
+
+./.git/logs/refs/remotes:
+total 12
+drwxrwxr-x 3 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 4 new new 4096 Dec  8 20:05 ..
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 origin
+
+./.git/logs/refs/remotes/origin:
+total 12
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 3 new new 4096 Dec  8 20:05 ..
+-rw-rw-r-- 1 new new  218 Dec  8 20:05 HEAD
+
+./.git/objects:
+total 16
+drwxrwxr-x 4 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 7 new new 4096 Dec  8 20:05 ..
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 info
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 pack
+
+./.git/objects/info:
+total 8
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 4 new new 4096 Dec  8 20:05 ..
+
+./.git/objects/pack:
+total 20
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 4 new new 4096 Dec  8 20:05 ..
+-r--r--r-- 1 new new 1156 Dec  8 20:05 pack-d80028d10d37df19fc04714009ae84f963f8e37e.idx
+-r--r--r-- 1 new new  892 Dec  8 20:05 pack-d80028d10d37df19fc04714009ae84f963f8e37e.pack
+-r--r--r-- 1 new new   64 Dec  8 20:05 pack-d80028d10d37df19fc04714009ae84f963f8e37e.rev
+
+./.git/refs:
+total 20
+drwxrwxr-x 5 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 7 new new 4096 Dec  8 20:05 ..
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 heads
+drwxrwxr-x 3 new new 4096 Dec  8 20:05 remotes
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 tags
+
+./.git/refs/heads:
+total 12
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 5 new new 4096 Dec  8 20:05 ..
+-rw-rw-r-- 1 new new   41 Dec  8 20:05 main
+
+./.git/refs/remotes:
+total 12
+drwxrwxr-x 3 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 5 new new 4096 Dec  8 20:05 ..
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 origin
+
+./.git/refs/remotes/origin:
+total 12
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 3 new new 4096 Dec  8 20:05 ..
+-rw-rw-r-- 1 new new   30 Dec  8 20:05 HEAD
+
+./.git/refs/tags:
+total 8
+drwxrwxr-x 2 new new 4096 Dec  8 20:05 .
+drwxrwxr-x 5 new new 4096 Dec  8 20:05 ..

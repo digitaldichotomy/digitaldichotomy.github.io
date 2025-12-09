@@ -1,0 +1,12 @@
+---
+title: Digital Dichotomy
+description: Exploring technology, privacy, and human rights.
+url: https://digitaldichotomy.github.io
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+---
+
+# Site Configuration
