@@ -1,63 +1,69 @@
-<header class="sticky top-0 z-40 bg-gray-900/80 backdrop-blur-sm border-b border-gray-700">
+<header class="sticky top-0 z-40 bg-gray-900/95 backdrop-blur-sm border-b border-gray-700/50">
     <div class="container mx-auto px-4">
         <div class="flex items-center justify-between h-16">
-            <!-- Logo and Brand -->
-            <a href="/index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
-                <i data-feather="shield-off" class="text-red-500" role="img" aria-label="Shield Off Icon"></i>
-                <span>DIGITAL DICHOTOMY</span>
+            <!-- Logo and Brand - Always visible -->
+            <a href="/index.html" class="flex items-center space-x-2 text-white font-bold text-lg flex-shrink-0">
+                <i data-feather="shield-off" class="text-red-500 w-6 h-6" role="img" aria-label="Shield Off Icon"></i>
+                <span class="hidden sm:inline">DIGITAL DICHOTOMY</span>
+                <span class="sm:hidden">D.D.</span>
             </a>
             
-            <!-- Desktop Navigation (hidden on mobile) -->
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium desktop-nav" role="navigation" aria-label="Main navigation">
-                <a href="/pages/pat.html" class="text-gray-300 hover:text-white transition-colors" aria-label="Access Sentinel Patent Database">
+            <!-- Desktop Navigation - Hidden on mobile -->
+            <nav class="hidden lg:flex items-center space-x-4 text-sm font-medium flex-1 justify-center" role="navigation" aria-label="Main navigation">
+                <a href="/pages/pat.html" class="nav-link hover:bg-gray-800/50 px-3 py-2 rounded-md transition-colors">
                     Sentinel Database
                 </a>
-                <a href="/the-analog-self.html" class="flex items-center space-x-2 text-red-400 hover:text-white transition-colors font-bold" aria-label="Read The Analog Self">
-                    <img src="cover.png" alt="The Analog Self Cover" class="w-8 h-8 rounded object-cover">
-                    <span>THE ANALOG SELF</span>
+                <a href="/the-analog-self.html" class="nav-link hover:bg-gray-800/50 px-3 py-2 rounded-md transition-colors flex items-center space-x-1">
+                    <img src="cover.png" alt="The Analog Self Cover" class="w-6 h-6 rounded object-cover">
+                    <span class="font-bold text-red-400">THE ANALOG SELF</span>
                 </a>
-                <a href="/pages/resource-hub.html" class="text-red-500 hover:text-white transition-colors font-bold" aria-label="Access Resource Hub">
+                <a href="/pages/resource-hub.html" class="nav-link hover:bg-gray-800/50 px-3 py-2 rounded-md transition-colors font-bold text-red-500">
                     RESOURCE HUB
                 </a>
-                <a href="/pages/blog.html" class="text-gray-300 hover:text-white transition-colors" aria-label="View blog and field notes">BLOG / FIELD NOTES</a>
-                <a href="#library" class="text-gray-300 hover:text-white transition-colors" aria-label="Jump to library section">Library</a>
+                <a href="/pages/blog.html" class="nav-link hover:bg-gray-800/50 px-3 py-2 rounded-md transition-colors">
+                    BLOG / FIELD NOTES
+                </a>
+                <a href="#library" class="nav-link hover:bg-gray-800/50 px-3 py-2 rounded-md transition-colors">
+                    Library
+                </a>
+            </nav>
+            
+            <!-- Search and Controls - Hidden on mobile -->
+            <div class="hidden lg:flex items-center space-x-3 flex-shrink-0">
                 <div class="relative">
                     <input 
                         type="text" 
                         id="search-input" 
-                        placeholder="Search intelligence..." 
+                        placeholder="Search..." 
                         onkeyup="handleSearch(event)" 
-                        class="bg-gray-800 text-white px-3 py-1 rounded-lg text-sm w-48 focus:outline-none focus:ring-2 focus:ring-red-500 placeholder-gray-400"
+                        class="bg-gray-800/70 text-white px-3 py-2 rounded-md text-sm w-48 focus:outline-none focus:ring-2 focus:ring-red-500 placeholder-gray-400 border border-gray-700/50"
                         aria-label="Search site content"
                         role="searchbox"
-                        aria-expanded="false"
-                        aria-autocomplete="list"
                     >
-                    <div id="search-results" class="absolute top-full mt-2 w-64 bg-gray-800 border border-gray-600 rounded-lg shadow-xl hidden z-50 max-h-80 overflow-y-auto"></div>
+                    <div id="search-results" class="absolute top-full mt-1 w-full bg-gray-800 border border-gray-600 rounded-md shadow-xl hidden z-50 max-h-60 overflow-y-auto"></div>
                 </div>
-            </nav>
-            
-            <!-- Mobile Controls -->
-            <div class="flex items-center space-x-2">
+                
                 <!-- Dark Mode Toggle -->
                 <button 
                     onclick="toggleDarkMode()"
-                    class="p-2 text-gray-300 hover:text-white transition-colors rounded-md hover:bg-gray-800"
+                    class="p-2 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-md transition-colors"
                     title="Toggle dark mode"
                     aria-label="Toggle dark mode"
                 >
                     <i data-feather="moon" class="w-5 h-5" id="theme-icon"></i>
                 </button>
-                
-                <!-- Mobile Menu Toggle -->
+            </div>
+            
+            <!-- Mobile Menu Button - Visible only on mobile -->
+            <div class="lg:hidden flex items-center">
                 <button 
                     id="mobile-menu-btn"
-                    class="hamburger-btn md:hidden"
+                    class="hamburger-btn p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800/50 transition-colors"
                     title="Open navigation menu"
                     aria-label="Open navigation menu"
                     aria-expanded="false"
                 >
-                    <i data-feather="menu" class="w-5 h-5"></i>
+                    <i data-feather="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
@@ -68,72 +74,86 @@
 <div class="mobile-menu-overlay" id="mobile-menu-overlay">
     <div class="mobile-menu" id="mobile-menu" onclick="event.stopPropagation()">
         <div class="mobile-menu-header">
-            <span class="text-white font-bold text-lg">Navigation</span>
+            <a href="/index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
+                <i data-feather="shield-off" class="text-red-500 w-5 h-5"></i>
+                <span>DIGITAL DICHOTOMY</span>
+            </a>
             <button class="mobile-menu-close" aria-label="Close navigation menu">
-                <i data-feather="x"></i>
+                <i data-feather="x" class="w-6 h-6"></i>
             </button>
         </div>
+        
         <div class="mobile-menu-content">
-            <div class="mobile-menu-search">
+            <div class="mobile-menu-search mb-6">
                 <input
                     type="text"
                     id="mobile-search-input"
                     placeholder="Search intelligence..."
                     onkeyup="handleSearch(event)"
+                    class="w-full px-4 py-3 bg-gray-800/70 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 border border-gray-700/50"
                     aria-label="Search site content"
-                    role="searchbox"
                 >
             </div>
-            <a href="/index.html" class="mobile-menu-link active">
-                <i data-feather="home"></i>
-                Home
-            </a>
-            <a href="#action-center" class="mobile-menu-link">
-                <i data-feather="target"></i>
-                Action Center
-            </a>
-            <a href="/pages/pat.html" class="mobile-menu-link">
-                <i data-feather="database"></i>
-                Sentinel Database
-            </a>
-            <a href="/the-analog-self.html" class="mobile-menu-link">
-                <i data-feather="book"></i>
-                THE ANALOG SELF
-            </a>
-            <a href="/pages/resource-hub.html" class="mobile-menu-link">
-                <i data-feather="tool"></i>
-                RESOURCE HUB
-            </a>
+            
+            <nav class="space-y-2" role="navigation" aria-label="Mobile navigation">
+                <a href="/index.html" class="mobile-menu-link active">
+                    <i data-feather="home" class="w-5 h-5"></i>
+                    <span>Home</span>
+                </a>
+                
+                <a href="/pages/pat.html" class="mobile-menu-link">
+                    <i data-feather="database" class="w-5 h-5"></i>
+                    <span>Sentinel Database</span>
+                </a>
+                
+                <a href="/the-analog-self.html" class="mobile-menu-link">
+                    <i data-feather="book" class="w-5 h-5"></i>
+                    <span>THE ANALOG SELF</span>
+                </a>
+                
+                <a href="/pages/resource-hub.html" class="mobile-menu-link">
+                    <i data-feather="tool" class="w-5 h-5"></i>
+                    <span>RESOURCE HUB</span>
+                </a>
+                
+                <a href="/pages/blog.html" class="mobile-menu-link">
+                    <i data-feather="file-text" class="w-5 h-5"></i>
+                    <span>BLOG / FIELD NOTES</span>
+                </a>
+                
+                <a href="#library" class="mobile-menu-link">
+                    <i data-feather="archive" class="w-5 h-5"></i>
+                    <span>Library</span>
+                </a>
+                
+                <a href="#action-center" class="mobile-menu-link">
+                    <i data-feather="target" class="w-5 h-5"></i>
+                    <span>Action Center</span>
+                </a>
+            </nav>
             
             <!-- Tools Section -->
             <div class="mobile-menu-section">
                 <h4 class="mobile-menu-section-title">🛠️ Tools & Actions</h4>
-                <a href="pages/post-notice-digital-battery.html" class="mobile-menu-link">
-                    <i data-feather="file-text"></i>
-                    Digital Battery Notice
-                </a>
-                <a href="pages/post-bsp-core.html" class="mobile-menu-link">
-                    <i data-feather="cpu"></i>
-                    BSP-Core Firmware
-                </a>
-                <a href="pages/post-advocacy-toolkit.html" class="mobile-menu-link">
-                    <i data-feather="users"></i>
-                    Advocacy Toolkit
-                </a>
-                <a href="pages/post-class-action-guide.html" class="mobile-menu-link">
-                    <i data-feather="gavel"></i>
-                    Class Action Guide
-                </a>
+                <div class="space-y-2">
+                    <a href="pages/post-notice-digital-battery.html" class="mobile-menu-link">
+                        <i data-feather="file-text" class="w-5 h-5"></i>
+                        <span>Digital Battery Notice</span>
+                    </a>
+                    <a href="pages/post-bsp-core.html" class="mobile-menu-link">
+                        <i data-feather="cpu" class="w-5 h-5"></i>
+                        <span>BSP-Core Firmware</span>
+                    </a>
+                    <a href="pages/post-advocacy-toolkit.html" class="mobile-menu-link">
+                        <i data-feather="users" class="w-5 h-5"></i>
+                        <span>Advocacy Toolkit</span>
+                    </a>
+                    <a href="pages/post-class-action-guide.html" class="mobile-menu-link">
+                        <i data-feather="gavel" class="w-5 h-5"></i>
+                        <span>Class Action Guide</span>
+                    </a>
+                </div>
             </div>
-            
-            <a href="/pages/blog.html" class="mobile-menu-link">
-                <i data-feather="file-text"></i>
-                BLOG / FIELD NOTES
-            </a>
-            <a href="#library" class="mobile-menu-link">
-                <i data-feather="archive"></i>
-                Library
-            </a>
         </div>
     </div>
 </div>
