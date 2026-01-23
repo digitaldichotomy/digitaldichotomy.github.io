@@ -13,5 +13,56 @@
     </main>
     {% include footer.html %}
     <script src="{{ '/assets/js/social-share.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/mobile-menu.js' | relative_url }}"></script>
+    <script>
+        // Initialize feather icons
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+    </script>
 </body>
 </html>
+
+    <!-- Floating share button for mobile -->
+    <button onclick="toggleMobileShareMenu()" class="floating-share md:hidden" aria-label="Share page">
+        <i data-feather="share-2"></i>
+    </button>
+    
+    <div class="mobile-share-menu" id="mobile-share-menu">
+        <button onclick="shareToTwitter()">
+            <i data-feather="twitter"></i>
+            <span>Twitter</span>
+        </button>
+        <button onclick="shareToFacebook()">
+            <i data-feather="facebook"></i>
+            <span>Facebook</span>
+        </button>
+        <button onclick="shareToLinkedIn()">
+            <i data-feather="linkedin"></i>
+            <span>LinkedIn</span>
+        </button>
+        <button onclick="copyLink()">
+            <i data-feather="link"></i>
+            <span>Copy Link</span>
+        </button>
+    </div>
+    
+    <script>
+        // Mobile share menu functionality
+        function toggleMobileShareMenu() {
+            const menu = document.getElementById('mobile-share-menu');
+            menu.classList.toggle('open');
+        }
+        
+        // Close share menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobile-share-menu');
+            const button = document.querySelector('.floating-share');
+            
+            if (!menu.contains(event.target) && !button.contains(event.target)) {
+                menu.classList.remove('open');
+            }
+        });
+    </script>
