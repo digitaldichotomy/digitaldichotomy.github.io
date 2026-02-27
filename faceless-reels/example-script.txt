@@ -1,0 +1,13 @@
+Okay so get this — in 2024, your WiFi router started watching you breathe. Like, actually watching. Your chest rising and falling. Through walls. In the dark.
+
+I'm not kidding. And it's not a hack. It's an official international standard called IEEE 802.11bf. WiFi Sensing.
+
+Here's how it works: WiFi signals bounce off everything in your home. Walls. Furniture. You. When you move — even slightly — those signals change. The new standard lets devices analyze those changes with enough precision to detect your breathing pattern. Your heartbeat. Your location. Room by room.
+
+And here's the thing that should actually bother you: a 2025 development called Wi-Chat uses AI to interpret this data. You can literally ask your router "How many people are in the room?" or "What's their breathing pattern?" and it will answer.
+
+This is being sold as home security. Wellness monitoring. But capabilities don't stay in their lanes. Once your router knows when you're home, when you're asleep, when you're having visitors — that data gets used. Insurers use it. Employers use it. Law enforcement uses it.
+
+The patent record shows this isn't speculation. It's deployment. Major router manufacturers are already integrating this. Your router was supposed to give you internet. Now it gives them you.
+
+Sometimes technology just... expands. And you don't get to opt out.

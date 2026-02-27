@@ -1,0 +1,26 @@
+Digital Dichotomy investigates the architecture of covert surveillance technologies through verifiable patents, technical standards, and government documentation.
+
+CORE TOPICS:
+- Biometric surveillance patents (rPPG, gaze tracking, thermal emotion detection)
+- Neural profiling and brain-computer interface technologies
+- WiFi sensing and RF-based monitoring systems
+- Digital Twin architecture and predictive modeling
+- Privacy engineering countermeasures and defensive protocols
+- Legal frameworks (BIPA, biometric privacy litigation)
+- Cognitive sovereignty and biological autonomy
+
+CONTENT APPROACH:
+Evidence-based analysis only. Every claim references documented patents or technical specifications. No speculation. No conspiracy theories. Academic rigor meets actionable defense strategies.
+
+TARGET AUDIENCE:
+Privacy researchers, civil liberties advocates, security professionals, policy makers, and individuals seeking to understand and protect against biometric surveillance infrastructure.
+
+TONE:
+Professional, investigative, educational. Similar to technical documentary narration - factual, measured, but urgent when warranted.
+
+CONTENT PILLARS:
+1. Patent breakdowns (specific technology analysis)
+2. Legal warfare (litigation and settlements)
+3. Countermeasures (actionable defense protocols)
+4. Architecture explainers (how the layers connect)
+5. Corporate accountability (who's building this)
