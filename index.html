@@ -42,7 +42,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com/3.4.0 https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com/3.4.0 https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; media-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com;">
     
     <!-- Additional SEO -->
     <meta name="author" content="Digital Dichotomy Research">
@@ -95,7 +95,7 @@
     </script>
 
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.tailwindcss.com" onerror="(function(){var link=document.createElement('link');link.rel='stylesheet';link.href='styles.css';document.head.appendChild(link);})();"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.0" onerror="(function(){var link=document.createElement('link');link.rel='stylesheet';link.href='styles.css';document.head.appendChild(link);})();"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -136,7 +136,7 @@
             'anonymize_ip': true,
             'custom_map': {'custom_parameter_1': 'book_interest'}
         });
-        
+
         // Track book link clicks
         function trackBookClick(bookTitle, url) {
             gtag('event', 'book_click', {
@@ -146,7 +146,7 @@
             });
             window.open(url, '_blank');
         }
-        
+
         // Track blog post views
         function trackBlogView(postTitle) {
             gtag('event', 'blog_view', {
@@ -272,7 +272,7 @@
         <div id="progress-fill" class="h-full bg-red-600 transition-all duration-300" style="width: 0%"></div>
     </div>
 
-    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-1 z-50 border-b border-gray-700">
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700" style="position: sticky; top: 0; z-index: 50;">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
                 <a href="/index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
@@ -283,11 +283,12 @@
                      <!-- Mobile Menu Toggle -->
                      <button
                          onclick="toggleMobileMenu()"
-                         class="hamburger-btn md:hidden"
+                         class="hamburger-btn"
                          title="Open navigation menu"
                          aria-label="Open navigation menu"
                          aria-expanded="false"
                          id="mobile-menu-btn"
+                         style="display: none;"
                      >
                          <i data-feather="menu" class="w-5 h-5"></i>
                      </button>
@@ -298,16 +299,17 @@
                          class="p-2 text-gray-300 hover:text-white transition-colors"
                          title="Toggle dark mode"
                          aria-label="Toggle dark mode"
+                         style="display: flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px;"
                      >
                          <i data-feather="moon" class="w-5 h-5" id="theme-icon"></i>
                      </button>
                  </div>
-                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium" role="navigation" aria-label="Main navigation">
-                      <a href="/pages/pat.html" class="text-gray-300 hover:text-white transition-colors" aria-label="Access Sentinel Patent Database">
+                <nav class="desktop-nav hidden md:flex items-center space-x-6 text-sm font-medium" role="navigation" aria-label="Main navigation">
+                      <a href="/sentinel.html" class="text-gray-300 hover:text-white transition-colors" aria-label="Access Sentinel Patent Database">
                          Sentinel Database
                      </a>
                     <a href="/the-analog-self.html" class="flex items-center space-x-2 text-red-400 hover:text-white transition-colors font-bold" aria-label="Read The Analog Self">
-                        <img src="cover.png" alt="The Analog Self Cover" class="w-8 h-8 rounded object-cover">
+                        <img src="TheAnalogSelf.png" alt="The Analog Self Cover" class="w-8 h-8 rounded object-cover">
                         <span>THE ANALOG SELF</span>
                     </a>
                     <a href="/pages/resource-hub.html" class="text-red-500 hover:text-white transition-colors font-bold" aria-label="Access Resource Hub">
@@ -335,11 +337,11 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="closeMobileMenu()">
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay" onclick="closeMobileMenu()" style="display: block;">
         <div class="mobile-menu" id="mobile-menu" onclick="event.stopPropagation()">
             <div class="mobile-menu-header">
                 <span class="text-white font-bold text-lg">Navigation</span>
-                <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close navigation menu">
+                <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Close navigation menu" style="display: flex; align-items: center; justify-content: center;">
                     <i data-feather="x"></i>
                 </button>
             </div>
@@ -362,7 +364,7 @@
                      <i data-feather="target"></i>
                      Action Center
                  </a>
-                 <a href="/pages/pat.html" class="mobile-menu-link" onclick="closeMobileMenu()">
+                 <a href="/sentinel.html" class="mobile-menu-link" onclick="closeMobileMenu()">
                     <i data-feather="database"></i>
                     Sentinel Database
                 </a>
@@ -489,22 +491,22 @@
 
                 <!-- Featured Patent Categories -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                    <a href="/pages/pat.html#tier1" class="bg-red-800/50 hover:bg-red-700/50 p-4 rounded-lg border border-red-700 text-center transition-colors">
+                    <a href="/sentinel.html#tier1" class="bg-red-800/50 hover:bg-red-700/50 p-4 rounded-lg border border-red-700 text-center transition-colors">
                         <div class="text-lg font-bold text-red-300 mb-2">Tier I</div>
                         <div class="text-sm text-red-200">Direct Biometric Reading</div>
                         <div class="text-xs text-gray-400 mt-2">rPPG • VOC Analysis • Thermal Imaging</div>
                     </a>
-                    <a href="/pages/pat.html#tier11" class="bg-orange-800/50 hover:bg-orange-700/50 p-4 rounded-lg border border-orange-700 text-center transition-colors">
+                    <a href="/sentinel.html#tier11" class="bg-orange-800/50 hover:bg-orange-700/50 p-4 rounded-lg border border-orange-700 text-center transition-colors">
                         <div class="text-lg font-bold text-orange-300 mb-2">XI</div>
                         <div class="text-sm text-orange-200">Neural Profiling</div>
                         <div class="text-xs text-gray-400 mt-2">EEG • fNIRS • Brain Interfaces</div>
                     </a>
-                    <a href="/pages/pat.html#tier12" class="bg-purple-800/50 hover:bg-purple-700/50 p-4 rounded-lg border border-purple-700 text-center transition-colors">
+                    <a href="/sentinel.html#tier12" class="bg-purple-800/50 hover:bg-purple-700/50 p-4 rounded-lg border border-purple-700 text-center transition-colors">
                         <div class="text-lg font-bold text-purple-300 mb-2">XII</div>
                         <div class="text-sm text-purple-200">Directed Energy</div>
                         <div class="text-xs text-gray-400 mt-2">RF Weapons • Neuromodulation</div>
                     </a>
-                    <a href="/pages/pat.html#defense" class="bg-green-800/50 hover:bg-green-700/50 p-4 rounded-lg border border-green-700 text-center transition-colors">
+                    <a href="/sentinel.html#defense" class="bg-green-800/50 hover:bg-green-700/50 p-4 rounded-lg border border-green-700 text-center transition-colors">
                         <div class="text-lg font-bold text-green-300 mb-2">Defense</div>
                         <div class="text-sm text-green-200">Countermeasures • Shielding</div>
                         <div class="text-xs text-gray-400 mt-2">Encryption • Adversarial</div>
@@ -515,7 +517,7 @@
                 <div class="bg-gray-800/30 p-6 rounded-lg mb-8">
                     <h3 class="text-lg font-bold text-gray-300 mb-4">Recent High-Impact Patents (2024-2025)</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <a href="/pages/pat.html#microsoft-voc" class="block bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:bg-gray-800/50 transition-colors">
+                        <a href="/sentinel.html#microsoft-voc" class="block bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:bg-gray-800/50 transition-colors">
                             <div class="flex items-start">
                                 <span class="px-2 py-1 bg-red-900 text-red-300 text-xs font-bold rounded-full">BREAKTHROUGH</span>
                                 <h4 class="ml-3 font-semibold text-white">Microsoft VOC Emotional Prediction</h4>
@@ -523,7 +525,7 @@
                             <p class="mt-2 text-sm text-gray-400">Patent 20250359791 - Using breath gas sensors to predict emotional states via ML models</p>
                             <span class="text-red-400 text-sm hover:text-red-300">View Details →</span>
                         </a>
-                        <a href="/pages/pat.html#usaf-thermal" class="block bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:bg-gray-800/50 transition-colors">
+                        <a href="/sentinel.html#usaf-thermal" class="block bg-gray-900/50 p-4 rounded-lg border border-gray-700 hover:bg-gray-800/50 transition-colors">
                             <div class="flex items-start">
                                 <span class="px-2 py-1 bg-orange-900 text-orange-300 text-xs font-bold rounded-full">MILITARY</span>
                                 <h4 class="ml-3 font-semibold text-white">USAF Thermal-Enhanced Emotion</h4>
@@ -543,7 +545,7 @@
                         <i data-feather="file-text" class="inline-block w-4 h-4 mr-2"></i>
                         Read Latest Research
                     </a>
-                     <a href="/pages/pat.html" class="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors border border-gray-600">
+                     <a href="/sentinel.html" class="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors border border-gray-600">
                         <i data-feather="database" class="inline-block w-4 h-4 mr-2"></i>
                         Patent Database
                     </a>
@@ -906,11 +908,11 @@
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                     <div class="md:flex">
                         <div class="md:w-1/3">
-                            <a href="https://www.amazon.com/dp/B0DHYDFJWV" target="_blank" rel="noopener noreferrer" class="block h-full">
-                                <img src="https://m.media-amazon.com/images/I/41ScXtbHTWL._AC_.jpg" 
+                            <a href="https://www.amazon.com/dp/B0DHYDFJWV?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="block h-full">
+                                <img src="https://m.media-amazon.com/images/I/41ScXtbHTWL._AC_.jpg"
                                      loading="lazy"
-                                     onerror="this.onerror=null;this.src='https://placehold.co/300x450/444444/FFFFFF?text=Book+Cover';this.style.opacity='0.7';this.title='Image failed to load - showing placeholder';" 
-                                     alt="The Right to an Un-Modeled Self Book Cover" 
+                                     onerror="this.onerror=null;this.src='https://placehold.co/300x450/444444/FFFFFF?text=Book+Cover';this.style.opacity='0.7';this.title='Image failed to load - showing placeholder';"
+                                     alt="The Right to an Un-Modeled Self Book Cover"
                                      class="w-full h-full object-cover">
                             </a>
                         </div>
@@ -939,7 +941,7 @@
                             </div>
                             
                             <div class="flex flex-col sm:flex-row gap-4">
-                                <a href="https://www.amazon.com/dp/B0DHYDFJWV" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-colors text-center">
+                                <a href="https://www.amazon.com/dp/B0DHYDFJWV?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-colors text-center">
                                     Get on Amazon
                                 </a>
                                 <a href="/the-analog-self.html" class="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition-colors text-center">
@@ -1117,18 +1119,18 @@
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                     <div class="md:flex">
                         <div class="md:w-2/5">
-                            <a href="https://www.amazon.com/dp/B0DHYX4L7Q" target="_blank" rel="noopener noreferrer" class="block h-full">
-                                <img src="https://m.media-amazon.com/images/I/41zrm2TKmdL._AC_.jpg" 
+                            <a href="https://www.amazon.com/dp/B0DHYX4L7Q?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="block h-full">
+                                <img src="https://m.media-amazon.com/images/I/41zrm2TKmdL._AC_.jpg"
                                      loading="lazy"
-                                     onerror="this.onerror=null;this.src='https://placehold.co/300x450/444444/FFFFFF?text=Book+Cover';this.style.opacity='0.7';this.title='Image failed to load - showing placeholder';" 
-                                     alt="The Transparent Self Book Cover" 
+                                     onerror="this.onerror=null;this.src='https://placehold.co/300x450/444444/FFFFFF?text=Book+Cover';this.style.opacity='0.7';this.title='Image failed to load - showing placeholder';"
+                                     alt="The Transparent Self Book Cover"
                                      class="w-full h-full object-cover">
                             </a>
                         </div>
                         <div class="md:w-3/5 p-4">
                             <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">The Transparent Self</h4>
                             <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Encyclopedia of covert self-invasion technologies and biological sovereignty defense strategies.</p>
-                            <a href="https://www.amazon.com/dp/B0DHYX4L7Q" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-700 text-sm font-semibold">
+                            <a href="https://www.amazon.com/dp/B0DHYX4L7Q?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-700 text-sm font-semibold">
                                 View on Amazon →
                             </a>
                         </div>
@@ -1138,18 +1140,18 @@
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                     <div class="md:flex">
                         <div class="md:w-2/5">
-                            <a href="https://www.amazon.com/dp/B0DHYWY1KH" target="_blank" rel="noopener noreferrer" class="block h-full">
-                                <img src="https://m.media-amazon.com/images/I/41cc9-HAbIL._AC_.jpg" 
+                            <a href="https://www.amazon.com/dp/B0DHYWY1KH?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="block h-full">
+                                <img src="https://m.media-amazon.com/images/I/41cc9-HAbIL._AC_.jpg"
                                      loading="lazy"
-                                     onerror="this.onerror=null;this.src='https://placehold.co/300x450/444444/FFFFFF?text=Book+Cover';this.style.opacity='0.7';this.title='Image failed to load - showing placeholder';" 
-                                     alt="Architecture of Covert Self-Invasion Cover" 
+                                     onerror="this.onerror=null;this.src='https://placehold.co/300x450/444444/FFFFFF?text=Book+Cover';this.style.opacity='0.7';this.title='Image failed to load - showing placeholder';"
+                                     alt="Architecture of Covert Self-Invasion Book Cover"
                                      class="w-full h-full object-cover">
                             </a>
                         </div>
                         <div class="md:w-3/5 p-4">
                             <h4 class="text-lg font-bold text-gray-800 dark:text-white mb-2">Architecture of Covert Self-Invasion</h4>
                             <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Technical analysis of clandestine surveillance systems and countermeasures.</p>
-                            <a href="https://www.amazon.com/dp/B0DHYWY1KH" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-700 text-sm font-semibold">
+                            <a href="https://www.amazon.com/dp/B0DHYWY1KH?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-700 text-sm font-semibold">
                                 View on Amazon →
                             </a>
                         </div>
@@ -1158,7 +1160,7 @@
             </div>
             
             <div class="text-center mt-8">
-                <a href="https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition-colors">
+                <a href="https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-bold rounded-lg transition-colors">
                     View All Research Publications
                 </a>
             </div>
@@ -1221,10 +1223,34 @@
         </div>
     </footer>
 
-
-    
     <script>
-        feather.replace();
+        // Initialize feather icons when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+
+        // Handle responsive navigation
+        function handleResponsiveNav() {
+            const hamburger = document.getElementById('mobile-menu-btn');
+            const desktopNav = document.querySelector('.desktop-nav');
+            const width = window.innerWidth;
+            
+            if (width <= 768) {
+                // Mobile view - show hamburger, hide desktop nav
+                if (hamburger) hamburger.style.display = 'flex';
+                if (desktopNav) desktopNav.style.display = 'none';
+            } else {
+                // Desktop view - hide hamburger, show desktop nav
+                if (hamburger) hamburger.style.display = 'none';
+                if (desktopNav) desktopNav.style.display = 'flex';
+            }
+        }
+
+        // Run on load and resize
+        window.addEventListener('resize', handleResponsiveNav);
+        document.addEventListener('DOMContentLoaded', handleResponsiveNav);
 
         // Enhanced Blog Carousel Functionality
         let currentSlide = 0;
@@ -1364,69 +1390,74 @@
 
 
 
-        // Search functionality
+        // Search functionality - powered by search-index.json
+        let searchIndex = null;
+        function loadSearchIndex() {
+            if (searchIndex) return Promise.resolve(searchIndex);
+            return fetch('/search-index.json')
+                .then(r => r.json())
+                .then(data => { searchIndex = data.pages || []; return searchIndex; });
+        }
+
         function handleSearch(event) {
-            const query = event.target.value.toLowerCase();
+            const query = event.target.value.toLowerCase().trim();
             const resultsDiv = document.getElementById('search-results');
-            
+
             if (query.length < 2) {
                 resultsDiv.classList.add('hidden');
                 return;
             }
-            
-            // Search data - books and blog posts
-            const searchData = [
-                { title: "The Right to an Un-Modeled Self", type: "book", url: "https://www.amazon.com/dp/B0DHYDFJWV" },
-                { title: "The Transparent Self", type: "book", url: "https://www.amazon.com/dp/B0DHYX4L7Q" },
-                { title: "Architecture of Covert Self-Invasion", type: "book", url: "https://www.amazon.com/dp/B0DHYWY1KH" },
-                { title: "Biometric Privacy Litigation Analysis", type: "blog", url: "/pages/post-biometric-litigation-analysis.html" },
-                { title: "Wi-Fi Sensing & Wi-Chat AI", type: "blog", url: "/pages/post-wifi-sensing.html" },
-                { title: "Neuroweapon Regulatory Gap", type: "blog", url: "/pages/post-neuroweapon-gap.html" },
-                { title: "Architecture of Covert Self-Invasion", type: "blog", url: "/pages/post-architecture-covert-self-invasion.html" },
-                { title: "Technical Specifications", type: "blog", url: "/pages/post-appendices.html" },
-                { title: "The 'Centaur' AI Model", type: "blog", url: "/pages/post-centour.html" }
-            ];
-            
-            const results = searchData.filter(item => 
-                item.title.toLowerCase().includes(query)
-            ).slice(0, 5);
-            
-            // Clear existing results
-            while (resultsDiv.firstChild) {
-                resultsDiv.removeChild(resultsDiv.firstChild);
-            }
-            
-            if (results.length > 0) {
-                results.forEach(item => {
-                    const link = document.createElement('a');
-                    link.href = item.url;
-                    link.className = 'block px-4 py-3 hover:bg-gray-700 transition-colors border-b border-gray-700 last:border-b-0';
-                    
-                    const flexDiv = document.createElement('div');
-                    flexDiv.className = 'flex items-center justify-between';
-                    
-                    const titleSpan = document.createElement('span');
-                    titleSpan.className = 'text-white text-sm';
-                    titleSpan.textContent = item.title;
-                    
-                    const typeSpan = document.createElement('span');
-                    typeSpan.className = 'text-xs px-2 py-1 rounded ' + 
-                        (item.type === 'book' ? 'bg-red-600 text-white' : 'bg-blue-600 text-white');
-                    typeSpan.textContent = item.type;
-                    
-                    flexDiv.appendChild(titleSpan);
-                    flexDiv.appendChild(typeSpan);
-                    link.appendChild(flexDiv);
-                    resultsDiv.appendChild(link);
-                });
+
+            loadSearchIndex().then(pages => {
+                const results = pages.filter(item =>
+                    item.title.toLowerCase().includes(query) ||
+                    (item.description && item.description.toLowerCase().includes(query)) ||
+                    (item.keywords && item.keywords.some(k => k.toLowerCase().includes(query)))
+                ).slice(0, 6);
+
+                while (resultsDiv.firstChild) resultsDiv.removeChild(resultsDiv.firstChild);
+
+                if (results.length > 0) {
+                    results.forEach(item => {
+                        const link = document.createElement('a');
+                        link.href = item.url;
+                        link.className = 'block px-4 py-3 hover:bg-gray-700 transition-colors border-b border-gray-700 last:border-b-0';
+
+                        const row = document.createElement('div');
+                        row.className = 'flex items-center justify-between';
+
+                        const title = document.createElement('span');
+                        title.className = 'text-white text-sm font-medium';
+                        title.textContent = item.title;
+
+                        const badge = document.createElement('span');
+                        badge.className = 'text-xs px-2 py-1 rounded ml-2 flex-shrink-0 ' +
+                            (item.category === 'Books' ? 'bg-red-600 text-white' : 'bg-blue-600 text-white');
+                        badge.textContent = item.category || 'Article';
+
+                        row.appendChild(title);
+                        row.appendChild(badge);
+                        link.appendChild(row);
+
+                        if (item.description) {
+                            const desc = document.createElement('div');
+                            desc.className = 'text-gray-400 text-xs mt-1 truncate';
+                            desc.textContent = item.description;
+                            link.appendChild(desc);
+                        }
+
+                        resultsDiv.appendChild(link);
+                    });
+                } else {
+                    const none = document.createElement('div');
+                    none.className = 'px-4 py-3 text-gray-400 text-sm';
+                    none.textContent = `No results for "${query}"`;
+                    resultsDiv.appendChild(none);
+                }
                 resultsDiv.classList.remove('hidden');
-            } else {
-                const noResultsDiv = document.createElement('div');
-                noResultsDiv.className = 'px-4 py-3 text-gray-400 text-sm';
-                noResultsDiv.textContent = `No results found for "${query}"`;
-                resultsDiv.appendChild(noResultsDiv);
-                resultsDiv.classList.remove('hidden');
-            }
+            }).catch(() => {
+                resultsDiv.classList.add('hidden');
+            });
         }
 
         // Close search results when clicking outside
@@ -1477,6 +1508,10 @@
                 overlay.classList.add('open');
                 menu.classList.add('open');
                 body.classList.add('mobile-menu-open');
+                // Re-initialize feather icons for mobile menu
+                if (typeof feather !== 'undefined') {
+                    feather.replace();
+                }
                 // Focus management
                 const closeBtn = document.querySelector('.mobile-menu-close');
                 if (closeBtn) closeBtn.focus();

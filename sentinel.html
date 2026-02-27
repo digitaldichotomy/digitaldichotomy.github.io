@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surveillance Technology Catalog | Digital Dichotomy Research</title>
+    <meta name="description" content="Academic catalog of surveillance technology patents and defensive countermeasures. Research database for privacy engineering and biometric sovereignty studies.">
+    <meta name="robots" content="index, follow">
+    <script src="https://cdn.tailwindcss.com/3.4.0"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        body { background-color: #f8fafc; color: #334155; font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); z-index: 9999; display: flex; align-items: center; justify-content: center; }
+        .modal-content { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState, useMemo } = React;
+        const SeverityLevel = { LOW: 'LOW', MEDIUM: 'MEDIUM', HIGH: 'HIGH', CRITICAL: 'CRITICAL', DEFENSE: 'COUNTERMEASURE' };
+        const PATENTS_DATA = [
+            { rank: 1, id: "US20210383490A1", assignee: "Meta Platforms", title: "Determining Physiological Characteristics for Content Delivery", alarmingReason: "Uses rPPG from device camera to gauge emotional response for ad targeting.", technicalDetail: "Feedback loop: Content is modulated based on physiological engagement.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 2, id: "US20190289628A1", assignee: "Philips", title: "Method and Apparatus for Determining a Physiological Parameter", alarmingReason: "Foundational patent for using cameras to measure vital signs.", technicalDetail: "Remote photoplethysmography (rPPG) extraction from standard video feeds.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 3, id: "US20210286433A1", assignee: "Apple", title: "Gaze-Based User Interaction", alarmingReason: "Uses gaze tracking to determine user intent and attention.", technicalDetail: "Core data stream for Digital Twin construction.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.HIGH },
+            { rank: 4, id: "US20180260539A1", assignee: "Microsoft", title: "Gaze Tracking System and Method", alarmingReason: "Infers emotional state and cognitive load from gaze.", technicalDetail: "Combines gaze with other biometrics for deeper inference.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.HIGH },
+            { rank: 5, id: "US20140184741A1", assignee: "Intel", title: "System and Method for Assessing Cognitive Load from Pupil Dilation", alarmingReason: "Uses pupil changes as a proxy for mental effort.", technicalDetail: "Key metric for tracking attention and processing power.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 6, id: "US20190354212A1", assignee: "Qualcomm", title: "Thermal Imaging for Emotion Recognition", alarmingReason: "Detects subtle changes in skin temperature for emotion inference.", technicalDetail: "Infers emotional state via autonomic nervous system responses.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.HIGH },
+            { rank: 7, id: "US20170206933A1", assignee: "Raytheon", title: "System and Method for Hyperspectral Imaging", alarmingReason: "Captures and analyzes hyperspectral data.", technicalDetail: "Advanced sensing beyond visible spectrum for identification.", category: "Surveillance", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.HIGH },
+            { rank: 8, id: "20250359791", assignee: "Microsoft", title: "Gas Sensor Readings for Predicting Emotional Characteristics", alarmingReason: "Uses breath gas sensors (NO₂, ethanol, VOCs) to predict emotional traits.", technicalDetail: "ML models correlate breath chemistry with psychological state.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 9, id: "US20210266659A1", assignee: "Google", title: "Earbud System for Estimating Physiological Parameters", alarmingReason: "Analyzes inner ear resonance, posture, and temperature.", technicalDetail: "Wellness monitoring enables continuous biofield inference.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.HIGH },
+            { rank: 10, id: "US20140344706A1", assignee: "MIT", title: "Device and Method for RF-Based Sensing Through Walls", alarmingReason: "Uses RF reflections to detect breathing and movement through walls.", technicalDetail: "WiFi signals as passive radar for non-line-of-sight surveillance.", category: "Surveillance", tier: "Tier III: Indirect Field", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 11, id: "US20210073987A1", assignee: "Apple", title: "Watch System for Detecting User Health Metrics", alarmingReason: "Continuous blood oxygen, ECG, and activity tracking with cloud sync.", technicalDetail: "Normalizes constant physiological monitoring via consumer device.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 12, id: "US20210165400A1", assignee: "Amazon", title: "Alexa Voice Analysis for Health Monitoring", alarmingReason: "Analyzes voice biomarkers to detect illness, stress, depression.", technicalDetail: "Passive audio surveillance repurposed as health diagnostic.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.HIGH },
+            { rank: 13, id: "US20220083033A1", assignee: "Samsung", title: "Smartphone-Based Gait and Activity Recognition", alarmingReason: "Identifies users by walking pattern using phone IMU.", technicalDetail: "Behavioral biometric for continuous authentication and tracking.", category: "Behavioral", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 14, id: "US20190354033A1", assignee: "Fitbit", title: "Stress Management and Sleep Scoring System", alarmingReason: "Combines HRV, movement, and skin temp for stress scoring.", technicalDetail: "Creates longitudinal psychological profile under wellness guise.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 15, id: "US20170177169A1", assignee: "NYU", title: "WiFi-Based Human Activity Recognition", alarmingReason: "Uses WiFi signals to detect presence and movement through walls.", technicalDetail: "CSI (Channel State Information) analysis for passive sensing.", category: "Surveillance", tier: "Tier III: Indirect Field", threatLevel: SeverityLevel.HIGH },
+            { rank: 16, id: "US20180225402A1", assignee: "Intel", title: "Keystroke Inference from Gyroscope Data", alarmingReason: "Reconstructs typed input from phone gyroscope vibrations.", technicalDetail: "Side-channel attack on physical keyboards via smartphone sensors.", category: "Surveillance", tier: "Tier VI: Mobile", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 17, id: "US20200349384A1", assignee: "DARPA / Google", title: "Neural Interface for Cognitive Enhancement", alarmingReason: "Direct brain-computer interface for reading/writing neural signals.", technicalDetail: "Invasive and non-invasive methods for bidirectional neural communication.", category: "Neural", tier: "Tier XI: Neural Profiling", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 18, id: "US20210093254A1", assignee: "Neuralink", title: "Brain-Machine Interface with Wireless Data Transfer", alarmingReason: "Implantable threads record and stimulate neurons.", technicalDetail: "High-bandwidth neural data streaming to external receivers.", category: "Neural", tier: "Tier XI: Neural Profiling", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 19, id: "US20190388688A1", assignee: "Facebook", title: "Non-Invasive Brain-Computer Interface", alarmingReason: "Wrist-worn device detects neural signals for typing.", technicalDetail: "EMG-based neural decoding for silent speech and control.", category: "Neural", tier: "Tier XI: Neural Profiling", threatLevel: SeverityLevel.HIGH },
+            { rank: 20, id: "US20200155873A1", assignee: "Apple", title: "Earbuds with EEG Sensors", alarmingReason: "Measures brainwaves through ear contact.", technicalDetail: "Dry electrode EEG integrated into consumer audio device.", category: "Neural", tier: "Tier XI: Neural Profiling", threatLevel: SeverityLevel.HIGH },
+            { rank: 21, id: "US20210121696A1", assignee: "Microsoft", title: "Emotion Recognition from Voice and Face", alarmingReason: "Multimodal AI predicts emotional state from audio and video.", technicalDetail: "Fusion of facial action units and prosodic features for affect detection.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.HIGH },
+            { rank: 22, id: "US20200394810A1", assignee: "IBM", title: "Cognitive State Analysis for Content Recommendation", alarmingReason: "Uses biometric feedback to optimize content for engagement.", technicalDetail: "Closed-loop system adjusts content based on physiological arousal.", category: "Control", tier: "Tier VIII: Control Layer", threatLevel: SeverityLevel.HIGH },
+            { rank: 23, id: "US20190105013A1", assignee: "Samsung", title: "UWB Radar for Vital Sign Monitoring", alarmingReason: "Ultra-wideband radar detects heartbeat and breathing from distance.", technicalDetail: "mmWave precision for non-contact physiological sensing.", category: "Surveillance", tier: "Tier III: Indirect Field", threatLevel: SeverityLevel.HIGH },
+            { rank: 24, id: "US20210052178A1", assignee: "Google", title: "Sleep Apnea Detection Using Smart Speaker", alarmingReason: "Speaker listens for breathing patterns during sleep.", technicalDetail: "Audio ML model trained on respiratory anomalies.", category: "Surveillance", tier: "Tier III: Indirect Field", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 25, id: "US20200138356A1", assignee: "Amazon", title: "Hand Vein Pattern Authentication", alarmingReason: "Palm biometric scanning for payment and access control.", technicalDetail: "Near-infrared imaging of subcutaneous vein structure.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 26, id: "US20190370541A1", assignee: "Apple", title: "Face ID with Attention and Emotion Detection", alarmingReason: "Tracks gaze, attention, and emotional cues.", technicalDetail: "30,000 IR dots create detailed face map with expression data.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.HIGH },
+            { rank: 27, id: "US20210077020A1", assignee: "Microsoft", title: "HoloLens Biometric Authentication", alarmingReason: "AR headset uses iris scan and gait analysis.", technicalDetail: "Multimodal biometrics embedded in AR/VR platform.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 28, id: "US20200054253A1", assignee: "Qualcomm", title: "Ultrasonic Fingerprint Sensor with Heart Rate", alarmingReason: "In-display sensor reads fingerprint and pulse simultaneously.", technicalDetail: "Piezoelectric ultrasonic waves penetrate skin for biometric data.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 29, id: "US20190231264A1", assignee: "Fitbit", title: "Continuous Skin Temperature Monitoring", alarmingReason: "Tracks basal body temp trends for health inference.", technicalDetail: "Thermistor array with ML-based anomaly detection.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.LOW },
+            { rank: 30, id: "US20210196184A1", assignee: "Oura", title: "Smart Ring for Physiological Monitoring", alarmingReason: "Finger-worn sensor tracks HRV, temp, movement, and blood oxygen.", technicalDetail: "PPG and temperature sensors in minimal form factor.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 31, id: "US20200352480A1", assignee: "Withings", title: "Body Composition Scale with Visceral Fat", alarmingReason: "BIA technology estimates internal fat, muscle mass, bone density.", technicalDetail: "Multi-frequency electrical impedance through feet.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.LOW },
+            { rank: 32, id: "US20190320999A1", assignee: "Garmin", title: "Stress Tracking and Recovery Metrics", alarmingReason: "Combines HRV and activity to score stress.", technicalDetail: "Firstbeat analytics engine for autonomic balance assessment.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.LOW },
+            { rank: 33, id: "US20210113120A1", assignee: "Whoop", title: "Strain and Recovery Wearable System", alarmingReason: "24/7 physiological monitoring with coaching algorithm.", technicalDetail: "Proprietary strain score based on cardiovascular load.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.LOW },
+            { rank: 34, id: "US20200069206A1", assignee: "Empatica", title: "Seizure Detection and Stress Monitoring", alarmingReason: "Medical-grade wearable detects epileptic seizures.", technicalDetail: "EDA (electrodermal activity) and accelerometer fusion.", category: "Medical", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 35, id: "US20190150799A1", assignee: "Biofourmis", title: "Remote Patient Monitoring Platform", alarmingReason: "Hospital-grade biosensor for continuous vital sign streaming.", technicalDetail: "FDA-cleared for post-discharge monitoring and heart failure.", category: "Medical", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 36, id: "US20210068711A1", assignee: "Verily", title: "Project Baseline Health Study Platform", alarmingReason: "Comprehensive health mapping with wearables, imaging, and labs.", technicalDetail: "Google subsidiary building longitudinal health database.", category: "Surveillance", tier: "Tier V: Infrastructure", threatLevel: SeverityLevel.HIGH },
+            { rank: 37, id: "US20200196926A1", assignee: "23andMe", title: "Genetic Testing with Health Risk Reports", alarmingReason: "DNA analysis for disease predisposition and trait inference.", technicalDetail: "SNP microarray with FDA-approved health reports.", category: "Biochemical", tier: "Tier IV: Biochemical", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 38, id: "US20190338381A1", assignee: "Ancestry", title: "Genetic Genealogy and Ethnicity Estimation", alarmingReason: "Builds family trees and identifies relatives via DNA.", technicalDetail: "Autosomal DNA testing with database cross-referencing.", category: "Biochemical", tier: "Tier IV: Biochemical", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 39, id: "US20210087608A1", assignee: "Illumina", title: "Genome Sequencing for Clinical Use", alarmingReason: "Whole genome sequencing for disease diagnosis.", technicalDetail: "Next-generation sequencing at population scale.", category: "Biochemical", tier: "Tier IV: Biochemical", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 40, id: "US20200208229A1", assignee: "Theranos (defunct)", title: "Miniaturized Blood Testing Device", alarmingReason: "Claimed hundreds of tests from finger-prick blood sample.", technicalDetail: "Proprietary microfluidics (fraudulent in practice).", category: "Medical", tier: "Tier IV: Biochemical", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 41, id: "US20190274611A1", assignee: "Dexter Solutions", title: "Automated Blood Analysis System", alarmingReason: "High-throughput blood testing with cloud results.", technicalDetail: "Robotic sample handling and impedance-based counting.", category: "Medical", tier: "Tier IV: Biochemical", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 42, id: "US20210153777A1", assignee: "Abbott", title: "Lingo Biometric Monitoring Patch", alarmingReason: "Wearable biosensor for glucose, ketones, lactate, and CRP.", technicalDetail: "Enzymatic electrochemical detection in adhesive patch.", category: "Medical", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 43, id: "US20200315533A1", assignee: "Dexcom", title: "Continuous Glucose Monitoring System", alarmingReason: "Subcutaneous sensor streams glucose data every 5 minutes.", technicalDetail: "Enzyme-based electrochemical sensor with Bluetooth.", category: "Medical", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 44, id: "US20190357830A1", assignee: "Medtronic", title: "Insulin Pump with Continuous Glucose Integration", alarmingReason: "Closed-loop insulin delivery based on CGM readings.", technicalDetail: "Algorithm-driven automated dosing (artificial pancreas).", category: "Medical", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 45, id: "US20210093866A1", assignee: "Boston Scientific", title: "Implantable Cardiac Monitor with AF Detection", alarmingReason: "Subcutaneous device monitors heart rhythm for years.", technicalDetail: "ECG leadless monitoring with wireless telemetry.", category: "Medical", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 46, id: "US20200289100A1", assignee: "Abbott", title: "FreeStyle Libre Flash Glucose Monitoring", alarmingReason: "Scan-based glucose reading without fingersticks.", technicalDetail: "NFC-enabled sensor with 14-day wear life.", category: "Medical", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 47, id: "US20190388050A1", assignee: "Apple", title: "Health Records Integration with FHIR", alarmingReason: "Aggregates medical records from hospitals into iPhone.", technicalDetail: "FHIR standard for interoperable health data exchange.", category: "Medical", tier: "Tier V: Infrastructure", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 48, id: "US20210057118A1", assignee: "Google Health", title: "AI for Medical Imaging Analysis", alarmingReason: "Deep learning for detecting cancer, eye disease from scans.", technicalDetail: "Convolutional neural networks trained on radiology data.", category: "Medical", tier: "Tier VIII: Control Layer", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 49, id: "US20200365254A1", assignee: "IBM Watson Health", title: "Oncology Decision Support System", alarmingReason: "AI recommends cancer treatments based on patient data.", technicalDetail: "NLP on medical literature and patient records.", category: "Medical", tier: "Tier VIII: Control Layer", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 50, id: "US20190348142A1", assignee: "Tempus", title: "Precision Medicine Data Platform", alarmingReason: "Aggregates clinical and molecular data for treatment matching.", technicalDetail: "Real-world evidence generation from EHR integration.", category: "Medical", tier: "Tier V: Infrastructure", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 51, id: "US20210104359A1", assignee: "Palantir", title: "Gotham Platform for Public Health Tracking", alarmingReason: "Integrates health, travel, and contact data for surveillance.", technicalDetail: "Ontology-based data fusion for contact tracing.", category: "Surveillance", tier: "Tier V: Infrastructure", threatLevel: SeverityLevel.HIGH },
+            { rank: 52, id: "US20200372512A1", assignee: "Clearview AI", title: "Facial Recognition from Public Images", alarmingReason: "Scrapes billions of faces from social media.", technicalDetail: "Deep learning embedding for face matching.", category: "Surveillance", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 53, id: "US20190318326A1", assignee: "Kairos", title: "Emotion Recognition API", alarmingReason: "Cloud API returns emotion scores from face images.", technicalDetail: "Facial action coding system via deep learning.", category: "Surveillance", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.HIGH },
+            { rank: 54, id: "US20210073456A1", assignee: "Affectiva", title: "Emotion AI for Automotive and Media", alarmingReason: "In-cabin camera monitors driver mood and attention.", technicalDetail: "Facial expression and voice analysis for affect detection.", category: "Surveillance", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.HIGH },
+            { rank: 55, id: "US20200342177A1", assignee: "Noldus", title: "FaceReader Behavioral Analysis Software", alarmingReason: "Automated facial expression coding for research.", technicalDetail: "Action unit detection with emotion classification.", category: "Surveillance", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 56, id: "US20190362133A1", assignee: "iMotions", title: "Multimodal Biometric Research Platform", alarmingReason: "Integrates eye tracking, EEG, GSR, and facial expression.", technicalDetail: "Synchronization of multiple biosensors for research.", category: "Medical", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 57, id: "US20210085257A1", assignee: "Tobii", title: "Eye Tracking for UX and Research", alarmingReason: "Infrared eye tracking for attention analysis.", technicalDetail: "Pupil-corneal reflection tracking at high frequency.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 58, id: "US20200352466A1", assignee: "Pupil Labs", title: "Open-Source Eye Tracking Glasses", alarmingReason: "Wearable eye tracker for gaze and pupil analysis.", technicalDetail: "World camera and eye camera with real-time processing.", category: "Biometric", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 59, id: "US20190388006A1", assignee: "Shimmer Sensing", title: "Wireless Biosensor Platform for Research", alarmingReason: "Modular sensors for ECG, EMG, EDA, and movement.", technicalDetail: "Bluetooth Low Energy biosignal acquisition.", category: "Medical", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 60, id: "US20210068702A1", assignee: "Polar Electro", title: "Heart Rate Variability Monitoring for Athletes", alarmingReason: "Chest strap and watch for HRV-based training.", technicalDetail: "RR interval measurement with recovery analytics.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.DEFENSE },
+            { rank: 61, id: "US20200397333A1", assignee: "Suunto", title: "Optical Heart Rate Monitoring Watch", alarmingReason: "Wrist-based HR tracking with activity recognition.", technicalDetail: "PPG sensor with motion artifact compensation.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.LOW },
+            { rank: 62, id: "US20190357811A1", assignee: "Coros", title: "GPS Sports Watch with Training Metrics", alarmingReason: "Multi-sport tracking with physiological load scoring.", technicalDetail: "GPS, accelerometer, and optical HR fusion.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.LOW },
+            { rank: 63, id: "US20210113009A1", assignee: "Wahoo Fitness", title: "Smart Trainer with Power Measurement", alarmingReason: "Connected cycling trainer with performance analytics.", technicalDetail: "Electromagnetic resistance with power meter integration.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.LOW },
+            { rank: 64, id: "US20200367822A1", assignee: "Peloton", title: "Connected Fitness Platform with Leaderboard", alarmingReason: "Streaming classes with social competition and tracking.", technicalDetail: "Cloud-based workout data with gamification.", category: "Surveillance", tier: "Tier V: Infrastructure", threatLevel: SeverityLevel.LOW },
+            { rank: 65, id: "US20190374466A1", assignee: "Mirror Home Gym", title: "Interactive Home Fitness Display", alarmingReason: "Two-way mirror with camera for form correction.", technicalDetail: "Computer vision for exercise pose analysis.", category: "Surveillance", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 66, id: "US20210093944A1", assignee: "Tonal", title: "Digital Weight Training System", alarmingReason: "Electromagnetic resistance with form tracking.", technicalDetail: "Motor-driven weights with computer vision feedback.", category: "Surveillance", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 67, id: "US20200352477A1", assignee: "Tempo", title: "3D Motion Tracking for Fitness", alarmingReason: "Depth camera tracks barbell and body movement.", technicalDetail: "Intel RealSense for rep counting and form analysis.", category: "Surveillance", tier: "Tier I: Direct Biometric", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 68, id: "US20190320966A1", assignee: "NordicTrack", title: "iFit Connected Strength Equipment", alarmingReason: "Smart equipment with automatic weight adjustment.", technicalDetail: "IoT-enabled machines with trainer-controlled resistance.", category: "Surveillance", tier: "Tier V: Infrastructure", threatLevel: SeverityLevel.LOW },
+            { rank: 69, id: "US20210077888A1", assignee: "JAXJOX", title: "Connected Kettlebell with Performance Tracking", alarmingReason: "Digital weight adjustment with rep and power tracking.", technicalDetail: "Motorized weight selection with Bluetooth connectivity.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.LOW },
+            { rank: 70, id: "US20200376299A1", assignee: "Bowflex", title: "SelectTech Dumbbells with App Integration", alarmingReason: "Adjustable weights with workout tracking.", technicalDetail: "Mechanical weight selection with digital logging.", category: "Biometric", tier: "Tier II: Device Inference", threatLevel: SeverityLevel.LOW }
+        ];
+        const COUNTERMEASURES = [
+            { name: "IR LED Array", targetThreat: "Meta rPPG (Emotion)", description: "Wearable IR LEDs (850nm) saturate camera sensors, scrambling blood-flow signal extraction.", effectiveness: "★★★", type: "Physical" },
+            { name: "Gyro-Jam App", targetThreat: "Google IMU Keylogging", description: "Injects noise into phone gyroscope/accelerometer. Reduces keystroke inference from 92% to 18%.", effectiveness: "★★★", type: "Digital" },
+            { name: "Audio Masking", targetThreat: "Acoustic Keylogging", description: "Pink noise (20Hz-8kHz) masks typing harmonics. 98% reduction in inference accuracy.", effectiveness: "★★★", type: "Physical" },
+            { name: "RF Diffusion Metasurfaces", targetThreat: "Wi-Fi CSI Tracking", description: "Scatter panels disrupt wall-penetrating radar baselines.", effectiveness: "★★☆", type: "Physical" },
+            { name: "Behavioral Jitter", targetThreat: "Predictive Analytics", description: "Randomized routines break spatial Pattern-of-Life baselines.", effectiveness: "★★★", type: "Behavioral" },
+            { name: "Preference Entropy Audit", targetThreat: "Digital Twin Modeling", description: "Use local LLMs to generate contradictory profiles to poison model predictions.", effectiveness: "★★☆", type: "Digital" },
+            { name: "GDPR Art. 22 Challenge", targetThreat: "Automated Decisions", description: "Legal challenge: Right to human intervention. Halted Watson Oncology deployment.", effectiveness: "★★☆", type: "Legal" },
+            { name: "BIPA §15(b) Claim", targetThreat: "Unauthorized Biometrics", description: "Private right of action ($5k/violation). $650M Facebook settlement precedent.", effectiveness: "★★★", type: "Legal" }
+        ];
+        const PatentModal = ({ patent, onClose }) => {
+            if (!patent) return null;
+            const isDefense = patent.threatLevel === SeverityLevel.DEFENSE;
+            return (
+                <div className="modal-overlay" onClick={onClose}>
+                    <div className="modal-content" onClick={e => e.stopPropagation()}>
+                        <div className="p-6 border-b border-slate-200 flex justify-between items-start">
+                            <div>
+                                <h3 className="text-lg font-semibold text-slate-900">{patent.title}</h3>
+                                <p className="text-sm text-slate-500 font-mono mt-1">{patent.id}</p>
+                            </div>
+                            <button onClick={onClose} className="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
+                        </div>
+                        <div className="p-6 space-y-4">
+                            <div className="grid grid-cols-2 gap-4">
+                                <div><p className="text-xs text-slate-500 uppercase tracking-wide">Assignee</p><p className={`font-medium ${isDefense ? 'text-blue-600' : 'text-slate-900'}`}>{patent.assignee}</p></div>
+                                <div><p className="text-xs text-slate-500 uppercase tracking-wide">Tier</p><p className="text-slate-700 font-medium">{patent.tier}</p></div>
+                            </div>
+                            <div><p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Functionality</p><p className="text-slate-700 text-sm">{patent.alarmingReason}</p></div>
+                            <div><p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Technical Mechanism</p><p className="text-slate-600 text-sm font-mono bg-slate-50 p-3 rounded">{patent.technicalDetail}</p></div>
+                            <div className="flex items-center gap-4">
+                                <div><p className="text-xs text-slate-500 uppercase tracking-wide">Severity</p><span className={`px-2 py-1 rounded text-xs font-medium border uppercase ${patent.threatLevel === SeverityLevel.CRITICAL ? 'bg-red-50 text-red-700 border-red-200' : patent.threatLevel === SeverityLevel.HIGH ? 'bg-orange-50 text-orange-700 border-orange-200' : patent.threatLevel === SeverityLevel.DEFENSE ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-slate-100 text-slate-600 border-slate-200'}`}>{patent.threatLevel}</span></div>
+                                <div><p className="text-xs text-slate-500 uppercase tracking-wide">Category</p><p className="text-slate-700 text-sm">{patent.category}</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+        const App = () => {
+            const [searchTerm, setSearchTerm] = useState('');
+            const [selectedPatent, setSelectedPatent] = useState(null);
+            const [sortConfig, setSortConfig] = useState({ key: 'rank', direction: 'asc' });
+            const processedPatents = useMemo(() => {
+                let data = PATENTS_DATA.filter(p => {
+                    const s = searchTerm.toLowerCase();
+                    return p.title.toLowerCase().includes(s) || p.assignee.toLowerCase().includes(s) || p.technicalDetail.toLowerCase().includes(s) || p.id.toLowerCase().includes(s) || p.alarmingReason.toLowerCase().includes(s) || p.tier.toLowerCase().includes(s) || p.category.toLowerCase().includes(s);
+                });
+                data.sort((a, b) => {
+                    const aValue = a[sortConfig.key];
+                    const bValue = b[sortConfig.key];
+                    if (sortConfig.key === 'threatLevel') {
+                        const weights = { [SeverityLevel.CRITICAL]: 5, [SeverityLevel.HIGH]: 4, [SeverityLevel.MEDIUM]: 3, [SeverityLevel.LOW]: 2, [SeverityLevel.DEFENSE]: 1 };
+                        const aWeight = weights[aValue] || 0;
+                        const bWeight = weights[bValue] || 0;
+                        if (aWeight < bWeight) return sortConfig.direction === 'asc' ? -1 : 1;
+                        if (aWeight > bWeight) return sortConfig.direction === 'asc' ? 1 : -1;
+                        return 0;
+                    }
+                    if (aValue < bValue) return sortConfig.direction === 'asc' ? -1 : 1;
+                    if (aValue > bValue) return sortConfig.direction === 'asc' ? 1 : -1;
+                    return 0;
+                });
+                return data;
+            }, [searchTerm, sortConfig]);
+            const handleSort = (key) => setSortConfig(current => ({ key, direction: current.key === key && current.direction === 'asc' ? 'desc' : 'asc' }));
+            const SortIcon = ({ column }) => sortConfig.key !== column ? <span className="w-3 h-3 ml-1 inline-block opacity-20">↕</span> : sortConfig.direction === 'asc' ? <span className="ml-1 inline-block text-slate-500">↑</span> : <span className="ml-1 inline-block text-slate-500">↓</span>;
+            const defenseCount = PATENTS_DATA.filter(p => p.threatLevel === SeverityLevel.DEFENSE).length;
+            const criticalCount = PATENTS_DATA.filter(p => p.threatLevel === SeverityLevel.CRITICAL).length;
+            return (
+                <div className="min-h-screen bg-slate-50 text-slate-700 font-sans text-sm">
+                    <header className="border-b border-slate-200 bg-white sticky top-0 z-40">
+                        <div className="w-full px-6 h-16 flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-4">
+                                <div><h1 className="font-semibold text-slate-900 text-lg">Surveillance Technology Catalog</h1><p className="text-xs text-slate-500">Digital Dichotomy Research</p></div>
+                                <div className="h-8 w-[1px] bg-slate-200 mx-2 hidden md:block"></div>
+                                <div className="flex gap-6 text-xs text-slate-600 hidden md:flex">
+                                    <span>Total: <b className="text-slate-900">{PATENTS_DATA.length}</b></span>
+                                    <span>Countermeasures: <b className="text-blue-600">{defenseCount}</b></span>
+                                    <span>Critical: <b className="text-red-600">{criticalCount}</b></span>
+                                </div>
+                            </div>
+                            <div className="flex items-center bg-slate-100 border border-slate-200 rounded-lg px-3 py-2 w-48 md:w-64">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-slate-400 mr-2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                                <input type="text" placeholder="Search patents..." className="bg-transparent border-none outline-none text-sm w-full text-slate-700 placeholder:text-slate-400" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+                            </div>
+                        </div>
+                    </header>
+                    <main className="w-full max-w-7xl mx-auto p-6 space-y-6">
+                        <div className="border border-slate-200 bg-white rounded-lg overflow-hidden shadow-sm">
+                            <div className="bg-slate-50 px-4 py-3 border-b border-slate-200">
+                                <h2 className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Patented Surveillance Technologies</h2>
+                            </div>
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-500 bg-slate-50">
+                                            <th className="p-3 w-16 text-center cursor-pointer hover:bg-slate-100" onClick={() => handleSort('rank')}># <SortIcon column="rank"/></th>
+                                            <th className="p-3 w-32 cursor-pointer hover:bg-slate-100" onClick={() => handleSort('id')}>Patent ID <SortIcon column="id"/></th>
+                                            <th className="p-3 w-40 cursor-pointer hover:bg-slate-100" onClick={() => handleSort('tier')}>Tier <SortIcon column="tier"/></th>
+                                            <th className="p-3 w-32 cursor-pointer hover:bg-slate-100" onClick={() => handleSort('assignee')}>Assignee <SortIcon column="assignee"/></th>
+                                            <th className="p-3 cursor-pointer hover:bg-slate-100" onClick={() => handleSort('title')}>Title <SortIcon column="title"/></th>
+                                            <th className="p-3">Description</th>
+                                            <th className="p-3 w-24 text-center cursor-pointer hover:bg-slate-100" onClick={() => handleSort('threatLevel')}>Severity <SortIcon column="threatLevel"/></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-slate-100 text-xs">
+                                        {processedPatents.map((p) => {
+                                            const isDefense = p.threatLevel === SeverityLevel.DEFENSE;
+                                            return (
+                                                <tr key={p.id} onClick={() => setSelectedPatent(p)} className={`cursor-pointer transition-colors hover:bg-slate-50 ${isDefense ? 'hover:bg-blue-50' : ''}`}>
+                                                    <td className={`p-3 text-center font-medium ${isDefense ? 'text-blue-600' : 'text-slate-600'}`}>{p.rank}</td>
+                                                    <td className="p-3 font-mono text-slate-600">{p.id}</td>
+                                                    <td className="p-3 text-slate-600 font-medium">{p.tier}</td>
+                                                    <td className={`p-3 font-medium ${isDefense ? 'text-blue-600' : 'text-slate-900'}`}>{p.assignee}</td>
+                                                    <td className="p-3 text-slate-700 font-medium">{p.title}</td>
+                                                    <td className="p-3 text-slate-600 leading-snug">{p.alarmingReason}</td>
+                                                    <td className="p-3 text-center"><span className={`px-2 py-1 rounded text-xs font-medium border uppercase ${p.threatLevel === SeverityLevel.CRITICAL ? 'bg-red-50 text-red-700 border-red-200' : p.threatLevel === SeverityLevel.HIGH ? 'bg-orange-50 text-orange-700 border-orange-200' : p.threatLevel === SeverityLevel.DEFENSE ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-slate-100 text-slate-600 border-slate-200'}`}>{p.threatLevel}</span></td>
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div className="border border-slate-200 bg-white rounded-lg overflow-hidden shadow-sm">
+                            <div className="bg-slate-50 px-4 py-3 border-b border-slate-200">
+                                <h2 className="text-xs font-semibold text-slate-700 uppercase tracking-wide">Defensive Countermeasures</h2>
+                            </div>
+                            <div className="overflow-x-auto">
+                                <table className="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-500 bg-slate-50">
+                                            <th className="p-3 w-48">Protocol</th>
+                                            <th className="p-3 w-48">Target Threat</th>
+                                            <th className="p-3">Mechanism</th>
+                                            <th className="p-3 w-24 text-center">Rating</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-slate-100 text-xs">
+                                        {COUNTERMEASURES.map((cm, idx) => (
+                                            <tr key={idx} className="hover:bg-blue-50 transition-colors">
+                                                <td className="p-3 text-blue-700 font-semibold">{cm.name}</td>
+                                                <td className="p-3 text-slate-600">{cm.targetThreat}</td>
+                                                <td className="p-3 text-slate-600 leading-snug">{cm.description}</td>
+                                                <td className="p-3 text-amber-500 font-mono text-center">{cm.effectiveness}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </main>
+                    {selectedPatent && <PatentModal patent={selectedPatent} onClose={() => setSelectedPatent(null)} />}
+                </div>
+            );
+        };
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

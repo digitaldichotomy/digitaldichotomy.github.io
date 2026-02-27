@@ -189,15 +189,18 @@ html {
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
-  z-index: 60;
+  z-index: 999;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease-in-out;
+  display: block;
+  pointer-events: none;
 }
 
 .mobile-menu-overlay.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .mobile-menu {
@@ -209,9 +212,11 @@ html {
   background: #111827;
   border-left: 1px solid #374151;
   transition: right 0.3s ease-in-out;
-  z-index: 70;
+  z-index: 1000;
   overflow-y: auto;
   padding-top: 4rem;
+  pointer-events: auto;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .mobile-menu.open {
@@ -320,8 +325,8 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
-  border: none;
+  background: rgba(31, 41, 55, 0.5);
+  border: 1px solid rgba(75, 85, 99, 0.3);
   color: #d1d5db;
   cursor: pointer;
   padding: 0.5rem;
@@ -329,6 +334,20 @@ html {
   transition: all 0.2s ease;
   min-height: 44px;
   min-width: 44px;
+  z-index: 100;
+}
+
+/* Mobile-only visibility for hamburger */
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .hamburger-btn {
+    display: none !important;
+  }
 }
 
 .hamburger-btn:hover {
@@ -341,9 +360,31 @@ html {
   outline-offset: 2px;
 }
 
+/* Ensure desktop nav is hidden on mobile */
+@media (max-width: 768px) {
+  nav[aria-label="Main navigation"] {
+    display: none !important;
+  }
+}
+
 /* Prevent body scroll when mobile menu is open */
 body.mobile-menu-open {
   overflow: hidden;
+}
+
+/* Dark mode toggle button - ensure visible on mobile */
+button[onclick="toggleDarkMode()"] {
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  button[onclick="toggleDarkMode()"] {
+    padding: 0.5rem;
+  }
 }
 
 /* Print styles */

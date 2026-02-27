@@ -1,26 +1,32 @@
 {
   "pages": [
+    {
+      "title": "The Right to an Un-Modeled Self",
+      "url": "https://a.co/d/c7Y2zyJ?tag=digitaldichot-20",
+      "category": "Books",
+      "keywords": ["book", "unmodeled self", "cognitive liberty", "digital rights", "privacy", "fin nyx"],
+      "description": "The complete forensic analysis of the 8-tier architecture of covert control"
     },
     {
-      "title": "Wi-Fi Sensing & Wi-Chat AI",
-      "url": "/pages/post-wifi-sensing.html", 
-      "category": "Sensors",
-      "keywords": ["wifi sensing", "ieee 802.11bf", "through wall sensing", "biometric monitoring", "smart city"],
-      "description": "How IEEE 802.11bf and LLMs are making your walls transparent"
+      "title": "Biological Sovereignty",
+      "url": "https://a.co/d/bLte3N9?tag=digitaldichot-20",
+      "category": "Books",
+      "keywords": ["biological sovereignty", "neuro warfare", "mind control", "brain rights", "neurological freedom", "fin nyx"],
+      "description": "The battle for your mind in the age of neuro-warfare"
     },
     {
-      "title": "Neuroweapon Regulatory Gap",
-      "url": "/pages/post-neuroweapon-gap.html",
-      "category": "Weapons", 
-      "keywords": ["neuroweapon", "pulsed rf", "directed energy weapons", "neuro warfare", "cognitive influence"],
-      "description": "Analysis of pulsed RF energy attacks that remain compliant with safety laws"
+      "title": "The Analog Self",
+      "url": "/the-analog-self.html",
+      "category": "Books",
+      "keywords": ["analog self", "fin nyx", "book", "bio sovereignty", "surveillance", "digital battery"],
+      "description": "The Convincing Corpus — a document of evidential proof and non-negotiable sovereignty against digital primacy"
     },
     {
-      "title": "Architecture of Covert Self-Invasion",
-      "url": "/pages/post-architecture-covert-self-invasion.html",
-      "category": "Core",
-      "keywords": ["architecture", "digital twin", "covert ban", "surveillance infrastructure", "predictive control"],
-      "description": "Technical analysis of biofield surveillance and cognitive manipulation"
+      "title": "Sentinel Patent Database",
+      "url": "/pages/pat.html",
+      "category": "Research",
+      "keywords": ["patent database", "surveillance patents", "biometric patents", "sentinel", "200 patents", "neural profiling", "directed energy"],
+      "description": "Comprehensive database of 200+ surveillance technology patents across 8 invasion architecture tiers"
     },
     {
       "title": "Resource Hub",
@@ -30,61 +36,382 @@
       "description": "Complete action resources for biometric battery cases, state-specific resistance packages, and class-action tracking"
     },
     {
+      "title": "The Architecture of Control",
+      "url": "/pages/Architecture_of_Control.html",
+      "category": "Research",
+      "keywords": ["architecture of control", "8 tier", "surveillance", "biofield", "sensor model actuator", "fin nyx"],
+      "description": "A comprehensive exposé of the 8-tier system of predictive control and digital manipulation"
+    },
+    {
+      "title": "The Architecture of Invasion: A Forensic Analysis",
+      "url": "/pages/The_Architecture_of_Invasion_A_Forensic_Analysis.html",
+      "category": "Research",
+      "keywords": ["architecture of invasion", "forensic analysis", "surveillance systems", "fin nyx"],
+      "description": "A comprehensive forensic analysis and technical deep-dive into surveillance systems"
+    },
+    {
+      "title": "Appendices: Technical Specifications",
+      "url": "/pages/appendices.html",
+      "category": "Reference",
+      "keywords": ["appendices", "technical specifications", "legal frameworks", "glossary", "implementation guides"],
+      "description": "Technical specifications, implementation guides, legal frameworks, and glossary"
+    },
+    {
+      "title": "AI Live Manipulation: Real-Time Cognitive Warfare",
+      "url": "/pages/post-ai-live-manipulation.html",
+      "category": "Research",
+      "keywords": ["ai manipulation", "cognitive warfare", "logical fallacies", "real time", "cognitive sovereignty"],
+      "description": "AI systems now employ sophisticated logical fallacies and adaptive manipulation techniques in real-time"
+    },
+    {
+      "title": "Wi-Fi Sensing & Wi-Chat AI",
+      "url": "/pages/post-wifi-sensing.html",
+      "category": "Sensors",
+      "keywords": ["wifi sensing", "ieee 802.11bf", "through wall sensing", "biometric monitoring", "smart city"],
+      "description": "How IEEE 802.11bf and LLMs are making your walls transparent"
+    },
+    {
+      "title": "Neuroweapon Regulatory Gap",
+      "url": "/pages/post-neuroweapon-gap.html",
+      "category": "Research",
+      "keywords": ["neuroweapon", "pulsed rf", "directed energy weapons", "neuro warfare", "cognitive influence"],
+      "description": "Analysis of pulsed RF energy attacks that remain compliant with thermal-based safety laws"
+    },
+    {
+      "title": "The Architecture of Covert Self-Invasion",
+      "url": "/pages/post-architecture-covert-self-invasion.html",
+      "category": "Core",
+      "keywords": ["architecture", "digital twin", "covert ban", "surveillance infrastructure", "predictive control"],
+      "description": "Technical analysis of biofield surveillance and cognitive manipulation through 8-tier infrastructure"
+    },
+    {
       "title": "Florida Resistance Hub",
-      "url": "/pages/florida-resistance.html", 
+      "url": "/pages/florida-resistance.html",
       "category": "Resistance",
-      "keywords": ["florida", "resistance", "biometric battery", "action resources", "florida attorneys", "moscow"],
-      "description": "Complete Florida resistance package for biometric battery litigation with local attorneys and procedural protections"
+      "keywords": ["florida", "resistance", "biometric battery", "action resources", "attorneys"],
+      "description": "Complete Florida resistance package for biometric battery litigation"
+    },
+    {
+      "title": "Indiana Resistance Hub",
+      "url": "/pages/indiana-resistance.html",
+      "category": "Resistance",
+      "keywords": ["indiana", "resistance", "biometric battery", "action resources"],
+      "description": "Complete Indiana resistance package for biometric battery litigation"
+    },
+    {
+      "title": "Michigan Resistance Hub",
+      "url": "/pages/michigan-resistance.html",
+      "category": "Resistance",
+      "keywords": ["michigan", "resistance", "biometric battery", "action resources"],
+      "description": "Complete Michigan resistance package for biometric battery litigation"
+    },
+    {
+      "title": "Nevada Resistance Hub",
+      "url": "/pages/nevada-resistance.html",
+      "category": "Resistance",
+      "keywords": ["nevada", "resistance", "biometric battery", "action resources"],
+      "description": "Complete Nevada resistance package for biometric battery litigation"
     },
     {
       "title": "Chapter 7: Voices from the Inside",
       "url": "/pages/chapter-7-voices-inside.html",
       "category": "Silent Harvest",
       "keywords": ["silent harvest", "chapter 7", "biometric victims", "testimonials", "first person accounts"],
-      "description": "First-person accounts from biometric surveillance victims and the human impact of biological data harvesting"
+      "description": "First-person accounts from biometric surveillance victims"
     },
     {
       "title": "Chapter 9: A Call for Global Biofield Rights",
       "url": "/pages/chapter-9-global-biofield-rights.html",
-      "category": "Silent Harvest", 
-      "keywords": ["biofield rights", "biological sovereignty", "global declaration", "human rights", "international compliance"],
-      "description": "Framework for biological sovereignty rights and international protection of human biological autonomy"
+      "category": "Silent Harvest",
+      "keywords": ["biofield rights", "biological sovereignty", "global declaration", "human rights"],
+      "description": "Framework for biological sovereignty rights and international protection"
     },
     {
       "title": "Non-Consent Harvest on Humans for Profit",
       "url": "/pages/non-consent-harvest.html",
       "category": "Analysis",
-      "keywords": ["non-consent harvest", "biometric battery", "biological data theft", "corporate surveillance", "profit analysis"],
+      "keywords": ["non-consent harvest", "biometric battery", "biological data theft", "corporate surveillance"],
       "description": "Complete analysis of unauthorized biometric data harvesting and the economics of biological exploitation"
     },
     {
       "title": "The 'Centaur' AI Model",
-      "url": "/pages/post-centaur.html",
       "url": "/pages/post-centour.html",
       "category": "AI",
       "keywords": ["centaur", "ai model", "predictive control", "machine learning", "behavioral prediction"],
       "description": "How AI foundation models trained on 10 million human choices predict your cognitive biases"
     },
     {
-      "title": "Technical Specifications",
+      "title": "Technical Specifications & Appendices",
       "url": "/pages/post-appendices.html",
       "category": "Reference",
       "keywords": ["technical", "specifications", "implementation", "patents", "standards"],
       "description": "Complete technical specs, implementation guides, and legal frameworks"
     },
     {
-      "title": "The Right to an Un-Modeled Self",
-      "url": "https://a.co/d/c7Y2zyJ?tag=digitaldichot-20",
-      "category": "Books",
-      "keywords": ["book", "unmodeled self", "cognitive liberty", "digital rights", "privacy"],
-      "description": "The complete forensic analysis of the 8-tier architecture of control"
+      "title": "Biometric Privacy Litigation Analysis",
+      "url": "/pages/post-biometric-litigation-analysis.html",
+      "category": "Legal",
+      "keywords": ["biometric privacy", "litigation", "meta settlement", "tiktok", "bipa", "class action"],
+      "description": "Comprehensive analysis of landmark biometric privacy settlements including Facebook $650M and TikTok $92M"
     },
     {
-      "title": "Biological Sovereignty",
-      "url": "https://a.co/d/bLte3N9?tag=digitaldichot-20", 
+      "title": "Class-Action Guide: How to Sue for Biometric Battery",
+      "url": "/pages/post-class-action-guide.html",
+      "category": "Legal",
+      "keywords": ["class action", "biometric battery", "lawsuit", "legal pathway", "tort"],
+      "description": "The exact legal pathway to file a class-action lawsuit and reclaim bio-physiological sovereignty"
+    },
+    {
+      "title": "Digital Battery Tort",
+      "url": "/pages/post-digital-battery-tort.html",
+      "category": "Legal",
+      "keywords": ["digital battery", "tort", "battery law", "bio sovereignty", "legal framework"],
+      "description": "The New Tort of Digital Battery — legal framework for unauthorized biological contact and harm"
+    },
+    {
+      "title": "Notice of Digital Battery: Template and Serving Guide",
+      "url": "/pages/post-notice-digital-battery.html",
+      "category": "Legal",
+      "keywords": ["digital battery notice", "legal template", "serving guide", "corporations", "accountability"],
+      "description": "The legal instrument that transforms biological sovereignty into actionable liability"
+    },
+    {
+      "title": "How to File a Class-Action Lawsuit for Biometric Battery",
+      "url": "/pages/post-biometric-class-action.html",
+      "category": "Legal",
+      "keywords": ["biometric battery", "class action", "lawsuit", "legal pathway", "bipa"],
+      "description": "Corporations are harvesting your heartbeats and brainwaves without consent — the legal pathway to fight back"
+    },
+    {
+      "title": "The Bio-Sovereignty Advocacy Toolkit",
+      "url": "/pages/post-advocacy-toolkit.html",
+      "category": "Action",
+      "keywords": ["advocacy toolkit", "bio sovereignty", "activism", "organize", "legal empowerment"],
+      "description": "Complete ready-to-deploy toolkit for activists, lawyers, and communities to fight biometric exploitation"
+    },
+    {
+      "title": "BSP-Core: Open-Source Bio-Sovereignty Firmware",
+      "url": "/pages/post-bsp-core.html",
+      "category": "Technical",
+      "keywords": ["bsp core", "open source", "firmware", "bio sovereignty", "human aware computing"],
+      "description": "Fully auditable open-source firmware that enforces bio-physiological sovereignty on any device"
+    },
+    {
+      "title": "The Bio-Sovereignty Protocol",
+      "url": "/pages/post-bio-sovereignty-protocol.html",
+      "category": "Technical",
+      "keywords": ["bio sovereignty protocol", "technical standard", "human aware computing", "ethical tech"],
+      "description": "The first open standard for Human-Aware Computing where devices respect bio-physiological boundaries"
+    },
+    {
+      "title": "The Biometric Grid",
+      "url": "/pages/post-biometric-grid.html",
+      "category": "Research",
+      "keywords": ["biometric grid", "patent empires", "surveillance machine", "rppg", "neural inference"],
+      "description": "How corporate patents weaponized biometric sensing — from rPPG to neural inference"
+    },
+    {
+      "title": "The Bio-Sovereignty Advocacy Toolkit: Organize, Educate, Liberate",
+      "url": "/pages/post-biometric-advocacy.html",
+      "category": "Action",
+      "keywords": ["bio sovereignty", "advocacy", "organize", "educate", "legal empowerment"],
+      "description": "Complete toolkit for activists, lawyers, and communities to fight biometric exploitation"
+    },
+    {
+      "title": "Biometric Data Harvesting Through Ambient RF",
+      "url": "/pages/post-biometric-harvesting.html",
+      "category": "Sensors",
+      "keywords": ["biometric harvesting", "ambient rf", "radio frequency", "non invasive", "privacy"],
+      "description": "Technical analysis of how ambient radio frequency signals are used for non-invasive biometric collection"
+    },
+    {
+      "title": "Data Starvation: The Silent Resistance",
+      "url": "/pages/post-data-starvation.html",
+      "category": "Resistance",
+      "keywords": ["data starvation", "resistance", "digital twin", "economic warfare", "bio sovereignty"],
+      "description": "How conscious inaction and strategic data poisoning can make your Digital Twin financially toxic"
+    },
+    {
+      "title": "The 15-Second Dwell: Algorithmic Poisoning",
+      "url": "/pages/post-15-second-dwell.html",
+      "category": "Resistance",
+      "keywords": ["15 second dwell", "algorithmic poisoning", "ai models", "resistance", "tiktok"],
+      "description": "The most efficient algorithmic poisoning technique — 15 seconds of strategic engagement"
+    },
+    {
+      "title": "Computational Irreducibility",
+      "url": "/pages/post-computational-irreducibility.html",
+      "category": "Resistance",
+      "keywords": ["computational irreducibility", "digital twin", "data starvation", "unpredictability", "liberation"],
+      "description": "Strategy to make Digital Twin financially and computationally obsolete through data starvation"
+    },
+    {
+      "title": "Surveillance Countermeasures and Privacy Engineering",
+      "url": "/pages/post-surveillance-countermeasures.html",
+      "category": "Resistance",
+      "keywords": ["surveillance countermeasures", "privacy engineering", "cognitive sovereignty", "defense"],
+      "description": "Technical analysis of defensive countermeasures against surveillance infrastructure"
+    },
+    {
+      "title": "The Extraction Economy",
+      "url": "/pages/post-extraction-economy.html",
+      "category": "Research",
+      "keywords": ["extraction economy", "homo sapiens", "homo algorithmus", "blockchain", "biological proof of work"],
+      "description": "The parasitic conflict between humans and algorithms — harvesting biological proof-of-work"
+    },
+    {
+      "title": "Are Our Screens Talking To Our Nerves?",
+      "url": "/pages/post-screens-nerves-electromagnetic-manipulation.html",
+      "category": "Research",
+      "keywords": ["screens", "nerves", "electromagnetic manipulation", "patent 6506148", "wifi sensing"],
+      "description": "From patent US6506148B2's electromagnetic nervous system manipulation to WiFi sensing and neural data laws"
+    },
+    {
+      "title": "Report on U.S. Patent 6506148B2",
+      "url": "/pages/post-us-patent-6506148b2.html",
+      "category": "Research",
+      "keywords": ["patent 6506148", "nervous system manipulation", "electromagnetic fields", "monitors", "digital battery"],
+      "description": "Comprehensive report on U.S. Patent 6506148B2 — nervous system manipulation by EM fields from monitors"
+    },
+    {
+      "title": "Briefing on Systemic Coercion",
+      "url": "/pages/post-systemic-coercion.html",
+      "category": "Research",
+      "keywords": ["systemic coercion", "bio signal harvesting", "algorithmic manipulation", "active coercion"],
+      "description": "A new paradigm of surveillance shifting from passive data collection to Active Coercion"
+    },
+    {
+      "title": "Microcosm of Control: The Stryker/Pfizer/WMU Cluster",
+      "url": "/pages/post-portage-microcasm.html",
+      "category": "Research",
+      "keywords": ["portage", "kalamazoo", "stryker", "pfizer", "wmu", "surveillance architecture", "microcosm"],
+      "description": "Forensic analysis of the Portage/Kalamazoo industrial cluster as a real-world microcosm for surveillance"
+    },
+    {
+      "title": "Predictive Modeling in Cognitive Systems",
+      "url": "/pages/post-predictive-modeling.html",
+      "category": "AI",
+      "keywords": ["predictive modeling", "cognitive systems", "llm", "behavioral prediction", "autonomy"],
+      "description": "Analysis of large language model architectures for cognitive behavior prediction"
+    },
+    {
+      "title": "The LMRAG Protocol",
+      "url": "/pages/post-lmrag.html",
+      "category": "AI",
+      "keywords": ["lmrag", "retrieval augmented generation", "predictive surveillance", "cognitive manipulation"],
+      "description": "Analysis of Large Model Retrieval Augmented Generation systems in predictive surveillance"
+    },
+    {
+      "title": "Leaked Tech Docs Reveal a Disturbing Truth",
+      "url": "/pages/post-leaked-tech-docs.html",
+      "category": "Research",
+      "keywords": ["leaked docs", "extraction economy", "patents", "standards", "surveillance"],
+      "description": "Forensic analysis of leaked technical documents revealing how your body was integrated into a global extraction economy"
+    },
+    {
+      "title": "The Spectrum Wars",
+      "url": "/pages/post-spectrum-wars.html",
+      "category": "Bio-Sovereignty",
+      "keywords": ["spectrum wars", "brainwave ownership", "bio sovereignty", "neural black markets", "energy independence"],
+      "description": "The first individual legally claims ownership of their brainwave spectrum — sparking corporate retaliation"
+    },
+    {
+      "title": "The Geneva Protocol",
+      "url": "/pages/post-geneva-protocol.html",
+      "category": "Bio-Sovereignty",
+      "keywords": ["geneva protocol", "un treaty", "bio electromagnetic", "inalienable property", "bodily autonomy"],
+      "description": "The first UN treaty recognizing human bio-electromagnetic emissions as inalienable property"
+    },
+    {
+      "title": "The Unmonitored Generation",
+      "url": "/pages/post-unmonitored-generation.html",
+      "category": "Bio-Sovereignty",
+      "keywords": ["unmonitored generation", "bio sovereignty", "geneva protocol", "consciousness", "intimacy"],
+      "description": "Born after the Geneva Protocol — the first generation raised with full bio-physiological rights"
+    },
+    {
+      "title": "The Last Harvest",
+      "url": "/pages/post-last-harvest.html",
+      "category": "Bio-Sovereignty",
+      "keywords": ["last harvest", "digital battery empire", "collapse", "bio harvesting", "sanctuary"],
+      "description": "The final dismantling of the bio-harvesting industrial complex"
+    },
+    {
+      "title": "Beyond Data Theft: How Technology Commits Digital Battery",
+      "url": "/pages/post-beyond-data-theft-digital-battery.html",
+      "category": "Legal",
+      "keywords": ["data theft", "digital battery", "wifi sensing", "patents", "stress harvesting"],
+      "description": "Moving beyond data theft — how technology commits physical trespass through Digital Battery"
+    },
+    {
+      "title": "The Digital Battery Declaration",
+      "url": "/pages/digital-battery-declaration.html",
+      "category": "Legal",
+      "keywords": ["digital battery declaration", "declaration", "bio sovereignty", "rights"],
+      "description": "The formal declaration of digital battery rights and biological sovereignty"
+    },
+    {
+      "title": "The Faraday Rebellion",
+      "url": "/pages/post-faraday-rebellion.html",
+      "category": "Resistance",
+      "keywords": ["faraday rebellion", "faraday cage", "shielding", "rf protection", "resistance"],
+      "description": "Physical countermeasures using Faraday materials to protect data and minimize RF signatures"
+    },
+    {
+      "title": "THE ANALOG SELF: Introduction",
+      "url": "/pages/post-the-analog-self-introduction.html",
       "category": "Books",
-      "keywords": ["biological sovereignty", "neuro warfare", "mind control", "brain rights", "neurological freedom"],
-      "description": "The battle for your mind in the age of neuro-warfare"
+      "keywords": ["analog self", "introduction", "convincing corpus", "sovereignty", "fin nyx"],
+      "description": "Introduction to THE ANALOG SELF: THE CONVINCING CORPUS"
+    },
+    {
+      "title": "The Silent Harvest: Biofield Extraction and Emotional Anorexia",
+      "url": "/pages/post-the-silent-harvest-excerpt.html",
+      "category": "Books",
+      "keywords": ["silent harvest", "biofield extraction", "emotional anorexia", "inner strikes", "excerpt"],
+      "description": "Excerpt from The Analog Self revealing how biofield harvesting creates emotional anorexia"
+    },
+    {
+      "title": "The Puppeteers: Algorithmic Manipulation",
+      "url": "/pages/post-the-puppeteers-excerpt.html",
+      "category": "Books",
+      "keywords": ["puppeteers", "algorithmic manipulation", "predictive modeling", "digital theater", "excerpt"],
+      "description": "Excerpt from The Analog Self exposing how algorithmic puppeteers manipulate victims"
+    },
+    {
+      "title": "Expert Review: The Analog Self Manuscript Analysis",
+      "url": "/pages/post-groked-manuscript-feedback.html",
+      "category": "Books",
+      "keywords": ["analog self", "manuscript review", "expert analysis", "fin nyx", "forensic evidence"],
+      "description": "Independent expert analysis validates The Analog Self framework"
+    },
+    {
+      "title": "Mirror Protocol",
+      "url": "/pages/post-mirror.html",
+      "category": "Resistance",
+      "keywords": ["mirror protocol", "resistance", "surveillance defense", "bio sovereignty"],
+      "description": "Mirror protocol for surveillance resistance and bio-sovereignty defense"
+    },
+    {
+      "title": "Ghost Mirror Countermeasure",
+      "url": "/pages/countermeasures/ghost-mirror.html",
+      "category": "Technical",
+      "keywords": ["ghost mirror", "biometric masking", "rppg", "heart rate masking", "countermeasure"],
+      "description": "Advanced biometric masking system creating synthetic physiological signatures to fool surveillance"
+    },
+    {
+      "title": "Stillwater Countermeasure",
+      "url": "/pages/countermeasures/stillwater.html",
+      "category": "Technical",
+      "keywords": ["stillwater", "signal jamming", "biometric privacy", "sensor disruption", "countermeasure"],
+      "description": "Environmental signal jamming system that creates areas of biometric privacy"
+    },
+    {
+      "title": "Aurora Countermeasure",
+      "url": "/pages/countermeasures/aurora.html",
+      "category": "Technical",
+      "keywords": ["aurora", "light manipulation", "facial recognition blocking", "emotion detection", "countermeasure"],
+      "description": "Ambient light manipulation system that prevents facial recognition and emotion detection"
     }
   ]
 }
