@@ -2,302 +2,212 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://digitaldichotomy.github.io/</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/sentinel.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/the-analog-self.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://digitaldichotomy.github.io/pages/Architecture_of_Control.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <loc>https://digitaldichotomy.github.io/age-of-extraction-viewer.html</loc>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://digitaldichotomy.github.io/pages/New.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <loc>https://digitaldichotomy.github.io/pdf-viewer.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/Architecture_of_Control.html</loc>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/The_Architecture_of_Invasion_A_Forensic_Analysis.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/appendices.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/blog.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/digital-battery-declaration.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/indiana-resistance.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/resource-hub.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/michigan-resistance.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/nevada-resistance.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/pat.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-15-second-dwell.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
+        <loc>https://digitaldichotomy.github.io/pages/resource-hub.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-advocacy-toolkit.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/florida-resistance.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/chapter-7-voices-inside.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/chapter-9-global-biofield-rights.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/non-consent-harvest.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/florida-resistance.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.6</priority>
-        </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-appendices.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-architecture-presentation.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <loc>https://digitaldichotomy.github.io/pages/indiana-resistance.html</loc>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-bio-sovereignty-protocol.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <loc>https://digitaldichotomy.github.io/pages/michigan-resistance.html</loc>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-biometric-advocacy.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <loc>https://digitaldichotomy.github.io/pages/nevada-resistance.html</loc>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-biometric-class-action.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-biometric-grid.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-biometric-harvesting.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-biometric-litigation-analysis.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-bsp-core.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-centour.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-class-action-guide.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-computational-irreducibility.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-data-starvation.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-digital-battery-tort.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.6</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/post-digital-battery.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-faraday-rebellion.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <loc>https://digitaldichotomy.github.io/pages/post-architecture-covert-self-invasion.html</loc>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-geneva-protocol.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <loc>https://digitaldichotomy.github.io/pages/post-extraction-economy.html</loc>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-last-harvest.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <loc>https://digitaldichotomy.github.io/pages/post-biometric-class-action.html</loc>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-leaked-tech-docs.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-lmrag.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-mirror.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-neuroweapon-gap.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-notice-digital-battery.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-portage-microcasm.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-predictive-modeling.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-spectrum-wars.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/post-surveillance-countermeasures.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-the-analog-self-introduction.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://digitaldichotomy.github.io/pages/post-unmonitored-generation.html</loc>
-        <lastmod>2025-12-03</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://digitaldichotomy.github.io/pages/post-wifi-sensing.html</loc>
-        <lastmod>2025-12-03</lastmod>
+        <lastmod>2026-02-28</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/post-biometric-harvesting.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/post-digital-battery-tort.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/post-neuroweapon-gap.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/post-computational-irreducibility.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/post-bio-sovereignty-protocol.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/post-faraday-rebellion.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/post-data-starvation.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/post-biometric-grid.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/post-class-action-guide.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://digitaldichotomy.github.io/pages/post-analog-self-introduction.html</loc>
+        <lastmod>2026-02-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
     </url>
 </urlset>
