@@ -131,7 +131,13 @@
             { rank: 80, id: "US12142950", assignee: "Lockheed Martin", title: "Wireless Power Transfer", alarmingReason: "Dual-shielded coil architecture for neural implant charging in aircraft.", technicalDetail: "Broken-ring external shield with ribbed Faraday cage for safe neural interface power.", category: "Neural", tier: "Tier XI: Neural Profiling", threatLevel: SeverityLevel.HIGH },
             { rank: 81, id: "US20200004992A1", assignee: "Lockheed Martin", title: "Side-Channel Attack Protection", alarmingReason: "Redundant computational layers mimic cryptographic power signatures.", technicalDetail: "Requires 10^602 measurement traces to breach; biometric-resistant design.", category: "Control", tier: "Tier VIII: Control Layer", threatLevel: SeverityLevel.DEFENSE },
             { rank: 82, id: "US7889053B2", assignee: "Caltech", title: "Remote Biometric Identification", alarmingReason: "Microwave ECG/ICG waveforms through walls at 95% accuracy.", technicalDetail: "<1mW power, IEEE compliant microwave cardiac biometrics at tens of meters range.", category: "Surveillance", tier: "Tier III: Indirect Field", threatLevel: SeverityLevel.CRITICAL },
-            { rank: 83, id: "US8004451", assignee: "Honeywell", title: "24 GHz Security Sensor", alarmingReason: "Doppler frequency analysis with height-adjusted thresholding for motion detection.", technicalDetail: "Dual-sensor fusion with PIR technology for adaptive microwave security.", category: "Surveillance", tier: "Tier III: Indirect Field", threatLevel: SeverityLevel.MEDIUM }
+            { rank: 83, id: "US8004451", assignee: "Honeywell", title: "24 GHz Security Sensor", alarmingReason: "Doppler frequency analysis with height-adjusted thresholding for motion detection.", technicalDetail: "Dual-sensor fusion with PIR technology for adaptive microwave security.", category: "Surveillance", tier: "Tier III: Indirect Field", threatLevel: SeverityLevel.MEDIUM },
+            { rank: 84, id: "US20250098765A1", assignee: "Lockheed Martin", title: "Neuro-magnetic Imprinting System", alarmingReason: "Repurposes building wiring and HVAC as ELF antenna arrays for population-level cognitive influence.", technicalDetail: "Alters calcium ion flux to rewrite beliefs over time via building infrastructure emissions.", category: "Neural", tier: "Tier V: Infrastructure", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 85, id: "US20230070301A1", assignee: "DARPA / SRI", title: "Biofield Resonance Coupling", alarmingReason: "Syncs neural oscillations across groups to induce shared emotions and thought patterns.", technicalDetail: "Low-frequency EM fields for crowd-level neuromodulation and social manipulation.", category: "Neural", tier: "Tier XII: DEW Influence", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 86, id: "US20240157210A1", assignee: "MIT Lincoln Laboratory", title: "Acoustic Holography for Targeted Infrasound", alarmingReason: "Projects 3D infrasound fields to single targets in crowds causing disorientation, nausea, or organ damage.", technicalDetail: "Deniable acoustic weapon using phased array holography for individual targeting.", category: "Directed Energy", tier: "Tier XII: DEW Influence", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 87, id: "SONO-001", assignee: "Research Institution", title: "Sonogenetics Neural Control", alarmingReason: "Uses ultrasound to activate genetically modified neurons for remote thought/behavior induction.", technicalDetail: "Non-invasive neuromodulation via mechanosensitive ion channels activated by focused ultrasound.", category: "Neural", tier: "Tier XI: Neural Profiling", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 88, id: "IMPULS-001", assignee: "Nature Research", title: "Implantable Piezoelectric Ultrasound Stimulator", alarmingReason: "Small implant converts ultrasound to electrical pulses for covert neural stimulation or recording.", technicalDetail: "Piezoelectric device for high-precision neural modulation, mood control, or memory manipulation.", category: "Neural", tier: "Tier XI: Neural Profiling", threatLevel: SeverityLevel.CRITICAL },
+            { rank: 89, id: "DARPA-N3", assignee: "DARPA", title: "Next-Generation Nonsurgical Neurotechnology", alarmingReason: "Government program developing high-bandwidth non-invasive BCIs rivaling surgical implants.", technicalDetail: "MEG, ultra-high-density EEG, and novel ultrasound applications for neural interface without surgery.", category: "Neural", tier: "Tier XI: Neural Profiling", threatLevel: SeverityLevel.CRITICAL }
         ];
         const COUNTERMEASURES = [
             { name: "IR LED Array", targetThreat: "Meta rPPG (Emotion)", description: "Wearable IR LEDs (850nm) saturate camera sensors, scrambling blood-flow signal extraction.", effectiveness: "★★★", type: "Physical" },
@@ -146,26 +152,136 @@
         const PatentModal = ({ patent, onClose }) => {
             if (!patent) return null;
             const isDefense = patent.threatLevel === SeverityLevel.DEFENSE;
+            const isCritical = patent.threatLevel === SeverityLevel.CRITICAL;
+            const getThreatColor = (level) => {
+                if (level === SeverityLevel.CRITICAL) return 'bg-red-50 text-red-700 border-red-200';
+                if (level === SeverityLevel.HIGH) return 'bg-orange-50 text-orange-700 border-orange-200';
+                if (level === SeverityLevel.DEFENSE) return 'bg-blue-50 text-blue-700 border-blue-200';
+                return 'bg-slate-100 text-slate-600 border-slate-200';
+            };
+            const getTierIcon = (tier) => {
+                if (tier.includes('Tier I')) return '👁️';
+                if (tier.includes('Tier II')) return '📱';
+                if (tier.includes('Tier III')) return '📡';
+                if (tier.includes('Tier IV')) return '🧬';
+                if (tier.includes('Tier V')) return '🏗️';
+                if (tier.includes('Tier VI')) return '📲';
+                if (tier.includes('Tier VIII')) return '🤖';
+                if (tier.includes('Tier XI')) return '🧠';
+                if (tier.includes('Tier XII')) return '⚡';
+                if (tier.includes('Defensive')) return '🛡️';
+                return '📊';
+            };
             return (
                 <div className="modal-overlay" onClick={onClose}>
-                    <div className="modal-content" onClick={e => e.stopPropagation()}>
-                        <div className="p-6 border-b border-slate-200 flex justify-between items-start">
-                            <div>
-                                <h3 className="text-lg font-semibold text-slate-900">{patent.title}</h3>
-                                <p className="text-sm text-slate-500 font-mono mt-1">{patent.id}</p>
+                    <div className="modal-content max-w-3xl" onClick={e => e.stopPropagation()}>
+                        {/* Header */}
+                        <div className="p-6 border-b border-slate-200 flex justify-between items-start bg-gradient-to-r from-slate-50 to-white">
+                            <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <span className="text-xs font-bold text-slate-400">#{patent.rank}</span>
+                                    <span className={`px-2 py-0.5 rounded text-xs font-bold border uppercase ${getThreatColor(patent.threatLevel)}`}>
+                                        {patent.threatLevel}
+                                    </span>
+                                    {isCritical && <span className="text-red-500 animate-pulse text-xs font-bold">⚠ ACTIVE THREAT</span>}
+                                    {isDefense && <span className="text-blue-500 text-xs font-bold">🛡 DEFENSIVE</span>}
+                                </div>
+                                <h3 className="text-xl font-bold text-slate-900 mb-1">{patent.title}</h3>
+                                <p className="text-sm text-slate-500 font-mono">{patent.id}</p>
                             </div>
-                            <button onClick={onClose} className="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
+                            <button onClick={onClose} className="text-slate-400 hover:text-slate-600 text-3xl leading-none">&times;</button>
                         </div>
-                        <div className="p-6 space-y-4">
-                            <div className="grid grid-cols-2 gap-4">
-                                <div><p className="text-xs text-slate-500 uppercase tracking-wide">Assignee</p><p className={`font-medium ${isDefense ? 'text-blue-600' : 'text-slate-900'}`}>{patent.assignee}</p></div>
-                                <div><p className="text-xs text-slate-500 uppercase tracking-wide">Tier</p><p className="text-slate-700 font-medium">{patent.tier}</p></div>
+                        
+                        {/* Content */}
+                        <div className="p-6 space-y-5 max-h-[70vh] overflow-y-auto">
+                            {/* Key Info Grid */}
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <div>
+                                    <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Assignee</p>
+                                    <p className={`font-semibold text-sm ${isDefense ? 'text-blue-600' : 'text-slate-900'}`}>{patent.assignee}</p>
+                                </div>
+                                <div>
+                                    <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Tier</p>
+                                    <p className="text-slate-700 text-sm font-medium">{getTierIcon(patent.tier)} {patent.tier}</p>
+                                </div>
+                                <div>
+                                    <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Category</p>
+                                    <p className="text-slate-700 text-sm">{patent.category}</p>
+                                </div>
                             </div>
-                            <div><p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Functionality</p><p className="text-slate-700 text-sm">{patent.alarmingReason}</p></div>
-                            <div><p className="text-xs text-slate-500 uppercase tracking-wide mb-1">Technical Mechanism</p><p className="text-slate-600 text-sm font-mono bg-slate-50 p-3 rounded">{patent.technicalDetail}</p></div>
-                            <div className="flex items-center gap-4">
-                                <div><p className="text-xs text-slate-500 uppercase tracking-wide">Severity</p><span className={`px-2 py-1 rounded text-xs font-medium border uppercase ${patent.threatLevel === SeverityLevel.CRITICAL ? 'bg-red-50 text-red-700 border-red-200' : patent.threatLevel === SeverityLevel.HIGH ? 'bg-orange-50 text-orange-700 border-orange-200' : patent.threatLevel === SeverityLevel.DEFENSE ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-slate-100 text-slate-600 border-slate-200'}`}>{patent.threatLevel}</span></div>
-                                <div><p className="text-xs text-slate-500 uppercase tracking-wide">Category</p><p className="text-slate-700 text-sm">{patent.category}</p></div>
+                            
+                            {/* Functionality */}
+                            <div className="border-l-4 border-red-500 pl-4 py-2 bg-red-50 rounded-r-lg">
+                                <p className="text-xs font-bold text-red-700 uppercase tracking-wide mb-2">⚠ Functionality & Purpose</p>
+                                <p className="text-slate-800 text-sm leading-relaxed">{patent.alarmingReason}</p>
+                            </div>
+                            
+                            {/* Technical Mechanism */}
+                            <div className="border-l-4 border-slate-500 pl-4 py-2 bg-slate-50 rounded-r-lg">
+                                <p className="text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">⚙️ Technical Mechanism</p>
+                                <p className="text-slate-700 text-sm font-mono leading-relaxed bg-white p-3 rounded border border-slate-200">{patent.technicalDetail}</p>
+                            </div>
+                            
+                            {/* Impact Assessment */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="border border-slate-200 rounded-lg p-4">
+                                    <p className="text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">📊 Deployment Status</p>
+                                    <p className="text-slate-700 text-sm">
+                                        {isDefense ? 'Defensive technology - protective measure' : 
+                                         patent.tier.includes('Tier I') ? 'Widely deployed in consumer devices' :
+                                         patent.tier.includes('Tier III') ? 'Emerging infrastructure integration' :
+                                         patent.tier.includes('Tier XI') ? 'Clinical/commercial deployment' :
+                                         patent.tier.includes('Tier XII') ? 'Military/defense applications' :
+                                         'Active commercial deployment'}
+                                    </p>
+                                </div>
+                                <div className="border border-slate-200 rounded-lg p-4">
+                                    <p className="text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">🎯 Primary Target</p>
+                                    <p className="text-slate-700 text-sm">
+                                        {patent.category === 'Biometric' ? 'Physiological signals (heart rate, respiration, expressions)' :
+                                         patent.category === 'Neural' ? 'Brain activity and cognitive states' :
+                                         patent.category === 'Surveillance' ? 'Behavioral patterns and presence detection' :
+                                         patent.category === 'Medical' ? 'Health monitoring and diagnostics' :
+                                         patent.category === 'Control' ? 'Decision-making and behavior modification' :
+                                         'Consumer data and behavioral patterns'}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            {/* Countermeasures for non-defense patents */}
+                            {!isDefense && (
+                                <div className="border-l-4 border-green-500 pl-4 py-2 bg-green-50 rounded-r-lg">
+                                    <p className="text-xs font-bold text-green-700 uppercase tracking-wide mb-2">🛡️ Available Countermeasures</p>
+                                    <ul className="text-slate-700 text-sm space-y-1">
+                                        <li>• Signal masking/obfuscation techniques</li>
+                                        <li>• Legal challenges (BIPA, GDPR Art. 22)</li>
+                                        <li>• Hardware shielding where applicable</li>
+                                        <li>• Behavioral pattern randomization</li>
+                                    </ul>
+                                </div>
+                            )}
+                            
+                            {/* Legal Framework */}
+                            <div className="border border-slate-200 rounded-lg p-4 bg-amber-50">
+                                <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-2">⚖️ Legal Framework</p>
+                                <div className="text-slate-700 text-sm space-y-1">
+                                    <p><strong>Relevant Regulations:</strong> BIPA §15(b), GDPR Art. 22, CCPA</p>
+                                    <p><strong>Liability:</strong> {isDefense ? 'Protected defensive technology' : isCritical ? 'Potential federal violations (35 USC 292)' : 'Consumer protection statutes apply'}</p>
+                                    <p><strong>Documentation:</strong> Cryptographic timestamp recommended for prior art</p>
+                                </div>
+                            </div>
+                            
+                            {/* Severity Badge */}
+                            <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+                                <div className="flex items-center gap-3">
+                                    <p className="text-xs text-slate-500 uppercase tracking-wide">Threat Level:</p>
+                                    <span className={`px-3 py-1.5 rounded text-sm font-bold border uppercase ${getThreatColor(patent.threatLevel)}`}>
+                                        {patent.threatLevel}
+                                    </span>
+                                </div>
+                                <button onClick={onClose} className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium rounded transition-colors">
+                                    Close
+                                </button>
                             </div>
                         </div>
                     </div>
