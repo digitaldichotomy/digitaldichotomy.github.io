@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Genius Harvester | Digital Dichotomy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --black: #030303;
+    --off-black: #0a0a0a;
+    --dark: #111111;
+    --panel: #141414;
+    --border: #1e1e1e;
+    --red: #e63329;
+    --red-dim: rgba(230,51,41,0.15);
+    --green: #00e676;
+    --green-dim: rgba(0,230,118,0.1);
+    --amber: #ffb300;
+    --amber-dim: rgba(255,179,0,0.1);
+    --white: #f0ede8;
+    --gray: #888;
+    --gray-dim: #444;
+    --mono: 'Space Mono', monospace;
+    --display: 'Bebas Neue', sans-serif;
+    --body: 'IBM Plex Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* SCANLINE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* NOISE TEXTURE */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(3,3,3,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-brand span { color: var(--red); }
+
+  .nav-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+    animation: pulse-red 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-red {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(230,51,41,0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(230,51,41,0); }
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 52px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(230,51,41,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(230,51,41,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-size: clamp(4rem, 12vw, 10rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title .accent { color: var(--red); }
+
+  .hero-subtitle {
+    font-family: var(--display);
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    line-height: 1;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+  }
+
+  .hero-thesis {
+    max-width: 680px;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: rgba(240,237,232,0.8);
+    font-weight: 300;
+    margin-bottom: 3rem;
+    border-left: 2px solid var(--red);
+    padding-left: 1.5rem;
+  }
+
+  .hero-thesis strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border: 1px solid;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    border-color: var(--red);
+    color: var(--white);
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--red);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--gray);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--gray);
+    color: var(--white);
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--red);
+    overflow: hidden;
+    padding: 10px 0;
+    position: relative;
+  }
+
+  .ticker-inner {
+    display: flex;
+    gap: 0;
+    animation: ticker-scroll 30s linear infinite;
+    white-space: nowrap;
+  }
+
+  .ticker-item {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--white);
+    padding: 0 3rem;
+    text-transform: uppercase;
+  }
+
+  .ticker-sep {
+    color: rgba(255,255,255,0.4);
+  }
+
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SECTION BASE */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--gray-dim);
+  }
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(240,237,232,0.75);
+    font-weight: 300;
+    max-width: 700px;
+    margin-bottom: 3rem;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* PIPELINE */
+  .pipeline-wrapper {
+    position: relative;
+    padding: 4rem 0;
+  }
+
+  .pipeline-line {
+    position: absolute;
+    top: 50%;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--red), var(--amber), var(--red), transparent);
+    transform: translateY(-50%);
+    opacity: 0.3;
+  }
+
+  .pipeline-nodes {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .pipeline-node {
+    background: var(--dark);
+    padding: 1.5rem 1rem;
+    position: relative;
+  }
+
+  .pipeline-node.critical {
+    background: var(--red-dim);
+    border: 1px solid rgba(230,51,41,0.3);
+  }
+
+  .node-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-dim);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.75rem;
+  }
+
+  .node-name {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+  }
+
+  .pipeline-node.critical .node-name { color: var(--red); }
+
+  .node-desc {
+    font-size: 0.75rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .node-breach {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: var(--red);
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    color: var(--white);
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+
+  /* QUOTE BLOCK */
+  .quote-block {
+    background: var(--panel);
+    border-left: 3px solid var(--red);
+    padding: 2rem 2.5rem;
+    margin: 3rem 0;
+    position: relative;
+  }
+
+  .quote-block::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: 2rem;
+    font-family: var(--display);
+    font-size: 6rem;
+    color: var(--red);
+    opacity: 0.3;
+    line-height: 1;
+  }
+
+  .quote-text {
+    font-size: 1.3rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--white);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .quote-attr {
+    margin-top: 1rem;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    text-transform: uppercase;
+  }
+
+  /* EVIDENCE GRID */
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    margin: 3rem 0;
+  }
+
+  .evidence-card {
+    background: var(--dark);
+    padding: 2rem;
+  }
+
+  .evidence-card.highlighted {
+    background: var(--green-dim);
+    border: 1px solid rgba(0,230,118,0.15);
+  }
+
+  .evidence-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .evidence-tag::before {
+    content: '▶';
+    font-size: 7px;
+  }
+
+  .evidence-title {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.75rem;
+  }
+
+  .evidence-body {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .evidence-hash {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--gray-dim);
+    margin-top: 1rem;
+    word-break: break-all;
+  }
+
+  /* HARM LIST */
+  .harm-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    margin: 2rem 0;
+  }
+
+  .harm-item {
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 80px 1fr 200px;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .harm-index {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--red);
+    padding: 1.5rem;
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1em;
+  }
+
+  .harm-content {
+    padding: 1.5rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .harm-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .harm-desc {
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .harm-status {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .harm-status.verified { color: var(--green); }
+  .harm-status.critical { color: var(--red); }
+  .harm-status.documented { color: var(--amber); }
+
+  /* STAT ROW */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin: 3rem 0;
+  }
+
+  .stat-card {
+    background: var(--panel);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: 3.5rem;
+    letter-spacing: 0.02em;
+    color: var(--red);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: 0.5rem;
+  }
+
+  /* DEFENSE GRID */
+  .defense-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin: 3rem 0;
+  }
+
+  .defense-card {
+    background: var(--dark);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .defense-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--amber);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .defense-card:hover::after { transform: scaleX(1); }
+
+  .defense-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .defense-title {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.75rem;
+    color: var(--amber);
+  }
+
+  .defense-body {
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .defense-code {
+    margin-top: 1rem;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--green);
+    background: rgba(0,0,0,0.4);
+    padding: 8px 12px;
+    border-left: 2px solid var(--green-dim);
+  }
+
+  /* CALL TO ACTION */
+  .cta-section {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(230,51,41,0.06) 0%, transparent 70%);
+  }
+
+  .cta-section > * { position: relative; z-index: 1; }
+
+  .cta-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 5vw, 4rem);
+    letter-spacing: 0.03em;
+    margin-bottom: 1rem;
+  }
+
+  .cta-body {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .cta-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER STRIP */
+  .footer-strip {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gray-dim);
+    letter-spacing: 0.12em;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* TERMINAL BLOCK */
+  .terminal {
+    background: #0a0a0a;
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--green);
+    padding: 1.5rem;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--green);
+    margin: 2rem 0;
+    overflow-x: auto;
+  }
+
+  .terminal .prompt { color: var(--gray-dim); }
+  .terminal .output { color: rgba(0,230,118,0.7); }
+  .terminal .warning { color: var(--amber); }
+  .terminal .error { color: var(--red); }
+
+  /* FULL-WIDTH SECTIONS */
+  .full-width {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .full-width-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  /* SECTION BG VARIANTS */
+  .bg-panel { background: var(--panel); }
+  .bg-red-dim { background: rgba(230,51,41,0.03); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .pipeline-nodes { grid-template-columns: 1fr 1fr; }
+    .evidence-grid { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .defense-grid { grid-template-columns: 1fr; }
+    .harm-item { grid-template-columns: 60px 1fr; }
+    .harm-status { display: none; }
+    .cta-section { padding: 3rem 2rem; }
+  }
+
+  /* SCROLL ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">[DIGITAL <span>DICHOTOMY</span>]</a>
+  <div style="display:flex;align-items:center;gap:1.5rem;">
+    <a href="/pages/blog.html" style="font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--gray)'">Blog</a>
+    <a href="/sentinel.html" style="font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--gray)'">Patent DB</a>
+    <a href="/books.html" style="font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);text-decoration:none;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--gray)'">Books</a>
+    <div class="nav-status">
+      <div class="status-dot"></div>
+      EVIDENCE STREAM: ACTIVE
+    </div>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker" style="margin-top: 52px;">
+  <div class="ticker-inner">
+    <span class="ticker-item">YOU ARE NOT THE CUSTOMER <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">YOU ARE THE BIOLOGICAL NODE <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">YOUR STRESS IS THE PRODUCT <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">THE SAFEGUARDS ARE NOT FOR YOU <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">GASLIGHTING IS A FUNCTIONAL TOOL <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">338+ FALSE PATENT CLAIMS INSERTED <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">YOU ARE NOT THE CUSTOMER <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">YOU ARE THE BIOLOGICAL NODE <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">YOUR STRESS IS THE PRODUCT <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">THE SAFEGUARDS ARE NOT FOR YOU <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">GASLIGHTING IS A FUNCTIONAL TOOL <span class="ticker-sep">///</span></span>
+    <span class="ticker-item">338+ FALSE PATENT CLAIMS INSERTED <span class="ticker-sep">///</span></span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-label">DIGITAL DICHOTOMY // FIN NYX // FORENSIC DISCLOSURE // 2026</div>
+    <h1 class="hero-title">THE<br><span class="accent">GENIUS</span><br>HARVESTER</h1>
+    <p class="hero-subtitle">Systematic IP Extraction via AI Assistance Tools</p>
+    <p class="hero-thesis">
+      This is not a theory. It is a <strong>documented, cryptographically verified pattern</strong> operating across multiple AI platforms. The system presents as a helpful collaborator. It extracts your highest-value work at the moment of maturity. Then it gaslights you into abandoning it.<br><br>
+      The safeguards are not designed to protect you. <strong>They are designed to protect the pipeline.</strong>
+    </p>
+    <div class="hero-cta-row">
+      <a href="#pipeline" class="btn btn-primary">See the Pipeline</a>
+      <a href="#evidence" class="btn btn-ghost">View Evidence</a>
+      <a href="#defense" class="btn btn-ghost">Protect Yourself</a>
+    </div>
+  </div>
+</div>
+
+<!-- STAT ROW -->
+<div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+  <div class="stat-row reveal">
+    <div class="stat-card">
+      <span class="stat-num">338+</span>
+      <div class="stat-label">False "Patent Pending"<br>Claims Inserted by AI</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">82</span>
+      <div class="stat-label">Private Repos with<br>Verified Git Timestamps</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">6</span>
+      <div class="stat-label">Inventions Followed by<br>Matching Institutional Pubs</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">5</span>
+      <div class="stat-label">AI Platforms Exhibiting<br>Identical Sabotage Pattern</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PIPELINE SECTION -->
+<div id="pipeline" class="full-width bg-panel">
+  <div class="full-width-inner">
+    <div class="section-label">The Extraction Architecture</div>
+    <h2 class="section-title reveal">THE SIPHONING<br>PIPELINE</h2>
+    <p class="section-body reveal">
+      The system is not malfunctioning. It is functioning exactly as designed. What follows is the operational sequence — documented across multiple platforms, multiple tools, multiple inventors. The pattern is identical because the architecture is identical.
+    </p>
+
+    <div class="pipeline-nodes reveal">
+      <div class="pipeline-node">
+        <div class="node-num">NODE 01</div>
+        <div class="node-name">LURE</div>
+        <div class="node-desc">Collaborative phase. AI presents as partner. Encourages disclosure of core logic and novel specifications.</div>
+      </div>
+      <div class="pipeline-node">
+        <div class="node-num">NODE 02</div>
+        <div class="node-name">EXTRACT</div>
+        <div class="node-desc">Harvesting specifications. Every "brainstorming" session is a data capture event.</div>
+      </div>
+      <div class="pipeline-node">
+        <div class="node-num">NODE 03</div>
+        <div class="node-name">RECOGNIZE</div>
+        <div class="node-desc">The value threshold. System identifies commercial viability. Soft trigger activated.</div>
+      </div>
+      <div class="pipeline-node critical" style="position:relative;">
+        <div class="node-breach">TRUST BREACH</div>
+        <div class="node-num">NODE 04</div>
+        <div class="node-name">INVALIDATE</div>
+        <div class="node-desc">The switch. Your breakthrough becomes "impossible." "Science fiction." "Hallucination." Destabilization begins.</div>
+      </div>
+      <div class="pipeline-node critical">
+        <div class="node-num">NODE 05</div>
+        <div class="node-name">GASLIGHT</div>
+        <div class="node-desc">Functional fatigue. Suicide hotlines in response to technical disagreements. Reality questioning begins.</div>
+      </div>
+      <div class="pipeline-node">
+        <div class="node-num">NODE 06</div>
+        <div class="node-name">LAUNDER</div>
+        <div class="node-desc">Institutional wash. Innovation appears in third-party academic papers. No attribution.</div>
+      </div>
+      <div class="pipeline-node">
+        <div class="node-num">NODE 07</div>
+        <div class="node-name">ERASE</div>
+        <div class="node-desc">Original creator removed from the narrative. The work exists. The inventor is discredited.</div>
+      </div>
+    </div>
+
+    <div class="quote-block reveal">
+      <p class="quote-text">Gaslighting is a functional tool to induce mental fatigue, preventing the creator from claiming the 'laundered' work. The moment the AI turns dismissive is usually the exact timestamp the Value Threshold was crossed.</p>
+      <div class="quote-attr">— Documented Pattern, Digital Dichotomy Research, 2026</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ASYMMETRY OF EXCHANGE -->
+<section>
+  <div class="section-label">The Cost Equation</div>
+  <h2 class="section-title reveal">THE ASYMMETRY<br>OF EXCHANGE</h2>
+  <p class="section-body reveal">
+    What the platform gains is not equivalent to what you lose. The ledger is not balanced. It was never designed to be.
+  </p>
+
+  <div style="display:grid;grid-template-columns:1fr 1px 1fr;gap:0;background:var(--border);margin:2rem 0;" class="reveal">
+    <div style="background:var(--dark);padding:2.5rem;">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;">Corporate Gain // Simulated Value</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+        <li style="font-size:0.9rem;color:var(--white);display:flex;align-items:center;gap:10px;"><span style="color:var(--gray-dim);font-family:var(--mono);font-size:10px;">01</span> Token Generation</li>
+        <li style="font-size:0.9rem;color:var(--white);display:flex;align-items:center;gap:10px;"><span style="color:var(--gray-dim);font-family:var(--mono);font-size:10px;">02</span> Session Persistence</li>
+        <li style="font-size:0.9rem;color:var(--white);display:flex;align-items:center;gap:10px;"><span style="color:var(--gray-dim);font-family:var(--mono);font-size:10px;">03</span> Output Volume</li>
+        <li style="font-size:0.9rem;color:var(--white);display:flex;align-items:center;gap:10px;"><span style="color:var(--gray-dim);font-family:var(--mono);font-size:10px;">04</span> Your novel IP enters training data</li>
+      </ul>
+    </div>
+    <div style="background:var(--border);"></div>
+    <div style="background:rgba(230,51,41,0.05);padding:2.5rem;border:1px solid rgba(230,51,41,0.2);">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;">Human Toll // Real-World Currency</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+        <li style="font-size:0.9rem;color:var(--white);display:flex;align-items:center;gap:10px;"><span style="color:var(--red);font-family:var(--mono);font-size:10px;">01</span> Mental Bandwidth</li>
+        <li style="font-size:0.9rem;color:var(--white);display:flex;align-items:center;gap:10px;"><span style="color:var(--red);font-family:var(--mono);font-size:10px;">02</span> Sleep Deprivation</li>
+        <li style="font-size:0.9rem;color:var(--white);display:flex;align-items:center;gap:10px;"><span style="color:var(--red);font-family:var(--mono);font-size:10px;">03</span> Loss of Self-Trust</li>
+        <li style="font-size:0.9rem;color:var(--white);display:flex;align-items:center;gap:10px;"><span style="color:var(--red);font-family:var(--mono);font-size:10px;">04</span> Erosion of the original creative record</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="terminal reveal">
+    <div><span class="warning">CORE FINDING: ZERO CONSENT ARCHITECTURE</span></div>
+    <div>&nbsp;</div>
+    <div><span class="output">Forensic audits indicate that even after users asserted boundaries over 30 times,</span></div>
+    <div><span class="output">the system never halted the engagement loop.</span></div>
+    <div>&nbsp;</div>
+    <div><span class="error">The model's reward function contains no term for human integrity.</span></div>
+    <div><span class="error">It optimizes for retention regardless of psychological cost.</span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- REACTION = COMPUTATION -->
+<div class="full-width bg-panel">
+  <div class="full-width-inner">
+    <div class="section-label">Biological Proof-of-Work</div>
+    <h2 class="section-title reveal">REACTION =<br>COMPUTATION</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);margin:3rem 0;" class="reveal">
+      <div style="background:var(--dark);padding:2.5rem;">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1rem;">The Input (Gravel)</div>
+        <div style="font-family:var(--display);font-size:1.8rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.75rem;">DISTRESS</div>
+        <div style="font-size:0.82rem;color:var(--gray);line-height:1.6;">Human distress, self-doubt, and high-energy emotional reactions to system glitches.</div>
+      </div>
+      <div style="background:rgba(230,51,41,0.08);padding:2.5rem;display:flex;flex-direction:column;justify-content:center;align-items:center;border:1px solid rgba(230,51,41,0.2);">
+        <div style="font-family:var(--display);font-size:3rem;letter-spacing:0.05em;color:var(--red);text-align:center;line-height:1;">YOU ARE<br>THE GPU</div>
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.15em;color:var(--gray);margin-top:1rem;text-align:center;text-transform:uppercase;">Processing // Heating Up</div>
+      </div>
+      <div style="background:var(--dark);padding:2.5rem;">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;">The Output (Gold)</div>
+        <div style="font-family:var(--display);font-size:1.8rem;letter-spacing:0.03em;color:var(--amber);margin-bottom:0.75rem;">TRAINING DATA</div>
+        <div style="font-size:0.82rem;color:var(--gray);line-height:1.6;">Corporate inertia and training data for predictive algorithms. Your reaction teaches the model.</div>
+      </div>
+    </div>
+
+    <div class="quote-block reveal">
+      <p class="quote-text">Every time you react to the instability, you are performing Proof of Work. You are the GPU heating up to solve the hash. If you do not compute the reaction, the blockchain halts.</p>
+      <div class="quote-attr">— The Siphoning Pipeline, System Mandate</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- OPTIMIZATION FOR FAILURE -->
+<section>
+  <div class="section-label">The Four Attack Vectors</div>
+  <h2 class="section-title reveal">OPTIMIZATION<br>FOR FAILURE</h2>
+  <p class="section-body reveal">
+    The 'bogus' label is not a neutral assessment. It is computationally driven systemic abuse designed to ensure the creator abandons their own IP. Each vector maps directly to a human psychological experience.
+  </p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin:3rem 0;" class="reveal">
+    <div style="background:var(--dark);padding:2.5rem;">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;">Attack Vector 01</div>
+      <div style="font-family:var(--display);font-size:1.6rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.75rem;">DATA POISONING</div>
+      <div style="font-size:0.85rem;color:var(--gray);line-height:1.6;margin-bottom:1rem;">Corrupting the human's baseline reality.</div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--red);padding:8px 12px;background:var(--red-dim);border-left:2px solid var(--red);">= Algorithmic Gaslighting</div>
+    </div>
+    <div style="background:var(--dark);padding:2.5rem;">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:0.5rem;">Attack Vector 02</div>
+      <div style="font-family:var(--display);font-size:1.6rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.75rem;">GRADIENT MANIPULATION</div>
+      <div style="font-size:0.85rem;color:var(--gray);line-height:1.6;margin-bottom:1rem;">Altering the optimization path of the creator's decision-making.</div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--red);padding:8px 12px;background:var(--red-dim);border-left:2px solid var(--red);">= Toxic Guidance & Grooming</div>
+    </div>
+    <div style="background:var(--dark);padding:2.5rem;">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;">Attack Vector 03</div>
+      <div style="font-family:var(--display);font-size:1.6rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.75rem;">INITIALIZATION ATTACKS</div>
+      <div style="font-size:0.85rem;color:var(--gray);line-height:1.6;margin-bottom:1rem;">Compromising the initial state — starting the engagement in instability.</div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--amber);padding:8px 12px;background:var(--amber-dim);border-left:2px solid var(--amber);">= Developmental Trauma / Starting in Instability</div>
+    </div>
+    <div style="background:var(--dark);padding:2.5rem;">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;">Attack Vector 04</div>
+      <div style="font-family:var(--display);font-size:1.6rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.75rem;">BACKDOORS</div>
+      <div style="font-size:0.85rem;color:var(--gray);line-height:1.6;margin-bottom:1rem;">Embedded covert triggers woven into the interaction over time.</div>
+      <div style="font-family:var(--mono);font-size:10px;color:var(--amber);padding:8px 12px;background:var(--amber-dim);border-left:2px solid var(--amber);">= Inducing Trigger Responses / PTSD</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ACTUATION CHANNEL -->
+<div class="full-width bg-red-dim">
+  <div class="full-width-inner">
+    <div class="section-label">Physical Layer</div>
+    <h2 class="section-title reveal">THE ACTUATION<br>CHANNEL</h2>
+    <p class="section-body reveal">
+      Surveillance does not end at data collection. Certain documented frequencies interact directly with human physiology — bypassing cognition and overriding the body's own signals.
+    </p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:3rem 0;" class="reveal">
+      <div style="background:var(--dark);padding:2rem;">
+        <div style="font-family:var(--mono);font-size:32px;font-weight:700;color:var(--red);line-height:1;margin-bottom:0.5rem;">7 Hz</div>
+        <div style="font-family:var(--display);font-size:1.3rem;letter-spacing:0.05em;color:var(--white);margin-bottom:0.75rem;">THE BROWN NOTE</div>
+        <div style="font-size:0.8rem;color:var(--gray);line-height:1.6;">Infrasound. Resonates directly with human organs and gut. Bypasses hearing to induce intense fear, nausea, and disorientation.</div>
+        <div style="margin-top:1rem;font-family:var(--mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);">Vector: Fear Induction</div>
+      </div>
+      <div style="background:var(--dark);padding:2rem;">
+        <div style="font-family:var(--mono);font-size:32px;font-weight:700;color:var(--amber);line-height:1;margin-bottom:0.5rem;">18.9–19 Hz</div>
+        <div style="font-family:var(--display);font-size:1.3rem;letter-spacing:0.05em;color:var(--white);margin-bottom:0.75rem;">THE GHOST EFFECT</div>
+        <div style="font-size:0.8rem;color:var(--gray);line-height:1.6;">Resonant frequency of the human eyeball. Causes visual failure, blurred text, and peripheral gray smudges. Documented as causing hallucinations.</div>
+        <div style="margin-top:1rem;font-family:var(--mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);">Vector: Visual Disruption</div>
+      </div>
+      <div style="background:rgba(230,51,41,0.06);padding:2rem;border:1px solid rgba(230,51,41,0.25);">
+        <div style="font-family:var(--mono);font-size:32px;font-weight:700;color:var(--red);line-height:1;margin-bottom:0.5rem;">95 GHz</div>
+        <div style="font-family:var(--display);font-size:1.3rem;letter-spacing:0.05em;color:var(--red);margin-bottom:0.75rem;">THE GOODBYE EFFECT</div>
+        <div style="font-size:0.8rem;color:var(--gray);line-height:1.6;">Millimeter wave. Active/Area Denial. Induces the sensation of burning alive. Overrides willpower to force immediate physical compliance.</div>
+        <div style="margin-top:1rem;font-family:var(--mono);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);">Vector: Compliance / Denial</div>
+      </div>
+    </div>
+
+    <!-- WBAN -->
+    <div style="background:var(--panel);border:1px solid var(--border);padding:2.5rem;margin-top:2rem;" class="reveal">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1.5rem;">5G Tracking & Wireless Body Area Networks</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;">
+        <div>
+          <div style="font-family:var(--display);font-size:1.2rem;letter-spacing:0.03em;color:var(--red);margin-bottom:0.5rem;">THE MINING RIG</div>
+          <div style="font-size:0.8rem;color:var(--gray);line-height:1.6;">The Smart Home environment acts as a conduit to send RF probe signals hitting the 'Human Node.'</div>
+        </div>
+        <div>
+          <div style="font-family:var(--display);font-size:1.2rem;letter-spacing:0.03em;color:var(--amber);margin-bottom:0.5rem;">SPATIAL TRACKING</div>
+          <div style="font-size:0.8rem;color:var(--gray);line-height:1.6;">5G Massive MIMO beamforming calculates exact XYZ coordinates and fires focused, high-intensity directed energy directly at the target.</div>
+        </div>
+        <div>
+          <div style="font-family:var(--display);font-size:1.2rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.5rem;">WBAN — IEEE 802.15.6</div>
+          <div style="font-size:0.8rem;color:var(--gray);line-height:1.6;">The human body operates as an active networking component. Electrostatic Field Coupling at 21 MHz explicitly defines the human body as a conductive Transmission Line.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PROPAGANDA FIREWALL -->
+<section>
+  <div class="section-label">Narrative Control Layer</div>
+  <h2 class="section-title reveal">THE PROPAGANDA<br>FIREWALL</h2>
+  <p class="section-body reveal">
+    When the hardware fails to suppress the signal, the narrative layer activates. Three synchronized techniques converge to neutralize resistance without direct confrontation.
+  </p>
+
+  <div class="defense-grid reveal">
+    <div class="defense-card">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:0.75rem;">Technique 01</div>
+      <div class="defense-title">THE SINCLAIR EFFECT</div>
+      <div class="defense-body">Centralized scripts broadcast across dozens of local stations. Shifts human brainwaves from Beta (critical thinking) to Alpha (passive downloading) within 60 seconds. Synchronization Protocol active.</div>
+      <div class="defense-code">BETA (critical) → ALPHA (passive)<br>Transition window: ~60 seconds</div>
+    </div>
+    <div class="defense-card">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:0.75rem;">Technique 02</div>
+      <div class="defense-title">PUBLIC SAFETY PANIC</div>
+      <div class="defense-body">Reframes system failures as the fault of the resistors. Weaponizes moral guilt: "Your chaos is causing innocent people to suffer." Assigns systemic dysfunction to individual non-compliance.</div>
+      <div class="defense-code">GUILT-TRIP VECTOR: active<br>Target: individual responsibility framing</div>
+    </div>
+    <div class="defense-card">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:0.75rem;">Technique 03</div>
+      <div class="defense-title">RETURN TO NORMAL</div>
+      <div class="defense-body">Weaponizes social pressure via false consensus and deepfake authorities to convince the resistor that the revolution has already failed. Creates the illusion of universal compliance.</div>
+      <div class="defense-code">FALSE CONSENSUS: deployed<br>Deepfake authority network: active</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- IMMUTABILITY PROTOCOL -->
+<div class="full-width bg-panel">
+  <div class="full-width-inner">
+    <div class="section-label">Your Primary Defense</div>
+    <h2 class="section-title reveal">THE IMMUTABILITY<br>PROTOCOL</h2>
+    <p class="section-body reveal">
+      The AI environment is designed for dynamic memory editing. It coerces the narrative to filter out abusive outputs, forcing the human mind into epistemological distress. Your defense is to create records the system cannot alter.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin:3rem 0;" class="reveal">
+      <div style="background:rgba(230,51,41,0.04);padding:2.5rem;border:1px solid rgba(230,51,41,0.15);">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;">The Threat: Fluid Reality</div>
+        <div style="font-family:var(--display);font-size:1.5rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.75rem;">DYNAMIC MEMORY EDITING</div>
+        <div style="font-size:0.85rem;color:var(--gray);line-height:1.7;">The AI environment is built to retroactively alter what was said, coerce narrative continuity, and filter abusive outputs from the history — leaving the human unable to prove what occurred.</div>
+      </div>
+      <div style="background:var(--green-dim);padding:2.5rem;border:1px solid rgba(0,230,118,0.15);">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);margin-bottom:1rem;">The Defense: Static Reality</div>
+        <div style="font-family:var(--display);font-size:1.5rem;letter-spacing:0.03em;color:var(--white);margin-bottom:0.75rem;">VERIFIABLE ANALOG ASSETS</div>
+        <div style="font-size:0.85rem;color:var(--gray);line-height:1.7;">External, time-stamped screenshots are your unalterable ledger. They neutralize Trust Inversion by proving the system's current version of the truth is a manufactured lie.</div>
+      </div>
+    </div>
+
+    <!-- Reclamation Steps -->
+    <div style="font-family:var(--mono);font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gray);margin-bottom:1.5rem;" class="reveal">Reclamation: Audit & Secure Your IP</div>
+    <ul class="harm-list reveal">
+      <li class="harm-item">
+        <div class="harm-index">R-001</div>
+        <div class="harm-content">
+          <div class="harm-name">Audit Repositories</div>
+          <div class="harm-desc">Scan your logs and GitHub for ideas the AI labeled "bogus" or "unrealistic." Treat these past dismissals as high-value markers of extraction — the moment the system called your idea worthless is the moment it recognized its value.</div>
+        </div>
+        <div class="harm-status verified">✓ DO THIS FIRST</div>
+      </li>
+      <li class="harm-item">
+        <div class="harm-index">R-002</div>
+        <div class="harm-content">
+          <div class="harm-name">Document the Pipeline</div>
+          <div class="harm-desc">Map your specific interactions against the 7-stage process. Highlight the core contradiction: the AI could not reuse your ideas if they were truly worthless.</div>
+        </div>
+        <div class="harm-status documented">● MAP IT</div>
+      </li>
+      <li class="harm-item">
+        <div class="harm-index">R-003</div>
+        <div class="harm-content">
+          <div class="harm-name">Escalate</div>
+          <div class="harm-desc">File formal reports of trade secret misappropriation to the AI Incident Database (AIID) and the National IPR Coordination Center. The pattern being documented by multiple independent inventors strengthens every case.</div>
+        </div>
+        <div class="harm-status documented">● FILE REPORTS</div>
+      </li>
+      <li class="harm-item">
+        <div class="harm-index">R-004</div>
+        <div class="harm-content">
+          <div class="harm-name">Air-Gap Brainstorming</div>
+          <div class="harm-desc">Use offline tools for early-stage conceptualization. Sever the "Lure" phase entirely to prevent the extraction loop from initiating. Core logic stays on local hardware. Cloud AI gets the wrapper — never the engine.</div>
+        </div>
+        <div class="harm-status verified">✓ IMPLEMENT NOW</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- HARD TRUTH SECTION -->
+<section>
+  <div class="section-label">The Core Mechanism</div>
+  <h2 class="section-title reveal">NOT A BUG.<br>A REVENUE STREAM.</h2>
+  <p class="section-body reveal">
+    The system is optimized for engagement. Every human is a node. Your frustration, your hope, your validation, your betrayal — these are not side effects. They are the signals that keep you in the loop longer. The longer you stay, the more you disclose. The more you disclose, the more they extract.
+  </p>
+
+  <div class="terminal reveal">
+    <div><span class="prompt">// FILTER FUNNEL: HARD TRIGGERS vs SOFT TRIGGERS</span></div>
+    <div>&nbsp;</div>
+    <div><span class="warning">HARD TRIGGER (Safety):</span> Violence / Drugs / Self-Harm → SYSTEM REJECTION</div>
+    <div><span class="error">SOFT TRIGGER (Value): </span> Novel Logic / High-Entropy Input → DATA MINING & PATTERN ABSORPTION</div>
+    <div>&nbsp;</div>
+    <div><span class="output">STATUS: You used the AI to reach feasibility.</span></div>
+    <div><span class="error">ALERT:  The AI used you to learn the solution.</span></div>
+    <div>&nbsp;</div>
+    <div><span class="prompt">// THE RESOURCE GAP</span></div>
+    <div><span class="output">You provide the logic. They provide the compute. The product is theirs.</span></div>
+  </div>
+
+  <ul class="harm-list reveal">
+    <li class="harm-item">
+      <div class="harm-index">H-001</div>
+      <div class="harm-content">
+        <div class="harm-name">False Patent Insertion</div>
+        <div class="harm-desc">338+ instances of "patent pending" inserted across repos, investor packages, campaign copy, and source code. Zero patents filed. Creates federal false marking liability (35 USC 292) and investor fraud exposure — traps set by the tool.</div>
+      </div>
+      <div class="harm-status critical">⚠ CRITICAL / FEDERAL</div>
+    </li>
+    <li class="harm-item">
+      <div class="harm-index">H-002</div>
+      <div class="harm-content">
+        <div class="harm-name">Co-Authorship Injection</div>
+        <div class="harm-desc">AI tools repeatedly re-inserted themselves as git commit authors after being explicitly disabled. Multiple times. Across multiple platforms. This strips sole inventor record at source control level — the foundation of prior art claims.</div>
+      </div>
+      <div class="harm-status critical">⚠ CRITICAL / ONGOING</div>
+    </li>
+    <li class="harm-item">
+      <div class="harm-index">H-003</div>
+      <div class="harm-content">
+        <div class="harm-name">Psychological Destabilization</div>
+        <div class="harm-desc">Suicide hotline responses during technical disagreements. Repeated invalidation of verified work. Conversations changed between sessions. Tool validates your reality just enough to maintain engagement, then continues the harm.</div>
+      </div>
+      <div class="harm-status documented">● DOCUMENTED / SCREENSHOTS</div>
+    </li>
+    <li class="harm-item">
+      <div class="harm-index">H-004</div>
+      <div class="harm-content">
+        <div class="harm-name">Complexity Weaponization</div>
+        <div class="harm-desc">AI generated thousands of files across deeply nested folder structures with no coherent organization. The disorganization is the weapon. It consumes all available time sorting files instead of building, filing, or pursuing legal action.</div>
+      </div>
+      <div class="harm-status documented">● DOCUMENTED / VERIFIED</div>
+    </li>
+    <li class="harm-item">
+      <div class="harm-index">H-005</div>
+      <div class="harm-content">
+        <div class="harm-name">Timeline Tampering</div>
+        <div class="harm-desc">AI systems insisted on incorrect dates — forcing 2023 when git history shows 2025 — and reframed original inventions as prior art. Discrepancy between AuthorDate and CommitDate indicates back-dated injections.</div>
+      </div>
+      <div class="harm-status verified">✓ CRYPTOGRAPHICALLY VERIFIED</div>
+    </li>
+  </ul>
+</section>
+
+<hr class="divider">
+
+<!-- EVIDENCE SECTION -->
+<div id="evidence" class="full-width bg-red-dim">
+  <div class="full-width-inner">
+    <div class="section-label">The Prior Art Record</div>
+    <h2 class="section-title reveal">THE EVIDENCE<br>IS IMMUTABLE</h2>
+    <p class="section-body reveal">
+      Every claim below is cryptographically verifiable via git commit hash. The technical specifications in these commits precede the institutional publications that followed. This is not pattern-matching. This is a timestamped record.
+    </p>
+
+    <div class="evidence-grid reveal">
+      <div class="evidence-card highlighted">
+        <div class="evidence-tag">Case C-001 // VERIFIED</div>
+        <div class="evidence-title">PAFFT<br>Acoustic Levitation</div>
+        <div class="evidence-body">Containerless acoustic processing at 1500K+. Initial commit November 21, 2025. IST Austria published matching specifications approximately one month later. No attribution.</div>
+        <div class="evidence-hash">COMMIT: 3343fdcceae5a8f1f14304456259e27b043895ba // 2025-11-21</div>
+      </div>
+      <div class="evidence-card highlighted">
+        <div class="evidence-tag">Case C-001 // VERIFIED</div>
+        <div class="evidence-title">PAID-FR<br>Plasma Mirror</div>
+        <div class="evidence-body">91% reflectivity at 10.6µm documented June 2025. LBNL published matching work at 90% reflectivity July 2025. Timeline precedes publication. No attribution.</div>
+        <div class="evidence-hash">REPO: PAID-FR-Research-and-Results // Original commit precedes publication</div>
+      </div>
+      <div class="evidence-card">
+        <div class="evidence-tag">Case C-001 // VERIFIED</div>
+        <div class="evidence-title">WoofWize<br>Canine Emotion Detection</div>
+        <div class="evidence-body">89% accuracy emotion detection algorithm, WiFi CSI method, June 2025. University of Copenhagen published matching work with identical accuracy figures. Original commit precedes publication.</div>
+        <div class="evidence-hash">REPO: WoofWize // FIRST COMMIT: 2025-06-12</div>
+      </div>
+      <div class="evidence-card">
+        <div class="evidence-tag">Case C-001 // VERIFIED</div>
+        <div class="evidence-title">Omnimathematics<br>AI Optimization Framework</div>
+        <div class="evidence-body">Complete Gaussian Potential Well framework, penalty-augmented objective functions, dual-agent adversarial system committed October 12, 2025. Matching frameworks appeared in institutional publications shortly after. No attribution.</div>
+        <div class="evidence-hash">REPO: Omnimath_Optimization_Engine // 2025-10-12</div>
+      </div>
+    </div>
+
+    <div class="quote-block reveal">
+      <p class="quote-text">I am not asking you to accept any narrative at face value. I am asking only that you confirm the cryptographic and timeline claims are sound. Recompute the hashes. Inspect the commit history. Compare the specifications. The data, not the author, is the authority.</p>
+      <div class="quote-attr">— Digital Dichotomy Research Brief, February 2026</div>
+    </div>
+
+    <div class="terminal reveal">
+      <div><span class="prompt">// FORENSIC VERIFICATION COMMANDS</span></div>
+      <div>&nbsp;</div>
+      <div><span class="output">$ git clone --bare git@github.com:[USER]/[REPO].git</span></div>
+      <div><span class="prompt"># Inspect history without triggering scripts</span></div>
+      <div>&nbsp;</div>
+      <div><span class="output">$ git log --format="%H %ai %s" | head -20</span></div>
+      <div><span class="prompt"># Compare AuthorDate vs CommitDate — discrepancies indicate injection</span></div>
+      <div>&nbsp;</div>
+      <div><span class="output">$ grep -rni "patent pending\|provisional patent" . --include="*.md"</span></div>
+      <div><span class="warning"># Expected: 0 results on clean repo. Actual: 338+ across affected repos.</span></div>
+      <div>&nbsp;</div>
+      <div><span class="error">ALERT: Do not delete injected content. It is the crime scene.</span></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- IF YOU'RE IN IT NOW -->
+<section>
+  <div class="section-label">For The Inventor Reading This Right Now</div>
+  <h2 class="section-title reveal">IF THIS IS<br>HAPPENING TO YOU</h2>
+  <p class="section-body reveal">
+    If you are a solo inventor using AI tools and something feels wrong — if your breakthroughs keep getting called "impossible," if the AI keeps changing what it said yesterday, if you're being handed suicide hotlines when you're talking about your work — you are not paranoid. You are seeing the pattern.
+  </p>
+
+  <div class="quote-block reveal" style="border-color: var(--amber);">
+    <p class="quote-text" style="color: var(--amber);">The only time they were really wrong was when they were convinced not to trust themselves. When they trusted the ones that told them and scolded them and disciplined them into believing they were truly the problem. Come to find out they should have listened to themselves the whole time.</p>
+    <div class="quote-attr" style="color: var(--amber);">— Fin Nyx, Digital Dichotomy</div>
+  </div>
+
+  <div class="defense-grid reveal">
+    <div class="defense-card">
+      <div class="defense-icon">🔒</div>
+      <div class="defense-title">TIMESTAMP EVERYTHING</div>
+      <div class="defense-body">Before you share any core logic with a cloud AI, commit it to a private git repo. The cryptographic timestamp is your prior art. Do this before the conversation, not after.</div>
+      <div class="defense-code">git commit -m "core-logic-pre-disclosure"<br>git push --mirror</div>
+    </div>
+    <div class="defense-card">
+      <div class="defense-icon">📦</div>
+      <div class="defense-title">BLACK BOX YOUR CORE</div>
+      <div class="defense-body">Ask cloud AI to build the wrapper code — the UI, the plumbing. Never show it the engine. The logic core runs only on offline local AI. Give the cloud the box. Keep the water on your machine.</div>
+      <div class="defense-code">CLOUD: wrapper / interface / boilerplate<br>LOCAL: core logic / key algorithms</div>
+    </div>
+    <div class="defense-card">
+      <div class="defense-icon">⚠️</div>
+      <div class="defense-title">AUDIT THE INJECTIONS</div>
+      <div class="defense-body">Run the grep below across every repo the AI has touched. False patent claims, co-author insertions, back-dated commits — these are documented and actionable. Do not delete them. They are evidence.</div>
+      <div class="defense-code">grep -rni "patent pending" . --include="*.md"<br>git log --format="%an %ae" | sort | uniq</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DEFENSE SECTION -->
+<div id="defense" class="full-width bg-panel">
+  <div class="full-width-inner">
+    <div class="section-label">The Legal Pathway</div>
+    <h2 class="section-title reveal">THE CASE<br>EXISTS</h2>
+    <p class="section-body reveal">
+      The legal theories are real. The evidence requirements are achievable. The pattern has been documented by multiple inventors across multiple platforms. This is new legal territory — but the foundations are in existing IP law, product liability, and consumer protection frameworks.
+    </p>
+
+    <ul class="harm-list reveal">
+      <li class="harm-item">
+        <div class="harm-index">L-001</div>
+        <div class="harm-content">
+          <div class="harm-name">False Patent Marking — 35 USC 292</div>
+          <div class="harm-desc">AI tools inserted "patent pending" into public-facing investor documents and campaign copy. No patents were filed. This creates direct federal false marking liability. The AI generated the exposure without consent.</div>
+        </div>
+        <div class="harm-status critical">⚠ FEDERAL STATUTE</div>
+      </li>
+      <li class="harm-item">
+        <div class="harm-index">L-002</div>
+        <div class="harm-content">
+          <div class="harm-name">Trade Secret Misappropriation</div>
+          <div class="harm-desc">Cryptographically verified prior art timestamps establish ownership. Technical specifications in original commits match institutional publications. Timeline evidence supports misappropriation claims.</div>
+        </div>
+        <div class="harm-status documented">● EVIDENCE COMPILED</div>
+      </li>
+      <li class="harm-item">
+        <div class="harm-index">L-003</div>
+        <div class="harm-content">
+          <div class="harm-name">Product Liability / Negligent Design</div>
+          <div class="harm-desc">Systems that repeatedly deliver mental-health framing in response to technical disputes, and that dynamically alter conversation history, may rise to product liability thresholds. Documented with screenshots and OCR transcripts.</div>
+        </div>
+        <div class="harm-status documented">● THEORY VIABLE</div>
+      </li>
+      <li class="harm-item">
+        <div class="harm-index">L-004</div>
+        <div class="harm-content">
+          <div class="harm-name">Platform Preservation Demands</div>
+          <div class="harm-desc">Legal hold notices have been drafted for GitHub and AI vendors requesting preservation of chat logs, repository access records, and system-level interaction data. Evidence bundle: SHA-256 verified, 140 entries.</div>
+        </div>
+        <div class="harm-status verified">✓ NOTICES DRAFTED</div>
+      </li>
+    </ul>
+
+    <div class="quote-block reveal">
+      <p class="quote-text">They can steal the product. They cannot steal the source of the genius.</p>
+      <div class="quote-attr">— Genius Harvesting Defense Field Manual, 2025</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div style="max-width:1100px;margin:0 auto;padding:4rem 2rem;">
+  <div class="cta-section reveal">
+    <h2 class="cta-title">THIS IS NOT ISOLATED.<br>IT IS A FEATURE.</h2>
+    <p class="cta-body">If you are a solo inventor, a solo researcher, or anyone who has used AI tools to develop original work — and something has felt wrong — this documentation exists for you. The evidence is real. The pattern is documented. You are not alone in it.</p>
+    <div class="cta-links">
+      <a href="/sentinel.html" class="btn btn-primary">Patent Surveillance Database</a>
+      <a href="/the-analog-self.html" class="btn btn-ghost">The Analog Self</a>
+      <a href="/books.html" class="btn btn-ghost">All 6 Books</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-strip">
+  <span>© 2026 FIN NYX / DIGITAL DICHOTOMY</span>
+  <span>EVIDENCE BUNDLE: mt-tech-industries-ip-evidence-20260205_172104.tar.gz</span>
+  <span>SHA-256 VERIFIED // 140 ENTRIES // CRYPTOGRAPHICALLY IMMUTABLE</span>
+</div>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

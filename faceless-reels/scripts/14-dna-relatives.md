@@ -69,7 +69,11 @@ Your DNA isn't just yours.
 
 It's your **family's**.
 
-DNA privacy analysis at digitaldichotomy.github.io
+DNA privacy analysis at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Have you taken a DNA test — or does anyone in your family have? Your answer affects everyone related to you.
+
+**Share this** with a family member who's thinking about taking one. Before they do.
 
 ---
 

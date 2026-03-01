@@ -55,7 +55,11 @@ Your face is now a **searchable index**.
 
 **Forever**.
 
-Full facial recognition analysis at digitaldichotomy.github.io
+Full facial recognition analysis at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Type 1 if you've ever posted a public photo anywhere online. They already have your face. Now you know.
+
+**Share this** with someone who thinks facial recognition doesn't affect them.
 
 ---
 

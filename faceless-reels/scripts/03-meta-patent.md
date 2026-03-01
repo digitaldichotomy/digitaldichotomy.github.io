@@ -67,7 +67,11 @@ They're all building the **same architecture**.
 
 The only question is who deploys it **first**.
 
-View the full patent database at digitaldichotomy.github.io
+View the full patent database at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Did you know your camera could measure your heartbeat? Yes or no.
+
+**Save this** — the patent number is US20210383490A1. Look it up yourself.
 
 ---
 

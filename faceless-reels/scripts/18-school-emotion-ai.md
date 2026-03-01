@@ -67,7 +67,11 @@ This isn't education.
 
 It's **surveillance**.
 
-School surveillance analysis at digitaldichotomy.github.io
+School surveillance analysis at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Parents — did your child's school use remote learning with a camera-on requirement? Tell me where. I'm tracking this.
+
+**Share this with every parent you know.** This is the one they haven't heard about yet.
 
 ---
 

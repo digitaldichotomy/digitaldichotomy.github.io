@@ -59,7 +59,11 @@ You can read it yourself.
 
 The question is: **should you have to**?
 
-View the patent at digitaldichotomy.github.io
+View the patent at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Did you know your breath could reveal your emotional state? This one was filed openly. No secret.
+
+**Save this** — patent number is 20250359791. Published 2025. Look it up.
 
 ---
 

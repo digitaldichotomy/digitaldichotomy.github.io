@@ -70,7 +70,11 @@ The question is: what are **you** going to do about it?
 
 [Final 10 seconds]
 
-Full litigation analysis and BIPA claim templates at digitaldichotomy.github.io
+Full litigation analysis and BIPA claim templates at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Did you get a settlement check from the Facebook case? Most people who qualified never claimed it.
+
+**Save this** — the BIPA template alone is worth keeping.
 
 ---
 

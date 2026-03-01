@@ -55,7 +55,11 @@ Now it's listening for your **breathing**.
 
 What's next?
 
-Research more at digitaldichotomy.github.io
+Research more at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Do you keep a smart speaker in your bedroom? Be honest.
+
+**Save this** — and share it with someone who still has an Alexa next to their bed.
 
 ---
 

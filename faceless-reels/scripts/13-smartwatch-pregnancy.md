@@ -61,7 +61,11 @@ And the worst part?
 
 You **paid** for it.
 
-Wearable surveillance analysis at digitaldichotomy.github.io
+Wearable surveillance analysis at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Do you wear a smartwatch or fitness tracker? Do you know what it's storing about your body right now?
+
+**Save this + share it** — especially with the women in your life who use cycle tracking features.
 
 ---
 

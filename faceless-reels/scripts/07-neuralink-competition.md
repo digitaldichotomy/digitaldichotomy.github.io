@@ -69,7 +69,11 @@ They can **shape** it.
 
 [Final 10 seconds]
 
-Research the full patent database at digitaldichotomy.github.io
+Research the full patent database at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Would you wear a neural wristband if it meant faster typing? Think carefully before you answer.
+
+**Save this** — the patent number is US20190388688A1. Everything I said is verifiable.
 
 ---
 

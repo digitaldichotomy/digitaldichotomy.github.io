@@ -55,7 +55,11 @@ You just have to **look**.
 
 [Final 7 seconds]
 
-Full gaze tracking patent analysis at digitaldichotomy.github.io
+Full gaze tracking patent analysis at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Are you looking at this screen right now? They know you are. How does that feel?
+
+**Save this** — and notice how long you look at your phone today. That data is being sold.
 
 ---
 

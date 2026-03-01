@@ -77,7 +77,11 @@ Your data is training their algorithms.
 
 And you can't opt out.
 
-Predictive policing analysis at digitaldichotomy.github.io
+Predictive policing analysis at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Is predictive policing being used in your city right now? Most cities won't tell you — the research is at the link.
+
+**Save this** — it's the clearest explanation of how a feedback loop turns data bias into a criminal record.
 
 ---
 

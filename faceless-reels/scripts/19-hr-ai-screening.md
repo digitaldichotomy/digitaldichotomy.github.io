@@ -71,7 +71,11 @@ It's not human.
 
 It's an **algorithm**.
 
-Employment surveillance at digitaldichotomy.github.io
+Employment surveillance at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Have you ever done a recorded video interview for a job? You may have already been scored by AI without knowing it.
+
+**Save this before your next job application.** There are countermeasures — they're at the link.
 
 ---
 

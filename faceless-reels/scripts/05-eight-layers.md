@@ -69,7 +69,11 @@ The architecture **exists**.
 
 The question is what you do with that **knowledge**.
 
-Full breakdown at digitaldichotomy.github.io
+Full breakdown at digitaldichotomy.github.io — link in bio.
+
+**Follow** for deep dives into every single layer. And **comment below**: Which layer surprised you most? I'm making a separate video on whichever one gets the most comments.
+
+**Save this** — it's the map. Everything else I post connects back to these 8 layers.
 
 ---
 

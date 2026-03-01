@@ -67,7 +67,11 @@ That you **drive every day**.
 
 And you can't turn it off.
 
-Automotive surveillance database at digitaldichotomy.github.io
+Automotive surveillance database at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: What year is your car? If it's 2015 or newer, it has all of this. Already running.
+
+**Save this** — before your next road trip, insurance renewal, or visit somewhere private.
 
 ---
 

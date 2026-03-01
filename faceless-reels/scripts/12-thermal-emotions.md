@@ -62,7 +62,11 @@ You just can't **see** them.
 
 [Final 10 seconds]
 
-Thermal surveillance database at digitaldichotomy.github.io
+Thermal surveillance database at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Have you walked through an airport, a store, or a government building recently? You walked past one of these.
+
+**Save this** — and next time you're in public, look for the small black cameras with no visible lens. That's thermal.
 
 ---
 

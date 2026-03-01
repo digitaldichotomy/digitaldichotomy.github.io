@@ -85,7 +85,11 @@ The surveillance economy is **growing**.
 
 The question is: how long will you let them use you?
 
-Full economy analysis at digitaldichotomy.github.io
+Full economy analysis at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: How much do you think your personal data is worth per year? Take a guess. The answer will bother you.
+
+**Save this** — it's the clearest explanation of the business model you're currently inside.
 
 ---
 

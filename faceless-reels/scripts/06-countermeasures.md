@@ -69,7 +69,11 @@ And that's the goal.
 
 Not to win. To make you **expensive** to surveil.
 
-Free countermeasures database at digitaldichotomy.github.io
+Free countermeasures database at digitaldichotomy.github.io — link in bio.
+
+**Follow** — I post new countermeasures weekly. And **comment below**: Which one of these will you try first?
+
+**Save this.** This is the one video you actually want to come back to.
 
 ---
 

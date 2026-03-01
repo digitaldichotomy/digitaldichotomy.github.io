@@ -63,7 +63,11 @@ You're paying for **surveillance**.
 
 [Final 7 seconds]
 
-Infrastructure surveillance database at digitaldichotomy.github.io
+Infrastructure surveillance database at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Do you have a smart meter? Check your electricity bill — it'll tell you. Most people don't know they already have one.
+
+**Save this** — and share it with anyone who thinks surveillance only comes through screens.
 
 ---
 

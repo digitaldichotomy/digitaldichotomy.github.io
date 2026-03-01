@@ -59,7 +59,11 @@ Your router was supposed to give you internet.
 
 Now it gives them **you**.
 
-Free countermeasures at digitaldichotomy.github.io
+Free countermeasures at digitaldichotomy.github.io — link in bio.
+
+**Follow** for daily surveillance research. And **comment below**: Do you have a WiFi router running in your bedroom right now?
+
+**Save this** — so you have the 802.11bf standard name when people say you're wrong.
 
 ---
 

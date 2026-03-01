@@ -61,7 +61,11 @@ Not to frighten you.
 
 To **equip** you.
 
-Research more at digitaldichotomy.github.io
+Research more at digitaldichotomy.github.io — link in bio.
+
+**Follow** if you want to stay equipped. And **comment below**: What topic do you want me to expose next? I read every comment and build my research around what matters to you.
+
+**Share this** with someone who needs to hear that this isn't conspiracy — it's patent law.
 
 ---
 
