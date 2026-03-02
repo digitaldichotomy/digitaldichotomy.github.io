@@ -67,19 +67,50 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: 'Merriweather', serif;
-            font-size: 17px;
+            font-size: 16px;
             line-height: 1.8;
             margin: 0;
-            padding: 40px 20px;
+            padding: 16px 12px;
+        }
+
+        @media (min-width: 640px) {
+            body {
+                font-size: 17px;
+                padding: 24px 16px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 40px 20px;
+            }
         }
 
         .paper-container {
             max-width: 900px;
             margin: 0 auto;
             background-color: var(--paper-color);
-            padding: 50px 70px;
+            padding: 24px 16px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
             border-radius: 4px;
+        }
+
+        @media (min-width: 640px) {
+            .paper-container {
+                padding: 32px 24px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .paper-container {
+                padding: 50px 40px;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .paper-container {
+                padding: 50px 70px;
+            }
         }
 
         /* --- Typography --- */
@@ -90,7 +121,7 @@
         }
 
         h1 {
-            font-size: 32px;
+            font-size: 24px;
             color: var(--text-color);
             text-align: center;
             margin-top: 0;
@@ -98,26 +129,49 @@
             font-weight: 700;
         }
 
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+        }
+
         h2 {
-            font-size: 20px;
+            font-size: 16px;
             color: var(--primary-color);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 3em;
+            letter-spacing: 1px;
+            margin-top: 2em;
             margin-bottom: 0.5em;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+            padding-bottom: 8px;
+        }
+
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 20px;
+                letter-spacing: 1.5px;
+                margin-top: 3em;
+                padding-bottom: 10px;
+            }
         }
 
         h3 {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--secondary-color);
             font-style: italic;
             font-weight: 400;
             text-transform: none;
             letter-spacing: 0.5px;
-            margin-top: 1em;
-            margin-bottom: 2em;
+            margin-top: 0.75em;
+            margin-bottom: 1.5em;
+        }
+
+        @media (min-width: 768px) {
+            h3 {
+                font-size: 16px;
+                margin-top: 1em;
+                margin-bottom: 2em;
+            }
         }
 
         p {
@@ -142,24 +196,49 @@
             width: 100%;
             border-collapse: collapse;
             margin: 0 0 3em 0;
-            font-size: 15px;
+            font-size: 14px;
+        }
+
+        @media (min-width: 768px) {
+            table {
+                font-size: 15px;
+            }
         }
 
         th, td {
-            padding: 16px 18px;
+            padding: 10px 8px;
             text-align: left;
             vertical-align: top;
             border-bottom: 1px solid var(--border-color);
         }
 
+        @media (min-width: 640px) {
+            th, td {
+                padding: 12px 12px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            th, td {
+                padding: 16px 18px;
+            }
+        }
+
         thead th {
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 11px;
             color: var(--text-color);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             border-bottom: 2px solid var(--primary-color);
+        }
+
+        @media (min-width: 768px) {
+            thead th {
+                font-size: 13px;
+                letter-spacing: 1px;
+            }
         }
 
         tbody tr:hover {
