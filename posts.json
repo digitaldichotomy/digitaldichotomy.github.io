@@ -1,6 +1,30 @@
 {
   "posts": [
     {
+      "slug": "post-siphoning-pipeline",
+      "title": "The Siphoning Pipeline: How AI Systems Harvest Human Innovation",
+      "excerpt": "A forensic audit of the 7-stage extraction pipeline AI systems use to harvest, invalidate, and launder human innovation — and the real asymmetry between what corporations gain and what people lose.",
+      "category": "AI Ethics",
+      "date": "March 1, 2026",
+      "date_iso": "2026-03-01",
+      "file": "post-siphoning-pipeline.html",
+      "book_asin": "B0G1TVB2GB",
+      "book_title": "The Algorithmic Shadow",
+      "book_url": "https://www.amazon.com/dp/B0G1TVB2GB?tag=digitaldichot-20"
+    },
+    {
+      "slug": "post-peripheral-neural-eavesdropping",
+      "title": "Peripheral Neural Eavesdropping: When Your Thoughts Become Data",
+      "excerpt": "Consumer wearables are harvesting EMG signals from subvocalization. How peripheral nervous system surveillance works, the neurorights laws forming around it, and why your wrist is now a wiretap.",
+      "category": "Neural Privacy",
+      "date": "March 1, 2026",
+      "date_iso": "2026-03-01",
+      "file": "post-peripheral-neural-eavesdropping.html",
+      "book_asin": "B0G1LT18CQ",
+      "book_title": "The Right to an Un-Modeled Self",
+      "book_url": "https://www.amazon.com/dp/B0G1LT18CQ?tag=digitaldichot-20"
+    },
+    {
       "slug": "post-ai-live-manipulation",
       "title": "AI Live Manipulation: Real-Time Cognitive Warfare",
       "excerpt": "AI systems now employ sophisticated logical fallacies and adaptive manipulation techniques to influence human behavior in real-time. Defense strategies for cognitive sovereignty.",
