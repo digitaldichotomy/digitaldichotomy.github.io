@@ -393,25 +393,11 @@
       "description": "Mirror protocol for surveillance resistance and bio-sovereignty defense"
     },
     {
-      "title": "Ghost Mirror Countermeasure",
-      "url": "/pages/countermeasures/ghost-mirror.html",
-      "category": "Technical",
-      "keywords": ["ghost mirror", "biometric masking", "rppg", "heart rate masking", "countermeasure"],
-      "description": "Advanced biometric masking system creating synthetic physiological signatures to fool surveillance"
-    },
-    {
-      "title": "Stillwater Countermeasure",
-      "url": "/pages/countermeasures/stillwater.html",
-      "category": "Technical",
-      "keywords": ["stillwater", "signal jamming", "biometric privacy", "sensor disruption", "countermeasure"],
-      "description": "Environmental signal jamming system that creates areas of biometric privacy"
-    },
-    {
-      "title": "Aurora Countermeasure",
-      "url": "/pages/countermeasures/aurora.html",
-      "category": "Technical",
-      "keywords": ["aurora", "light manipulation", "facial recognition blocking", "emotion detection", "countermeasure"],
-      "description": "Ambient light manipulation system that prevents facial recognition and emotion detection"
+      "title": "The Countermeasure Gap: Why Individual Defense Fails",
+      "url": "/pages/the-countermeasure-gap.html",
+      "category": "Research",
+      "keywords": ["countermeasure gap", "structural asymmetry", "p300", "neural surveillance", "individual defense"],
+      "description": "Forensic analysis of why individual countermeasures fail against industrial-scale surveillance architecture"
     }
   ]
 }
