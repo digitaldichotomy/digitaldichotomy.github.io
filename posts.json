@@ -493,6 +493,18 @@
       "book_url": "https://www.amazon.com/dp/B0G1LB1T6N?tag=digitaldichot-20"
     },
     {
+      "slug": "extraction-architecture",
+      "title": "The Extraction Architecture: Neural Interfaces, Cognitive Harvesting, and the Industrialization of Harm",
+      "excerpt": "Volume 7 of the Digital Dichotomy series. A forensic analysis of the 7-stage Siphoning Pipeline, neural BCI proliferation, and the legal framework for challenging industrialized cognitive harm through Digital Battery tort, BIPA, EU AI Act, and neurorights.",
+      "category": "Core Research",
+      "date": "March 5, 2026",
+      "date_iso": "2026-03-05",
+      "file": "extraction-architecture.html",
+      "book_asin": "B0GR9WP9CF",
+      "book_title": "The Extraction Architecture",
+      "book_url": "https://www.amazon.com/dp/B0GR9WP9CF?tag=digitaldichot-20"
+    },
+    {
       "slug": "post-bsp-core",
       "title": "BSP-Core: The Open-Source Revolution for Bio-Sovereignty",
       "excerpt": "BSP-Core is now live\u2014a fully auditable, open-source firmware that enforces bio-physiological sovereignty on any device. This is the technical foundation of human-aware computing. Here's how to use it, deploy it, and scale it.",
