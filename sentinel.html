@@ -201,6 +201,52 @@
                 if (tier.includes('Defensive')) return '🛡️';
                 return '📊';
             };
+            const deploymentText = isDefense ? 'Defensive technology - protective measure' :
+                patent.tier.includes('Tier I') ? 'Widely deployed in consumer devices' :
+                patent.tier.includes('Tier III') ? 'Emerging infrastructure integration' :
+                patent.tier.includes('Tier XI') ? 'Clinical/commercial deployment' :
+                patent.tier.includes('Tier XII') ? 'Military/defense applications' :
+                'Active commercial deployment';
+            const targetText =
+                patent.category === 'Biometric' ? 'Physiological signals (heart rate, respiration, expressions)' :
+                patent.category === 'Neural' ? 'Brain activity and cognitive states' :
+                patent.category === 'Surveillance' ? 'Behavioral patterns and presence detection' :
+                patent.category === 'Medical' ? 'Health monitoring and diagnostics' :
+                patent.category === 'Control' ? 'Decision-making and behavior modification' :
+                'Consumer data and behavioral patterns';
+
+            const whyItMatters =
+                isDefense ?
+                    'This entry matters because it defines where genuine mitigation exists and where protection claims are marketing. Defense records are your baseline for realistic safeguards, budget expectations, and legal standards of due diligence.' :
+                patent.tier.includes('Tier XI') || patent.category === 'Neural' ?
+                    'This matters because neural-layer systems convert cognition into data exhaust. Once inference models map intent, memory signatures, or stress responses, the exposure is persistent and difficult to reverse.' :
+                patent.tier.includes('Tier XII') ?
+                    'This matters because dual-use military-grade capabilities tend to diffuse into civilian procurement and policy frameworks before public safeguards mature.' :
+                patent.category === 'Biometric' ?
+                    'This matters because biometric capture appears low-friction but creates high-friction consequences: permanent identifiers, profiling eligibility, and cross-context tracking at population scale.' :
+                    'This matters because it operationalizes surveillance as infrastructure: collection, inference, and intervention become routine system behavior instead of exceptional events.';
+
+            const abusePathway =
+                isDefense ?
+                    'Abuse pattern: vendors overstate defensive effectiveness, organizations under-deploy controls, and individuals assume coverage that does not exist in real operating conditions.' :
+                    `Likely pathway: ${deploymentText.toLowerCase()} -> ${targetText.toLowerCase()} -> model inference -> automated decisioning or behavioral steering.`;
+
+            const legalExposure =
+                isDefense ?
+                    'Primary legal posture: duty-of-care, product reliability disclosures, and truthful efficacy claims.' :
+                isCritical ?
+                    'Primary legal posture: heightened scrutiny under biometric consent laws, unfair/deceptive practice doctrines, and potential fraud/false marking concerns depending on implementation claims.' :
+                    'Primary legal posture: consent, purpose limitation, retention controls, and explainability of model-driven decisions.';
+
+            const relatedCountermeasures = COUNTERMEASURES.filter(c => {
+                const haystack = `${c.targetThreat} ${c.description}`.toLowerCase();
+                return haystack.includes(patent.category.toLowerCase()) ||
+                    haystack.includes('neural') && patent.category === 'Neural' ||
+                    haystack.includes('biometric') && patent.category === 'Biometric' ||
+                    haystack.includes('rf') && patent.tier.includes('Tier XII') ||
+                    haystack.includes('bci') && patent.tier.includes('Tier XI');
+            }).slice(0, 3);
+
             return (
                 <div className="modal-overlay" onClick={onClose}>
                     <div className="modal-content max-w-3xl" onClick={e => e.stopPropagation()}>
@@ -255,25 +301,27 @@
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="border border-slate-200 rounded-lg p-4">
                                     <p className="text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">📊 Deployment Status</p>
-                                    <p className="text-slate-700 text-sm">
-                                        {isDefense ? 'Defensive technology - protective measure' : 
-                                         patent.tier.includes('Tier I') ? 'Widely deployed in consumer devices' :
-                                         patent.tier.includes('Tier III') ? 'Emerging infrastructure integration' :
-                                         patent.tier.includes('Tier XI') ? 'Clinical/commercial deployment' :
-                                         patent.tier.includes('Tier XII') ? 'Military/defense applications' :
-                                         'Active commercial deployment'}
-                                    </p>
+                                    <p className="text-slate-700 text-sm">{deploymentText}</p>
                                 </div>
                                 <div className="border border-slate-200 rounded-lg p-4">
                                     <p className="text-xs font-bold text-slate-600 uppercase tracking-wide mb-2">🎯 Primary Target</p>
-                                    <p className="text-slate-700 text-sm">
-                                        {patent.category === 'Biometric' ? 'Physiological signals (heart rate, respiration, expressions)' :
-                                         patent.category === 'Neural' ? 'Brain activity and cognitive states' :
-                                         patent.category === 'Surveillance' ? 'Behavioral patterns and presence detection' :
-                                         patent.category === 'Medical' ? 'Health monitoring and diagnostics' :
-                                         patent.category === 'Control' ? 'Decision-making and behavior modification' :
-                                         'Consumer data and behavioral patterns'}
-                                    </p>
+                                    <p className="text-slate-700 text-sm">{targetText}</p>
+                                </div>
+                            </div>
+
+                            {/* Why it matters block */}
+                            <div className="border border-purple-200 rounded-lg p-4 bg-purple-50">
+                                <p className="text-xs font-bold text-purple-700 uppercase tracking-wide mb-2">❗ Why This Selection Matters</p>
+                                <p className="text-slate-800 text-sm leading-relaxed">{whyItMatters}</p>
+                                <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <div className="bg-white border border-purple-100 rounded p-3">
+                                        <p className="text-xs font-semibold uppercase tracking-wide text-purple-700 mb-1">Abuse Pathway</p>
+                                        <p className="text-slate-700 text-sm">{abusePathway}</p>
+                                    </div>
+                                    <div className="bg-white border border-purple-100 rounded p-3">
+                                        <p className="text-xs font-semibold uppercase tracking-wide text-purple-700 mb-1">Legal/Evidence Relevance</p>
+                                        <p className="text-slate-700 text-sm">{legalExposure}</p>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -299,6 +347,21 @@
                                     <p><strong>Documentation:</strong> Cryptographic timestamp recommended for prior art</p>
                                 </div>
                             </div>
+
+                            {/* Practical response playbook */}
+                            {relatedCountermeasures.length > 0 && (
+                                <div className="border border-emerald-200 rounded-lg p-4 bg-emerald-50">
+                                    <p className="text-xs font-bold text-emerald-700 uppercase tracking-wide mb-2">🧭 What To Do Next (Selection-Specific)</p>
+                                    <ul className="space-y-2 text-sm text-slate-800">
+                                        {relatedCountermeasures.map((cm) => (
+                                            <li key={cm.name} className="bg-white border border-emerald-100 rounded p-3">
+                                                <p className="font-semibold">{cm.name} <span className="text-xs text-slate-500">({cm.type} · Effectiveness {cm.effectiveness})</span></p>
+                                                <p className="text-slate-700 mt-1">{cm.description}</p>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
                             
                             {/* Severity Badge */}
                             <div className="flex items-center justify-between pt-4 border-t border-slate-200">
