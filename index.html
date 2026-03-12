@@ -275,8 +275,8 @@
     <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700" style="position: sticky; top: 0; z-index: 50;">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between h-16">
-                <a href="/index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
-                    <i data-feather="shield-off" class="text-red-500" role="img" aria-label="Shield Off Icon"></i>
+                <a href="/index.html" class="flex items-center space-x-3 text-white font-bold text-lg" aria-label="Digital Dichotomy Home">
+                    <img src="/logo.png" alt="Digital Dichotomy logo" class="w-8 h-8 rounded object-contain">
                     <span>DIGITAL DICHOTOMY</span>
                 </a>
                 <div class="flex items-center space-x-4">
@@ -305,15 +305,15 @@
                      </button>
                  </div>
                 <nav class="desktop-nav hidden md:flex items-center space-x-6 text-sm font-medium" role="navigation" aria-label="Main navigation">
-                      <a href="/sentinel.html" class="text-gray-300 hover:text-white transition-colors" aria-label="Access Sentinel Patent Database">
-                         Sentinel Database
+                      <a href="/sentinel.html" class="text-gray-300 hover:text-white transition-colors" aria-label="Access Interactive Patent Catalog">
+                         Patent Catalog
                      </a>
                     <a href="/pages/pat.html" class="text-gray-300 hover:text-white transition-colors" aria-label="Access Full Patent Archive Research Document">
                          Patent Archive
                      </a>
-                    <a href="/the-analog-self.html" class="flex items-center space-x-2 text-red-400 hover:text-white transition-colors font-bold" aria-label="Read The Analog Self">
-                        <img src="TheAnalogSelf.png" alt="The Analog Self Cover" class="w-8 h-8 rounded object-cover">
-                        <span>THE ANALOG SELF</span>
+                    <a href="/extraction-architecture.html" class="flex items-center space-x-2 text-red-400 hover:text-white transition-colors font-bold" aria-label="Read The Extraction Architecture">
+                        <img src="/assets/Extraction_Architecture.jpg" alt="The Extraction Architecture Cover" class="w-8 h-8 rounded object-cover">
+                        <span>THE EXTRACTION ARCHITECTURE</span>
                     </a>
                     <a href="/books.html" class="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-bold" aria-label="View all books by Fin Nyx">Books</a>
                     <a href="/pages/resource-hub.html" class="text-red-500 hover:text-white transition-colors font-bold" aria-label="Access Resource Hub">
@@ -358,6 +358,7 @@
                         aria-label="Search site content"
                         role="searchbox"
                     >
+                    <div id="mobile-search-results" class="mt-2 w-full bg-gray-800 border border-gray-600 rounded-lg shadow-xl hidden max-h-80 overflow-y-auto"></div>
                 </div>
                  <a href="/index.html" class="mobile-menu-link active" onclick="closeMobileMenu()">
                      <i data-feather="home"></i>
@@ -369,15 +370,15 @@
                  </a>
                  <a href="/sentinel.html" class="mobile-menu-link" onclick="closeMobileMenu()">
                     <i data-feather="database"></i>
-                    Sentinel Database
+                    Patent Catalog
                 </a>
                 <a href="/pages/pat.html" class="mobile-menu-link" onclick="closeMobileMenu()">
                     <i data-feather="archive"></i>
                     Patent Archive
                 </a>
-                <a href="/the-analog-self.html" class="mobile-menu-link" onclick="closeMobileMenu()">
+                <a href="/extraction-architecture.html" class="mobile-menu-link" onclick="closeMobileMenu()">
                     <i data-feather="book"></i>
-                    THE ANALOG SELF
+                    THE EXTRACTION ARCHITECTURE
                 </a>
                 <a href="/books.html" class="mobile-menu-link" onclick="closeMobileMenu()">
                     <i data-feather="shopping-bag"></i>
@@ -1465,7 +1466,8 @@
 
         function handleSearch(event) {
             const query = event.target.value.toLowerCase().trim();
-            const resultsDiv = document.getElementById('search-results');
+            const isMobile = event.target.id === 'mobile-search-input';
+            const resultsDiv = document.getElementById(isMobile ? 'mobile-search-results' : 'search-results');
 
             if (query.length < 2) {
                 resultsDiv.classList.add('hidden');
@@ -1528,9 +1530,14 @@
         document.addEventListener('click', function(event) {
             const searchInput = document.getElementById('search-input');
             const searchResults = document.getElementById('search-results');
-            
-            if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            const mobileSearchResults = document.getElementById('mobile-search-results');
+
+            if (searchInput && searchResults && !searchInput.contains(event.target) && !searchResults.contains(event.target)) {
                 searchResults.classList.add('hidden');
+            }
+            if (mobileSearchInput && mobileSearchResults && !mobileSearchInput.contains(event.target) && !mobileSearchResults.contains(event.target)) {
+                mobileSearchResults.classList.add('hidden');
             }
         });
 
