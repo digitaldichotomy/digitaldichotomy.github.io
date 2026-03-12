@@ -86,13 +86,8 @@ Research more at digitaldichotomy.github.io — link in bio.
 - **50s:** Speaker close-up, unsettling angle
 - **57s:** Website URL, white text on black
 
----
 
-## Metrics to Track
+https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20
+https://digitaldichotomy.com
+https://youtube.com/@digital-dichotomy
 
-| Metric | Target | Action if Below |
-|--------|--------|-----------------|
-| 3s Hold | 70%+ | Test Hook B |
-| 30s Retention | 50%+ | Tighten middle escalation |
-| CTR | 6%+ | Test darker thumbnail |
-| Comments | 15+ | Privacy anxiety resonates - engage |

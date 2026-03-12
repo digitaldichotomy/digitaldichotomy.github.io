@@ -1,4 +1,4 @@
-# Script 20: The Surveillance Economy Explained
+      # Script 20: The Surveillance Economy Explained
 
 **Duration:** 90 seconds  
 **Word Count:** 230 words  
@@ -37,6 +37,12 @@ Every click. Every search. Every location. Every connection.
 
 Not just what you do. Who you **are**. What you'll **buy**. How you'll **vote**.
 
+
+
+https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20
+https://digitaldichotomy.com
+https://youtube.com/@digital-dichotomy
+
 [30s PATTERN INTERRUPT - Slower, heavier]
 
 **Step 4:** They sell access.
@@ -62,6 +68,7 @@ Here's the math:
 **They** get the power.
 
 [65s - Escalate]
+
 
 This isn't a bug.
 
@@ -132,14 +139,8 @@ Full economy analysis at digitaldichotomy.github.io — link in bio.
 | CTR | 7%+ | Economic angle is accessible |
 | Shares | 20+ | Educational content gets shared |
 
----
 
-## Follow-Up Potential
 
-**VERY HIGH** - This is your **pillar content**. Create:
-- Part 2: Every Company In The Surveillance Economy
-- Part 3: How Much Your Data Is Worth (Per Person)
-- Part 4: How To Opt Out (Complete Guide)
-- Part 5: The Coming Privacy Economy (What's Next)
-
-**NOTE:** This script should be your **channel trailer alternative** - explains the "why" behind everything you document.
+https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20
+https://digitaldichotomy.com
+https://youtube.com/@digital-dichotomy
