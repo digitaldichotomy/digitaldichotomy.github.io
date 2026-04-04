@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Books by Fin Nyx | Digital Dichotomy</title>
+    <meta name="description" content="Seven books by Fin Nyx on surveillance, biometric privacy, algorithmic control, and how to reclaim your sovereignty. Patent-documented. Legally actionable. Countermeasures included.">
+    <meta name="keywords" content="Fin Nyx, surveillance books, privacy books, biometric sovereignty, algorithmic shadow, surveillance capitalism, digital rights">
+    <meta name="author" content="Fin Nyx">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://digitaldichotomy.github.io/books.html">
+    <meta property="og:title" content="7 books by Fin Nyx | Digital Dichotomy">
+    <meta property="og:description" content="Seven books on surveillance, biometric privacy, and reclaiming sovereignty in the age of extraction. Patent-documented. Available on Amazon.">
+    <meta property="og:image" content="https://digitaldichotomy.github.io/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="7 books by Fin Nyx | Digital Dichotomy">
+    <meta name="twitter:description" content="Seven books on surveillance, biometric privacy, and reclaiming sovereignty in the age of extraction.">
+    <meta name="twitter:image" content="https://digitaldichotomy.github.io/logo.png">
+    <link rel="canonical" href="https://digitaldichotomy.github.io/books.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Books by Fin Nyx",
+      "description": "Seven books on surveillance, biometric privacy, algorithmic control, and digital sovereignty.",
+      "url": "https://digitaldichotomy.github.io/books.html",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"item":{"@type":"Book","name":"The Right to an Un-Modeled Self","author":{"@type":"Person","name":"Fin Nyx"},"url":"https://www.amazon.com/dp/B0G1LT18CQ?tag=digitaldichot-20"}},
+        {"@type":"ListItem","position":2,"item":{"@type":"Book","name":"The Algorithmic Shadow","author":{"@type":"Person","name":"Fin Nyx"},"url":"https://www.amazon.com/dp/B0G1TVB2GB?tag=digitaldichot-20"}},
+        {"@type":"ListItem","position":3,"item":{"@type":"Book","name":"The Architecture of Covert Self-Invasion","author":{"@type":"Person","name":"Fin Nyx"},"url":"https://www.amazon.com/dp/B0G1M8JB1V?tag=digitaldichot-20"}},
+        {"@type":"ListItem","position":4,"item":{"@type":"Book","name":"Biological Sovereignty","author":{"@type":"Person","name":"Fin Nyx"},"url":"https://www.amazon.com/dp/B0G1LB1T6N?tag=digitaldichot-20"}},
+        {"@type":"ListItem","position":5,"item":{"@type":"Book","name":"The Silent Battlefield","author":{"@type":"Person","name":"Fin Nyx"},"url":"https://www.amazon.com/dp/B0G2CM8LH9?tag=digitaldichot-20"}},
+        {"@type":"ListItem","position":6,"item":{"@type":"Book","name":"The Transparent Self","author":{"@type":"Person","name":"Fin Nyx"},"url":"https://www.amazon.com/dp/B0DHYWY1KH?tag=digitaldichot-20"}},
+        {"@type":"ListItem","position":7,"item":{"@type":"Book","name":"The Extraction Architecture","author":{"@type":"Person","name":"Fin Nyx"},"url":"https://www.amazon.com/dp/B0GR9WP9CF?tag=digitaldichot-20"}}
+      ]
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com/3.4.0"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: { 500: '#dc2626', 600: '#b91c1c' }, secondary: { 500: '#f59e0b' } } } }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" onerror="console.warn('Feather Icons failed')"></script>
+    <style>
+        body { font-family: sans-serif; }
+
+        .scan-lines { position: relative; }
+        .scan-lines::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,0,0,0.18) 2px,
+                rgba(0,0,0,0.18) 4px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+        .scan-lines > * { position: relative; z-index: 2; }
+
+        .classified-stamp {
+            position: absolute;
+            top: 50%;
+            right: 6%;
+            transform: translateY(-50%) rotate(-12deg);
+            border: 4px solid rgba(220,38,38,0.12);
+            color: rgba(220,38,38,0.10);
+            font-family: 'Courier New', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.4rem 1.2rem;
+            pointer-events: none;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .book-card {
+            animation: fadeUp 0.55s ease forwards;
+            opacity: 0;
+        }
+        .book-card:nth-child(1) { animation-delay: 0.10s; }
+        .book-card:nth-child(2) { animation-delay: 0.20s; }
+        .book-card:nth-child(3) { animation-delay: 0.30s; }
+        .book-card:nth-child(4) { animation-delay: 0.40s; }
+        .book-card:nth-child(5) { animation-delay: 0.50s; }
+        .book-card:nth-child(6) { animation-delay: 0.60s; }
+        .book-card:nth-child(7) { animation-delay: 0.70s; }
+
+        .exhibit-label { font-family: 'Courier New', monospace; letter-spacing: 0.12em; }
+        .hero-overline  { font-family: 'Courier New', monospace; letter-spacing: 0.2em; }
+        .hero-h1        { font-family: Georgia, 'Times New Roman', serif; }
+
+        .cover-wrap { aspect-ratio: 3 / 4; overflow: hidden; }
+        .cover-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+        .book-card:hover .cover-wrap img { transform: scale(1.04); }
+
+        .amazon-btn:hover { box-shadow: 0 0 16px rgba(220,38,38,0.45); }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-200">
+
+    <!-- NAV -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center space-x-2 text-white font-bold text-lg">
+                    <i data-feather="shield-off" class="text-red-500"></i>
+                    <span>DIGITAL DICHOTOMY</span>
+                </a>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="pages/blog.html" class="text-gray-300 hover:text-white transition-colors">BLOG / FIELD NOTES</a>
+                    <a href="sentinel.html" class="text-gray-300 hover:text-white transition-colors">Patent DB</a>
+                    <a href="the-analog-self.html" class="text-gray-300 hover:text-white transition-colors">The Analog Self</a>
+                    <a href="books.html" class="px-3 py-1 bg-red-600 text-white rounded-lg font-bold">Books</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="scan-lines bg-gray-950 relative overflow-hidden py-20 md:py-28 border-b border-gray-800">
+        <div class="classified-stamp">CLASSIFIED</div>
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <p class="hero-overline text-red-500 text-xs font-bold uppercase mb-4 tracking-widest">EXHIBIT FILE — FIN NYX</p>
+            <h1 class="hero-h1 text-5xl md:text-7xl font-bold text-white mb-5 leading-none tracking-tight">
+            </h1>
+            <p class="text-gray-300 text-xl md:text-2xl font-medium mb-4">
+                7 books. Patent Evidence. Legal Frameworks. Countermeasures.
+            </p>
+            <div class="w-24 h-px bg-red-600 mx-auto mb-6"></div>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-10 text-base leading-relaxed">
+                From WiFi breath-rate harvesting to biometric profiling patents, this six-volume series documents
+                the surveillance infrastructure built around you — and gives you the tools to push back.
+                Every claim is anchored in filed patents, disclosed data practices, and documented legal precedents.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20"
+                   target="_blank" rel="noopener sponsored noreferrer"
+                   class="amazon-btn inline-flex items-center justify-center gap-2 px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all text-sm tracking-wide">
+                    View All 7 Books on Amazon &rarr;
+                </a>
+                <a href="https://www.amazon.com/dp/B0G1M8JB1V?tag=digitaldichot-20"
+                   target="_blank" rel="noopener sponsored noreferrer"
+                   class="inline-flex items-center justify-center gap-2 px-8 py-3 border border-gray-600 hover:border-red-500 text-gray-300 hover:text-white font-medium rounded-lg transition-all text-sm">
+                    Start with the Architecture &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOK GRID -->
+    <section class="py-16 md:py-24">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="w-8 h-px bg-red-600"></div>
+                <h2 class="exhibit-label text-red-500 text-xs font-bold uppercase tracking-widest">The Evidence</h2>
+                <div class="flex-1 h-px bg-gray-800"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- EXHIBIT 1 -->
+                <div class="book-card bg-gray-800 border border-gray-700 hover:border-red-600/50 rounded-xl overflow-hidden transition-colors duration-300 flex flex-col">
+                    <div class="cover-wrap">
+                        <img src="THE RIGHT TO AN UNMODELED SELF(3).jpeg"
+                             alt="The Right to an Un-Modeled Self by Fin Nyx"
+                             loading="lazy">
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <p class="exhibit-label text-red-500 text-xs font-bold uppercase mb-2">EXHIBIT 01</p>
+                        <h3 class="text-white font-bold text-lg leading-snug mb-3 line-clamp-2">The Right to an Un-Modeled Self</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+                            Your behavioral data is being used to build a predictive twin — a model that follows
+                            you through every system. This book maps the legal and technical case for opting out.
+                        </p>
+                        <a href="https://www.amazon.com/dp/B0G1LT18CQ?tag=digitaldichot-20"
+                           target="_blank" rel="noopener sponsored noreferrer"
+                           class="amazon-btn block w-full text-center px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all text-sm">
+                            Get on Amazon &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EXHIBIT 2 -->
+                <div class="book-card bg-gray-800 border border-gray-700 hover:border-red-600/50 rounded-xl overflow-hidden transition-colors duration-300 flex flex-col">
+                    <div class="cover-wrap">
+                        <img src="THE ALGORITHMIC SHADOW SURVEILLANCE, SOVEREINITY, AND THE CHOICE BEFORE US.png"
+                             alt="The Algorithmic Shadow by Fin Nyx"
+                             loading="lazy">
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <p class="exhibit-label text-red-500 text-xs font-bold uppercase mb-2">EXHIBIT 02</p>
+                        <h3 class="text-white font-bold text-lg leading-snug mb-3 line-clamp-2">The Algorithmic Shadow</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+                            Surveillance, sovereignty, and the choice before us. A forensic look at how algorithmic
+                            systems cast permanent shadows over identity, opportunity, and autonomy.
+                        </p>
+                        <a href="https://www.amazon.com/dp/B0G1TVB2GB?tag=digitaldichot-20"
+                           target="_blank" rel="noopener sponsored noreferrer"
+                           class="amazon-btn block w-full text-center px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all text-sm">
+                            Get on Amazon &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EXHIBIT 3 -->
+                <div class="book-card bg-gray-800 border border-gray-700 hover:border-red-600/50 rounded-xl overflow-hidden transition-colors duration-300 flex flex-col">
+                    <div class="cover-wrap">
+                        <img src="Architecture of Covert Self-Invasion.png"
+                             alt="The Architecture of Covert Self-Invasion by Fin Nyx"
+                             loading="lazy">
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <p class="exhibit-label text-red-500 text-xs font-bold uppercase mb-2">EXHIBIT 03</p>
+                        <h3 class="text-white font-bold text-lg leading-snug mb-3 line-clamp-2">The Architecture of Covert Self-Invasion</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+                            The systems invading your privacy weren't built by accident — they were patented and
+                            engineered. This book dissects the technical blueprints and legal structures that make it possible.
+                        </p>
+                        <a href="https://www.amazon.com/dp/B0G1M8JB1V?tag=digitaldichot-20"
+                           target="_blank" rel="noopener sponsored noreferrer"
+                           class="amazon-btn block w-full text-center px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all text-sm">
+                            Get on Amazon &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EXHIBIT 4 -->
+                <div class="book-card bg-gray-800 border border-gray-700 hover:border-red-600/50 rounded-xl overflow-hidden transition-colors duration-300 flex flex-col">
+                    <div class="cover-wrap">
+                        <img src="Biological_Sovereignty_cover.jpeg"
+                             alt="Biological Sovereignty by Fin Nyx"
+                             loading="lazy">
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <p class="exhibit-label text-red-500 text-xs font-bold uppercase mb-2">EXHIBIT 04</p>
+                        <h3 class="text-white font-bold text-lg leading-snug mb-3 line-clamp-2">Biological Sovereignty</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+                            Your body is a data stream — gait, gaze, heartbeat, breath. This book covers
+                            biometric harvesting systems and the legal frameworks for asserting ownership of your biological data.
+                        </p>
+                        <a href="https://www.amazon.com/dp/B0G1LB1T6N?tag=digitaldichot-20"
+                           target="_blank" rel="noopener sponsored noreferrer"
+                           class="amazon-btn block w-full text-center px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all text-sm">
+                            Get on Amazon &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EXHIBIT 5 -->
+                <div class="book-card bg-gray-800 border border-gray-700 hover:border-red-600/50 rounded-xl overflow-hidden transition-colors duration-300 flex flex-col">
+                    <div class="cover-wrap">
+                        <img src="TheAnalogSelf.png"
+                             alt="The Silent Battlefield by Fin Nyx"
+                             loading="lazy">
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <p class="exhibit-label text-red-500 text-xs font-bold uppercase mb-2">EXHIBIT 05</p>
+                        <h3 class="text-white font-bold text-lg leading-snug mb-3 line-clamp-2">The Silent Battlefield</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+                            The war over your data is fought without declarations, in servers you'll never see.
+                            This book maps the invisible infrastructure and gives you a strategic exit.
+                        </p>
+                        <a href="https://www.amazon.com/dp/B0G2CM8LH9?tag=digitaldichot-20"
+                           target="_blank" rel="noopener sponsored noreferrer"
+                           class="amazon-btn block w-full text-center px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all text-sm">
+                            Get on Amazon &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EXHIBIT 6 -->
+                <div class="book-card bg-gray-800 border border-gray-700 hover:border-red-600/50 rounded-xl overflow-hidden transition-colors duration-300 flex flex-col">
+                    <div class="cover-wrap">
+                        <img src="TheTransparentSelf.png"
+                             alt="The Transparent Self by Fin Nyx"
+                             loading="lazy">
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <p class="exhibit-label text-red-500 text-xs font-bold uppercase mb-2">EXHIBIT 06</p>
+                        <h3 class="text-white font-bold text-lg leading-snug mb-3 line-clamp-2">The Transparent Self</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+                            Surveillance capitalism depends on your visibility. This book examines how radical
+                            transparency was engineered into modern life — and how to reclaim opacity as a right.
+                        </p>
+                        <a href="https://www.amazon.com/dp/B0DHYWY1KH?tag=digitaldichot-20"
+                           target="_blank" rel="noopener sponsored noreferrer"
+                           class="amazon-btn block w-full text-center px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all text-sm">
+                            Get on Amazon &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- EXHIBIT 7 - THE EXTRACTION ARCHITECTURE -->
+                <div class="book-card bg-gray-800 border-2 border-orange-600/50 hover:border-orange-500 rounded-xl overflow-hidden transition-colors duration-300 flex flex-col">
+                    <div class="cover-wrap relative">
+                        <div class="absolute top-2 left-2 z-10">
+                            <span class="px-2 py-1 bg-orange-600 text-white text-xs font-bold rounded">FREE ONLINE</span>
+                        </div>
+                        <img src="assets/Extraction_Architecture.jpg"
+                             alt="The Extraction Architecture by Fin Nyx"
+                             loading="lazy">
+                    </div>
+                    <div class="p-5 flex flex-col flex-1">
+                        <p class="exhibit-label text-orange-500 text-xs font-bold uppercase mb-2">EXHIBIT 07 — VOLUME 7</p>
+                        <h3 class="text-white font-bold text-lg leading-snug mb-3 line-clamp-2">The Extraction Architecture</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-1">
+                            Neural interfaces, cognitive harvesting, and the industrialization of harm. Documents the 7-stage Siphoning Pipeline, BCI proliferation, and the legal framework for challenging industrialized cognitive harm.
+                        </p>
+                        <div class="flex flex-col gap-2">
+                            <a href="extraction-architecture.html"
+                               class="amazon-btn block w-full text-center px-4 py-2.5 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition-all text-sm">
+                                Read Free Online &rarr;
+                            </a>
+                            <a href="https://www.amazon.com/dp/B0GR9WP9CF?tag=digitaldichot-20"
+                               target="_blank" rel="noopener sponsored noreferrer"
+                               class="block w-full text-center px-4 py-2 border border-gray-600 hover:border-orange-500 text-gray-400 hover:text-white text-sm rounded-lg transition-all">
+                                Get on Amazon ($6.99)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /grid -->
+        </div>
+    </section>
+
+    <!-- WHY THIS SERIES -->
+    <section class="bg-red-950/25 border-y border-red-900/30 py-14">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="flex flex-col items-center gap-3">
+                    <i data-feather="file-text" class="text-red-400 w-8 h-8"></i>
+                    <p class="exhibit-label text-white font-bold text-sm uppercase tracking-widest">Patent-Documented</p>
+                    <p class="text-gray-400 text-sm">Every surveillance technique traced to real patent filings and disclosed corporate R&amp;D.</p>
+                </div>
+                <div class="flex flex-col items-center gap-3">
+                    <i data-feather="shield" class="text-red-400 w-8 h-8"></i>
+                    <p class="exhibit-label text-white font-bold text-sm uppercase tracking-widest">Legally Actionable</p>
+                    <p class="text-gray-400 text-sm">Rights frameworks, opt-out mechanisms, and legal precedents you can use today.</p>
+                </div>
+                <div class="flex flex-col items-center gap-3">
+                    <i data-feather="tool" class="text-red-400 w-8 h-8"></i>
+                    <p class="exhibit-label text-white font-bold text-sm uppercase tracking-widest">Countermeasures Included</p>
+                    <p class="text-gray-400 text-sm">Practical, technical, and legal countermeasures in every volume — not just analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUNDLE CTA -->
+    <section class="bg-gray-800 py-16 border-b border-gray-700">
+        <div class="container mx-auto px-4 max-w-3xl text-center">
+            <p class="exhibit-label text-gray-500 text-xs uppercase tracking-widest mb-3">Fin Nyx — Author</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-snug">
+                All 7 books available now on Amazon
+            </h2>
+            <p class="text-gray-400 mb-8 text-base">
+                Read the full case file — or start with the volume that speaks to your situation.
+            </p>
+            <a href="https://www.amazon.com/stores/Fin-Nyx/author/B0G1VDFFDH?tag=digitaldichot-20"
+               target="_blank" rel="noopener sponsored noreferrer"
+               class="amazon-btn inline-flex items-center justify-center gap-2 px-10 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-all text-base tracking-wide">
+                View All 7 books on Amazon &rarr;
+            </a>
+            <p class="text-gray-600 text-xs mt-4">Kindle and paperback editions available</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-gray-400 py-8">
+        <div class="container mx-auto px-4 text-center text-sm">
+            <p>&copy; 2025 Fin Nyx. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        if (typeof feather !== 'undefined') feather.replace();
+    </script>
+</body>
+</html>
