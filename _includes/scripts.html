@@ -1,3 +1,15 @@
+<!-- Unified Scripts Include -->
+<!-- Feather Icons -->
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 <script>
-    // Social share script placeholder
+// Initialize Feather Icons
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof feather !== 'undefined') {
+        feather.replace();
+    }
+});
 </script>
+
+<!-- Site Scripts -->
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/social-share.js' | relative_url }}"></script>

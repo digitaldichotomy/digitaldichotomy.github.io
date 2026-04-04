@@ -1,3 +1,50 @@
-<footer>
-    <p>&copy; 2025 {{ site.title }}. All rights reserved.</p>
+<!-- Unified Footer -->
+<footer class="bg-black text-gray-400 py-12 border-t border-gray-800" role="contentinfo">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <!-- Brand -->
+            <div class="md:col-span-2">
+                <a href="{{ '/' | relative_url }}" class="flex items-center space-x-2 text-white font-bold text-lg mb-4">
+                    <i data-feather="shield-off" class="text-red-500 w-6 h-6"></i>
+                    <span>DIGITAL DICHOTOMY</span>
+                </a>
+                <p class="text-gray-500 text-sm leading-relaxed max-w-md">
+                    Academic research on biofield surveillance infrastructure, cognitive sovereignty, and defensive countermeasures.
+                    Evidence-based analysis anchored in filed patents and technical documentation.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Research</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="{{ '/pages/pat.html' | relative_url }}" class="text-gray-400 hover:text-white transition-colors">Sentinel Database</a></li>
+                    <li><a href="{{ '/books.html' | relative_url }}" class="text-gray-400 hover:text-white transition-colors">Books</a></li>
+                    <li><a href="{{ '/the-analog-self.html' | relative_url }}" class="text-gray-400 hover:text-white transition-colors">The Analog Self</a></li>
+                    <li><a href="{{ '/pages/blog.html' | relative_url }}" class="text-gray-400 hover:text-white transition-colors">Blog / Field Notes</a></li>
+                </ul>
+            </div>
+
+            <!-- Action Tools -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Action Tools</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="{{ '/pages/resource-hub.html' | relative_url }}" class="text-gray-400 hover:text-white transition-colors">Resource Hub</a></li>
+                    <li><a href="{{ '/pages/post-notice-digital-battery.html' | relative_url }}" class="text-gray-400 hover:text-white transition-colors">Digital Battery Notice</a></li>
+                    <li><a href="{{ '/pages/post-class-action-guide.html' | relative_url }}" class="text-gray-400 hover:text-white transition-colors">Class Action Guide</a></li>
+                    <li><a href="{{ '/pages/post-advocacy-toolkit.html' | relative_url }}" class="text-gray-400 hover:text-white transition-colors">Advocacy Toolkit</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+            <p>&copy; 2025 Fin Nyx. All rights reserved.</p>
+            <div class="flex items-center gap-6">
+                <a href="{{ '/pages/appendices.html' | relative_url }}" class="hover:text-white transition-colors">Technical Appendices</a>
+                <span class="text-gray-600">|</span>
+                <span class="text-gray-600">Evidence-Based Research</span>
+            </div>
+        </div>
+    </div>
 </footer>
