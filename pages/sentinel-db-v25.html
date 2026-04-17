@@ -1,0 +1,688 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENTINEL_DB v2.5: Expanded Surveillance Technologies | Digital Dichotomy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #64748b;
+            --accent: #dc2626;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--primary);
+        }
+        
+        .serif {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            width: 280px;
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+            z-index: 50;
+            background: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-content {
+            margin-left: 320px;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+        
+        .threat-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 640px) {
+            .threat-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        .threat-card {
+            background: linear-gradient(135deg, #fef2f2 0%, #fff 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .threat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .defense-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #fff 100%);
+            border-left: 4px solid #16a34a;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .critical-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .defense-badge {
+            background: #16a34a;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(100, 116, 139, 0.7) 100%);
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+            margin: 3rem 0;
+        }
+        
+        .citation-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted var(--accent);
+        }
+        
+        .citation-link:hover {
+            background: rgba(220, 38, 38, 0.1);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #374151;
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        @media (max-width: 1024px) {
+            .toc-fixed {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 0 1rem;
+            }
+
+            .mermaid-control-btn:not(.reset-zoom) {
+                display: none;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 1280px) {
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+  <body class="bg-slate-50">
+    <div style="background:#1e293b;padding:12px 24px;font-family:'Inter',sans-serif;font-size:13px;display:flex;align-items:center;gap:20px;border-bottom:2px solid #dc2626;">
+        <a href="pat.html" style="color:#dc2626;text-decoration:none;font-weight:600;">← SENTINEL_DB v2.6 Main Database</a>
+        <span style="color:#64748b;">|</span>
+        <a href="../index.html" style="color:#94a3b8;text-decoration:none;">Digital Dichotomy</a>
+        <span style="margin-left:auto;color:#64748b;font-size:11px;">SENTINEL_DB V2.5 — Expanded Intelligence</span>
+    </div>
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed">
+      <h3 class="text-sm font-bold text-slate-700 mb-4 uppercase tracking-wide">Contents</h3>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <a href="#executive-summary" class="text-slate-600 hover:text-red-600 transition-colors">Executive Summary</a>
+        </li>
+        <li>
+          <a href="#threat-assessment" class="text-slate-600 hover:text-red-600 transition-colors">I. Critical Threat Assessment</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs text-slate-500">
+            <li>
+              <a href="#bci-proliferation" class="hover:text-red-600">Invasive BCI Proliferation</a>
+            </li>
+            <li>
+              <a href="#data-vulnerabilities" class="hover:text-red-600">Neural Data Security</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#biometric-enhancement" class="text-slate-600 hover:text-red-600 transition-colors">II. Direct Biometric Enhancement</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs text-slate-500">
+            <li>
+              <a href="#ocular-surveillance" class="hover:text-red-600">Ocular-Cognitive Surveillance</a>
+            </li>
+            <li>
+              <a href="#voice-intelligence" class="hover:text-red-600">Voice-Based Intelligence</a>
+            </li>
+            <li>
+              <a href="#physiological-channels" class="hover:text-red-600">Emerging Physiological Channels</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#indirect-field" class="text-slate-600 hover:text-red-600 transition-colors">III. Indirect Field Methods</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs text-slate-500">
+            <li>
+              <a href="#microwave-surveillance" class="hover:text-red-600">Microwave Cardiac Monitoring</a>
+            </li>
+            <li>
+              <a href="#acoustic-innovation" class="hover:text-red-600">Acoustic Surveillance</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#control-layer" class="text-slate-600 hover:text-red-600 transition-colors">IV. AI-Driven Influence Systems</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs text-slate-500">
+            <li>
+              <a href="#digital-twins" class="hover:text-red-600">Digital Twin Modeling</a>
+            </li>
+            <li>
+              <a href="#closed-loop" class="hover:text-red-600">Closed-Loop Modulation</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#dew-influence" class="text-slate-600 hover:text-red-600 transition-colors">V. DEW Influence Expansion</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs text-slate-500">
+            <li>
+              <a href="#neuro-magnetic" class="hover:text-red-600">Neuro-Magnetic Weaponization</a>
+            </li>
+            <li>
+              <a href="#acoustic-holography" class="hover:text-red-600">Acoustic Holography</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#defensive-gaps" class="text-slate-600 hover:text-red-600 transition-colors">VI. Defensive Architecture Gaps</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs text-slate-500">
+            <li>
+              <a href="#neural-protection" class="hover:text-red-600">Neural Interface Protection</a>
+            </li>
+            <li>
+              <a href="#rf-countermeasures" class="hover:text-red-600">RF/EM Countermeasures</a>
+            </li>
+            <li>
+              <a href="#legal-frameworks" class="hover:text-red-600">Legal/Regulatory Framework</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#defense-protocols" class="text-slate-600 hover:text-red-600 transition-colors">VII. Active Defense Protocols</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs text-slate-500">
+            <li>
+              <a href="#protocol-reassessment" class="hover:text-red-600">Protocol Efficacy</a>
+            </li>
+            <li>
+              <a href="#threat-responses" class="hover:text-red-600">Threat-Specific Responses</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#strategic-assessment" class="text-slate-600 hover:text-red-600 transition-colors">VIII. Strategic Assessment</a>
+          <ul class="ml-3 mt-1 space-y-1 text-xs text-slate-500">
+            <li>
+              <a href="#geopolitical-competition" class="hover:text-red-600">Geopolitical Competition</a>
+            </li>
+            <li>
+              <a href="#criticality-recalibration" class="hover:text-red-600">Criticality Recalibration</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="relative py-12 mb-16">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 rounded-2xl overflow-hidden">
+          <img src="https://kimi-img.moonshot.cn/pub/icon/spinner.svg" alt="Abstract visualization of neural networks and surveillance technology" class="w-full h-full object-cover opacity-20" size="wallpaper" aspect="wide" query="abstract surveillance technology" referrerpolicy="no-referrer" />
+          <div class="hero-overlay absolute inset-0"></div>
+        </div>
+
+        <div class="relative z-10 text-white px-4 sm:px-8 py-12">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <div class="flex items-center space-x-2 mb-4">
+                <span class="critical-badge">EYES ONLY</span>
+                <span class="text-sm text-slate-300">STATUS: COMPROMISED</span>
+              </div>
+              <h1 class="text-4xl md:text-5xl font-bold mb-6 serif italic">
+                SENTINEL_DB LEAK_V2.5
+              </h1>
+              <p class="text-lg md:text-xl text-slate-200 mb-6">
+                Expanded Surveillance Technologies & Countermeasures Database
+              </p>
+              <div class="flex flex-wrap gap-4 text-sm">
+                <div class="bg-red-500/20 px-3 py-1 rounded-full">
+                  <i class="fas fa-brain mr-1"></i> Neural Interface Proliferation
+                </div>
+                <div class="bg-red-500/20 px-3 py-1 rounded-full">
+                  <i class="fas fa-shield-alt mr-1"></i> Critical Defense Gaps
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+              <h3 class="text-white font-semibold mb-4">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                Urgent Action Required
+              </h3>
+              <p class="text-slate-200 text-sm mb-4">
+                2026 developments in invasive brain-computer interfaces require immediate database expansion and defensive architecture enhancement.
+              </p>
+              <div class="space-y-2 text-xs text-slate-300">
+                <div>• Neuralink mass production initiated</div>
+                <div>• Chinese competitive ecosystem emerging</div>
+                <div>• No effective consumer countermeasures</div>
+                <div>• 30+ CRITICAL-rated technologies identified</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="mb-16">
+        <div class="bg-white rounded-xl shadow-lg p-8 border border-slate-200">
+          <h2 class="text-2xl font-bold mb-6 serif">Executive Summary</h2>
+          <div class="prose prose-slate max-w-none">
+            <p class="text-lg text-slate-700 mb-6">
+              The SENTINEL_DB LEAK_V2.5 surveillance database requires urgent expansion to address 2026 developments in invasive brain-computer interfaces, particularly Neuralink's mass production initiative and China's competitive NeuroXess/NeuroLinker ecosystem.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                <h4 class="font-semibold text-red-800 mb-2">Critical Gaps Identified</h4>
+                <p class="text-sm text-red-700">Neural data protection remains structurally inadequate against direct cortical access threats</p>
+              </div>
+              <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                <h4 class="font-semibold text-orange-800 mb-2">Database Expansion</h4>
+                <p class="text-sm text-orange-700">25 CRITICAL-rated entries would expand to 30+ with appropriate technology inclusion</p>
+              </div>
+              <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                <h4 class="font-semibold text-yellow-800 mb-2">Countermeasure Deficiency</h4>
+                <p class="text-sm text-yellow-700">No consumer-grade countermeasures achieve above ★★☆ efficacy rating</p>
+              </div>
+            </div>
+
+            <p class="text-slate-600">
+              The convergence of manufacturing scale achievement, competitive ecosystem development, and fundamental security architecture deficiencies creates unprecedented surveillance capabilities with no equivalent defensive posture. This assessment documents the technological proliferation, analyzes critical vulnerabilities, and identifies urgent countermeasure development priorities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Critical Threat Assessment -->
+      <section id="threat-assessment" class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 serif">I. Critical Threat Assessment: 2026 Neural Interface Expansion</h2>
+
+        <!-- BCI Proliferation -->
+        <div id="bci-proliferation" class="mb-12">
+          <h3 class="text-2xl font-semibold mb-6">I.1 Invasive Brain-Computer Interface Proliferation</h3>
+
+          <!-- Neuralink -->
+          <div class="threat-card mb-8">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-xl font-semibold">I.1.1 Neuralink Mass Production Initiative (2026)</h4>
+              <span class="critical-badge">CRITICAL-N</span>
+            </div>
+
+            <p class="mb-4">
+              The commercialization trajectory of <strong>Neuralink</strong> has undergone a fundamental inflection point in early 2026, transforming from experimental medical device development to scalable manufacturing operations with profound surveillance implications. According to securities research documentation from Aijian Securities dated January 12, 2026, <strong>Elon Musk publicly announced on December 31, 2025</strong>, that Neuralink would commence <a href="https://pdf.dfcfw.com/pdf/H3_AP202601121816946482_1.pdf?1768238118000.pdf" class="citation-link">"high-volume production of brain-computer interface devices"</a> with transition to <strong>"more streamlined and almost fully automated surgical procedures"</strong>.
+            </p>
+
+            <div class="bg-slate-100 p-4 rounded-lg mb-4">
+              <h5 class="font-semibold mb-3">Neuralink N1 Implant Specifications (2026)</h5>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                <div>
+                  <div class="text-slate-600">Electrode Count</div>
+                  <div class="font-semibold">1,024</div>
+                </div>
+                <div>
+                  <div class="text-slate-600">Spatial Resolution</div>
+                  <div class="font-semibold">~50 μm</div>
+                </div>
+                <div>
+                  <div class="text-slate-600">Signal Bandwidth</div>
+                  <div class="font-semibold">>200 Mbps</div>
+                </div>
+                <div>
+                  <div class="text-slate-600">Patient-Days</div>
+                  <div class="font-semibold">>20,000</div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-slate-600">
+              The automated surgical procedures reduce specialized medical infrastructure requirements, potentially expanding addressable markets beyond traditional clinical indications toward elective applications with ambiguous regulatory classification. The countermeasure gap is structurally unaddressed—no confirmed countermeasure provides effective protection against direct neural signal acquisition at the cortical level.
+            </p>
+          </div>
+
+          <!-- NeuroXess -->
+          <div class="threat-card mb-8">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-xl font-semibold">I.1.2 Chinese Competitive Response: NeuroXess Surface Implant</h4>
+              <span class="critical-badge">CRITICAL-N</span>
+            </div>
+
+            <p class="mb-4">
+              The emergence of <strong>NeuroXess (神州智芯, "China Divine Intelligence Chip")</strong> as a clinically validated alternative represents strategic diversification of invasive BCI capabilities with distinct surveillance implications. Founded in 2021 and headquartered in Shanghai, NeuroXess has achieved human implantation milestones parallel to Neuralink's progress while employing fundamentally different technical architecture.
+            </p>
+
+            <div class="bg-slate-100 p-4 rounded-lg mb-4">
+              <h5 class="font-semibold mb-3">Clinical Validation Timeline</h5>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span>First human implantation</span>
+                  <span class="font-semibold">Late 2025</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Mind-controlled cursor operation</span>
+                  <span class="font-semibold">Within 5 days</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Cumulative human implants</span>
+                  <span class="font-semibold">54 (by Dec 2025)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Manufacturing facility</span>
+                  <span class="font-semibold">Nanchang, H2 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-slate-600">
+              The surface electrode architecture may offer enhanced deployment flexibility: wireless, fully implanted configuration with subcutaneous chest-placed power components eliminating external hardware that might enable RF-based detection or interference. The claimed unique capability for real-time Chinese language decoding suggests sophisticated signal processing enabling content-specific neural monitoring beyond motor intention.
+            </p>
+          </div>
+
+          <!-- NeuroLinker -->
+          <div class="threat-card mb-8">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-xl font-semibold">I.1.3 NeuroLinker (灵汐科技) BCI Chip Platform</h4>
+              <span class="critical-badge">CRITICAL</span>
+            </div>
+
+            <p class="mb-4">
+              The <strong>Beijing Brain Science and Intelligence Technology Research Center's commercialization</strong> through NeuroLinker addresses the critical semiconductor infrastructure layer enabling diverse BCI form factors and applications. While NeuroXess focuses on electrode design, NeuroLinker specializes in custom neural signal processing ASICs, creating platform capabilities that accelerate ecosystem development.
+            </p>
+
+            <div class="bg-slate-100 p-4 rounded-lg mb-4">
+              <h5 class="font-semibold mb-3">NeuroLinker NeroCore® Specifications</h5>
+              <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                <div>
+                  <div class="text-slate-600">Process Node</div>
+                  <div class="font-semibold">22nm CMOS</div>
+                </div>
+                <div>
+                  <div class="text-slate-600">Channel Capacity</div>
+                  <div class="font-semibold">1,024 synchronous</div>
+                </div>
+                <div>
+                  <div class="text-slate-600">Power Consumption</div>
+                  <div class="font-semibold">3.8 mW/channel</div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-slate-600">
+              The power efficiency advantage enables extended battery life for fully implanted systems and reduces thermal management constraints that limit device miniaturization. Market projections indicate anticipated 2026 chip shipments of 100,000 units targeting 60% domestic market share in implantable BCI chips.
+            </p>
+          </div>
+        </div>
+
+        <!-- Data Vulnerabilities -->
+        <div id="data-vulnerabilities" class="mb-12">
+          <h3 class="text-2xl font-semibold mb-6">I.2 Neural Data Security Vulnerabilities</h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="threat-card">
+              <h4 class="text-lg font-semibold mb-3">Information Exfiltration Risks</h4>
+              <p class="text-sm text-slate-600 mb-3">
+                The core neural signals acquired by invasive BCIs encode information about intention, attention, emotional state, and potentially specific cognitive content that transcends behavioral indicators addressed by existing countermeasures.
+              </p>
+              <div class="text-xs text-slate-500">
+                <div>• Wireless transmission interception</div>
+                <div>• External computing integration</div>
+                <div>• Surgical/physical access</div>
+                <div>• Supply chain compromise</div>
+              </div>
+            </div>
+
+            <div class="threat-card">
+              <h4 class="text-lg font-semibold mb-3">Authentication Fusion Threats</h4>
+              <p class="text-sm text-slate-600 mb-3">
+                Patent US7751877B2 documents real-time brainwave authentication and multi-modal biometric fusion, creating compound authentication systems where compromise of any single modality may enable inference of others.
+              </p>
+              <div class="text-xs text-slate-500">
+                <div>• Irreversible neural biometric compromise</div>
+                <div>• Continuous authentication systems</div>
+                <div>• Correlation analysis vulnerability</div>
+                <div>• Permanent vulnerability creation</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Direct Biometric Enhancement -->
+      <section id="biometric-enhancement" class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 serif">II. Tier I Direct Biometric: Advanced Modalities</h2>
+
+        <!-- Ocular-Cognitive Surveillance -->
+        <div id="ocular-surveillance" class="mb-12">
+          <h3 class="text-2xl font-semibold mb-6">II.1 Ocular-Cognitive Surveillance Enhancement</h3>
+
+          <div class="threat-card mb-6">
+            <h4 class="text-xl font-semibold mb-4">II.1.1 Pupil Response Cognitive Load Estimation</h4>
+            <p class="mb-4">
+              Research by <strong>Xiaojun Xu at the University of Michigan</strong> has developed weighted pupil response analysis for stress and cognitive load quantification, representing substantial advancement beyond foundational pupil dilation monitoring. The methodological innovation addresses confounding by luminance adaptation, accommodation, and autonomic arousal.
+            </p>
+
+            <div class="bg-slate-100 p-4 rounded-lg mb-4">
+              <h5 class="font-semibold mb-3">Pupil Response Components</h5>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <div class="font-semibold text-red-700">Sustained Diameter Fluctuations</div>
+                  <div class="text-slate-600">Cognitive load, working memory demand</div>
+                </div>
+                <div>
+                  <div class="font-semibold text-green-700">Initial Constriction Velocity</div>
+                  <div class="text-slate-600">Luminance, accommodation</div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-slate-600">
+              By machine learning-based decomposition, the Xu methodology isolates cognitively relevant dynamics with reported classification accuracy exceeding 85% for working memory load discrimination—enabling reliable cognitive state inference in dynamic, uncontrolled environments.
+            </p>
+          </div>
+
+          <div class="threat-card mb-6">
+            <h4 class="text-xl font-semibold mb-4">II.1.2 Acoustic Eye Tracking</h4>
+            <p class="mb-4">
+              <a href="https://www.myipo.gov.my/patent-basics/" class="citation-link">Patent US20240418231 (MIT)</a> documents acoustic eye tracking—eye movement inference through audio signature analysis without visual line-of-sight. This capability fundamentally alters surveillance geometry by enabling attentional tracking where camera placement is impractical.
+            </p>
+
+            <div class="bg-slate-100 p-4 rounded-lg mb-4">
+              <h5 class="font-semibold mb-3">Acoustic Signature Sources</h5>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span>Extraocular muscle contraction</span>
+                  <span class="font-semibold">30–80 Hz</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Orbital tissue displacement</span>
+                  <span class="font-semibold">10–50 Hz</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Eyelid motion aerodynamics</span>
+                  <span class="font-semibold">100–500 Hz</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-slate-600">
+              Machine learning models trained on synchronized audio-video data achieve reported gaze direction inference accuracy of 2–3 degrees—substantially inferior to camera-based approaches but sufficient for attention direction inference. The integration with voice analysis systems creates multi-modal surveillance without optical access.
+            </p>
+          </div>
+        </div>
+
+        <!-- Voice Intelligence -->
+        <div id="voice-intelligence" class="mb-12">
+          <h3 class="text-2xl font-semibold mb-6">II.2 Voice-Based Emotion Intelligence</h3>
+
+          <div class="threat-card mb-6">
+            <h4 class="text-xl font-semibold mb-4">II.2.1 Google Emotionally Responsive Voice Assistant</h4>
+            <p class="mb-4">
+              <a href="https://www.nasdaq.com/articles/google-is-adding-empathy-to-its-smart-speakers" class="citation-link">Google's 2023 patent applications</a> document emotionally responsive voice assistant technology extending vocal biomarker analysis to real-time emotional inference with adaptive response modulation. The system performs "query interpretation on the transcription of the user's voice command to determine the emotional state, as well as the severity of that emotional state."
+            </p>
+
+            <div class="bg-slate-100 p-4 rounded-lg mb-4">
+              <h5 class="font-semibold mb-3">Bidirectional Influence Architecture</h5>
+              <div class="space-y-3 text-sm">
+                <div>
+                  <div class="font-semibold text-red-700">Surveillance Output</div>
+                  <div class="text-slate-600">Lexical content, emotional state, severity estimate</div>
+                </div>
+                <div>
+                  <div class="font-semibold text-blue-700">Influence Input</div>
+                  <div class="text-slate-600">Emotional modulation, dependency induction, persuasive timing</div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-slate-600">
+              Reported emotional classification accuracy exceeds 78% for broad affect categories, with integration across Nest ecosystem devices and Android voice services creating extensive dep
