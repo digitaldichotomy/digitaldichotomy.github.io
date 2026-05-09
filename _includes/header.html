@@ -12,7 +12,8 @@
             <!-- Desktop Navigation -->
             <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium flex-1 justify-center" role="navigation" aria-label="Main navigation">
                 <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
-                <a href="{{ '/pages/pat.html' | relative_url }}" class="nav-link">Sentinel Database</a>
+                <a href="{{ '/sentinel.html' | relative_url }}" class="nav-link">Sentinel Index</a>
+                <a href="{{ '/pages/pat.html' | relative_url }}" class="nav-link">Patent Appendix</a>
                 <a href="{{ '/books.html' | relative_url }}" class="nav-link">Books</a>
                 <a href="{{ '/the-analog-self.html' | relative_url }}" class="nav-link flex items-center gap-2">
                     <img src="{{ '/cover.png' | relative_url }}" alt="" class="w-6 h-6 rounded object-cover">
@@ -67,9 +68,13 @@
                     <i data-feather="home" class="w-5 h-5"></i>
                     <span>Home</span>
                 </a>
+                <a href="{{ '/sentinel.html' | relative_url }}" class="mobile-nav-link">
+                    <i data-feather="search" class="w-5 h-5"></i>
+                    <span>Sentinel Index</span>
+                </a>
                 <a href="{{ '/pages/pat.html' | relative_url }}" class="mobile-nav-link">
                     <i data-feather="database" class="w-5 h-5"></i>
-                    <span>Sentinel Database</span>
+                    <span>Patent Appendix</span>
                 </a>
                 <a href="{{ '/books.html' | relative_url }}" class="mobile-nav-link">
                     <i data-feather="book" class="w-5 h-5"></i>
@@ -139,7 +144,6 @@
         document.body.style.overflow = 'hidden';
         btn.setAttribute('aria-expanded', 'true');
         overlay.setAttribute('aria-hidden', 'false');
-        // Focus trap
         setTimeout(() => closeBtn.focus(), 300);
     }
 
@@ -157,14 +161,10 @@
     closeBtn.addEventListener('click', closeNav);
     bg.addEventListener('click', closeNav);
 
-    // Close on ESC
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && overlay.classList.contains('open')) {
-            closeNav();
-        }
+        if (e.key === 'Escape' && overlay.classList.contains('open')) closeNav();
     });
 
-    // Close on nav link click
     drawer.querySelectorAll('.mobile-nav-link').forEach(link => {
         link.addEventListener('click', closeNav);
     });
