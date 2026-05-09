@@ -1,7 +1,7 @@
 ---
 layout: default
 title: SENTINEL_DB Research Index | Digital Dichotomy
-description: Searchable research index for surveillance patents, biometric systems, infrastructure sensing, countermeasures, legal frameworks, and evidence posture review.
+description: Searchable research index generated from the full SENTINEL_DB patent appendix. Professional navigation for patents, biometric systems, infrastructure sensing, countermeasures, legal frameworks, and evidence posture review.
 keywords: SENTINEL_DB, surveillance patents, biometric systems, infrastructure sensing, neural privacy, countermeasures, Digital Dichotomy, Fin Nyx
 image: /logo.png
 ---
@@ -10,15 +10,15 @@ image: /logo.png
   <div class="max-w-5xl mx-auto text-center">
     <p class="text-sm font-semibold tracking-widest uppercase text-red-300 mb-4">SENTINEL_DB // Research Index</p>
     <h1 class="text-3xl md:text-5xl font-light text-white mb-4 leading-tight">
-      Infrastructure Capture
+      SENTINEL_DB
       <span class="block font-normal text-red-400 mt-2">Research Index</span>
     </h1>
     <div class="w-24 h-1 bg-red-500 mx-auto mb-6"></div>
     <p class="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed">
-      Searchable and sortable index of patents, research records, standards references, legal developments, and countermeasure notes relevant to biometric sensing, infrastructure-level data capture, and closed-loop influence systems.
+      A searchable, sortable navigation layer for the full patent appendix. Records are loaded from the live SENTINEL_DB evidence vault rather than a separate reduced list.
     </p>
     <p class="text-sm text-gray-400 bg-gray-900/60 rounded-lg px-6 py-4 inline-block border border-gray-700 max-w-4xl">
-      This page is the navigation layer. The patent appendix remains the evidence ledger. Records are grouped by tier, evidence posture, category, and review priority so readers can inspect the material without flattening every entry into the same certainty level.
+      Professional use: inspect records by section, assignee, source, technical category, evidence posture, and review priority. The database remains evidence-led and avoids theatrical alarm framing.
     </p>
   </div>
 </section>
@@ -30,20 +30,20 @@ image: /logo.png
       <h3 class="text-lg font-bold text-red-300 group-hover:text-red-200 mb-2">Full Patent Ledger</h3>
       <p class="text-sm text-gray-400">Complete appendix and historical record base</p>
     </a>
-    <a href="{{ '/pages/pat-ledger.html' | relative_url }}" class="group bg-blue-900/40 hover:bg-blue-800/60 border border-blue-700 rounded-lg p-5 text-center transition-all duration-200 hover:scale-105">
-      <div class="text-2xl mb-2">🧾</div>
-      <h3 class="text-lg font-bold text-blue-300 group-hover:text-blue-200 mb-2">Structured Ledger</h3>
-      <p class="text-sm text-gray-400">Shared-record table generated from data</p>
-    </a>
-    <a href="{{ '/pages/sentinel-db-v25.html' | relative_url }}" class="group bg-purple-900/40 hover:bg-purple-800/60 border border-purple-700 rounded-lg p-5 text-center transition-all duration-200 hover:scale-105">
+    <a href="{{ '/pages/sentinel-db-v25.html' | relative_url }}" class="group bg-blue-900/40 hover:bg-blue-800/60 border border-blue-700 rounded-lg p-5 text-center transition-all duration-200 hover:scale-105">
       <div class="text-2xl mb-2">🗂️</div>
-      <h3 class="text-lg font-bold text-purple-300 group-hover:text-purple-200 mb-2">Version Archive</h3>
-      <p class="text-sm text-gray-400">Preserved earlier expanded Sentinel view</p>
+      <h3 class="text-lg font-bold text-blue-300 group-hover:text-blue-200 mb-2">Version Archive</h3>
+      <p class="text-sm text-gray-400">Preserved expanded Sentinel view</p>
     </a>
     <a href="{{ '/pages/post-grok-biological-vectors-archive.html' | relative_url }}" class="group bg-green-900/40 hover:bg-green-800/60 border border-green-700 rounded-lg p-5 text-center transition-all duration-200 hover:scale-105">
       <div class="text-2xl mb-2">📚</div>
       <h3 class="text-lg font-bold text-green-300 group-hover:text-green-200 mb-2">44-Vector Archive</h3>
       <p class="text-sm text-gray-400">Infrastructure-level biological data vectors</p>
+    </a>
+    <a href="{{ '/pages/post-digital-battery-tort.html' | relative_url }}" class="group bg-purple-900/40 hover:bg-purple-800/60 border border-purple-700 rounded-lg p-5 text-center transition-all duration-200 hover:scale-105">
+      <div class="text-2xl mb-2">⚖️</div>
+      <h3 class="text-lg font-bold text-purple-300 group-hover:text-purple-200 mb-2">Legal Framework</h3>
+      <p class="text-sm text-gray-400">Digital Battery Tort and related analysis</p>
     </a>
   </div>
 </section>
@@ -51,44 +51,52 @@ image: /logo.png
 <section class="mb-8">
   <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
     <div class="bg-red-800/40 p-4 rounded-lg border border-red-700">
-      <div id="stat-records" class="text-2xl font-bold text-red-300">0</div>
+      <div id="stat-records" class="text-2xl font-bold text-red-300">—</div>
       <div class="text-xs text-red-200">Visible Records</div>
     </div>
     <div class="bg-orange-800/40 p-4 rounded-lg border border-orange-700">
-      <div id="stat-priority" class="text-2xl font-bold text-orange-300">0</div>
+      <div id="stat-priority" class="text-2xl font-bold text-orange-300">—</div>
       <div class="text-xs text-orange-200">High-Priority</div>
     </div>
     <div class="bg-blue-800/40 p-4 rounded-lg border border-blue-700">
-      <div class="text-2xl font-bold text-blue-300">4</div>
-      <div class="text-xs text-blue-200">Evidence Classes</div>
+      <div id="stat-sections" class="text-2xl font-bold text-blue-300">—</div>
+      <div class="text-xs text-blue-200">Source Sections</div>
     </div>
     <div class="bg-green-800/40 p-4 rounded-lg border border-green-700">
-      <div class="text-2xl font-bold text-green-300">Linked</div>
-      <div class="text-xs text-green-200">Ledger Entries</div>
+      <div class="text-2xl font-bold text-green-300">Live</div>
+      <div class="text-xs text-green-200">From pat.html</div>
     </div>
   </div>
 </section>
 
 <section class="mb-8 bg-gray-800/50 rounded-lg p-6 border border-gray-700">
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-5">
+    <div>
+      <h2 class="text-xl font-bold text-white">Search the SENTINEL_DB Appendix</h2>
+      <p id="source-status" class="text-sm text-gray-400 mt-1">Loading records from the full patent ledger…</p>
+    </div>
+    <a href="{{ '/pages/pat.html' | relative_url }}" class="inline-flex items-center px-4 py-2 bg-red-700 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors text-sm">Open full ledger →</a>
+  </div>
+
   <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mb-5">
-    <input id="sentinel-search" class="md:col-span-2 px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-100 focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Search ID, assignee, patent, technology, or notes">
-    <select id="sentinel-tier" class="px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-100"><option value="">All tiers</option></select>
-    <select id="sentinel-severity" class="px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-100"><option value="">All priorities</option></select>
-    <select id="sentinel-posture" class="px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-100"><option value="">All evidence classes</option></select>
+    <input id="sentinel-search" class="md:col-span-2 px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-100 focus:ring-2 focus:ring-red-500 focus:border-transparent" placeholder="Search section, assignee, source, technology, or notes">
+    <select id="sentinel-section" class="px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-100"><option value="">All sections</option></select>
+    <select id="sentinel-priority" class="px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-100"><option value="">All priorities</option></select>
+    <select id="sentinel-evidence" class="px-4 py-3 bg-gray-900 border border-gray-600 rounded-lg text-gray-100"><option value="">All evidence classes</option></select>
   </div>
 
   <div class="overflow-x-auto rounded-lg border border-gray-700">
-    <table class="w-full text-sm" style="min-width:1100px">
+    <table class="w-full text-sm" style="min-width:1120px">
       <thead class="bg-gray-900 text-gray-300 uppercase text-xs tracking-wider">
         <tr>
           <th class="px-4 py-3 text-left cursor-pointer" data-sort="id">ID</th>
-          <th class="px-4 py-3 text-left cursor-pointer" data-sort="rank">Priority</th>
-          <th class="px-4 py-3 text-left cursor-pointer" data-sort="tier">Tier</th>
-          <th class="px-4 py-3 text-left cursor-pointer" data-sort="technology">Technology</th>
-          <th class="px-4 py-3 text-left cursor-pointer" data-sort="assignee">Assignee</th>
-          <th class="px-4 py-3 text-left cursor-pointer" data-sort="patent">Patent / Source</th>
-          <th class="px-4 py-3 text-left cursor-pointer" data-sort="posture">Evidence</th>
-          <th class="px-4 py-3 text-left">Summary</th>
+          <th class="px-4 py-3 text-left cursor-pointer" data-sort="priorityRank">Priority</th>
+          <th class="px-4 py-3 text-left cursor-pointer" data-sort="section">Section</th>
+          <th class="px-4 py-3 text-left cursor-pointer" data-sort="technology">Technology / Record</th>
+          <th class="px-4 py-3 text-left cursor-pointer" data-sort="assignee">Assignee / Actor</th>
+          <th class="px-4 py-3 text-left cursor-pointer" data-sort="source">Patent / Source</th>
+          <th class="px-4 py-3 text-left cursor-pointer" data-sort="evidence">Evidence</th>
+          <th class="px-4 py-3 text-left">Notes</th>
           <th class="px-4 py-3 text-left">Review</th>
         </tr>
       </thead>
@@ -109,7 +117,7 @@ image: /logo.png
       </div>
       <div id="modal-meta" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm mb-5"></div>
       <p id="modal-detail" class="text-gray-300 leading-relaxed"></p>
-      <a id="modal-ledger" href="#" class="inline-flex mt-6 px-5 py-3 bg-red-700 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors">Open ledger entry</a>
+      <a id="modal-ledger" href="#" class="inline-flex mt-6 px-5 py-3 bg-red-700 hover:bg-red-600 text-white font-semibold rounded-lg transition-colors">Open source section</a>
     </div>
   </div>
 </div>
@@ -118,29 +126,37 @@ image: /logo.png
   <div class="bg-gray-900/60 rounded-lg border border-gray-700 p-6">
     <h2 class="text-xl font-bold text-white mb-3">Editorial Standard</h2>
     <p class="text-gray-400 leading-relaxed">
-      SENTINEL_DB should remain professional, research-oriented, and evidence-led. Public language should avoid theatrical alarm framing. Use precise labels: evidence class, review priority, technical relevance, countermeasure coverage, and legal coverage gap.
+      SENTINEL_DB is maintained as a professional research index. Public language should remain precise: evidence class, review priority, technical relevance, countermeasure coverage, and legal coverage gap. The complete appendix remains preserved at <a class="text-red-300 hover:text-red-200" href="{{ '/pages/pat.html' | relative_url }}">pages/pat.html</a>.
     </p>
   </div>
 </section>
 
-<script src="{{ '/data/sentinel-records.js' | relative_url }}"></script>
 <script>
+let SENTINEL_RECORDS=[];
+let sortKey='priorityRank';
+let sortDir=-1;
 const rowsEl=document.getElementById('sentinel-rows');
 const q=document.getElementById('sentinel-search');
-const tier=document.getElementById('sentinel-tier');
-const severity=document.getElementById('sentinel-severity');
-const posture=document.getElementById('sentinel-posture');
-let sortKey='rank';
-let sortDir=-1;
+const sectionSel=document.getElementById('sentinel-section');
+const prioritySel=document.getElementById('sentinel-priority');
+const evidenceSel=document.getElementById('sentinel-evidence');
+const statusEl=document.getElementById('source-status');
 function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function unique(k){return [...new Set((window.SENTINEL_RECORDS||[]).map(r=>r[k]).filter(Boolean))].sort()}
-function fillSelect(el,k){unique(k).forEach(v=>el.insertAdjacentHTML('beforeend',`<option value="${esc(v)}">${esc(v)}</option>`))}
-function priorityClass(v){if(String(v).includes('CRITICAL'))return 'bg-red-900/50 text-red-200 border-red-700';if(v==='HIGH')return 'bg-orange-900/50 text-orange-200 border-orange-700';if(v==='MEDIUM')return 'bg-blue-900/50 text-blue-200 border-blue-700';if(v==='DEFENSE')return 'bg-green-900/50 text-green-200 border-green-700';return 'bg-purple-900/50 text-purple-200 border-purple-700'}
-function filtered(){const term=q.value.toLowerCase().trim();return (window.SENTINEL_RECORDS||[]).filter(r=>{const hay=Object.values(r).join(' ').toLowerCase();return(!term||hay.includes(term))&&(!tier.value||r.tier===tier.value)&&(!severity.value||r.severity===severity.value)&&(!posture.value||r.posture===posture.value)}).sort((a,b)=>{let av=a[sortKey],bv=b[sortKey];if(typeof av==='string')return av.localeCompare(bv)*sortDir;return(av-bv)*sortDir})}
-function render(){const data=filtered();rowsEl.innerHTML=data.map(r=>`<tr id="${esc(r.id)}" class="hover:bg-gray-800/70"><td class="px-4 py-3 font-mono text-red-300">${esc(r.id)}</td><td class="px-4 py-3"><span class="inline-block px-2 py-1 rounded-full border text-xs font-bold ${priorityClass(r.severity)}">${esc(r.severity)}</span></td><td class="px-4 py-3 text-gray-300">${esc(r.tier)}<br><span class="text-xs text-gray-500">${esc(r.tierName)}</span></td><td class="px-4 py-3 text-white font-semibold">${esc(r.technology)}</td><td class="px-4 py-3 text-gray-300">${esc(r.assignee)}</td><td class="px-4 py-3 text-gray-300">${esc(r.patent)}<br><span class="text-xs text-gray-500">${esc(r.title)}</span></td><td class="px-4 py-3 text-gray-300">${esc(r.posture)}</td><td class="px-4 py-3 text-gray-400">${esc(r.summary)}</td><td class="px-4 py-3"><button onclick="openSentinelRecord('${esc(r.id)}')" class="px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded-lg text-gray-200 text-xs font-semibold">Detail</button></td></tr>`).join('');document.getElementById('stat-records').textContent=data.length;document.getElementById('stat-priority').textContent=(window.SENTINEL_RECORDS||[]).filter(r=>String(r.severity).includes('CRITICAL')||r.severity==='HIGH').length}
-function openSentinelRecord(id){const r=(window.SENTINEL_RECORDS||[]).find(x=>x.id===id);if(!r)return;document.getElementById('modal-id').textContent=r.id;document.getElementById('modal-title').textContent=r.technology;document.getElementById('modal-meta').innerHTML=[['Tier',`${r.tier} — ${r.tierName}`],['Assignee',r.assignee],['Patent / Source',r.patent],['Evidence class',r.posture],['Priority',r.severity],['Category',r.category]].map(([k,v])=>`<div class="bg-gray-800 rounded-lg border border-gray-700 p-3"><div class="text-xs uppercase tracking-wider text-gray-500 mb-1">${esc(k)}</div><div class="text-gray-200">${esc(v)}</div></div>`).join('');document.getElementById('modal-detail').textContent=r.detail;document.getElementById('modal-ledger').href=r.ledger||'pages/pat.html';document.getElementById('record-modal').classList.remove('hidden')}
+function text(el){return (el?.textContent||'').replace(/\s+/g,' ').trim()}
+function slug(s){return String(s||'section').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,80)||'section'}
+function priorityRank(v){v=String(v||'').toUpperCase();if(v.includes('CRITICAL')||v.includes('VERY HIGH'))return 5;if(v.includes('HIGH'))return 4;if(v.includes('MEDIUM'))return 3;if(v.includes('LOW'))return 2;if(v.includes('DEFENSE')||v.includes('LEGAL'))return 1;return 2}
+function normalizePriority(v){v=String(v||'').trim();if(!v)return 'Review';if(/very high/i.test(v))return 'Very High';if(/critical/i.test(v))return 'Critical';if(/high/i.test(v))return 'High';if(/medium/i.test(v))return 'Medium';if(/defense/i.test(v))return 'Defense';if(/legal/i.test(v))return 'Legal';return v.length>24?'Review':v}
+function inferEvidence(source,section,notes){const s=(source+' '+section+' '+notes).toLowerCase();if(s.includes('arxiv'))return 'Research';if(s.includes('patent')||/us\d|wo\d|ep\d/.test(s))return 'Patent';if(s.includes('legal')||s.includes('legislation')||s.includes('law'))return 'Legal';if(s.includes('countermeasure')||s.includes('defense'))return 'Countermeasure';return 'Record'}
+function cellBy(headers,cells,names){for(const n of names){const idx=headers.findIndex(h=>h.includes(n));if(idx>=0&&cells[idx])return text(cells[idx])}return ''}
+function parsePatentLedger(doc){const records=[];let id=1;doc.querySelectorAll('table').forEach((table,tableIndex)=>{const headers=[...table.querySelectorAll('thead th')].map(th=>text(th).toLowerCase());if(headers.length<3)return;const sectionEl=findSection(table);const section=text(sectionEl)||'SENTINEL_DB Record Section';const sectionId=sectionEl?.id||slug(section);if(sectionEl&&!sectionEl.id)sectionEl.id=sectionId;table.querySelectorAll('tbody tr').forEach(tr=>{const cells=[...tr.children].filter(td=>td.tagName&&td.tagName.toLowerCase()==='td');if(cells.length<3)return;if(cells.length===1)return;const combined=cells.map(text).join(' ').trim();if(!combined||combined.length<12)return;let technology=cellBy(headers,cells,['technology','system','record'])||text(cells[0]);let assignee=cellBy(headers,cells,['assignee','actor','origin'])||text(cells[1]);let source=cellBy(headers,cells,['patent','publication','source','standard'])||text(cells[2]);let title=cellBy(headers,cells,['title'])||'';let notes=cellBy(headers,cells,['relevance','notes','key finding','countermeasure reality','surveillance implication'])||text(cells[cells.length-2])||combined;let priority=cellBy(headers,cells,['threat','rating','criticality','status','coverage'])||text(cells[cells.length-1]);if(headers[0].includes('record')){source=cellBy(headers,cells,['arxiv source','source'])||source;technology=cellBy(headers,cells,['technology'])||technology;assignee=cellBy(headers,cells,['tier'])||assignee;title=cellBy(headers,cells,['key finding'])||title;notes=cellBy(headers,cells,['countermeasure reality','key finding'])||notes}priority=normalizePriority(priority);const recId='SENT-'+String(id).padStart(3,'0');records.push({id:recId,section,sectionId,technology,assignee,source,title,notes,priority,priorityRank:priorityRank(priority),evidence:inferEvidence(source,section,notes),ledger:'{{ "/pages/pat.html" | relative_url }}#'+sectionId});id++})});return records}
+function findSection(el){let p=el.previousElementSibling;while(p){if(/^h[1-3]$/i.test(p.tagName))return p;p=p.previousElementSibling}let parent=el.parentElement;while(parent){let prev=parent.previousElementSibling;while(prev){if(/^h[1-3]$/i.test(prev.tagName))return prev;prev=prev.previousElementSibling}parent=parent.parentElement}return null}
+function unique(k){return [...new Set(SENTINEL_RECORDS.map(r=>r[k]).filter(Boolean))].sort()}
+function fillFilters(){sectionSel.querySelectorAll('option:not(:first-child)').forEach(o=>o.remove());prioritySel.querySelectorAll('option:not(:first-child)').forEach(o=>o.remove());evidenceSel.querySelectorAll('option:not(:first-child)').forEach(o=>o.remove());unique('section').forEach(v=>sectionSel.insertAdjacentHTML('beforeend',`<option value="${esc(v)}">${esc(v)}</option>`));unique('priority').forEach(v=>prioritySel.insertAdjacentHTML('beforeend',`<option value="${esc(v)}">${esc(v)}</option>`));unique('evidence').forEach(v=>evidenceSel.insertAdjacentHTML('beforeend',`<option value="${esc(v)}">${esc(v)}</option>`))}
+function priorityClass(v){const r=priorityRank(v);if(r>=5)return 'bg-red-900/50 text-red-200 border-red-700';if(r===4)return 'bg-orange-900/50 text-orange-200 border-orange-700';if(r===3)return 'bg-blue-900/50 text-blue-200 border-blue-700';return 'bg-green-900/50 text-green-200 border-green-700'}
+function filtered(){const term=q.value.toLowerCase().trim();return SENTINEL_RECORDS.filter(r=>{const hay=Object.values(r).join(' ').toLowerCase();return(!term||hay.includes(term))&&(!sectionSel.value||r.section===sectionSel.value)&&(!prioritySel.value||r.priority===prioritySel.value)&&(!evidenceSel.value||r.evidence===evidenceSel.value)}).sort((a,b)=>{let av=a[sortKey],bv=b[sortKey];if(typeof av==='string')return av.localeCompare(bv)*sortDir;return(av-bv)*sortDir})}
+function render(){const data=filtered();rowsEl.innerHTML=data.map(r=>`<tr id="${esc(r.id)}" class="hover:bg-gray-800/70"><td class="px-4 py-3 font-mono text-red-300">${esc(r.id)}</td><td class="px-4 py-3"><span class="inline-block px-2 py-1 rounded-full border text-xs font-bold ${priorityClass(r.priority)}">${esc(r.priority)}</span></td><td class="px-4 py-3 text-gray-300">${esc(r.section)}</td><td class="px-4 py-3 text-white font-semibold">${esc(r.technology)}</td><td class="px-4 py-3 text-gray-300">${esc(r.assignee)}</td><td class="px-4 py-3 text-gray-300">${esc(r.source)}<br><span class="text-xs text-gray-500">${esc(r.title)}</span></td><td class="px-4 py-3 text-gray-300">${esc(r.evidence)}</td><td class="px-4 py-3 text-gray-400">${esc(r.notes)}</td><td class="px-4 py-3"><button onclick="openSentinelRecord('${esc(r.id)}')" class="px-3 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-600 rounded-lg text-gray-200 text-xs font-semibold">Detail</button></td></tr>`).join('');document.getElementById('stat-records').textContent=data.length;document.getElementById('stat-priority').textContent=SENTINEL_RECORDS.filter(r=>r.priorityRank>=4).length;document.getElementById('stat-sections').textContent=unique('section').length}
+function openSentinelRecord(id){const r=SENTINEL_RECORDS.find(x=>x.id===id);if(!r)return;document.getElementById('modal-id').textContent=r.id;document.getElementById('modal-title').textContent=r.technology;document.getElementById('modal-meta').innerHTML=[['Section',r.section],['Assignee / Actor',r.assignee],['Patent / Source',r.source],['Evidence class',r.evidence],['Priority',r.priority],['Title',r.title]].map(([k,v])=>`<div class="bg-gray-800 rounded-lg border border-gray-700 p-3"><div class="text-xs uppercase tracking-wider text-gray-500 mb-1">${esc(k)}</div><div class="text-gray-200">${esc(v)}</div></div>`).join('');document.getElementById('modal-detail').textContent=r.notes;document.getElementById('modal-ledger').href=r.ledger;document.getElementById('record-modal').classList.remove('hidden')}
 function closeSentinelRecord(){document.getElementById('record-modal').classList.add('hidden')}
-if(window.SENTINEL_RECORDS){fillSelect(tier,'tier');fillSelect(severity,'severity');fillSelect(posture,'posture');render()}
-[q,tier,severity,posture].forEach(el=>el.addEventListener('input',render));
-document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.sort;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=k==='rank'?-1:1}render()}));
+async function init(){try{const res=await fetch('{{ "/pages/pat.html" | relative_url }}',{cache:'no-store'});const html=await res.text();const doc=new DOMParser().parseFromString(html,'text/html');SENTINEL_RECORDS=parsePatentLedger(doc);fillFilters();render();statusEl.textContent='Loaded '+SENTINEL_RECORDS.length+' records from the full patent ledger.'}catch(e){statusEl.textContent='Could not load pages/pat.html. Open the full ledger directly.';rowsEl.innerHTML='<tr><td colspan="9" class="px-4 py-6 text-gray-400">Unable to load source records. Use the full patent ledger link above.</td></tr>';console.error(e)}}
+[q,sectionSel,prioritySel,evidenceSel].forEach(el=>el.addEventListener('input',render));document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.sort;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=k==='priorityRank'?-1:1}render()}));init();
 </script>
