@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Dichotomy — Biometric Privacy Litigation Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        red: {
+                            950: '#450a0a',
+                            900: '#7f1d1d',
+                            800: '#991b1b',
+                            700: '#b91c1c',
+                            600: '#dc2626',
+                            500: '#ef4444',
+                            400: '#f87171',
+                            300: '#fca5a5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #e5e7eb;
+        }
+        .circuit-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dc2626' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .glow-red {
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.15);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+        }
+        .status-badge {
+            transition: all 0.3s ease;
+        }
+        .case-row {
+            transition: all 0.2s ease;
+        }
+        .case-row:hover {
+            background-color: rgba(127, 29, 29, 0.15);
+        }
+        .tab-btn {
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover {
+            transform: translateY(-1px);
+        }
+        .tab-btn.active {
+            background-color: #dc2626;
+            color: #000000;
+            border-color: #dc2626;
+        }
+        .search-input:focus {
+            box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7f1d1d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b91c1c;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body class="font-sans antialiased min-h-screen circuit-bg">
+
+    <!-- Header -->
+    <header class="bg-black/90 backdrop-blur-md border-b border-red-900/30 text-white sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <div class="relative mr-4">
+                        <div class="w-12 h-12 border-2 border-red-600 rounded-lg flex items-center justify-center bg-black">
+                            <span class="text-2xl font-black text-red-500 tracking-tighter">D</span>
+                            <svg class="h-4 w-4 text-red-500 absolute -bottom-1 -right-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl md:text-3xl font-black tracking-wider">
+                            <span class="text-gray-100">DIGITAL</span>
+                            <span class="text-red-600 ml-2">DICHOTOMY</span>
+                        </h1>
+                        <p class="text-red-500/60 text-xs tracking-[0.3em] uppercase mt-0.5 font-mono">Litigation Intelligence Unit</p>
+                    </div>
+                </div>
+
+                <div class="flex space-x-3">
+                    <a href="#resources" class="bg-red-900/20 border border-red-700/30 text-red-400 px-4 py-2 rounded font-mono text-sm hover:bg-red-900/40 transition-colors flex items-center">
+                        <svg class="inline-block mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        INTEL
+                    </a>
+                    <a href="#cases" class="bg-red-600 text-black px-4 py-2 rounded font-bold text-sm hover:bg-red-500 transition-colors flex items-center">
+                        <svg class="inline-block mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        ACCESS DATABASE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Alert Banner -->
+    <div class="bg-red-950/50 border-y border-red-800/30 text-red-300 py-2">
+        <div class="container mx-auto px-4 flex items-center justify-center font-mono text-xs md:text-sm">
+            <svg class="h-4 w-4 mr-2 text-red-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span class="font-bold text-red-400">POST-CLAY LANDSCAPE (MAY 2026):</span>
+            <span class="ml-2 hidden sm:inline">7th Circuit retroactive ruling + BIPA SB2979 has collapsed new filings ~50% from peak. Voiceprint wave now dominant vector. </span>
+            <a href="#bipa-update" class="ml-2 underline hover:text-red-200">Full analysis</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-red-950/20 via-black to-black" />
+        <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.15) 0%, transparent 70%)" />
+
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="animate-fade-in">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full border-2 border-red-600/50 bg-red-950/20 mb-8">
+                    <svg class="h-10 w-10 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                    </svg>
+                </div>
+
+                <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tight">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-400">
+                        YOUR BIOMETRIC DATA
+                    </span>
+                    <br />
+                    <span class="text-red-600 text-glow">IS NOT FOR SALE</span>
+                </h2>
+
+                <p class="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-gray-400 font-light">
+                    Verified litigation database. No speculation. No fabrication. 
+                    Only court-documented class actions and enforceable settlements.
+                </p>
+
+                <div class="inline-block">
+                    <a href="#cases" class="bg-red-600 text-black font-black px-8 py-4 rounded text-lg hover:bg-red-500 transition-colors glow-red inline-flex items-center">
+                        ACCESS VERIFIED CASES
+                        <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="border-y border-red-900/20 bg-black/50 py-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="border-r border-red-900/20 last:border-0 animate-fade-in stagger-1">
+                    <div class="text-2xl md:text-3xl font-black text-red-500">$2.22B+</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">TOTAL RECOVERED</div>
+                    <div class="text-xs text-gray-600">Verified settlements</div>
+                </div>
+                <div class="border-r border-red-900/20 last:border-0 animate-fade-in stagger-2">
+                    <div class="text-2xl md:text-3xl font-black text-red-500">5</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">ACTIVE CASES</div>
+                    <div class="text-xs text-gray-600">Currently litigating</div>
+                </div>
+                <div class="border-r border-red-900/20 last:border-0 animate-fade-in stagger-3">
+                    <div class="text-2xl md:text-3xl font-black text-red-500">2.6M+</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">CLASS MEMBERS</div>
+                    <div class="text-xs text-gray-600">Verified claimants</div>
+                </div>
+                <div class="animate-fade-in stagger-4">
+                    <div class="text-2xl md:text-3xl font-black text-red-500">MAY 12 2026</div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider mt-1">LAST UPDATE</div>
+                    <div class="text-xs text-gray-600">Court records verified</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filters -->
+    <section id="cases" class="py-16 bg-black relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-gray-100 mb-3 tracking-wide">VERIFIED LITIGATION DATABASE</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto font-mono text-sm">
+                    All cases cross-referenced with PACER, court filings, and state AG enforcement records.
+                    <span class="text-red-500 block mt-1">Fabricated cases explicitly excluded.</span>
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 mb-8">
+                <div class="relative flex-1">
+                    <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 text-red-700 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search defendant, status, docket, eligibility..."
+                        class="search-input w-full pl-12 pr-4 py-3 rounded bg-gray-900 border border-red-900/30 text-gray-200 focus:ring-2 focus:ring-red-600 focus:border-transparent placeholder-gray-600 font-mono text-sm"
+                    />
+                </div>
+
+                <div class="flex flex-wrap gap-2 justify-center md:justify-start" id="filterTabs">
+                    <button data-tab="all" class="tab-btn active px-4 py-2 rounded font-mono text-xs uppercase tracking-wider border bg-red-600 text-black border-red-600 font-bold">all</button>
+                    <button data-tab="active" class="tab-btn px-4 py-2 rounded font-mono text-xs uppercase tracking-wider border bg-gray-900 text-gray-400 border-red-900/20 hover:border-red-700/50 hover:text-gray-200">active</button>
+                    <button data-tab="settled" class="tab-btn px-4 py-2 rounded font-mono text-xs uppercase tracking-wider border bg-gray-900 text-gray-400 border-red-900/20 hover:border-red-700/50 hover:text-gray-200">settled</button>
+                    <button data-tab="federal" class="tab-btn px-4 py-2 rounded font-mono text-xs uppercase tracking-wider border bg-gray-900 text-gray-400 border-red-900/20 hover:border-red-700/50 hover:text-gray-200">federal</button>
+                    <button data-tab="state" class="tab-btn px-4 py-2 rounded font-mono text-xs uppercase tracking-wider border bg-gray-900 text-gray-400 border-red-900/20 hover:border-red-700/50 hover:text-gray-200">state</button>
+                </div>
+            </div>
+
+            <!-- Cases Table -->
+            <div class="overflow-x-auto rounded border border-red-900/20 bg-gray-900/30">
+                <table class="min-w-full">
+                    <thead class="bg-black border-b border-red-900/30">
+                        <tr>
+                            <th class="py-4 px-6 text-left font-mono text-xs text-red-500 uppercase tracking-wider">Case / Docket</th>
+                            <th class="py-4 px-6 text-left font-mono text-xs text-red-500 uppercase tracking-wider hidden md:table-cell">Defendant</th>
+                            <th class="py-4 px-6 text-left font-mono text-xs text-red-500 uppercase tracking-wider hidden lg:table-cell">Jurisdiction</th>
+                            <th class="py-4 px-6 text-left font-mono text-xs text-red-500 uppercase tracking-wider">Status</th>
+                            <th class="py-4 px-6 text-left font-mono text-xs text-red-500 uppercase tracking-wider hidden lg:table-cell">Relief</th>
+                            <th class="py-4 px-6 text-left font-mono text-xs text-red-500 uppercase tracking-wider">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="casesTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 bg-red-950/10 rounded border border-red-900/20 p-4">
+                <div class="flex items-start">
+                    <svg class="h-5 w-5 text-red-600 mt-0.5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                    <p class="text-gray-400 text-sm">
+                        <strong class="text-red-400">VERIFICATION PROTOCOL:</strong> All portals must be confirmed through official court notices or PACER before submitting personal data. Digital Dichotomy excludes speculative, unfiled, or hallucinated litigation from this database.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIPA Amendment / Post-Clay Section -->
+    <section id="bipa-update" class="py-16 bg-gradient-to-b from-black to-red-950/10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-900/50 rounded-2xl border border-red-900/20 p-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-600/5 rounded-full blur-3xl" />
+
+                <div class="flex items-center mb-6">
+                    <svg class="h-8 w-8 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                    </svg>
+                    <h3 class="text-2xl font-black text-gray-100 tracking-wide">BIPA LANDSCAPE: POST-CLAY (MAY 2026)</h3>
+                </div>
+
+                <p class="text-gray-400 mb-6">
+                    The Seventh Circuit's unanimous ruling in <em class="text-gray-300">Clay v. Union Pacific Railroad Co.</em> (Apr 1, 2026) settled the retroactivity question: the 2024 BIPA amendment (SB2979) applies to all pending cases, not just post-amendment filings. Three district courts had ruled the opposite; all reversed in one stroke. The practical consequence is a structural reconfiguration of the entire BIPA litigation economy.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-black/50 rounded-lg p-5 border border-red-900/20">
+                        <h4 class="font-bold text-red-400 mb-3 font-mono text-sm uppercase tracking-wider">What Changed (Clay):</h4>
+                        <ul class="space-y-2 text-gray-400 text-sm">
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">▸</span>
+                                Damages: <strong class="text-gray-200">one recovery per person per method</strong>—retroactive to all pending cases
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">▸</span>
+                                A single employee scanning their fingerprint 1,500 times recovers for 1 violation, not 1,500
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">▸</span>
+                                Eliminates "annihilative liability"—the math that made BIPA a multi-billion dollar bonanza
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">▸</span>
+                                Statutory damages remain $1,000 (negligent) / $5,000 (reckless) as the <em>ceiling</em>, not floor
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-black/50 rounded-lg p-5 border border-red-900/20">
+                        <h4 class="font-bold text-red-400 mb-3 font-mono text-sm uppercase tracking-wider">Market Impact (May 2026):</h4>
+                        <ul class="space-y-2 text-gray-400 text-sm">
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">▸</span>
+                                New BIPA filings collapsed from 300+/yr (2019–2024) to ~150 in 2025; Clay accelerates that trend
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">▸</span>
+                                Settlement leverage gone for repeat-scan cases; contingency economics no longer pencil at scale
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">▸</span>
+                                <strong class="text-yellow-400">Voiceprint wave rising:</strong> Microsoft Teams, Verizon Voice ID, Walmart voice-directed systems now lead active docket
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-red-600 mr-2">▸</span>
+                                Mass arbitration replacing class actions as primary plaintiff strategy post-Clay
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="text-xs text-gray-600 font-mono">
+                    SOURCES: 7th Circuit (Apr 1, 2026); Paul Hastings; Duane Morris; JD Supra; Foley & Lardner; Sidley Austin; State of Surveillance (Apr 5, 2026); Privacy World (Dec 2025)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Join Section -->
+    <section id="join" class="py-16 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-gray-100 mb-3 tracking-wide">OPERATIONAL PROTOCOL</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto font-mono text-sm">
+                    Standard procedure for verified class action participation
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="bg-gray-900/30 rounded-xl p-8 border border-red-900/20 hover:border-red-700/40 transition-colors animate-fade-in stagger-1">
+                    <div class="text-4xl font-black text-red-900/30 mb-4">01</div>
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-950/30 border border-red-800/20 mb-6">
+                        <svg class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-200 mb-3 tracking-wide">VERIFY ELIGIBILITY</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Confirm jurisdiction, product usage during class period, and biometric interaction. Look for official court notices mailed to your address.</p>
+                </div>
+
+                <div class="bg-gray-900/30 rounded-xl p-8 border border-red-900/20 hover:border-red-700/40 transition-colors animate-fade-in stagger-2">
+                    <div class="text-4xl font-black text-red-900/30 mb-4">02</div>
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-950/30 border border-red-800/20 mb-6">
+                        <svg class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-200 mb-3 tracking-wide">SUBMIT THROUGH OFFICIAL PORTAL</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Use only court-approved settlement administrators. Never pay upfront fees. BIPA cases are contingency-based for plaintiffs.</p>
+                </div>
+
+                <div class="bg-gray-900/30 rounded-xl p-8 border border-red-900/20 hover:border-red-700/40 transition-colors animate-fade-in stagger-3">
+                    <div class="text-4xl font-black text-red-900/30 mb-4">03</div>
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded bg-red-950/30 border border-red-800/20 mb-6">
+                        <svg class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-200 mb-3 tracking-wide">MONITOR FOR DISTRIBUTION</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Disbursement typically occurs 3–12 months after final approval. Monitor email and the official settlement site for status updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-16 bg-gradient-to-b from-black to-gray-950">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-gray-100 mb-3 tracking-wide">INTELLIGENCE RESOURCES</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto font-mono text-sm">
+                    Verified channels for case tracking, data extraction, and qualified counsel
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-900/20 rounded-xl p-6 border border-red-900/10 hover:border-red-800/30 transition-colors">
+                        <h3 class="text-sm font-bold text-red-500 mb-4 uppercase tracking-wider font-mono">Case Verification</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://www.classaction.org" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">ClassAction.org</a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://www.stopspying.org/bipa-litigation-tracker" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">STOP BIPA Tracker</a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://pacer.uscourts.gov" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">PACER Federal Records</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-900/20 rounded-xl p-6 border border-red-900/10 hover:border-red-800/30 transition-colors">
+                        <h3 class="text-sm font-bold text-red-500 mb-4 uppercase tracking-wider font-mono">Data Extraction</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://www.facebook.com/settings?tab=your_information" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">Meta Data Download</a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://takeout.google.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">Google Takeout</a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://support.apple.com/en-us/HT201473" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">Apple Privacy Portal</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-900/20 rounded-xl p-6 border border-red-900/10 hover:border-red-800/30 transition-colors">
+                        <h3 class="text-sm font-bold text-red-500 mb-4 uppercase tracking-wider font-mono">Qualified Counsel</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://www.loevy.com/class-actions/privacy-bipa/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">Loevy & Loevy (BIPA)</a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://thelyonfirm.com/class-action/data-privacy/bipa/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">The Lyon Firm</a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://edelson.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">Edelson PC</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-900/20 rounded-xl p-6 border border-red-900/10 hover:border-red-800/30 transition-colors">
+                        <h3 class="text-sm font-bold text-red-500 mb-4 uppercase tracking-wider font-mono">Legal Intelligence</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://www.law360.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">Law360 Biometric</a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://www.jdsupra.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">JD Supra Analysis</a>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-3 w-3 mt-1 mr-2 text-red-800 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                <a href="https://www.duanemorris.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-red-400 text-sm transition-colors">Duane Morris Alerts</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900/20 rounded-2xl p-8 border border-red-900/10">
+                    <div class="flex items-center mb-6">
+                        <svg class="h-6 w-6 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                        </svg>
+                        <h3 class="text-xl font-black text-gray-200 tracking-wide">EVIDENCE PROTOCOL</h3>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-sm font-bold text-red-400 mb-3 uppercase tracking-wider font-mono">For BIPA Claims</h4>
+                            <ul class="space-y-2 text-gray-400 text-sm">
+                                <li class="flex">
+                                    <span class="text-red-700 mr-2">›</span>
+                                    <span><strong class="text-gray-300">Illinois presence:</strong> Driver's license, utility bills, employment records from class period</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="text-red-700 mr-2">›</span>
+                                    <span><strong class="text-gray-300">Product usage:</strong> App download history, account emails, profile activity screenshots</span>
+                                </li>
+                                <li class="flex">
+                                    <span class="text-red-700 mr-2">›</span>
+                                    <span><strong class="text-gray-300">Biometric interaction:</strong> Evidence of facial/voice/fingerprint feature use</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-sm font-bold text-red-400 mb-3 uppercase tracking-wider font-mono">Retention Schedule Requests</h4>
+                            <p class="text-gray-400 text-sm mb-3">
+                                BIPA §15(a) requires published retention schedules. Request directly from privacy officers:
+                            </p>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-500 text-sm">
+                                <li>Email company privacy officer for BIPA retention policy</li>
+                                <li>Screenshot if publicly posted</li>
+                                <li>Document refusal—this itself may constitute violation</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-black/40 p-4 rounded border border-red-900/20">
+                            <p class="font-bold text-red-500 text-sm mb-2">⚠ COUNTERINTELLIGENCE WARNING</p>
+                            <p class="text-gray-500 text-sm">
+                                Third-party "claim filing services" charging fees are not affiliated with court-approved settlements. Official class actions require zero upfront payment. Verify all portals through PACER before submitting PII.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-red-900/20 text-gray-400 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 border border-red-700 rounded flex items-center justify-center bg-black mr-3">
+                            <span class="text-lg font-black text-red-500">D</span>
+                        </div>
+                        <span class="text-lg font-black text-gray-200 tracking-wider">DIGITAL<span class="text-red-600">DICHOTOMY</span></span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Reclaiming biometric sovereignty through verified intelligence and documented legal action.
+                    </p>
+                    <p class="text-xs text-gray-700 font-mono">
+                        TECHNOLOGY • INNOVATION • BALANCE
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-red-500 mb-4 uppercase tracking-wider font-mono">Navigation</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#cases" class="text-gray-500 hover:text-red-400 transition-colors">Verified Cases</a></li>
+                        <li><a href="#bipa-update" class="text-gray-500 hover:text-red-400 transition-colors">Post-Clay Landscape</a></li>
+                        <li><a href="#resources" class="text-gray-500 hover:text-red-400 transition-colors">Intelligence Resources</a></li>
+                        <li><a href="#resources" class="text-gray-500 hover:text-red-400 transition-colors">Evidence Protocol</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-red-500 mb-4 uppercase tracking-wider font-mono">Data Provenance</h3>
+                    <ul class="space-y-2 text-gray-600 text-xs font-mono">
+                        <li>• Seventh Circuit (Apr 1, 2026)</li>
+                        <li>• Texas Attorney General Enforcement</li>
+                        <li>• STOP BIPA Litigation Tracker</li>
+                        <li>• Federal PACER Records</li>
+                        <li>• Law360 / JD Supra Analysis</li>
+                        <li>• Paul Hastings / Duane Morris / Sidley Austin</li>
+                        <li>• State of Surveillance / Privacy World</li>
+                    </ul>
+                    <p class="mt-4 text-xs text-gray-700">
+                        Verified: May 12, 2026
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-red-900/10 mt-8 pt-8 text-center text-gray-700 text-xs font-mono">
+                <p>© 2026 DIGITAL DICHOTOMY. All litigation data sourced from public court records and official enforcement actions.</p>
+                <p class="mt-2 text-red-900/50">Speculative or unfiled cases are explicitly excluded from this database.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Case data — verified May 12, 2026
+        const cases = [
+            {
+                id: 1,
+                title: "Hartman v. Meta Platforms, Inc. (BIPA — AR Filters)",
+                defendant: "Meta Platforms, Inc.",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, S.D. Illinois",
+                docket: "Hartman v. Meta Platforms, Inc.",
+                status: "Active—Choice-of-law motion denied (Feb 2026); proceeding to merits",
+                allegations: "AR filters in Facebook Messenger and Messenger Kids scan users' facial geometry to place bunny ears, masks, etc.—collected without BIPA-required written consent or retention policy. COPPA preemption argument also rejected.",
+                reliefSought: "$1,000–$5,000 per violation; injunctive relief",
+                eligibility: "Illinois residents who used AR filters in Facebook Messenger or Messenger Kids (2018–present)",
+                claimPortal: "No active portal—litigation ongoing",
+                claimsSubmitted: "Class action pending",
+                notes: "Feb 2026: Court rejected Meta's bid to apply California/CCPA law instead of BIPA. CCPA has no private right of action; applying it would 'rob plaintiffs of control over their biometric information.' Case now proceeds on BIPA merits."
+            },
+            {
+                id: 2,
+                title: "State of Texas v. Meta Platforms, Inc.",
+                defendant: "Meta Platforms, Inc.",
+                jurisdiction: "State",
+                court: "71st Judicial District, Harrison County, Texas",
+                docket: "Cause No. 22-0121",
+                status: "SETTLED—$1.4 billion (July 2024)",
+                allegations: "Captured facial geometry of millions of Texans without informed consent via 'Tag Suggestions'; violated Texas CUBI",
+                reliefSought: "$1.4 billion over 5 years (largest single-state privacy settlement ever)",
+                eligibility: "Texas residents whose biometric data was captured by Meta facial recognition (2011–2021)",
+                claimPortal: "Managed by Texas Attorney General",
+                claimsSubmitted: "State enforcement action",
+                notes: "Meta admits no wrongdoing. Must notify TX AG of biometric activities. First settlement under Texas CUBI (2009)."
+            },
+            {
+                id: 3,
+                title: "In re: Facebook Biometric Information Privacy Litigation",
+                defendant: "Meta Platforms, Inc.",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, N.D. California",
+                docket: "In re Facebook Biometric Information Privacy Litigation",
+                status: "SETTLED—$650 million (2021)",
+                allegations: "Collected and stored facial geometry without informed consent via 'Tag Suggestions' feature",
+                reliefSought: "$650 million for ~1.6M class members (~$345 per person)",
+                eligibility: "Illinois residents tagged in Facebook photos with facial recognition 2011–2021",
+                claimPortal: "Closed—deadline passed",
+                claimsSubmitted: "~1,600,000",
+                notes: "Precedent-setting BIPA class action. Feature discontinued 2021."
+            },
+            {
+                id: 4,
+                title: "Clay v. Union Pacific Railroad Co.",
+                defendant: "Union Pacific Railroad Co.",
+                jurisdiction: "Federal",
+                court: "U.S. Court of Appeals, 7th Circuit",
+                docket: "Nos. 25-2185 et al.",
+                status: "DECIDED (Apr 1, 2026)",
+                allegations: "Required repeated fingerprint scans for facility access without BIPA notice/consent/retention policy",
+                reliefSought: "Single recovery per person per method (not per-scan)",
+                eligibility: "Employees subjected to repeated biometric scans without BIPA compliance",
+                claimPortal: "N/A—appellate decision",
+                claimsSubmitted: "Consolidated appeals from 3 district courts",
+                notes: "WATERSHED: Unanimous panel (Chief Judge Brennan). 2024 BIPA amendment (SB2979) applies retroactively to all pending cases. Ends per-scan theory. New BIPA filings dropped from 300+/yr to ~150 in 2025; Clay accelerates that collapse. Mass arbitration now dominant plaintiff strategy."
+            },
+            {
+                id: 5,
+                title: "In re: TikTok Inc. Biometric Litigation",
+                defendant: "TikTok / ByteDance",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, N.D. Illinois",
+                docket: "In re TikTok Inc.",
+                status: "SETTLED—$92 million",
+                allegations: "Collected facial geometry and biometric identifiers without BIPA-compliant consent",
+                reliefSought: "$92 million (~$27 national class; ~$163 Illinois class)",
+                eligibility: "Users of TikTok app during the class period",
+                claimPortal: "Closed",
+                claimsSubmitted: "~1,000,000 national; ~177,000 Illinois",
+                notes: "Major BIPA settlement against social media platform."
+            },
+            {
+                id: 6,
+                title: "Simmons v. Motorola Solutions / Vigilant Solutions (BIPA)",
+                defendant: "Motorola Solutions, Inc. & Vigilant Solutions, LLC",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, N.D. Illinois",
+                docket: "Class action",
+                status: "SETTLED & PAID—payments distributed Feb 6, 2026",
+                allegations: "FaceSearch facial recognition and booking photo gallery violated BIPA by collecting/storing/disclosing biometric data without compliance",
+                reliefSought: "Cash payments to valid claimants",
+                eligibility: "Illinois residents whose photo was used by law enforcement via FaceSearch (deadline was July 29, 2025)",
+                claimPortal: "Closed",
+                claimsSubmitted: "Claim deadline closed July 29, 2025",
+                notes: "Final approval hearing was Aug 20, 2025. Payments distributed Feb 6, 2026 per settlement administrator. Portal fully closed."
+            },
+            {
+                id: 7,
+                title: "Parker v. Verizon Communications — Voice ID BIPA",
+                defendant: "Verizon Communications, Inc.",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, N.D. Illinois",
+                docket: "Case No. 1:24-cv-08436",
+                status: "Active—Moved to mass arbitration (2026)",
+                allegations: "Verizon's Voice ID program captured and stored voiceprints of callers during customer service interactions without BIPA-required written notice, consent, or retention schedule",
+                reliefSought: "$1,000–$5,000 per violation per claimant",
+                eligibility: "Illinois residents who called Verizon customer service and were enrolled in Voice ID between 2021 and Sept 2024",
+                claimPortal: "https://classactionu.org/mass-arbitrations/current-claims/verizon-bipa/",
+                claimsSubmitted: "Mass arbitration recruitment open",
+                notes: "Filed Sept 13, 2024 (Parker & Doyle). Verizon's Voice ID enrollment flow provided no BIPA-compliant disclosures. Case moved from class action to mass arbitration—individual claims proceeding. Part of the rising voiceprint wave post-Clay."
+            },
+            {
+                id: 8,
+                title: "Meta AI Glasses Privacy Litigation",
+                defendant: "Meta Platforms, Inc.",
+                jurisdiction: "Federal",
+                court: "Multiple federal districts",
+                docket: "Pending",
+                status: "Investigation/Early litigation (2026)",
+                allegations: "False advertising—claimed glasses 'designed for privacy' while human contractors in Kenya reviewed intimate footage; voice stored 1 year by default",
+                reliefSought: "Compensatory damages for deceptive trade practices",
+                eligibility: "Purchasers of Meta Ray-Ban or Oakley AI smart glasses who relied on privacy promises",
+                claimPortal: "Clarkson Law Firm investigation",
+                claimsSubmitted: "Investigation phase",
+                notes: "April 2025 policy update made AI/voice recording default. 2026 investigation revealed overseas human review of private footage."
+            },
+            {
+                id: 9,
+                title: "Miracle-Pond v. Shutterfly, Inc. (BIPA)",
+                defendant: "Shutterfly, Inc.",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, N.D. Illinois",
+                docket: "Miracle-Pond v. Shutterfly, Inc.",
+                status: "SETTLED—$6.75 million",
+                allegations: "Collected facial geometry through photo services without BIPA compliance",
+                reliefSought: "$6.75 million for 950,000 class members",
+                eligibility: "Users whose biometric data was collected by Shutterfly",
+                claimPortal: "Closed",
+                claimsSubmitted: "950,000",
+                notes: "Major BIPA settlement in photo services sector."
+            },
+            {
+                id: 10,
+                title: "Karling v. Samsara, Inc. (BIPA)",
+                defendant: "Samsara, Inc.",
+                jurisdiction: "State",
+                court: "Illinois Circuit Court",
+                docket: "No. 2025-LA-0000175",
+                status: "SETTLED—$7.5 million (Oct 2025)",
+                allegations: "Dashboard cameras constantly scanned truck drivers' facial features without written consent, violating BIPA",
+                reliefSought: "$7.5 million settlement fund",
+                eligibility: "Truck drivers monitored using Samsara dash cameras",
+                claimPortal: "Closed",
+                claimsSubmitted: "Class action",
+                notes: "Employer-installed dash cams scanned facial features continuously. Technology provider Samsara settled."
+            },
+            {
+                id: 11,
+                title: "Timmons v. Lytx, Inc. (BIPA)",
+                defendant: "Lytx, Inc.",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, S.D. Illinois",
+                docket: "Lewis v. Lytx, Inc., No. 3:22-cv-00046",
+                status: "SETTLED—$4.25 million (July 2025)",
+                allegations: "Biometric dash cameras captured drivers' facial geometry without BIPA-compliant notice or consent",
+                reliefSought: "$4.25 million non-reversionary cash fund",
+                eligibility: "Drivers subjected to Lytx biometric monitoring",
+                claimPortal: "Closed",
+                claimsSubmitted: "Class action",
+                notes: "Approved July 25, 2025. Second major BIPA dash cam settlement."
+            },
+            {
+                id: 12,
+                title: "Microsoft Teams BIPA Litigation",
+                defendant: "Microsoft Corporation",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, N.D. Illinois",
+                docket: "Proposed class action (filed Feb 2026)",
+                status: "Active—Class action pending",
+                allegations: "Teams collects and stores users' biometric voiceprints for transcription without knowledge or consent; violates BIPA",
+                reliefSought: "$1,000–$5,000 per violation; injunctive relief",
+                eligibility: "Illinois residents whose voiceprints were captured during Teams meetings with live transcription (March 2021–present)",
+                claimPortal: "No active portal—litigation ongoing",
+                claimsSubmitted: "Class action pending",
+                notes: "Voiceprints created from vocal pitch, cadence, timbre. Microsoft never obtained informed consent. Part of the 2026 voiceprint wave alongside Verizon and Walmart voice-directed warehouse systems."
+            },
+            {
+                id: 13,
+                title: "Clearview AI BIPA Settlement",
+                defendant: "Clearview AI, Inc.",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, N.D. Illinois",
+                docket: "Multidistrict litigation",
+                status: "SETTLED—$51.75 million (2025)",
+                allegations: "Scraped billions of photos from social media to build facial recognition database without consent; violated BIPA",
+                reliefSought: "$51.75 million (~23% equity stake for 65,000–125,000 class members)",
+                eligibility: "Individuals whose biometric data was collected by Clearview AI",
+                claimPortal: "Closed",
+                claimsSubmitted: "National class",
+                notes: "Landmark settlement against AI facial recognition company. Equity-based structure unusual for BIPA cases."
+            },
+            {
+                id: 14,
+                title: "Speedway BIPA Settlement",
+                defendant: "Speedway LLC",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, N.D. Illinois",
+                docket: "Class action",
+                status: "SETTLED—$12.1 million (2025)",
+                allegations: "Collected employee fingerprints for timekeeping without BIPA notice, consent, or retention policy",
+                reliefSought: "$12.1 million",
+                eligibility: "Employees subjected to fingerprint timekeeping",
+                claimPortal: "Closed",
+                claimsSubmitted: "Class action",
+                notes: "Part of 2025 wave of 100+ new BIPA filings. Employer biometric timekeeping case."
+            },
+            {
+                id: 15,
+                title: "Viakable BIPA Settlement",
+                defendant: "Viakable",
+                jurisdiction: "Federal",
+                court: "U.S. District Court, N.D. Illinois",
+                docket: "Class action",
+                status: "SETTLED—$417,000 (2025)",
+                allegations: "Biometric data collection without BIPA compliance",
+                reliefSought: "$417,000",
+                eligibility: "Affected employees",
+                claimPortal: "Closed",
+                claimsSubmitted: "Class action",
+                notes: "Smaller 2025 BIPA settlement. Demonstrates breadth of employer liability across industries."
+            }
+        ];
+
+        let activeTab = 'all';
+        let searchTerm = '';
+
+        function getStatusIcon(status) {
+            if (status.includes('SETTLED') || status.includes('PAID')) {
+                return '<svg class="h-4 w-4 mr-2 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+            }
+            if (status.includes('DECIDED')) {
+                return '<svg class="h-4 w-4 mr-2 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>';
+            }
+            if (status.includes('Active') || status.includes('Investigation') || status.includes('PENDING')) {
+                return '<svg class="h-4 w-4 mr-2 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+            }
+            return '<svg class="h-4 w-4 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+        }
+
+        function getStatusBadge(status) {
+            if (status.includes('SETTLED') || status.includes('PAID')) return 'bg-emerald-900/40 text-emerald-300 border border-emerald-700/50';
+            if (status.includes('DECIDED')) return 'bg-cyan-900/40 text-cyan-300 border border-cyan-700/50';
+            if (status.includes('Active') || status.includes('Investigation')) return 'bg-red-900/40 text-red-300 border border-red-700/50';
+            return 'bg-gray-800 text-gray-400 border border-gray-700';
+        }
+
+        function getJurisdictionBadge(jurisdiction) {
+            if (jurisdiction.toLowerCase() === 'federal') {
+                return 'bg-blue-950/30 text-blue-400 border border-blue-800/30';
+            }
+            return 'bg-purple-950/30 text-purple-400 border border-purple-800/30';
+        }
+
+        function filterCases() {
+            let filtered = cases;
+
+            if (activeTab === 'active') {
+                filtered = filtered.filter(c => c.status.includes('Active') || c.status.includes('Investigation') || c.status.includes('PENDING'));
+            } else if (activeTab === 'settled') {
+                filtered = filtered.filter(c => c.status.includes('SETTLED') || c.status.includes('DECIDED') || c.status.includes('PAID'));
+            } else if (activeTab === 'federal' || activeTab === 'state') {
+                filtered = filtered.filter(c => c.jurisdiction.toLowerCase() === activeTab);
+            }
+
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filtered = filtered.filter(c =>
+                    c.title.toLowerCase().includes(term) ||
+                    c.defendant.toLowerCase().includes(term) ||
+                    c.jurisdiction.toLowerCase().includes(term) ||
+                    c.eligibility.toLowerCase().includes(term) ||
+                    c.status.toLowerCase().includes(term) ||
+                    c.docket.toLowerCase().includes(term)
+                );
+            }
+
+            return filtered;
+        }
+
+        function renderCases() {
+            const tbody = document.getElementById('casesTableBody');
+            const filtered = filterCases();
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="py-12 text-center text-gray-600 font-mono">
+                            NO MATCHING RECORDS IN DATABASE
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map((caseItem, index) => `
+                <tr class="case-row border-b border-red-900/10" style="animation: fadeIn 0.3s ease ${index * 0.05}s forwards; opacity: 0;">
+                    <td class="py-5 px-6">
+                        <div class="font-bold text-gray-200 text-sm">${caseItem.title}</div>
+                        <div class="text-xs text-red-700 font-mono mt-1">${caseItem.docket}</div>
+                        ${caseItem.notes ? `<div class="text-xs text-gray-500 mt-2 italic border-l-2 border-red-900/30 pl-2">${caseItem.notes}</div>` : ''}
+                    </td>
+                    <td class="py-5 px-6 hidden md:table-cell text-gray-400 text-sm">${caseItem.defendant}</td>
+                    <td class="py-5 px-6 hidden lg:table-cell">
+                        <span class="px-3 py-1 rounded text-xs font-mono uppercase ${getJurisdictionBadge(caseItem.jurisdiction)}">
+                            ${caseItem.jurisdiction}
+                        </span>
+                    </td>
+                    <td class="py-5 px-6">
+                        <div class="flex items-center">
+                            ${getStatusIcon(caseItem.status)}
+                            <span class="text-xs font-mono px-2 py-1 rounded ${getStatusBadge(caseItem.status)}">
+                                ${caseItem.status}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="py-5 px-6 hidden lg:table-cell text-gray-400 text-xs max-w-xs">${caseItem.reliefSought}</td>
+                    <td class="py-5 px-6">
+                        ${(caseItem.claimPortal !== 'N/A—appellate decision' && caseItem.claimPortal !== 'Closed—deadline passed' && caseItem.claimPortal !== 'Closed' && caseItem.claimPortal !== 'No active portal—litigation ongoing' && caseItem.claimPortal !== 'Clarkson Law Firm investigation' && caseItem.claimPortal !== 'Managed by Texas Attorney General') ? `
+                            <a href="${caseItem.claimPortal.startsWith('http') ? caseItem.claimPortal : 'https://' + caseItem.claimPortal}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center bg-red-600 text-black px-4 py-2 rounded font-bold text-xs hover:bg-red-500 transition-colors">
+                                <svg class="h-3 w-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                CLAIM
+                            </a>
+                        ` : `
+                            <span class="flex items-center justify-center bg-gray-900 text-gray-600 px-4 py-2 rounded font-mono text-xs border border-gray-800">
+                                ${caseItem.claimPortal}
+                            </span>
+                        `}
+                        <div class="mt-2 text-xs text-gray-600 text-center font-mono">${caseItem.claimsSubmitted}</div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCases();
+
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                searchTerm = e.target.value;
+                renderCases();
+            });
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.tab-btn').forEach(b => {
+                        b.classList.remove('active');
+                        b.classList.remove('bg-red-600', 'text-black', 'border-red-600', 'font-bold');
+                        b.classList.add('bg-gray-900', 'text-gray-400', 'border-red-900/20');
+                    });
+                    this.classList.add('active');
+                    this.classList.remove('bg-gray-900', 'text-gray-400', 'border-red-900/20');
+                    this.classList.add('bg-red-600', 'text-black', 'border-red-600', 'font-bold');
+
+                    activeTab = this.dataset.tab;
+                    renderCases();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
