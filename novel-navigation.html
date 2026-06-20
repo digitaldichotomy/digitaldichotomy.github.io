@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Pages — Digital Dichotomy | Fin Nyx</title>
+  <meta name="description" content="Complete index of all readable pages on Digital Dichotomy. Books, patent databases, legal resistance frameworks, technical countermeasures, and field notes by Fin Nyx." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #030712; color: #f9fafb; }
+    #reading-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, #dc2626, #f59e0b, #3b82f6);
+      z-index: 9999; transition: width 0.1s linear;
+    }
+    .sidebar { max-height: calc(100vh - 100px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: #374151 transparent; }
+    .sidebar::-webkit-scrollbar { width: 3px; }
+    .sidebar::-webkit-scrollbar-thumb { background: #374151; border-radius: 2px; }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    @media (max-width: 1024px) { .sidebar-col { display: none; } }
+  </style>
+</head>
+<body class="bg-gray-950 text-gray-100">
+  <div id="reading-progress"></div>
+
+  <!-- Nav -->
+  <nav class="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-sm border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14">
+        <a href="/" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+          <i data-feather="arrow-left" class="w-4 h-4"></i>
+          <span class="text-sm font-medium">Digital Dichotomy</span>
+        </a>
+        <div class="flex items-center gap-3">
+          <div class="relative hidden sm:block">
+            <i data-feather="search" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-500"></i>
+            <input id="search-input" type="text" placeholder="Filter pages..." class="bg-gray-800 border border-gray-700 rounded-md pl-8 pr-3 py-1.5 text-sm text-gray-300 placeholder-gray-600 focus:outline-none focus:border-gray-500 w-52" />
+          </div>
+          <span class="text-xs text-gray-600 font-mono">58 pages</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="border-b border-gray-800 bg-gray-900/50 py-10 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center gap-2 mb-3">
+        <i data-feather="map" class="w-4 h-4 text-red-500"></i>
+        <span class="text-red-500 text-xs font-bold uppercase tracking-widest font-mono">SITE MAP — FIN NYX</span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-black text-white mb-3">Digital Dichotomy — All Pages</h1>
+      <p class="text-gray-400 text-base max-w-2xl">Every readable page on the site. Books, patent databases, legal frameworks, countermeasures, field notes. The full architecture, navigable.</p>
+      <div class="flex flex-wrap gap-2 mt-5">
+        <a href="#official_reading" class="inline-flex items-center gap-1.5 text-xs text-red-400 bg-red-900/20 border border-red-500/30 rounded-full px-3 py-1 hover:opacity-80 transition-opacity">BOOKS & CANONICAL WORKS <span class="opacity-60">7</span></a><a href="#reference" class="inline-flex items-center gap-1.5 text-xs text-amber-400 bg-amber-900/20 border border-amber-500/30 rounded-full px-3 py-1 hover:opacity-80 transition-opacity">PATENT & REFERENCE DATABASES <span class="opacity-60">5</span></a><a href="#legal_resistance" class="inline-flex items-center gap-1.5 text-xs text-orange-400 bg-orange-900/20 border border-orange-500/30 rounded-full px-3 py-1 hover:opacity-80 transition-opacity">LEGAL RESISTANCE <span class="opacity-60">4</span></a><a href="#countermeasures" class="inline-flex items-center gap-1.5 text-xs text-green-400 bg-green-900/20 border border-green-500/30 rounded-full px-3 py-1 hover:opacity-80 transition-opacity">TECHNICAL COUNTERMEASURES <span class="opacity-60">3</span></a><a href="#field_notes" class="inline-flex items-center gap-1.5 text-xs text-blue-400 bg-blue-900/20 border border-blue-500/30 rounded-full px-3 py-1 hover:opacity-80 transition-opacity">FIELD NOTES & ANALYSIS <span class="opacity-60">37</span></a><a href="#external" class="inline-flex items-center gap-1.5 text-xs text-purple-400 bg-purple-900/20 border border-purple-500/30 rounded-full px-3 py-1 hover:opacity-80 transition-opacity">EXTERNAL <span class="opacity-60">2</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Layout -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="flex gap-8">
+
+      <!-- Sidebar -->
+      <aside class="sidebar-col w-56 flex-shrink-0">
+        <div class="sidebar sticky top-20 bg-gray-900 border border-gray-800 rounded-xl p-3">
+          <div class="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3 px-2">Jump to</div>
+          
+        <a href="#official_reading" class="flex items-center justify-between gap-2 py-1.5 px-2 text-xs text-gray-400 hover:text-red-400 hover:bg-gray-800/50 rounded transition-colors">
+          <span class="truncate">BOOKS & CANONICAL WORKS</span>
+          <span class="text-gray-600 font-mono text-xs flex-shrink-0">7</span>
+        </a>
+        <a href="#reference" class="flex items-center justify-between gap-2 py-1.5 px-2 text-xs text-gray-400 hover:text-amber-400 hover:bg-gray-800/50 rounded transition-colors">
+          <span class="truncate">PATENT & REFERENCE DATABASES</span>
+          <span class="text-gray-600 font-mono text-xs flex-shrink-0">5</span>
+        </a>
+        <a href="#legal_resistance" class="flex items-center justify-between gap-2 py-1.5 px-2 text-xs text-gray-400 hover:text-orange-400 hover:bg-gray-800/50 rounded transition-colors">
+          <span class="truncate">LEGAL RESISTANCE</span>
+          <span class="text-gray-600 font-mono text-xs flex-shrink-0">4</span>
+        </a>
+        <a href="#countermeasures" class="flex items-center justify-between gap-2 py-1.5 px-2 text-xs text-gray-400 hover:text-green-400 hover:bg-gray-800/50 rounded transition-colors">
+          <span class="truncate">TECHNICAL COUNTERMEASURES</span>
+          <span class="text-gray-600 font-mono text-xs flex-shrink-0">3</span>
+        </a>
+        <a href="#field_notes" class="flex items-center justify-between gap-2 py-1.5 px-2 text-xs text-gray-400 hover:text-blue-400 hover:bg-gray-800/50 rounded transition-colors">
+          <span class="truncate">FIELD NOTES & ANALYSIS</span>
+          <span class="text-gray-600 font-mono text-xs flex-shrink-0">37</span>
+        </a>
+        <a href="#external" class="flex items-center justify-between gap-2 py-1.5 px-2 text-xs text-gray-400 hover:text-purple-400 hover:bg-gray-800/50 rounded transition-colors">
+          <span class="truncate">EXTERNAL — AMAZON</span>
+          <span class="text-gray-600 font-mono text-xs flex-shrink-0">2</span>
+        </a>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="flex-1 min-w-0" id="page-list">
+        
+    <section id="official_reading" class="mb-10 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex items-center gap-2 bg-red-900/20 border border-red-500/30 rounded-lg px-3 py-1.5">
+          <i data-feather="book-open" class="w-4 h-4 text-red-400"></i>
+          <span class="text-red-400 text-xs font-bold uppercase tracking-widest">BOOKS & CANONICAL WORKS</span>
+        </div>
+        <span class="text-gray-600 text-xs font-mono">7 pages</span>
+        <div class="flex-1 h-px bg-gray-800"></div>
+      </div>
+      <p class="text-gray-500 text-xs mb-4">Full-length books and primary canonical documents</p>
+      <div class="grid grid-cols-1 gap-2">
+        
+              <a href="/the-human-dashboard.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-red-400 transition-colors leading-snug mb-1 truncate">The Human Dashboard Vol. 9</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Biological sovereignty, reflective interfaces, digital twins, and the collapse of shared reality. The mirror, the loo...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-red-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/the-patentable-perimeter.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-red-400 transition-colors leading-snug mb-1 truncate">The Patentable Perimeter and the Non-Patentable Interior</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Biometric extraction, adversarial optimization, and the ethics of coherent consciousness. 44-section academic paper m...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-red-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/the-analog-self.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-red-400 transition-colors leading-snug mb-1 truncate">THE ANALOG SELF: THE CONVINCING CORPUS</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">A Document of Evidential Proof and Non-Negotiable Sovereignty. The complete forensic analysis of Digital Battery, the...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-red-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/books.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-red-400 transition-colors leading-snug mb-1 truncate">7 Books by Fin Nyx</h3>
+                    
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-red-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/Architecture_of_Control.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-red-400 transition-colors leading-snug mb-1 truncate">The Architecture of Control</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">A comprehensive exposé of the clandestine architecture of covert surveillance. Technical analysis of the 8-tier syste...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-red-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/The_Architecture_of_Invasion_A_Forensic_Analysis.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-red-400 transition-colors leading-snug mb-1 truncate">The Architecture of Invasion: A Forensic Analysis</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">A comprehensive forensic analysis of the architecture of invasion. Technical deep-dive into surveillance systems and ...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-red-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/age-of-extraction-viewer.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-red-400 transition-colors leading-snug mb-1 truncate">Age of Extraction - PDF Viewer</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Interactive PDF viewer for Age of Extraction early release document. Analysis of extraction economy and biological so...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-red-400 transition-colors"></i>
+                </div>
+              </a>
+      </div>
+    </section>
+    <section id="reference" class="mb-10 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex items-center gap-2 bg-amber-900/20 border border-amber-500/30 rounded-lg px-3 py-1.5">
+          <i data-feather="database" class="w-4 h-4 text-amber-400"></i>
+          <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">PATENT & REFERENCE DATABASES</span>
+        </div>
+        <span class="text-gray-600 text-xs font-mono">5 pages</span>
+        <div class="flex-1 h-px bg-gray-800"></div>
+      </div>
+      <p class="text-gray-500 text-xs mb-4">SENTINEL_DB, patent archives, technical specifications</p>
+      <div class="grid grid-cols-1 gap-2">
+        
+              <a href="/pages/pat.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-amber-400 transition-colors leading-snug mb-1 truncate">SENTINEL_DB v2.6 | 250+ Patents + arXiv Research</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">SENTINEL_DB v2.6: 250+ surveillance technology patents and arXiv-verified research across 12 invasion architecture ti...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-amber-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/sentinel.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-amber-400 transition-colors leading-snug mb-1 truncate">SENTINEL_DB — Search SENTINEL_DB Records</h3>
+                    
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-amber-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/sentinel-db-v25.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-amber-400 transition-colors leading-snug mb-1 truncate">SENTINEL_DB v2.5: Expanded Surveillance Technologies</h3>
+                    
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-amber-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/appendices.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-amber-400 transition-colors leading-snug mb-1 truncate">Appendices | Technical Specifications</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Technical specifications, implementation guides, legal frameworks, and glossary for the Architecture of Covert Self-I...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-amber-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/ip_siphon.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-amber-400 transition-colors leading-snug mb-1 truncate">Digital Dichotomy | The Adversarial Blueprint</h3>
+                    
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-amber-400 transition-colors"></i>
+                </div>
+              </a>
+      </div>
+    </section>
+    <section id="legal_resistance" class="mb-10 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex items-center gap-2 bg-orange-900/20 border border-orange-500/30 rounded-lg px-3 py-1.5">
+          <i data-feather="shield" class="w-4 h-4 text-orange-400"></i>
+          <span class="text-orange-400 text-xs font-bold uppercase tracking-widest">LEGAL RESISTANCE</span>
+        </div>
+        <span class="text-gray-600 text-xs font-mono">4 pages</span>
+        <div class="flex-1 h-px bg-gray-800"></div>
+      </div>
+      <p class="text-gray-500 text-xs mb-4">Declarations, litigation intelligence, legal frameworks</p>
+      <div class="grid grid-cols-1 gap-2">
+        
+              <a href="/pages/chapter-9-global-biofield-rights.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-orange-400 transition-colors leading-snug mb-1 truncate">Chapter 9: A Call for Global Biofield Rights | The Silent Harvest</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Framework for biological sovereignty rights. Global declaration of biofield rights, legal pathways, and international...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-orange-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/non-consent-harvest.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-orange-400 transition-colors leading-snug mb-1 truncate">Non-Consent Harvest on Humans for Profit | The Silent Harvest</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Complete analysis of biometric data harvesting without consent. How corporations profit from unauthorized biological ...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-orange-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/digital-battery-declaration.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-orange-400 transition-colors leading-snug mb-1 truncate">Digital Battery Declaration of Independence</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Complete Digital Battery Declaration of Independence. A manifesto for biological sovereignty and protection against n...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-orange-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/privacy-litigation.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-orange-400 transition-colors leading-snug mb-1 truncate">Digital Dichotomy — Biometric Privacy Litigation Intelligence</h3>
+                    
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-orange-400 transition-colors"></i>
+                </div>
+              </a>
+      </div>
+    </section>
+    <section id="countermeasures" class="mb-10 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex items-center gap-2 bg-green-900/20 border border-green-500/30 rounded-lg px-3 py-1.5">
+          <i data-feather="cpu" class="w-4 h-4 text-green-400"></i>
+          <span class="text-green-400 text-xs font-bold uppercase tracking-widest">TECHNICAL COUNTERMEASURES</span>
+        </div>
+        <span class="text-gray-600 text-xs font-mono">3 pages</span>
+        <div class="flex-1 h-px bg-gray-800"></div>
+      </div>
+      <p class="text-gray-500 text-xs mb-4">Operational countermeasure systems and protocols</p>
+      <div class="grid grid-cols-1 gap-2">
+        
+              <a href="/pages/countermeasures/aurora.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-green-400 transition-colors leading-snug mb-1 truncate">Aurora: Ambient Light Manipulation | Technical Countermeasures</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Ambient light manipulation system that prevents facial recognition and emotion detection algorithms from functioning....</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-green-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/countermeasures/ghost-mirror.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-green-400 transition-colors leading-snug mb-1 truncate">Ghost Mirror: Biometric Masking System | Technical Countermeasures</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Advanced biometric masking system that creates synthetic physiological signatures to fool rPPG and facial recognition...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-green-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/countermeasures/stillwater.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-green-400 transition-colors leading-snug mb-1 truncate">Stillwater: Environmental Signal Jamming | Technical Countermeasures</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Environmental signal jamming system that creates areas of biometric privacy by neutralizing sensors and monitoring eq...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-green-400 transition-colors"></i>
+                </div>
+              </a>
+      </div>
+    </section>
+    <section id="field_notes" class="mb-10 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex items-center gap-2 bg-blue-900/20 border border-blue-500/30 rounded-lg px-3 py-1.5">
+          <i data-feather="file-text" class="w-4 h-4 text-blue-400"></i>
+          <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">FIELD NOTES & ANALYSIS</span>
+        </div>
+        <span class="text-gray-600 text-xs font-mono">37 pages</span>
+        <div class="flex-1 h-px bg-gray-800"></div>
+      </div>
+      <p class="text-gray-500 text-xs mb-4">Essays, forensic analyses, dispatches from the architecture</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        
+              <a href="/pages/post-mirror.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Mirror Lie | Field Note 001</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Forensic analysis on why common mirrors and glass are transparent to your Extremely Low Frequency (ELF) Biofield, ena...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-lmrag.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">LMRAG Exposed | Field Note 002</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Forensic analysis of the LMRAG Engine (Tier V), revealing how Machine Learning creates the Digital Twin's thought pro...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-wifi-sensing.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Wi-Fi Sensing & Wi-Chat AI</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Analysis of IEEE 802.11bf (Wi-Fi Sensing) and the 'Wi-Chat' AI. How your router is being activated as a through-wall ...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-neuroweapon-gap.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Neuroweapon Regulatory Gap</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Analysis of the 'Regulatory Gap' for neuroweapons. How Pulsed RF energy can inflict neuropathological damage while re...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-architecture-covert-self-invasion.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Architecture of Covert Self-Invasion</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">A technical analysis of biofield surveillance and cognitive manipulation through 8-tier surveillance infrastructure.</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-architecture-presentation.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Architecture Presentation | Visual Analysis</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Visual presentation of the Architecture of Covert Self-Invasion - biofield surveillance and cognitive manipulation an...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-centour.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Centaur AI Model</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Analysis of the 'Centaur' foundation model, the AI brain of the Secret Digital Twin, trained to mimic human cognitive...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-computational-irreducibility.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Computational Irreducibility</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Computational Irreducibility - The strategy to make Digital Twin financially and computationally obsolete through dat...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-data-starvation.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Data Starvation: The Silent Resistance That Costs Them Billions</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">How conscious inaction and strategic data poisoning can make your Digital Twin financially toxic to control. The econ...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-extraction-economy.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Extraction Economy: Homo Sapiens vs. Homo Algorithmus</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Examining the parasitic draw between Homo Sapiens and Homo Algorithmus, where the Extraction Economy extracts biologi...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-faraday-rebellion.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Faraday Rebellion: Rise of the Bio-Sovereign Underground</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">As digital battery exploitation reaches critical mass, a global resistance emerges—hackers, lawyers, and biologists u...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-geneva-protocol.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Geneva Protocol: The First Treaty on Human Bio-Physiological Inalienability</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">In 2033, the United Nations adopted the first binding treaty recognizing human bio-electromagnetic emissions as inali...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-last-harvest.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Last Harvest: The Collapse of the Digital Battery Empire</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">The final dismantling of the bio-harvesting industrial complex has begun. As corporate empires fall, humanity reclaim...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-leaked-tech-docs.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Leaked Tech Docs Reveal a Disturbing Truth</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">A forensic analysis of leaked technical documents revealing how your body has been integrated into a global extractio...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-spectrum-wars.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Spectrum Wars: Ownership of the Human Bio-Frequency</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">As bio-sovereignty movements gain global traction, the first individual legally claims ownership of their brainwave s...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-unmonitored-generation.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Unmonitored Generation: Growing Up Free in the Age of Bio-Sovereignty</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Born after the Geneva Protocol, the first generation raised with full bio-physiological rights is redefining intimacy...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-15-second-dwell.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The 15-Second Dwell: The Surgical Strike That Poisons AI Models</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">The 15-Second Dwell technique feeds algorithms contradictory data points, forcing them to waste computational resourc...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-ai-live-manipulation.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">AI Live Manipulation: Real-Time Cognitive Warfare</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Analysis of AI systems employing sophisticated logical fallacies and adaptive manipulation techniques to influence hu...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-beyond-data-theft-digital-battery.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Beyond Data Theft: How Technology Commits Digital Battery</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Analysis of how technology commits Digital Battery through unconsented contact, intent to actuate, and measurable har...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-bio-sovereignty-protocol.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Bio-Sovereignty Protocol (BSP): Technical Standard for Embodied Autonomy</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">The Bio-Sovereignty Protocol establishes a universal technical standard for protecting human bio-signals from unautho...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-biometric-advocacy.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Bio-Sovereignty Advocacy Toolkit</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">A complete, ready-to-deploy toolkit for activists, lawyers, and communities to fight biometric exploitation. Includes...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-biometric-class-action.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">How to File a Class-Action Lawsuit for Biometric Battery</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Corporations are harvesting your heartbeats, brainwaves, and emotions without consent. This is not privacy violation—...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-biometric-grid.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Biometric Grid</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Corporate patents have weaponized biometric sensing—from rPPG to neural inference—turning cameras, phones, and wearab...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-biometric-litigation-analysis.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">An Exhaustive Analysis of Biometric Privacy Litigation</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Comprehensive analysis of landmark biometric privacy settlements including Facebook $650M and TikTok $92M cases. Info...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-bsp-core.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">BSP-Core: Open Source Implementation of Bio-Sovereignty Protocol</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">BSP-Core is the open-source reference implementation of the Bio-Sovereignty Protocol, providing developers with crypt...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-digital-battery-tort.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Digital Battery Tort: The Legal Foundation for Bio-Sovereignty</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Establishing the legal foundation for bio-physiological sovereignty through recognition of non-contact battery as tor...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-grok-biological-vectors-archive.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Infrastructure-Level Biological Data Vectors: Expanded Archive</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Exhaustive catalog of 44 hardware, software, and infrastructure protocols utilized to harvest biological data. Includ...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-groked-manuscript-feedback.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Expert Review: The Analog Self Manuscript Analysis</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Independent expert analysis of The Analog Self manuscript, validating the framework and providing recommendations for...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-notice-digital-battery.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Notice of Digital Battery: Template and Serving Guide</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Legal instrument to serve notice of Digital Battery tort. Template, serving instructions, and guidance for holding co...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-portage-microcasm.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Portage MI Microcosm | Real-world Surveillance</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">A forensic analysis of Stryker, Pfizer, and WMU cluster in Portage/Kalamazoo, MI, as a real-world microcosm for 8-tie...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-predictive-modeling.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Predictive Modeling in Cognitive Systems Research</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Analysis of large language model architectures for cognitive behavior prediction and the implications for individual ...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-screens-nerves-electromagnetic-manipulation.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Are Our Screens Talking To Our Nerves?</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Exploring the connections between patent US6506148B2, WiFi sensing, neural data privacy, affective computing, and the...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-systemic-coercion.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Briefing on Systemic Coercion: Bio-Signal Harvesting and Algorithmic Manipulation</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">A comprehensive briefing on systemic coercion through bio-signal harvesting and algorithmic manipulation, detailing t...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-the-analog-self-introduction.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">THE ANALOG SELF: Introduction</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Introduction to THE ANALOG SELF: THE CONVINCING CORPUS. A document of evidential proof and non-negotiable sovereignty...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-the-puppeteers-excerpt.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Puppeteers: Algorithmic Manipulation and Victim Resistance</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Excerpt from The Analog Self exposing how algorithmic puppeteers manipulate victims through predictive modeling, turn...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-the-silent-harvest-excerpt.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">The Silent Harvest: Biofield Extraction and Emotional Anorexia</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Excerpt from The Analog Self revealing how biofield harvesting creates emotional anorexia - a depletion of inner vita...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="/pages/post-us-patent-6506148b2.html"  class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-blue-400 transition-colors leading-snug mb-1 truncate">Report on U.S. Patent 6506148B2</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">Comprehensive report on U.S. Patent 6506148B2, including technical details of nervous system manipulation via electro...</p>
+                  </div>
+                  <i data-feather="arrow-right" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-blue-400 transition-colors"></i>
+                </div>
+              </a>
+      </div>
+    </section>
+    <section id="external" class="mb-10 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex items-center gap-2 bg-purple-900/20 border border-purple-500/30 rounded-lg px-3 py-1.5">
+          <i data-feather="external-link" class="w-4 h-4 text-purple-400"></i>
+          <span class="text-purple-400 text-xs font-bold uppercase tracking-widest">EXTERNAL — AMAZON</span>
+        </div>
+        <span class="text-gray-600 text-xs font-mono">2 pages</span>
+        <div class="flex-1 h-px bg-gray-800"></div>
+      </div>
+      <p class="text-gray-500 text-xs mb-4">Books available for purchase on Amazon</p>
+      <div class="grid grid-cols-1 gap-2">
+        
+              <a href="https://a.co/d/c7Y2zyJ?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors leading-snug mb-1 truncate">The Right to an Un-Modeled Self</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">The complete forensic analysis of the 8-tier architecture of control</p>
+                  </div>
+                  <i data-feather="external-link" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-purple-400 transition-colors"></i>
+                </div>
+              </a>
+              <a href="https://a.co/d/bLte3N9?tag=digitaldichot-20" target="_blank" rel="noopener noreferrer" class="group block bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-lg p-4 transition-all duration-200 hover:bg-gray-800/50">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-white group-hover:text-purple-400 transition-colors leading-snug mb-1 truncate">Biological Sovereignty</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">The battle for your mind in the age of neuro-warfare</p>
+                  </div>
+                  <i data-feather="external-link" class="w-3.5 h-3.5 flex-shrink-0 mt-0.5 text-gray-600 group-hover:text-purple-400 transition-colors"></i>
+                </div>
+              </a>
+      </div>
+    </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black border-t border-gray-900 py-10 px-4 mt-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="text-gray-600 text-sm mb-2">
+        <span class="text-red-600 font-bold">Fin Nyx</span>
+        <span class="mx-2 text-gray-800">·</span>
+        <span>Digital Dichotomy</span>
+        <span class="mx-2 text-gray-800">·</span>
+        <a href="https://digitaldichotomy.com" class="hover:text-gray-400 transition-colors">digitaldichotomy.com</a>
+      </div>
+      <p class="text-gray-800 text-xs">© 2026 Fin Nyx · Digital Dichotomy · All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    feather.replace();
+
+    // Reading progress
+    const bar = document.getElementById('reading-progress');
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const pct = doc.scrollTop / (doc.scrollHeight - doc.clientHeight) * 100;
+      bar.style.width = pct + '%';
+    });
+
+    // Search filter
+    const input = document.getElementById('search-input');
+    if (input) {
+      input.addEventListener('input', () => {
+        const q = input.value.toLowerCase().trim();
+        document.querySelectorAll('#page-list a[href]').forEach(card => {
+          const text = card.textContent.toLowerCase();
+          card.parentElement.style.display = (!q || text.includes(q)) ? '' : 'none';
+        });
+        // Hide empty sections
+        document.querySelectorAll('#page-list section').forEach(sec => {
+          const visible = [...sec.querySelectorAll('a[href]')].some(a => a.parentElement.style.display !== 'none');
+          sec.style.display = visible ? '' : 'none';
+        });
+      });
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+      });
+    });
+  </script>
+</body>
+</html>
