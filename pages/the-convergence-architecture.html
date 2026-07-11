@@ -249,6 +249,297 @@
 <p class="text-gray-300">This connects directed energy to medicine, neuroscience, exposure science, intelligence, and forensic investigation.</p>
 </section>
 
+<section id="silent-speech" class="mb-12">
+<h2 class="text-3xl font-bold text-white mb-6">4. Silent Speech and Subvocal Signals</h2>
+<p class="text-gray-300 mb-4">The human speech system begins operating before audible sound leaves the mouth.</p>
+<p class="text-gray-300 mb-4">Speech preparation and silent articulation can create measurable electrical activity in:</p>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Jaw muscles</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Facial muscles</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Throat muscles</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Neck muscles</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Muscles around the ear</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Articulatory structures</div>
+</div>
+<p class="text-gray-300 mb-6">Surface electromyography captures these signals. Machine-learning systems can then classify the intended word or command.</p>
+<h3 class="text-xl font-bold text-white mb-4">4.1 Silent speech through headphones</h3>
+<p class="text-gray-300 mb-4">A <strong class="text-white">2025 wireless silent-speech interface</strong> integrated four textile EMG electrodes into headphone earmuffs.</p>
+<p class="text-gray-300 mb-4">The electrodes captured speech-related neuromuscular activity, and an ESP32-S3-based wireless module processed and transmitted the signals. A neural-network architecture dynamically weighted the sensor channels to handle changing skin-electrode coupling and movement.</p>
+<div class="bg-green-900/20 border-l-4 border-green-500 p-6 mb-6">
+<p class="text-2xl font-bold text-green-400 text-center">96% accuracy</p>
+<p class="text-gray-400 text-center">across ten voice-free control words</p></div>
+<p class="text-gray-300 mb-4">This is an important miniaturization milestone. The sensing system moved from visible laboratory patches to an ordinary consumer form factor:</p>
+<div class="bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-6">
+<p class="text-lg font-semibold text-purple-300 text-center">Headphones became a speech-intent sensor.</p></div>
+<h3 class="text-xl font-bold text-white mb-4">4.2 Silent speech through textile neckbands</h3>
+<p class="text-gray-300 mb-4">The <strong class="text-white">2026 SilentWear project</strong> created a textile neck interface with fourteen differential EMG channels and on-device speech recognition.</p>
+<p class="text-gray-300 mb-4">Reported performance included:</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+<div class="bg-gray-800/50 p-4 rounded border-l-4 border-green-500">
+<p class="text-2xl font-bold text-green-400">77.5%</p>
+<p class="text-gray-400 text-sm">Average cross-validated accuracy for silent speech</p></div>
+<div class="bg-gray-800/50 p-4 rounded border-l-4 border-blue-500">
+<p class="text-2xl font-bold text-blue-400">2.47 ms</p>
+<p class="text-gray-400 text-sm">Inference latency</p></div>
+<div class="bg-gray-800/50 p-4 rounded border-l-4 border-purple-500">
+<p class="text-2xl font-bold text-purple-400">20.5 mW</p>
+<p class="text-gray-400 text-sm">Total system power</p></div>
+<div class="bg-gray-800/50 p-4 rounded border-l-4 border-yellow-500">
+<p class="text-2xl font-bold text-yellow-400">27+ hours</p>
+<p class="text-gray-400 text-sm">Continuous operation</p></div>
+</div>
+<p class="text-gray-300 mb-6">A separate fully dry EMG neckband reported silent-command classification using fourteen channels, low-power wireless acquisition, and between-session testing after repositioning.</p>
+<div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 mb-6">
+<p class="font-mono text-center text-cyan-300">Laboratory electrodes &rarr; Wearable textiles &rarr; Consumer form factors &rarr; On-device AI &rarr; Continuous operation</p></div>
+<h3 class="text-xl font-bold text-white mb-4">4.3 The significance of internal speech leakage</h3>
+<p class="text-gray-300 mb-4">Silent-speech systems demonstrate that language does not need to become audible before it becomes machine-readable.</p>
+<p class="text-gray-300 mb-4">The privacy boundary therefore extends backward into:</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-red-900/30 border border-red-700 px-3 py-1 rounded-full text-sm text-red-300">Speech preparation</span>
+<span class="bg-red-900/30 border border-red-700 px-3 py-1 rounded-full text-sm text-red-300">Motor intention</span>
+<span class="bg-red-900/30 border border-red-700 px-3 py-1 rounded-full text-sm text-red-300">Subvocal activity</span>
+<span class="bg-red-900/30 border border-red-700 px-3 py-1 rounded-full text-sm text-red-300">Neuromuscular leakage</span>
+<span class="bg-red-900/30 border border-red-700 px-3 py-1 rounded-full text-sm text-red-300">Pre-audible articulation</span>
+</div>
+<p class="text-gray-300">When these signals are linked to identity, location, emotional state, browsing history, voice history, and behavioral models, even restricted command recognition becomes part of a much larger inference system.</p>
+</section>
+
+<section id="neural-security" class="mb-12">
+<h2 class="text-3xl font-bold text-white mb-6">5. Neural Data as a Security Domain</h2>
+<p class="text-gray-300 mb-4">Brain-computer-interface privacy is moving beyond the protection of raw neural recordings.</p>
+<p class="text-gray-300 mb-4">A <strong class="text-white">2026 BCI privacy review</strong> identifies a full risk pathway involving:</p>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm">Neural-signal collection</div>
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm">Transmission</div>
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm">Storage</div>
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm">Model training</div>
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm">Inference</div>
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm">Feedback</div>
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm">Derived representations</div>
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm">Trained model assets</div>
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm">Decoded outputs</div>
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm md:col-span-2">Reassociation with individual identity</div>
+<div class="layer-box proof-layer-6 bg-gray-800/30 p-3 pl-4 rounded text-gray-300 text-sm md:col-span-3">Inference beyond the stated purpose of the task</div>
+</div>
+<p class="text-gray-300 mb-4">A separate cybersecurity analysis describes network-based BCI risks, unauthorized software modification, compromised movement, loss of health and genetic information, weak authentication, and excessive connectivity.</p>
+<p class="text-gray-300 mb-4">The protected object is no longer only a file labeled "brain data." The protected object includes the full computational chain:</p>
+<div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 mb-6">
+<p class="font-mono text-center text-pink-300">NEURAL SIGNAL &rarr; FEATURE &rarr; REPRESENTATION &rarr; MODEL &rarr; DECODED OUTPUT &rarr; FEEDBACK</p></div>
+<p class="text-gray-300">This formalizes cognitive privacy as an engineering and cybersecurity problem.</p>
+</section>
+
+<section id="ambient-sensing" class="mb-12">
+<h2 class="text-3xl font-bold text-white mb-6">6. Ambient Wireless Sensing</h2>
+<h3 class="text-xl font-bold text-white mb-4">6.1 Wi-Fi as environmental perception</h3>
+<p class="text-gray-300 mb-4">Wireless signals change when they interact with bodies, walls, furniture, movement, breathing, and posture.</p>
+<p class="text-gray-300 mb-4"><strong class="text-white">Channel State Information</strong> captures detailed properties of the propagation path between transmitters and receivers.</p>
+<p class="text-gray-300 mb-4">A Wi-Fi system can therefore serve two roles at once:</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+<div class="bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded"><p class="text-blue-300 font-semibold">1. Communications infrastructure</p></div>
+<div class="bg-green-900/20 border-l-4 border-green-500 p-4 rounded"><p class="text-green-300 font-semibold">2. Environmental sensing infrastructure</p></div>
+</div>
+<p class="text-gray-300 mb-4">The <strong class="text-white">Person-in-WiFi project</strong> used ordinary Wi-Fi antenna sets and deep learning to perform body segmentation and pose estimation.</p>
+<p class="text-gray-300 mb-4">The researchers collected more than <strong class="text-white">100,000 frames</strong> across sixteen indoor scenes. Wi-Fi reflections and transmission paths were used to estimate human body structure without a conventional visual camera as the primary sensor.</p>
+<p class="text-gray-300 mb-4">The <strong class="text-white">2025 PulseFi system</strong> used low-cost commodity Wi-Fi hardware and Channel State Information to estimate:</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-blue-900/30 border border-blue-700 px-3 py-1 rounded-full text-sm text-blue-300">Heart rate</span>
+<span class="bg-blue-900/30 border border-blue-700 px-3 py-1 rounded-full text-sm text-blue-300">Breathing rate</span>
+<span class="bg-blue-900/30 border border-blue-700 px-3 py-1 rounded-full text-sm text-blue-300">Apnea events</span>
+</div>
+<p class="text-gray-300 mb-4">Its machine-learning pipeline processed wireless telemetry collected with ESP32 and Raspberry Pi hardware.</p>
+<div class="bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-6">
+<p class="text-lg font-semibold text-purple-300">The wireless field is therefore no longer only a carrier for messages sent by devices. The field itself becomes a measurement surface.</p></div>
+<h3 class="text-xl font-bold text-white mb-4">6.2 Millimeter-wave human sensing</h3>
+<p class="text-gray-300 mb-4">Millimeter-wave sensing has expanded into:</p>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Human tracking</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Localization</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Gesture recognition</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Motion classification</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Biometric measurement</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300">Vital-sign monitoring</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 md:col-span-3">Human imaging</div>
+</div>
+<p class="text-gray-300">A comprehensive survey of mmWave human sensing describes fine-grained contactless applications across those categories. These systems provide detailed environmental and physiological observability under conditions where ordinary cameras may be obstructed, poorly illuminated, or intentionally avoided.</p>
+</section>
+
+<section id="drone-mobility" class="mb-12">
+<h2 class="text-3xl font-bold text-white mb-6">7. Drones as the Mobility Layer</h2>
+<p class="text-gray-300 mb-4">Drones transform fixed sensing and directed-energy architecture into a mobile three-dimensional system.</p>
+<p class="text-gray-300 mb-4">A fixed installation is constrained by its original location. A drone can:</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="arrow-right" class="text-green-400 w-4 h-4"></i><span class="text-gray-300">Move closer</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="arrow-up" class="text-blue-400 w-4 h-4"></i><span class="text-gray-300">Change altitude</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="eye" class="text-cyan-400 w-4 h-4"></i><span class="text-gray-300">Establish line of sight</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="refresh-cw" class="text-yellow-400 w-4 h-4"></i><span class="text-gray-300">Reposition around obstacles</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="search" class="text-purple-400 w-4 h-4"></i><span class="text-gray-300">Search for a stronger signal</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="user" class="text-pink-400 w-4 h-4"></i><span class="text-gray-300">Follow a moving person or vehicle</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="circle" class="text-orange-400 w-4 h-4"></i><span class="text-gray-300">Orbit a building</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="crosshair" class="text-red-400 w-4 h-4"></i><span class="text-gray-300">Approach from multiple directions</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="package" class="text-teal-400 w-4 h-4"></i><span class="text-gray-300">Carry interchangeable payloads</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="share-2" class="text-indigo-400 w-4 h-4"></i><span class="text-gray-300">Relay information to another system</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="users" class="text-green-400 w-4 h-4"></i><span class="text-gray-300">Operate as one element of a swarm</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="log-out" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Depart after a short operation</span></div>
+</div>
+<div class="bg-red-900/20 border-l-4 border-red-500 p-6 mb-6">
+<p class="text-lg font-semibold text-red-300">Drones are therefore not merely flying cameras. They are movable sensor, communications, computation, and electronic-warfare nodes.</p></div>
+<h3 class="text-xl font-bold text-white mb-4">7.1 Airborne detection of breathing and heart activity</h3>
+<p class="text-gray-300 mb-4">Research on UAV-borne radar explicitly describes drones carrying radar systems capable of measuring human respiration and heart activity.</p>
+<p class="text-gray-300 mb-4">The reported applications include sensing:</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-gray-800 px-3 py-1 rounded-full text-sm text-gray-300">Through clothing</span>
+<span class="bg-gray-800 px-3 py-1 rounded-full text-sm text-gray-300">Through certain building materials</span>
+<span class="bg-gray-800 px-3 py-1 rounded-full text-sm text-gray-300">Around visual obstructions</span>
+<span class="bg-gray-800 px-3 py-1 rounded-full text-sm text-gray-300">Under debris</span>
+<span class="bg-gray-800 px-3 py-1 rounded-full text-sm text-gray-300">In low-visibility environments</span>
+</div>
+<p class="text-gray-300 mb-6">The research also discusses drone swarms and tethered UAVs as methods for expanding endurance and multitasking capability.</p>
+<div class="bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-6">
+<p class="text-gray-300">This creates a direct technical bridge between drones and physiological observation. A drone can contribute more than an image of a person. It can collect minute periodic movement associated with life signs.</p></div>
+<h3 class="text-xl font-bold text-white mb-4">7.2 Drones as RF-location systems</h3>
+<p class="text-gray-300 mb-4">Radio-frequency localization uses features such as:</p>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Signal strength</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Time of arrival</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Time difference of arrival</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Angle of arrival</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Phase</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Channel fingerprints</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 md:col-span-3">Multipath structure</div>
+</div>
+<p class="text-gray-300 mb-4">Aerial robots can move through space to improve those measurements.</p>
+<p class="text-gray-300 mb-4">A review of RF localization for aerial and ground robots describes range-based and fingerprint-based methods and connects them to emerging 5G positioning infrastructure.</p>
+<h3 class="text-xl font-bold text-white mb-4">7.3 Electronic-warfare drones</h3>
+<p class="text-gray-300 mb-4">Electronic-warfare payloads are already being placed on drones.</p>
+<p class="text-gray-300 mb-4">The <strong class="text-white">British StormShroud system</strong> combines the Tekever AR3 UAV with Leonardo's BriteStorm electronic-warfare payload. Its mission is to fly ahead of crewed aircraft and disrupt or deceive hostile radar systems.</p>
+<p class="text-gray-300 mb-4">This establishes an operational concept in which:</p>
+<div class="space-y-3 mb-6">
+<div class="flex items-start gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="check-circle" class="text-red-400 w-5 h-5 mt-0.5"></i><span class="text-gray-300">The aircraft is unmanned.</span></div>
+<div class="flex items-start gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="check-circle" class="text-red-400 w-5 h-5 mt-0.5"></i><span class="text-gray-300">The payload manipulates the electromagnetic environment.</span></div>
+<div class="flex items-start gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="check-circle" class="text-red-400 w-5 h-5 mt-0.5"></i><span class="text-gray-300">The platform positions itself ahead of another force.</span></div>
+<div class="flex items-start gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="check-circle" class="text-red-400 w-5 h-5 mt-0.5"></i><span class="text-gray-300">Electronic attack is separated from the human operator.</span></div>
+<div class="flex items-start gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="check-circle" class="text-red-400 w-5 h-5 mt-0.5"></i><span class="text-gray-300">The drone can be treated as expendable or relocatable.</span></div>
+</div>
+<h3 class="text-xl font-bold text-white mb-4">7.4 Drone swarm phased arrays</h3>
+<p class="text-gray-300 mb-4">One drone has limited antenna size, payload capacity, and available power. Multiple drones can act cooperatively.</p>
+<p class="text-gray-300 mb-4">A <strong class="text-white">2025 project</strong> experimentally validated UAV-based phased-array antenna structures using dockable RF connectors. The system demonstrated beam steering in stationary and flight-related tests and was designed for airborne communications, radar, and remote sensing.</p>
+<p class="text-gray-300 mb-4">A <strong class="text-white">2026 swarm-array paper</strong> describes autonomous relay elements cooperatively forwarding a desired signal while canceling interferers through distributed zero-forcing beamforming.</p>
+<div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700 mb-6">
+<p class="font-mono text-center text-cyan-300 mb-4">MANY SMALL AIRCRAFT &rarr; ONE DISTRIBUTED APERTURE</p></div>
+<div class="bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-6">
+<p class="text-lg font-semibold text-purple-300">The system's functional boundary is no longer the individual drone. The swarm becomes the instrument.</p></div>
+<h3 class="text-xl font-bold text-white mb-4">7.5 Tethered drones</h3>
+<p class="text-gray-300 mb-4">Tethered UAVs offer a separate deployment model. A tether may provide:</p>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Continuous electrical power</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">High-capacity data connection</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Extended endurance</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Fixed-area persistence</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Reduced battery dependence</div>
+<div class="bg-gray-800/50 p-3 rounded text-center text-gray-300 text-sm">Stable relay positioning</div>
+</div>
+<h3 class="text-xl font-bold text-white mb-4">7.6 Drones as targeting assistants</h3>
+<p class="text-gray-300 mb-4">A drone does not need to carry the primary emitter. It can perform only the targeting and measurement functions.</p>
+<div class="space-y-4 mb-6">
+<div class="bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded">
+<p class="font-mono text-sm text-blue-300">Drone optical/radar tracking &rarr; Range and orientation estimate &rarr; Coordinates sent to ground emitter &rarr; Drone measures target response</p></div>
+<div class="bg-green-900/20 border-l-4 border-green-500 p-4 rounded">
+<p class="font-mono text-sm text-green-300">Drone RF mapping &rarr; Target device association &rarr; Fixed infrastructure transmission &rarr; Airborne response monitoring</p></div>
+<div class="bg-purple-900/20 border-l-4 border-purple-500 p-4 rounded">
+<p class="font-mono text-sm text-purple-300">Swarm localization &rarr; Distributed phase alignment &rarr; Cooperative beam formation &rarr; Adaptive repositioning</p></div>
+</div>
+<h3 class="text-xl font-bold text-white mb-4">7.7 Drones as intermittent systems</h3>
+<p class="text-gray-300 mb-4">Drones also change the temporal footprint of an operation. A mobile platform can:</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="clock" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Appear briefly</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="database" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Collect data</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="map-pin" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Reposition</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="log-out" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Leave</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="corner-up-left" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Return from another direction</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="refresh-cw" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Rotate with another aircraft</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="toggle-left" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Alternate passive and active operation</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="zap" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Use short pulse windows</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="cloud" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Operate during environmental noise</span></div>
+<div class="flex items-center gap-3 bg-gray-800/50 p-3 rounded"><i data-feather="share-2" class="text-gray-400 w-4 h-4"></i><span class="text-gray-300">Relay raw data elsewhere</span></div>
+</div>
+<p class="text-gray-300">This supports a system that is geographically and temporally fluid rather than permanently tied to one visible installation.</p>
+</section>
+
+<section id="infrastructure" class="mb-12">
+<h2 class="text-3xl font-bold text-white mb-6">8. Fixed Infrastructure and Drones</h2>
+<p class="text-gray-300 mb-4">Fixed infrastructure and UAVs have complementary strengths.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="bg-blue-900/20 border border-blue-700 rounded-lg p-6">
+<h3 class="text-lg font-bold text-blue-300 mb-4 flex items-center gap-2"><i data-feather="server" class="w-5 h-5"></i>Fixed Infrastructure Provides</h3>
+<ul class="space-y-2 text-gray-300 text-sm">
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Continuous power</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Large antennas</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Stable clocks</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Persistent network access</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Large processing capacity</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Long-term data storage</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Broad geographic coverage</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Integration with existing communications</li>
+</ul></div>
+<div class="bg-green-900/20 border border-green-700 rounded-lg p-6">
+<h3 class="text-lg font-bold text-green-300 mb-4 flex items-center gap-2"><i data-feather="navigation" class="w-5 h-5"></i>Drones Provide</h3>
+<ul class="space-y-2 text-gray-300 text-sm">
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Mobility</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Altitude</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Close approach</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Changing geometry</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Temporary line of sight</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Multi-angle collection</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Rapid deployment</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Target following</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Distributed arrays</li>
+<li class="flex items-center gap-2"><i data-feather="check" class="text-green-400 w-4 h-4"></i>Relocation after exposure</li>
+</ul></div>
+</div>
+<p class="text-gray-300 mb-4">A combined system can divide the mission:</p>
+<div class="space-y-4 mb-6">
+<div class="bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded">
+<p class="font-mono text-sm text-blue-300">FIXED INFRASTRUCTURE: POWER + PROCESSING + NETWORK</p></div>
+<div class="bg-green-900/20 border-l-4 border-green-500 p-4 rounded">
+<p class="font-mono text-sm text-green-300">DRONE LAYER: PROXIMITY + GEOMETRY + TRACKING + RELAY</p></div>
+</div>
+<p class="text-gray-300">Together they create a flexible sensing and actuation environment.</p>
+</section>
+
+<section id="ai-convergence" class="mb-12">
+<h2 class="text-3xl font-bold text-white mb-6">9. Artificial Intelligence as the Convergence Engine</h2>
+<p class="text-gray-300 mb-4">The underlying signals are often weak, indirect, noisy, mixed, or incomplete. Artificial intelligence makes them operationally useful.</p>
+<p class="text-gray-300 mb-4">AI can perform:</p>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="volume-x" class="text-blue-400 w-4 h-4"></i>Signal denoising</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="filter" class="text-green-400 w-4 h-4"></i>Artifact removal</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="layers" class="text-purple-400 w-4 h-4"></i>Sensor fusion</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="user-check" class="text-yellow-400 w-4 h-4"></i>Identity association</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="move" class="text-pink-400 w-4 h-4"></i>Pose estimation</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="heart" class="text-red-400 w-4 h-4"></i>Vital-sign extraction</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="mic-off" class="text-cyan-400 w-4 h-4"></i>Silent-speech classification</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="mic" class="text-orange-400 w-4 h-4"></i>Voice synthesis</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="crosshair" class="text-teal-400 w-4 h-4"></i>Target tracking</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="trending-up" class="text-indigo-400 w-4 h-4"></i>Trajectory prediction</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="settings" class="text-gray-400 w-4 h-4"></i>Beam optimization</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="cloud" class="text-blue-400 w-4 h-4"></i>Environmental compensation</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="activity" class="text-green-400 w-4 h-4"></i>Behavioral modeling</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="pie-chart" class="text-purple-400 w-4 h-4"></i>Response classification</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="shuffle" class="text-yellow-400 w-4 h-4"></i>Adaptive waveform selection</div>
+<div class="flex items-center gap-2 bg-gray-800/50 p-3 rounded text-gray-300 text-sm"><i data-feather="refresh-cw" class="text-pink-400 w-4 h-4"></i>Automatic recalibration</div>
+</div>
+<div class="bg-purple-900/20 border-l-4 border-purple-500 p-6 mb-6">
+<p class="text-gray-300 mb-4">The convergence process can be written as:</p>
+<p class="font-mono text-center text-purple-300 mb-4">D<sub>1</sub> + D<sub>2</sub> + D<sub>3</sub> + ... + D<sub>n</sub> &rarr; M<sub>person</sub></p>
+<p class="text-gray-300 text-sm mb-4">where each D<sub>i</sub> is a partial data source and M<sub>person</sub> is a continuously updated model of the individual.</p>
+<p class="text-gray-300 mb-4">The model can then guide actuation:</p>
+<p class="font-mono text-center text-purple-300">A<sub>t+1</sub> = &pi;(M<sub>person</sub>, R<sub>t</sub>, E<sub>t</sub>)</p>
+<p class="text-gray-300 text-sm mt-4">where A<sub>t+1</sub> is the next selected action, R<sub>t</sub> is the measured response, E<sub>t</sub> is the environmental state, and &pi; is the adaptive decision policy.</p></div>
+<p class="text-gray-300 mb-4">This creates a closed loop.</p>
+<div class="bg-red-900/20 border-l-4 border-red-500 p-6">
+<p class="text-lg font-semibold text-red-300">The system learns not only what the person does. It learns what changes the person.</p></div>
+</section>
+
 <!-- NEXT_CHUNK -->
 
 </article></main></div>
